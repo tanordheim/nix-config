@@ -6,4 +6,8 @@
   system.defaults.WindowManager = {
     EnableStandardClickToShowDesktop = false; # disable click to show desktop
   };
+
+  system.defaults.NSGlobalDomain = {
+    _HIHideMenuBar = true; # auto hide the menu bar
+  };
 }

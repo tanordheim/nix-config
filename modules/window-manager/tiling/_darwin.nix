@@ -29,6 +29,13 @@ in
       # Start AeroSpace at login
       start-at-login = true;
 
+      # Notify sketchybar on workspace change
+      exec-on-workspace-change = [
+        "/bin/bash"
+	"-c"
+	"${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
+      ];
+
       # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
       enable-normalization-flatten-containers = true;
       enable-normalization-opposite-orientation-for-nested-containers = true;
@@ -74,7 +81,10 @@ in
         inner.vertical = 8;
         outer.left = 7;
         outer.bottom = 7;
-        outer.top = 7;
+        outer.top = [
+          { monitor."built-in.*" = 7; }
+          32
+        ];
         outer.right = 7;
       };
 

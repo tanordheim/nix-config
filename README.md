@@ -12,3 +12,4 @@
 - https://github.com/z0al/dotfiles/tree/main
 - https://github.com/caarlos0/dotfiles (vim stuff)
 - https://codeberg.org/RockWolf/dotfiles (private+public config)
+- https://github.com/crissNb/dotfiles/tree/main (sketchybar)
