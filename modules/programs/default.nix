@@ -3,6 +3,7 @@
   imports = [
     ./1password
     ./brave
+    ./docker
     ./dotnet
     ./firefox
     ./jetbrains
