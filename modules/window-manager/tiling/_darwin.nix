@@ -112,8 +112,9 @@ in
         cmd-enter = "exec-and-forget open --new -b org.alacritty";
 
         # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-        alt-slash = "layout tiles horizontal vertical";
-        alt-comma = "layout accordion horizontal vertical";
+        cmd-shift-slash = "layout tiles horizontal vertical";
+        cmd-shift-period = "layout accordion horizontal vertical";
+	cmd-shift-f = "layout floating tiling";
 
         # See: https://nikitabobko.github.io/AeroSpace/commands#focus
         ctrl-h = "focus left";
@@ -122,14 +123,14 @@ in
         ctrl-l = "focus right";
 
         # See: https://nikitabobko.github.io/AeroSpace/commands#move
-        ctrl-shift-h = "move left";
-        ctrl-shift-j = "move down";
-        ctrl-shift-k = "move up";
-        ctrl-shift-l = "move right";
+        ctrl-cmd-h = "move left";
+        ctrl-cmd-j = "move down";
+        ctrl-cmd-k = "move up";
+        ctrl-cmd-l = "move right";
 
         # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-        # alt-shift-minus = "resize smart -50";
-        # alt-shift-equal = "resize smart +50";
+        ctrl-shift-alt-comma = "resize smart -50";
+        ctrl-shift-alt-period = "resize smart +50";
 
         # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
         ctrl-shift-alt-a = "workspace 1";
@@ -157,13 +158,7 @@ in
         cmd-ctrl-shift-alt-semicolon = ["move-node-to-workspace 10" "workspace 10"];
         cmd-shift-s = "move-node-to-workspace Z";
 
-        # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-        # alt-tab = "workspace-back-and-forth";
-        # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-        # alt-shift-tab = "move-workspace-to-monitor --wrap-around next";
-
-        # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-        # alt-shift-semicolon = "mode service";
+        cmd-shift-c = "reload-config";
       };
 
       # See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
@@ -180,38 +175,6 @@ in
         "10" = "secondary";
         Z = "main";
       };
-
-      # 'service' binding mode declaration.
-      # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-      #[mode.service.binding]
-      #esc = ['reload-config', 'mode main']
-      #r = ['flatten-workspace-tree', 'mode main'] # reset layout
-      #f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
-      #backspace = ['close-all-windows-but-current', 'mode main']
-
-      # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-      #s = ['layout sticky tiling', 'mode main']
-
-      #alt-shift-h = ['join-with left', 'mode main']
-      #alt-shift-j = ['join-with down', 'mode main']
-      #alt-shift-k = ['join-with up', 'mode main']
-      #alt-shift-l = ['join-with right', 'mode main']
-
-      #down = 'volume down'
-      #up = 'volume up'
-      #shift-down = ['volume set 0', 'mode main']
     };
   };
-
-#  my.user.home.file.aerospaceConfig = {
-#    target = "${config.my.user.xdg.configHome}/aerospace/aerospace.toml";
-#    text = builtins.replaceStrings
-#      [
-#        "$USER"
-#      ]
-#      [
-#        config.d.user.name
-#      ]
-#      (builtins.readFile ./aerospace.toml);
-#  };
 }
