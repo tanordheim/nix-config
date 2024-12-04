@@ -9,5 +9,6 @@
 
   system.defaults.NSGlobalDomain = {
     _HIHideMenuBar = true; # auto hide the menu bar
+    NSWindowShouldDragOnGesture = true; # click to move windows
   };
 }
