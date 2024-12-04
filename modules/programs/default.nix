@@ -2,6 +2,7 @@
 {
   imports = [
     ./1password
+    ./aws-vpn
     ./brave
     ./docker
     ./dotnet
