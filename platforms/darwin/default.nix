@@ -7,6 +7,7 @@
     ./finder.nix
     ./keyboard.nix
     ./login.nix
+    ./network.nix
     ./mouse.nix
   ];
 
