@@ -6,6 +6,11 @@ let
       inherit default;
       type = types.str;
     };
+  mkPath = default:
+    with lib; mkOption {
+      inherit default;
+      type = types.path;
+    };
 in
 {
   options.d = {
@@ -21,6 +26,10 @@ in
     git = {
       email = mkString "trond@nordheim.io";
       githubUsername = mkString "tanordheim";
+    };
+
+    desktop = {
+      wallpaper = mkPath ../wallpapers/themed/catppuccin/mocha/catppuccin-mocha-kurzgesagt-cloudy-quasar1.png;
     };
   };
 }

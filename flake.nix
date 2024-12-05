@@ -73,7 +73,7 @@
       nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {
-          inherit (inputs) catppuccin homebrew-core homebrew-cask homebrew-bundle homebrew-aerospace;
+          inherit (inputs) catppuccin home-manager homebrew-core homebrew-cask homebrew-bundle homebrew-aerospace;
           isDarwin = true;
         };
         modules =

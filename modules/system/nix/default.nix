@@ -1,4 +1,4 @@
-{ config, lib, isDarwin, ... }:
+{ config, lib, pkgs, isDarwin, ... }:
 {
   nix = {
     settings = {

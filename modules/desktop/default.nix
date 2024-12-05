@@ -2,5 +2,6 @@
   imports = [
     ./bar
     ./launcher
+    ./wallpaper
   ];
 }
