@@ -6,7 +6,7 @@
   ];
 
   launchd.user.agents."colima.default" = {
-    command = "${pkgs.colima}/bin/colima start --foreground";
+    command = "${pkgs.colima}/bin/colima start --foreground --cpu 4 --memory 8";
     serviceConfig = {
       Label = "com.colima.default";
       RunAtLoad = true;
