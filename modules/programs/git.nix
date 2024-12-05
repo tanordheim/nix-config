@@ -1,5 +1,9 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 {
+  my.user.home.packages = with pkgs; [
+    git-lfs
+  ];
+
   my.user = {
     programs.git = {
       enable = true;
@@ -38,6 +42,12 @@
           pager = "less -FXRS -x2";
           autocrlf = "input";
           editor = "nvim";
+        };
+        "filter \"lfs\"" = {
+          clean = "${pkgs.git-lfs}/bin/git-lfs clean -- %f";
+          smudge = "${pkgs.git-lfs}/bin/git-lfs smudge --skip -- %f";
+          process = "${pkgs.git-lfs}/bin/git-lfs filter-process --skip";
+          required = true;
         };
         github.user = config.d.git.githubUsername;
 	init.defaultBranch = "main";
