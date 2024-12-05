@@ -8,6 +8,7 @@
     ./dotnet
     ./firefox
     ./jetbrains
+    ./linear
     ./signal
     ./slack
     ./telegram
