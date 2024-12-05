@@ -5,6 +5,11 @@
     lima
   ];
 
+  my.user.home.sessionVariables = {
+    TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE = "${config.my.user.xdg.configHome}/colima/default/docker.sock";
+    DOCKER_HOST = "unix://${config.my.user.xdg.configHome}/colima/default/docker.sock";
+  };
+
   launchd.user.agents."colima.default" = {
     command = "${pkgs.colima}/bin/colima start --foreground --cpu 4 --memory 8";
     serviceConfig = {
