@@ -84,16 +84,21 @@ in
         executable = true;
         text = ''
         #!/usr/bin/env bash
+        set -e
+        TS=$(date +'%Y-%m-%dT%H:%M:%S')
+        echo "$TS triggering aerospace workspace switch - arg is '$1', NAME is '$NAME', FOCUSED_WORKSPACE is '$FOCUSED_WORKSPACE'" >> /Users/trond/aerospace-switch.log
         BACKGROUND_DRAWING=off
         HIGHLIGHT=false
         if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
           BACKGROUND_DRAWING=on
           HIGHLIGHT=true
         fi
+        echo "$TS determined BACKGROUND_DRAWING to be '$BACKGROUND_DRAWING' and HIGHLIGHT to be '$HIGHLIGHT'" >> /Users/trond/aerospace-switch.log
         
         sketchybar --set $NAME \
                          label.highlight=$HIGHLIGHT \
                          background.drawing=$BACKGROUND_DRAWING
+        echo "$TS successfully executed sketchybar --set $NAME label.highlight=$HIGHLIGHT background.drawing=$BACKGROUND_DRAWING" >> /Users/trond/aerospace-switch.log
         '';
       };
 
