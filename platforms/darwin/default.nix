@@ -3,7 +3,6 @@
   imports = [
     ../common
     ./desktop.nix
-    ./display.nix
     ./dock.nix
     ./finder.nix
     ./keyboard.nix
