@@ -236,7 +236,6 @@ in
             fi
 
             space=(
-              space="$sid"
               display=$m
               label.padding_left=10
               label.padding_right=10
@@ -249,7 +248,7 @@ in
               click_script="${pkgs.aerospace}/bin/aerospace workspace $sid"
               script="${pluginDir}/aerospace.sh $sid"
             )
-            sketchybar --add space space.$sid left \
+            sketchybar --add item space.$sid left \
                        --set space.$sid "''${space[@]}" \
                        --subscribe space.$sid mouse.clicked \
                        --subscribe space.$sid aerospace_workspace_change
