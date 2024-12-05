@@ -15,6 +15,18 @@ in
   ];
 
   my.user.xdg.configFile = {
+    "aerospace/on-workspace-change.sh" = {
+      executable = true;
+      text = ''
+      #!/usr/bin/env bash
+      set -e
+      TS=$(date +'%Y-%m-%dT%H:%M:%S')
+      echo "$TS notifying sketchybar about workspace change to new workspace '$AEROSPACE_FOCUSED_WORKSPACE'" >> /Users/trond/aerospace-workspace-switch.log
+      ${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE >> /Users/trond/aerospace-workspace-switch.log 2>&1
+      echo "$TS successfully executed ${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE" >> /Users/trond/aerospace-workspace-switch.log
+      '';
+    };
+
     "aerospace/aerospace.toml".source = toTOML "aerospace.toml" {
       # You can use it to add commands that run after login to macOS user session.
       # 'start-at-login' needs to be 'true' for 'after-login-command' to work
@@ -30,11 +42,7 @@ in
       start-at-login = true;
 
       # Notify sketchybar on workspace change
-      exec-on-workspace-change = [
-        "/bin/bash"
-	"-c"
-	"${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
-      ];
+      exec-on-workspace-change = [ "${config.my.user.xdg.configHome}/aerospace/on-workspace-change.sh" ];
 
       # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
       enable-normalization-flatten-containers = true;
