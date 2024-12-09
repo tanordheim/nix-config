@@ -142,28 +142,28 @@ in
 
         # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
         ctrl-shift-alt-a = "workspace 1";
-        ctrl-shift-alt-s = "workspace 2";
-        ctrl-shift-alt-d = "workspace 3";
-        ctrl-shift-alt-f = "workspace 4";
+        ctrl-shift-alt-r = "workspace 2";
+        ctrl-shift-alt-s = "workspace 3";
+        ctrl-shift-alt-t = "workspace 4";
         ctrl-shift-alt-g = "workspace 5";
-        ctrl-shift-alt-h = "workspace 6";
-        ctrl-shift-alt-j = "workspace 7";
-        ctrl-shift-alt-k = "workspace 8";
-        ctrl-shift-alt-l = "workspace 9";
-        ctrl-shift-alt-semicolon = "workspace 10";
+        ctrl-shift-alt-m = "workspace 6";
+        ctrl-shift-alt-n = "workspace 7";
+        ctrl-shift-alt-e = "workspace 8";
+        ctrl-shift-alt-i = "workspace 9";
+        ctrl-shift-alt-o = "workspace 10";
         cmd-s = "workspace Z";
 
         # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
         cmd-ctrl-shift-alt-a = ["move-node-to-workspace 1" "workspace 1"];
-        cmd-ctrl-shift-alt-s = ["move-node-to-workspace 2" "workspace 2"];
-        cmd-ctrl-shift-alt-d = ["move-node-to-workspace 3" "workspace 3"];
-        cmd-ctrl-shift-alt-f = ["move-node-to-workspace 4" "workspace 4"];
+        cmd-ctrl-shift-alt-r = ["move-node-to-workspace 2" "workspace 2"];
+        cmd-ctrl-shift-alt-s = ["move-node-to-workspace 3" "workspace 3"];
+        cmd-ctrl-shift-alt-t = ["move-node-to-workspace 4" "workspace 4"];
         cmd-ctrl-shift-alt-g = ["move-node-to-workspace 5" "workspace 5"];
-        cmd-ctrl-shift-alt-h = ["move-node-to-workspace 6" "workspace 6"];
-        cmd-ctrl-shift-alt-j = ["move-node-to-workspace 7" "workspace 7"];
-        cmd-ctrl-shift-alt-k = ["move-node-to-workspace 8" "workspace 8"];
-        cmd-ctrl-shift-alt-l = ["move-node-to-workspace 9" "workspace 9"];
-        cmd-ctrl-shift-alt-semicolon = ["move-node-to-workspace 10" "workspace 10"];
+        cmd-ctrl-shift-alt-m = ["move-node-to-workspace 6" "workspace 6"];
+        cmd-ctrl-shift-alt-n = ["move-node-to-workspace 7" "workspace 7"];
+        cmd-ctrl-shift-alt-e = ["move-node-to-workspace 8" "workspace 8"];
+        cmd-ctrl-shift-alt-i = ["move-node-to-workspace 9" "workspace 9"];
+        cmd-ctrl-shift-alt-o = ["move-node-to-workspace 10" "workspace 10"];
         cmd-shift-s = "move-node-to-workspace Z";
 
         cmd-shift-c = "reload-config";
