@@ -16,6 +16,7 @@
     ./alacritty.nix
     ./chrome.nix
     ./git.nix
+    ./go.nix
     ./kaf.nix
     ./kubectl.nix
     ./neovim.nix
