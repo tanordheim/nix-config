@@ -13,3 +13,4 @@
 - https://github.com/caarlos0/dotfiles (vim stuff)
 - https://codeberg.org/RockWolf/dotfiles (private+public config)
 - https://github.com/crissNb/dotfiles/tree/main (sketchybar)
+- https://github.com/sumnerevans/home-manager-config (vim stuff)

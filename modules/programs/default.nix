@@ -9,6 +9,7 @@
     ./firefox
     ./jetbrains
     ./linear
+    ./neovim
     ./signal
     ./slack
     ./telegram
@@ -19,9 +20,9 @@
     ./go.nix
     ./kaf.nix
     ./kubectl.nix
-    ./neovim.nix
     ./ssh.nix
     ./starship.nix
+    ./terraform.nix
     ./zsh.nix
   ];
 
