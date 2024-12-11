@@ -16,6 +16,7 @@
 
     ./alacritty.nix
     ./chrome.nix
+    ./discord.nix
     ./git.nix
     ./go.nix
     ./kaf.nix
