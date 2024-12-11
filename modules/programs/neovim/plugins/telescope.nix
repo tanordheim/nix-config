@@ -1,7 +1,10 @@
 { pkgs, ... }:
 {
-  my.user.programs.neovim = with pkgs.vimPlugins; {
-    plugins = [
+  my.user.programs.neovim = {
+    extraPackages = with pkgs; [
+      ripgrep
+    ];
+    plugins = with pkgs.vimPlugins; [
       telescope-fzf-native-nvim
       telescope-ui-select-nvim
       {
@@ -10,6 +13,7 @@
         config = # lua
           ''
             require('telescope').setup {
+
               -- You can put your default mappings / updates / etc. in here
               --  All the info you're looking for is in `:help telescope.setup()`
               --
@@ -19,6 +23,17 @@
               --   },
               -- },
               -- pickers = {}
+              defaults = {
+                vimgrep_arguments = {
+                  "${pkgs.ripgrep}/bin/rg",
+                  "--color=never",
+                  "--no-heading",
+                  "--with-filename",
+                  "--line-number",
+                  "--column",
+                  "--smart-case"
+                },
+              },
               extensions = {
                 ['ui-select'] = {
                   require('telescope.themes').get_dropdown(),
