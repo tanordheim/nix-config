@@ -1,4 +1,9 @@
-{ pkgs, lib, isDarwin, ... }:
+{
+  pkgs,
+  lib,
+  isDarwin,
+  ...
+}:
 {
   environment.systemPackages = with pkgs; [
     docker

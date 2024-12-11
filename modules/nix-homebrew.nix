@@ -2,7 +2,8 @@
   inputs,
   userConfig,
   ...
-}: {
+}:
+{
   nix-homebrew = {
     enable = true;
     enableRosetta = true;

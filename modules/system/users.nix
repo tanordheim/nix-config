@@ -1,18 +1,19 @@
-{ config, pkgs, lib, isDarwin, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  isDarwin,
+  ...
+}:
 let
   username = config.d.user.name;
   userFullName = config.d.user.fullName;
-  homeDirectory =
-    if isDarwin
-    then "/Users/${username}"
-    else "/home/${username}";
+  homeDirectory = if isDarwin then "/Users/${username}" else "/home/${username}";
 
 in
 {
   imports = [
-    (lib.mkAliasOptionModule
-      [ "my" "osUser" ]
-      [ "users" "users" username ])
+    (lib.mkAliasOptionModule [ "my" "osUser" ] [ "users" "users" username ])
   ];
 
   config = {

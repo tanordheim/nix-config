@@ -13,7 +13,7 @@
 
       signing = {
         signByDefault = true;
-	key = config.d.user.ssh.key;
+        key = config.d.user.ssh.key;
       };
 
       aliases = {
@@ -50,7 +50,7 @@
           required = true;
         };
         github.user = config.d.git.githubUsername;
-	init.defaultBranch = "main";
+        init.defaultBranch = "main";
         merge.tool = "vimdiff";
         push.default = "simple";
         rebase.autosquash = true;

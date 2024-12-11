@@ -6,7 +6,7 @@
     tilesize = 48;
 
     # apps pinned to the dock
-    persistent-apps = [];
+    persistent-apps = [ ];
 
     # disable all hot corners
     wvous-bl-corner = 1;

@@ -52,44 +52,54 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nix-darwin,
-    home-manager,
-    homebrew-core,
-    homebrew-cask,
-    homebrew-bundle,
-    homebrew-aerospace,
-    nix-homebrew,
-    nix-config-private,
-    ...
-  } @ inputs:
-  let
-    inherit (self) outputs;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nix-darwin,
+      home-manager,
+      homebrew-core,
+      homebrew-cask,
+      homebrew-bundle,
+      homebrew-aerospace,
+      nix-homebrew,
+      nix-config-private,
+      ...
+    }@inputs:
+    let
+      inherit (self) outputs;
 
-    # Helper function for nix-darwin system configuration
-    mkDarwinConfiguration = hostname:
-      nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = {
-          inherit (inputs) catppuccin home-manager homebrew-core homebrew-cask homebrew-bundle homebrew-aerospace;
-          isDarwin = true;
+      # Helper function for nix-darwin system configuration
+      mkDarwinConfiguration =
+        hostname:
+        nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = {
+            inherit (inputs)
+              catppuccin
+              home-manager
+              homebrew-core
+              homebrew-cask
+              homebrew-bundle
+              homebrew-aerospace
+              ;
+            isDarwin = true;
+          };
+          modules =
+            [
+              home-manager.darwinModules.home-manager
+              nix-homebrew.darwinModules.nix-homebrew
+              ./modules/default.nix
+              ./platforms/darwin
+            ]
+            ++ (builtins.attrValues nix-config-private.outputs.homeManagerModules)
+            ++ (builtins.attrValues nix-config-private.outputs.nixModules);
         };
-        modules =
-	[
-          home-manager.darwinModules.home-manager
-          nix-homebrew.darwinModules.nix-homebrew
-          ./modules/default.nix
-	  ./platforms/darwin
-        ]
-	++ (builtins.attrValues nix-config-private.outputs.homeManagerModules)
-	++ (builtins.attrValues nix-config-private.outputs.nixModules);
-      };
 
-  in {
-    darwinConfigurations = {
-      "harahorn-mac" = mkDarwinConfiguration "harahorn-mac";
+    in
+    {
+      darwinConfigurations = {
+        "harahorn-mac" = mkDarwinConfiguration "harahorn-mac";
+      };
     };
-  };
 }

@@ -2,7 +2,7 @@
   # https://macos-defaults.com/finder/
   system.defaults.CustomUserPreferences."com.apple.finder" = {
     AppleShowAllExtensions = true; # always show all file extensions
-    AppleShowAllFiles =true; # always show hidden files
+    AppleShowAllFiles = true; # always show hidden files
     ShowPathbar = true; # show path bar at the bottom of the window
     FXPreferredViewStyle = "Nlsv"; # use column view by default
     FXDefaultSearchScope = "SCcf"; # default search to use the current folder

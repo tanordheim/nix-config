@@ -1,13 +1,22 @@
-{ config, lib, isDarwin, ... }:
+{
+  config,
+  lib,
+  isDarwin,
+  ...
+}:
 let
   cfg = config.d;
-  mkString = default:
-    with lib; mkOption {
+  mkString =
+    default:
+    with lib;
+    mkOption {
       inherit default;
       type = types.str;
     };
-  mkPath = default:
-    with lib; mkOption {
+  mkPath =
+    default:
+    with lib;
+    mkOption {
       inherit default;
       type = types.path;
     };

@@ -9,7 +9,7 @@ in
       RoslynExtensionOptions = {
         enableDecompilationSupport = true;
         enableAnalyzersSupport = true;
-	inlayHintsOptions = {
+        inlayHintsOptions = {
           enableForParameters = true;
           forLiteralParameters = true;
           forIndexerParameters = true;
@@ -22,7 +22,7 @@ in
           forImplicitVariableTypes = true;
           forLambdaParameterTypes = true;
           forImplicitObjectCreation = true;
-	};
+        };
       };
     };
   };

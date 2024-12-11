@@ -15,8 +15,8 @@ in
   my.user.home.file = {
     "${vmOptionsFile}" = {
       text = ''
-      -Xms1g
-      -Xmx2g
+        -Xms1g
+        -Xmx2g
       '';
     };
   };

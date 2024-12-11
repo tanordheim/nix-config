@@ -1,8 +1,17 @@
-{ config, lib, pkgs, isDarwin, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  isDarwin,
+  ...
+}:
 {
   nix = {
     settings = {
-      trusted-users = [ "root" config.d.user.name ];
+      trusted-users = [
+        "root"
+        config.d.user.name
+      ];
       experimental-features = "nix-command flakes";
     };
 
@@ -16,4 +25,3 @@
 
   imports = lib.optionals isDarwin [ ./_darwin.nix ];
 }
-
