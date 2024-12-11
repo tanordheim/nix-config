@@ -14,6 +14,7 @@
             markdown
             markdown_inline
             nix
+            terraform
             query
             vim
             vimdoc
