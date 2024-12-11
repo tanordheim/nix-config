@@ -1,4 +1,10 @@
-{ nix-homebrew, homebrew-aerospace, config, pkgs, ... }:
+{
+  nix-homebrew,
+  homebrew-aerospace,
+  config,
+  pkgs,
+  ...
+}:
 let
   toTOML = (pkgs.formats.toml { }).generate;
 
@@ -18,12 +24,12 @@ in
     "aerospace/on-workspace-change.sh" = {
       executable = true;
       text = ''
-      #!/usr/bin/env bash
-      set -e
-      TS=$(date +'%Y-%m-%dT%H:%M:%S')
-      echo "$TS notifying sketchybar about workspace change to new workspace '$AEROSPACE_FOCUSED_WORKSPACE'" >> /Users/trond/aerospace-workspace-switch.log
-      ${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE >> /Users/trond/aerospace-workspace-switch.log 2>&1
-      echo "$TS successfully executed ${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE" >> /Users/trond/aerospace-workspace-switch.log
+        #!/usr/bin/env bash
+        set -e
+        TS=$(date +'%Y-%m-%dT%H:%M:%S')
+        echo "$TS notifying sketchybar about workspace change to new workspace '$AEROSPACE_FOCUSED_WORKSPACE'" >> /Users/trond/aerospace-workspace-switch.log
+        ${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE >> /Users/trond/aerospace-workspace-switch.log 2>&1
+        echo "$TS successfully executed ${pkgs.sketchybar}/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE" >> /Users/trond/aerospace-workspace-switch.log
       '';
     };
 
@@ -31,12 +37,12 @@ in
       # You can use it to add commands that run after login to macOS user session.
       # 'start-at-login' needs to be 'true' for 'after-login-command' to work
       # Available commands: https://nikitabobko.github.io/AeroSpace/commands
-      after-login-command = [];
+      after-login-command = [ ];
 
       # You can use it to add commands that run after AeroSpace startup.
       # 'after-startup-command' is run after 'after-login-command'
       # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-      after-startup-command = [];
+      after-startup-command = [ ];
 
       # Start AeroSpace at login
       start-at-login = true;
@@ -66,7 +72,7 @@ in
       # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
       # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
       # Fallback value (if you omit the key): on-focused-monitor-changed = []
-      on-focused-monitor-changed = ["move-mouse monitor-lazy-center"];
+      on-focused-monitor-changed = [ "move-mouse monitor-lazy-center" ];
 
       # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
       # Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
@@ -122,7 +128,7 @@ in
         # See: https://nikitabobko.github.io/AeroSpace/commands#layout
         cmd-shift-slash = "layout tiles horizontal vertical";
         cmd-shift-period = "layout accordion horizontal vertical";
-	cmd-shift-f = "layout floating tiling";
+        cmd-shift-f = "layout floating tiling";
 
         # See: https://nikitabobko.github.io/AeroSpace/commands#focus
         ctrl-h = "focus left";
@@ -154,16 +160,46 @@ in
         cmd-s = "workspace Z";
 
         # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-        cmd-ctrl-shift-alt-a = ["move-node-to-workspace 1" "workspace 1"];
-        cmd-ctrl-shift-alt-r = ["move-node-to-workspace 2" "workspace 2"];
-        cmd-ctrl-shift-alt-s = ["move-node-to-workspace 3" "workspace 3"];
-        cmd-ctrl-shift-alt-t = ["move-node-to-workspace 4" "workspace 4"];
-        cmd-ctrl-shift-alt-g = ["move-node-to-workspace 5" "workspace 5"];
-        cmd-ctrl-shift-alt-m = ["move-node-to-workspace 6" "workspace 6"];
-        cmd-ctrl-shift-alt-n = ["move-node-to-workspace 7" "workspace 7"];
-        cmd-ctrl-shift-alt-e = ["move-node-to-workspace 8" "workspace 8"];
-        cmd-ctrl-shift-alt-i = ["move-node-to-workspace 9" "workspace 9"];
-        cmd-ctrl-shift-alt-o = ["move-node-to-workspace 10" "workspace 10"];
+        cmd-ctrl-shift-alt-a = [
+          "move-node-to-workspace 1"
+          "workspace 1"
+        ];
+        cmd-ctrl-shift-alt-r = [
+          "move-node-to-workspace 2"
+          "workspace 2"
+        ];
+        cmd-ctrl-shift-alt-s = [
+          "move-node-to-workspace 3"
+          "workspace 3"
+        ];
+        cmd-ctrl-shift-alt-t = [
+          "move-node-to-workspace 4"
+          "workspace 4"
+        ];
+        cmd-ctrl-shift-alt-g = [
+          "move-node-to-workspace 5"
+          "workspace 5"
+        ];
+        cmd-ctrl-shift-alt-m = [
+          "move-node-to-workspace 6"
+          "workspace 6"
+        ];
+        cmd-ctrl-shift-alt-n = [
+          "move-node-to-workspace 7"
+          "workspace 7"
+        ];
+        cmd-ctrl-shift-alt-e = [
+          "move-node-to-workspace 8"
+          "workspace 8"
+        ];
+        cmd-ctrl-shift-alt-i = [
+          "move-node-to-workspace 9"
+          "workspace 9"
+        ];
+        cmd-ctrl-shift-alt-o = [
+          "move-node-to-workspace 10"
+          "workspace 10"
+        ];
         cmd-shift-s = "move-node-to-workspace Z";
 
         cmd-shift-c = "reload-config";
@@ -183,6 +219,38 @@ in
         "10" = "secondary";
         Z = "main";
       };
+
+      # Assign windows to workspaces
+      # See: https://nikitabobko.github.io/AeroSpace/guide#callbacks
+      on-window-detected = [
+        {
+          "if".app-id = "com.tinyspeck.slackmacgap";
+          run = [ "move-node-to-workspace 6" ];
+        }
+        {
+          "if".app-id = "com.tdesktop.Telegram";
+          run = [ "move-node-to-workspace 7" ];
+        }
+        {
+          "if".app-id = "org.whispersystems.signal-desktop";
+          run = [ "move-node-to-workspace 7" ];
+        }
+        {
+          "if".app-id = "com.hnc.Discord";
+          run = [ "move-node-to-workspace 8" ];
+        }
+        {
+          "if".app-id = "com.linear";
+          run = [ "move-node-to-workspace 9" ];
+        }
+        {
+          "if".app-id = "com.amazonaws.acvc.osx";
+          run = [
+            "layout floating"
+            "move-node-to-workspace Z"
+          ];
+        }
+      ];
     };
   };
 }
