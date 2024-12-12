@@ -10,6 +10,7 @@
             css
             diff
             html
+            ini
             lua
             luadoc
             markdown
