@@ -20,8 +20,10 @@ in
     my.osUser = {
       name = username;
       description = userFullName;
+      isNormalUser = true;
       home = homeDirectory;
       shell = pkgs.zsh;
+      extraGroups = [ "wheel" ];
     };
   };
 }

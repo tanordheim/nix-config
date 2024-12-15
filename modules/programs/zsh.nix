@@ -1,5 +1,7 @@
 { config, home-manager, ... }:
 {
+  programs.zsh.enable = true;
+
   my.user.programs.zsh = {
     enable = true;
     enableCompletion = true;

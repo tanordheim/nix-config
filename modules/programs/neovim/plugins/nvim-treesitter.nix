@@ -7,6 +7,7 @@
           p: with p; [
             bash
             c
+            css
             diff
             html
             lua

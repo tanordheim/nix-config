@@ -3,6 +3,7 @@
   lib,
   pkgs,
   isDarwin,
+  isLinux,
   ...
 }:
 let
@@ -11,7 +12,7 @@ let
       if isDarwin then
         "${config.my.osUser.home}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
       else
-        "~/.1password/agent.sock";
+        "${config.my.osUser.home}/.1password/agent.sock";
     sign =
       if isDarwin then
         "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
@@ -33,5 +34,5 @@ in
     };
   };
 
-  imports = lib.optionals isDarwin [ ./_darwin.nix ];
+  imports = [ ] ++ lib.optional isDarwin ./_darwin.nix ++ lib.optional isLinux ./_nixos.nix;
 }

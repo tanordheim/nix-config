@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    google-chrome
+    _1password-cli
+    _1password-gui
   ];
 }

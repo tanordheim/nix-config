@@ -5,6 +5,13 @@
     # Nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs-brave-stable.url = "github:NixOS/nixpkgs/7135b364b6e3639d96a1f3909161110c07d0b927";
+
+    # Apple silicon support (for NixOS on Mac)
+    apple-silicon-support = {
+      url = "github:tpwrules/nixos-apple-silicon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Nix-darwin (for macOS machines)
     nix-darwin = {
@@ -56,6 +63,9 @@
     {
       self,
       nixpkgs,
+      nixpkgs-stable,
+      nixpkgs-brave-stable,
+      apple-silicon-support,
       nix-darwin,
       home-manager,
       homebrew-core,
@@ -82,8 +92,10 @@
               homebrew-cask
               homebrew-bundle
               homebrew-aerospace
+              nixpkgs-stable
               ;
             isDarwin = true;
+            isLinux = false;
           };
           modules =
             [
@@ -96,10 +108,41 @@
             ++ (builtins.attrValues nix-config-private.outputs.nixModules);
         };
 
+      # Helper function for nixos system configuration
+      mkNixosConfiguration =
+        hostname:
+        nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = {
+            inherit (inputs)
+              catppuccin
+              home-manager
+              nixpkgs-stable
+              nixpkgs-brave-stable
+              ;
+            isDarwin = false;
+            isLinux = true;
+          };
+          modules =
+            [
+              { networking.hostName = hostname; }
+              apple-silicon-support.nixosModules.apple-silicon-support
+              home-manager.nixosModules.home-manager
+              ./modules/default.nix
+              ./platforms/linux
+              ./hardware-configurations/${hostname}/hardware-configuration.nix
+            ]
+            ++ (builtins.attrValues nix-config-private.outputs.homeManagerModules)
+            ++ (builtins.attrValues nix-config-private.outputs.nixModules);
+        };
+
     in
     {
       darwinConfigurations = {
         "harahorn-mac" = mkDarwinConfiguration "harahorn-mac";
+      };
+      nixosConfigurations = {
+        "harahorn" = mkNixosConfiguration "harahorn";
       };
     };
 }
