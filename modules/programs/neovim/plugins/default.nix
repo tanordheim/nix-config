@@ -1,10 +1,10 @@
 { ... }:
 {
   imports = [
+    ./blink-cmp.nix
     ./conform.nix
     ./gitsigns.nix
     ./lspconfig.nix
-    ./nvim-cmp.nix
     ./nvim-tree.nix
     ./nvim-treesitter.nix
     ./telescope.nix
