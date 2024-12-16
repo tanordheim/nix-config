@@ -8,7 +8,10 @@
 {
   homebrew = {
     enable = true;
-    onActivation.cleanup = "zap";
+    onActivation = {
+      cleanup = "zap";
+      upgrade = true;
+    };
     taps = builtins.attrNames config.nix-homebrew.taps;
   };
 
