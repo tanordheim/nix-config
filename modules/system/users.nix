@@ -3,6 +3,7 @@
   pkgs,
   lib,
   isDarwin,
+  isLinux,
   ...
 }:
 let
@@ -17,13 +18,17 @@ in
   ];
 
   config = {
-    my.osUser = {
-      name = username;
-      description = userFullName;
-      isNormalUser = true;
-      home = homeDirectory;
-      shell = pkgs.zsh;
-      extraGroups = [ "wheel" ];
-    };
+    my.osUser = lib.mkMerge [
+      {
+        name = username;
+        description = userFullName;
+        home = homeDirectory;
+        shell = pkgs.zsh;
+      }
+      (lib.mkIf isLinux {
+        extraGroups = [ "wheel" ];
+        isStandardUser = true;
+      })
+    ];
   };
 }
