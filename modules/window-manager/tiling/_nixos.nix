@@ -8,11 +8,20 @@
   ];
 
   my.user = {
-    gtk.catppuccin.enable = true;
+    gtk.catppuccin = {
+      enable = true;
+      icon.enable = true;
+    };
     qt.style.catppuccin.enable = true;
   };
 
   programs.hyprland.enable = true;
+
+  my.user.dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
 
   my.user.wayland.windowManager.hyprland = {
     enable = true;
