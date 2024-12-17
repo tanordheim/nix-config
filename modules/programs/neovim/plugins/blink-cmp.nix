@@ -17,7 +17,7 @@
               -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
               -- see the "default configuration" section below for full documentation on how to define
               -- your own keymap.
-              keymap = { preset = 'enter' },
+              keymap = { preset = 'super-tab' },
 
               appearance = {
                 -- Sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -27,6 +27,12 @@
                 -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
                 -- Adjusts spacing to ensure icons are aligned
                 nerd_font_variant = 'mono'
+              },
+
+              completion = {
+                trigger = {
+                  show_in_snippet = false
+                },
               },
 
               -- default list of enabled providers defined so that you can extend it
@@ -40,6 +46,8 @@
               -- experimental signature help support
               signature = { enabled = true },
             }
+
+            vim.keymap.set('i', '<C-Space>', function() blink.show() end)
           '';
       }
     ];
