@@ -9,6 +9,7 @@
             c
             css
             diff
+            helm
             html
             ini
             lua
@@ -16,10 +17,11 @@
             markdown
             markdown_inline
             nix
-            terraform
             query
+            terraform
             vim
             vimdoc
+            yaml
           ]
         );
         type = "lua";
