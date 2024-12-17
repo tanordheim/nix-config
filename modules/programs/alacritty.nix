@@ -27,6 +27,25 @@
           };
           size = 14.0;
         };
+      keyboard = {
+        bindings = [
+          {
+            key = "<";
+            mods = "Control|Shift";
+            action = "IncreaseFontSize";
+          }
+          {
+            key = ">";
+            mods = "Control|Shift";
+            action = "DecreaseFontSize";
+          }
+          {
+            key = "?";
+            mods = "Control|Shift";
+            action = "ResetFontSize";
+          }
+        ];
+      };
       window = {
         opacity = 0.95;
         padding = {
