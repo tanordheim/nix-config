@@ -46,6 +46,8 @@
     asahi = {
       peripheralFirmwareDirectory = /boot/asahi;
       useExperimentalGPUDriver = true;
+      experimentalGPUInstallMode = "replace";
+      setupAsahiSound = true;
     };
     bluetooth = {
       enable = true;
