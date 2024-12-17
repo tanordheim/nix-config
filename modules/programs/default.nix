@@ -17,6 +17,7 @@
     ./telegram
 
     ./alacritty.nix
+    ./chromium.nix
     ./git.nix
     ./go.nix
     ./kaf.nix
