@@ -12,9 +12,7 @@
     ./linear
     ./neovim
     ./obsidian
-    ./signal
     ./slack
-    ./telegram
 
     ./alacritty.nix
     ./chromium.nix
@@ -22,8 +20,10 @@
     ./go.nix
     ./kaf.nix
     ./kubectl.nix
+    ./signal.nix
     ./ssh.nix
     ./starship.nix
+    ./telegram.nix
     ./terraform.nix
     ./zsh.nix
   ];
