@@ -27,7 +27,7 @@ in
       }
       (lib.mkIf isLinux {
         extraGroups = [ "wheel" ];
-        isStandardUser = true;
+        isNormalUser = true;
       })
     ];
   };
