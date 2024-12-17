@@ -46,8 +46,6 @@
               -- experimental signature help support
               signature = { enabled = true },
             }
-
-            vim.keymap.set('i', '<C-Space>', function() blink.show() end)
           '';
       }
     ];

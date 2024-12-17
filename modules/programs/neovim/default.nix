@@ -1,18 +1,4 @@
 { pkgs, lib, ... }:
-let
-  fromGitHub =
-    owner: repo: ref:
-    pkgs.vimUtils.buildVimPlugin {
-      pname = "${lib.strings.sanitizeDerivationName repo}";
-      version = ref;
-      src = pkgs.fetchFromGitHub {
-        owner = owner;
-        repo = repo;
-        rev = ref;
-      };
-    };
-
-in
 {
   my.user =
     { config, ... }:

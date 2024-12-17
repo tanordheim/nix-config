@@ -1,9 +1,11 @@
 { ... }:
 {
   imports = [
+    # needs to be loaded early
+    ./snacks.nix
+
     ./blink-cmp.nix
     ./conform.nix
-    ./gitsigns.nix
     ./lspconfig.nix
     ./nvim-tree.nix
     ./nvim-treesitter.nix
