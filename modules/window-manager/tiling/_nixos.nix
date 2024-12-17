@@ -137,7 +137,7 @@
       bindm = [
         # move/resize using $mainMod + mouse drag
         "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:274, resizewindow"
+        "$mainMod, mouse:273, resizewindow"
       ];
 
       windowrulev2 = [
