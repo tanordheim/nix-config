@@ -1,4 +1,14 @@
-{ config, home-manager, ... }:
+{
+  config,
+  home-manager,
+  isDarwin,
+  ...
+}:
+let
+  codeDirectory =
+    if isDarwin then "${config.my.osUser.home}/Code" else "${config.my.osUser.home}/code";
+
+in
 {
   programs.zsh.enable = true;
 
@@ -13,8 +23,8 @@
     completionInit = ''
       # Add a "c" function with an autocomplete definition to allow easily
       # changing working directory into a source code directory.
-      c() { cd $HOME/Code/$1; }
-      _c() { _files -W $HOME/Code -/;  }
+      c() { cd ${codeDirectory}/$1; }
+      _c() { _files -W ${codeDirectory} -/;  }
       compdef _c c
     '';
 

@@ -1,9 +1,15 @@
 {
   lib,
+  config,
   isDarwin,
   isLinux,
   ...
 }:
+let
+  downloadDirectory =
+    if isDarwin then "${config.my.osUser.home}/Downloads" else "${config.my.osUser.home}/downloads";
+
+in
 {
   imports = [ ] ++ lib.optional isDarwin ./_darwin.nix ++ lib.optional isLinux ./_nixos.nix;
 
@@ -13,6 +19,7 @@
     BraveRewardsDisabled = true;
     BraveVPNDisabled = true;
     BraveWalletDisabled = true;
+    DefaultDownloadDirectory = downloadDirectory;
     DefaultSearchProviderEnabled = true;
     DefaultSearchProviderName = "Google";
     DefaultSearchProviderSearchURL = "https://www.google.com/search?q={searchTerms}";
