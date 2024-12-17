@@ -1,5 +1,9 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    asahi-bless
+  ];
+
   imports = [
     ../common
     ./bluetooth.nix
