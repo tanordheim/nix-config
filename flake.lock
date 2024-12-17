@@ -269,22 +269,6 @@
         "type": "indirect"
       }
     },
-    "nixpkgs-brave-stable": {
-      "locked": {
-        "lastModified": 1731199254,
-        "narHash": "sha256-bjjor0wr6SbPrPY15bYDqtwomV5LxrSjB4MUliR3aww=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "7135b364b6e3639d96a1f3909161110c07d0b927",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "7135b364b6e3639d96a1f3909161110c07d0b927",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1734202038,
@@ -330,7 +314,6 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-brave-stable": "nixpkgs-brave-stable",
         "nixpkgs-stable": "nixpkgs-stable"
       }
     },

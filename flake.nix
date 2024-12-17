@@ -5,7 +5,6 @@
     # Nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
-    nixpkgs-brave-stable.url = "github:NixOS/nixpkgs/7135b364b6e3639d96a1f3909161110c07d0b927";
 
     # Apple silicon support (for NixOS on Mac)
     apple-silicon-support = {
@@ -65,7 +64,6 @@
       self,
       nixpkgs,
       nixpkgs-stable,
-      nixpkgs-brave-stable,
       apple-silicon-support,
       nix-darwin,
       home-manager,
@@ -119,7 +117,6 @@
               catppuccin
               home-manager
               nixpkgs-stable
-              nixpkgs-brave-stable
               ;
             isDarwin = false;
             isLinux = true;
