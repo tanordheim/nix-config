@@ -161,7 +161,6 @@
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "${pkgs.waybar}/bin/waybar > /home/trond/waybar.log 2>&1"
-        "${pkgs.hyprpaper}/bin/hyprpaper"
         "blueman-applet &"
         "${pkgs.networkmanagerapplet}/bin/nm-applet &"
         "hyprctl dispatch workspace 1"

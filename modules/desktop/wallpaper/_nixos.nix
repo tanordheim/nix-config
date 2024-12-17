@@ -4,18 +4,16 @@ let
 
 in
 {
-  environment.systemPackages = with pkgs; [
-    hyprpaper
-  ];
   my.user =
     { lib, config, ... }:
     {
-      xdg.configFile = {
-        "hypr/hyprpaper.conf" = {
-          text = ''
-            preload = ${config.lib.file.mkOutOfStoreSymlink wallpaperPath}
-            wallpaper = , ${config.lib.file.mkOutOfStoreSymlink wallpaperPath}
-          '';
+      services.hyprpaper = {
+        enable = true;
+        settings = {
+          preload = [
+            "${config.lib.file.mkOutOfStoreSymlink wallpaperPath}"
+          ];
+          wallpaper = [ ", ${config.lib.file.mkOutOfStoreSymlink wallpaperPath}" ];
         };
       };
     };
