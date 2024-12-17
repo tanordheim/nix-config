@@ -11,6 +11,7 @@
     ./jetbrains
     ./linear
     ./neovim
+    ./obsidian
     ./signal
     ./slack
     ./telegram
