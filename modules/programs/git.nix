@@ -1,6 +1,7 @@
 { pkgs, config, ... }:
 {
   my.user.home.packages = with pkgs; [
+    gh
     git-lfs
   ];
 
