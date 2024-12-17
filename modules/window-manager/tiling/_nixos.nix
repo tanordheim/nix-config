@@ -31,6 +31,12 @@
       "$altMod" = "CTRL";
       "$mehMod" = "CTRL SHIFT ALT";
       "$hypMod" = "SUPER CTRL SHIFT ALT";
+
+      env = [
+        "XCURSOR_SIZE,24"
+        "QT_QPA_PLATFORMTHEME,qt5ct"
+      ];
+
       general = {
         gaps_in = 5;
         gaps_out = 15;
@@ -42,24 +48,27 @@
         "col.inactive_border" = "$peach";
       };
 
-      # decoration = {
-      #   active_opacity = 1;
-      #   fullscreen_opacity = 1;
-      #   inactive_opacity = 1;
-      #   blur = {
-      #     enabled = true;
-      #     size = 8;
-      #     passes = 1;
-      #     new_optimizations = true;
-      #   };
-      #
-      #   drop_shadow = true;
-      #   shadow_range = 6;
-      #   shadow_render_power = 3;
-      #   shadow_ignore_window = true;
-      #   dim_inactive = true;
-      #   dim_strength = 0.2;
-      # };
+      decoration = {
+        active_opacity = 1;
+        fullscreen_opacity = 1;
+        inactive_opacity = 1;
+        dim_inactive = true;
+        dim_strength = 0.2;
+
+        blur = {
+          enabled = true;
+          size = 8;
+          passes = 1;
+          new_optimizations = true;
+        };
+
+        shadow = {
+          enabled = true;
+          range = 6;
+          render_power = 3;
+          ignore_window = true;
+        };
+      };
 
       animations = {
         enabled = true;
