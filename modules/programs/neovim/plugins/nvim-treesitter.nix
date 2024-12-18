@@ -12,6 +12,10 @@
             helm
             html
             ini
+            javascript
+            json
+            jsonc
+            typescript
             lua
             luadoc
             markdown

@@ -2,15 +2,15 @@
 
 {
   environment.systemPackages = [
-    (pkgs.writeShellScriptBin "slack-pwa" ''
+    (pkgs.writeShellScriptBin "discord-pwa" ''
       ${pkgs.chromium}/bin/chromium \
-        --app="https://app.slack.com/client" \
-        --class="slack-pwa" \
-        --user-data-dir="$HOME/.config/slack-pwa" \
+        --app="https://discord.com/channels/@me" \
+        --class="discord-pwa" \
+        --user-data-dir="$HOME/.config/discord-pwa" \
         --enable-features=WebAppEnableUrlHandlers \
         --enable-features=WebAppEnableDarkMode \
         --disable-notifications \
-        --protocol-handler=slack \
+        --protocol-handler=discord \
         --no-default-browser-check \
         --disable-features=DefaultBrowserInSettingsMenu \
         --ozone-platform=wayland \
@@ -19,20 +19,20 @@
     '')
 
     (pkgs.makeDesktopItem {
-      name = "slack-pwa";
-      desktopName = "Slack";
-      exec = "slack-pwa %U";
-      icon = "slack";
+      name = "discord-pwa";
+      desktopName = "Discord";
+      exec = "discord-pwa %U";
+      icon = "discord";
       categories = [
         "Network"
         "InstantMessaging"
       ];
       terminal = false;
-      mimeTypes = [ "x-scheme-handler/slack" ];
+      mimeTypes = [ "x-scheme-handler/discord" ];
     })
   ];
 
   my.user.xdg.mimeApps.defaultApplications = {
-    "x-scheme-handler/slack" = "slack-pwa.desktop";
+    "x-scheme-handler/discord" = "discord-pwa.desktop";
   };
 }

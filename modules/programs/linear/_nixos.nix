@@ -2,15 +2,15 @@
 
 {
   environment.systemPackages = [
-    (pkgs.writeShellScriptBin "slack-pwa" ''
+    (pkgs.writeShellScriptBin "linear-pwa" ''
       ${pkgs.chromium}/bin/chromium \
-        --app="https://app.slack.com/client" \
-        --class="slack-pwa" \
-        --user-data-dir="$HOME/.config/slack-pwa" \
+        --app="https://linear.app" \
+        --class="linear-pwa" \
+        --user-data-dir="$HOME/.config/linear-pwa" \
         --enable-features=WebAppEnableUrlHandlers \
         --enable-features=WebAppEnableDarkMode \
         --disable-notifications \
-        --protocol-handler=slack \
+        --protocol-handler=linear \
         --no-default-browser-check \
         --disable-features=DefaultBrowserInSettingsMenu \
         --ozone-platform=wayland \
@@ -19,20 +19,16 @@
     '')
 
     (pkgs.makeDesktopItem {
-      name = "slack-pwa";
-      desktopName = "Slack";
-      exec = "slack-pwa %U";
-      icon = "slack";
-      categories = [
-        "Network"
-        "InstantMessaging"
-      ];
+      name = "linear-pwa";
+      desktopName = "Linear";
+      exec = "linear-pwa %U";
+      icon = "linear";
       terminal = false;
-      mimeTypes = [ "x-scheme-handler/slack" ];
+      mimeTypes = [ "x-scheme-handler/linear" ];
     })
   ];
 
   my.user.xdg.mimeApps.defaultApplications = {
-    "x-scheme-handler/slack" = "slack-pwa.desktop";
+    "x-scheme-handler/linear" = "linear-pwa.desktop";
   };
 }
