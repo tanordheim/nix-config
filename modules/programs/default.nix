@@ -20,6 +20,7 @@
     ./go.nix
     ./kaf.nix
     ./kubectl.nix
+    ./node.nix
     ./signal.nix
     ./ssh.nix
     ./starship.nix
