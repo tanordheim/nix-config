@@ -2,6 +2,7 @@
   config,
   lib,
   catppuccin,
+  isLinux,
   ...
 }:
 {
@@ -15,16 +16,24 @@
   };
 
   my.user = {
-    home = {
-      homeDirectory = config.my.osUser.home;
-      stateVersion = config.d.stateVersion;
-      pointerCursor.size = 28;
-    };
+    home = lib.mkMerge [
+      {
+        homeDirectory = config.my.osUser.home;
+        stateVersion = config.d.stateVersion;
+      }
+      (lib.mkIf isLinux {
+        pointerCursor.size = 28;
+      })
+    ];
     imports = [ catppuccin.homeManagerModules.catppuccin ];
-    catppuccin.flavor = "mocha";
-    catppuccin.pointerCursor = {
-      enable = true;
-    };
+    catppuccin = lib.mkMerge [
+      {
+        flavor = "mocha";
+      }
+      (lib.mkIf isLinux {
+        pointerCursor.enable = true;
+      })
+    ];
     xdg.enable = true;
     programs.home-manager.enable = true;
   };

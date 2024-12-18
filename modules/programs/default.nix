@@ -4,6 +4,7 @@
     ./1password
     ./aws-vpn
     ./brave
+    ./chromium
     ./discord
     ./docker
     ./dotnet
@@ -15,7 +16,6 @@
     ./slack
 
     ./alacritty.nix
-    ./chromium.nix
     ./git.nix
     ./go.nix
     ./kaf.nix
