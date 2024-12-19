@@ -22,6 +22,21 @@
       color-scheme = "prefer-dark";
     };
   };
+  my.user.xdg.portal = {
+    enable = true;
+    config = {
+      common = {
+        default = [ "hyprland" ];
+      };
+      hyprland = {
+        default = [ "hyprland" ];
+      };
+    };
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+    ];
+    xdgOpenUsePortal = true;
+  };
 
   my.user.wayland.windowManager.hyprland = {
     enable = true;
@@ -171,13 +186,15 @@
         "workspace 7 silent, class:^(Signal)$"
         "workspace 8 silent, class:^(chrome-discord.com__)(.*)$"
         "workspace 9 silent, class:^(chrome-linear.app__)(.*)$"
-        "workspace 10 silent, class:^(1Password)$"
+        "workspace 10 silent, class:^(1Password)$, floating:0"
+        "pin, class:^(1Password)$, title:^(1Password)$, floating:1"
       ];
 
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "${pkgs.waybar}/bin/waybar > /home/trond/waybar.log 2>&1"
+        "${pkgs.waybar}/bin/waybar &"
+        "${pkgs._1password-gui}/bin/1password &"
         "blueman-applet &"
         "${pkgs.networkmanagerapplet}/bin/nm-applet &"
         "hyprctl dispatch workspace 1"

@@ -19,7 +19,7 @@ in
     BraveRewardsDisabled = true;
     BraveVPNDisabled = true;
     BraveWalletDisabled = true;
-    DefaultDownloadDirectory = downloadDirectory;
+    DownloadDirectory = downloadDirectory;
     DefaultSearchProviderEnabled = true;
     DefaultSearchProviderName = "Google";
     DefaultSearchProviderSearchURL = "https://www.google.com/search?q={searchTerms}";

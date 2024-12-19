@@ -34,6 +34,7 @@
                     parameterNames = true,
                     rangeVariableTypes = true,
                   },
+                  semanticTokens = true,
                   staticcheck = true,
                 },
               },
