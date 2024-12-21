@@ -8,9 +8,9 @@
   home-manager.users.${config.username} =
     { config, ... }:
     {
+      stylix.targets.neovim.enable = false;
       programs.neovim = {
         enable = true;
-        catppuccin.enable = true;
         defaultEditor = true;
         viAlias = true;
         vimAlias = true;
@@ -32,8 +32,9 @@
     };
 
   imports = [
-    ./options.nix
+    ./colorscheme.nix
     ./keymaps.nix
+    ./options.nix
     ./plugins
   ];
 }

@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  catppuccin,
   ...
 }:
 let
@@ -44,6 +43,7 @@ in
     ./signal.nix
     ./ssh.nix
     ./starship.nix
+    ./stylix.nix
     ./sudo.nix
     ./telegram.nix
     ./terraform.nix
@@ -62,7 +62,9 @@ in
       email = mkString "trond@nordheim.io";
       githubUsername = mkString "tanordheim";
     };
-    wallpaper = mkPath ../wallpapers/themed/catppuccin/mocha/catppuccin-mocha-kurzgesagt-cloudy-quasar1.png;
+    theming = {
+      nightfoxStyle = mkString "duskfox";
+    };
   };
 
   config = {
@@ -71,8 +73,6 @@ in
       useUserPackages = true;
 
       users.${config.username} = {
-        imports = [ catppuccin.homeManagerModules.catppuccin ];
-        catppuccin.flavor = "mocha";
         xdg.enable = true;
         programs.home-manager.enable = true;
 

@@ -4,8 +4,9 @@ inputs.nix-darwin.lib.darwinSystem {
   specialArgs = inputs;
   modules =
     [
-      home-manager.darwinModules.home-manager
-      nix-homebrew.darwinModules.nix-homebrew
+      inputs.home-manager.darwinModules.home-manager
+      inputs.nix-homebrew.darwinModules.nix-homebrew
+      inputs.stylix.darwinModules.stylix
       ../../modules/macos
     ]
     ++ (builtins.attrValues nix-config-private.outputs.homeManagerModules)

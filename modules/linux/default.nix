@@ -24,11 +24,5 @@
     ./waybar.nix
   ];
 
-  home-manager.users.${config.username} = {
-    catppuccin.pointerCursor.enable = true;
-    home = {
-      homeDirectory = "/home/${config.username}";
-      pointerCursor.size = 28;
-    };
-  };
+  home-manager.users.${config.username}.home.homeDirectory = "/home/${config.username}";
 }

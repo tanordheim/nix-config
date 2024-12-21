@@ -139,11 +139,6 @@ in
     };
 
     home-manager.users.${config.username}.xdg.configFile = {
-      "sketchybar/colors-catppuccin.sh" = {
-        executable = true;
-        text = '''';
-      };
-
       "sketchybar/plugins/aerospace.sh" = {
         executable = true;
         text = ''
