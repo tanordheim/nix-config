@@ -1,13 +1,14 @@
 { pkgs, config, ... }:
 let
-  wallpaperPath = config.wallpaper;
   facePath = config.user.image;
-  fontFamily = "JetBrainsMono Nerd Font";
 
 in
 {
   home-manager.users.${config.username} =
     { lib, config, ... }:
+    let
+      colors = config.lib.stylix.colors;
+    in
     {
       services.hypridle = {
         enable = true;
@@ -38,7 +39,6 @@ in
 
       programs.hyprlock = {
         enable = true;
-        catppuccin.enable = true;
         settings = {
           general = {
             disable_loading_bar = true;
@@ -46,27 +46,25 @@ in
           };
 
           background = {
-            path = "${config.lib.file.mkOutOfStoreSymlink wallpaperPath}";
             blur_passes = 3;
             blur_size = 8;
-            color = "$base";
           };
 
           label = [
             {
               text = "$TIME";
-              color = "$text";
-              font_size = "90";
-              font_family = "${fontFamily}";
+              color = colors.withHashtag.base05;
+              font_size = config.stylix.fonts.sizes.applications * 7;
+              font_family = config.stylix.fonts.sansSerif.name;
               position = "-30, 0";
               halign = "right";
               valign = "top";
             }
             {
               text = "cmd[update:43200000] date +\"%A, %d %B %Y\"";
-              color = "$text";
-              font_size = "25";
-              font_family = "${fontFamily}";
+              color = colors.withHashtag.base05;
+              font_size = config.stylix.fonts.sizes.applications * 2;
+              font_family = config.stylix.fonts.sansSerif.name;
               position = "-30, -150";
               halign = "right";
               valign = "top";
@@ -76,7 +74,7 @@ in
           image = {
             path = "${config.lib.file.mkOutOfStoreSymlink facePath}";
             size = "100";
-            border_color = "$accent";
+            border_color = colors.withHashtag.base0E;
             position = "0, 75";
             halign = "center";
             valign = "center";
@@ -88,16 +86,11 @@ in
             dots_size = "0.2";
             dots_spacing = "0.2";
             dots_center = "true";
-            outer_color = "$accent";
-            inner_color = "$surface0";
-            font_color = "$text";
             fade_on_empty = false;
-            placeholder_text = "<span foreground=\"##$textAlpha\"><i>󰌾 Logged in as </i><span foreground=\"##$accentAlpha\">$USER</span></span>";
+            placeholder_text = "$USER";
             hide_input = false;
-            check_color = "$accent";
-            fail_color = "$red";
             fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
-            capslock_color = "$yellow";
+            capslock_color = colors.withHashtag.base0A;
             position = "0, -47";
             halign = "center";
             valign = "center";

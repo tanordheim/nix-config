@@ -11,16 +11,6 @@
   programs.hyprland.enable = true;
 
   home-manager.users.${config.username} = {
-    gtk.catppuccin = {
-      enable = true;
-      icon.enable = true;
-    };
-    qt.style.catppuccin.enable = true;
-    dconf.settings = {
-      "org/gnome/desktop/interface" = {
-        color-scheme = "prefer-dark";
-      };
-    };
     xdg.portal = {
       enable = true;
       config = {
@@ -38,7 +28,6 @@
     };
     wayland.windowManager.hyprland = {
       enable = true;
-      catppuccin.enable = true;
       settings = {
         "$mainMod" = "SUPER";
         "$altMod" = "CTRL";
@@ -46,7 +35,6 @@
         "$hypMod" = "SUPER CTRL SHIFT ALT";
 
         env = [
-          "XCURSOR_SIZE,16"
           "QT_QPA_PLATFORMTHEME,qt5ct"
         ];
 
@@ -56,9 +44,6 @@
           border_size = 2;
           layout = "master";
           allow_tearing = false;
-
-          "col.active_border" = "$mauve";
-          "col.inactive_border" = "$peach";
         };
 
         decoration = {

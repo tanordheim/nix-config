@@ -25,8 +25,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Catppuccin color scheme
-    catppuccin.url = "github:catppuccin/nix";
+    # Stylix system wide color scheming/styling
+    stylix.url = "github:danth/stylix";
 
     # Homebrew
     homebrew-core = {

@@ -10,7 +10,6 @@
     {
       programs.neovim = {
         enable = true;
-        catppuccin.enable = true;
         defaultEditor = true;
         viAlias = true;
         vimAlias = true;

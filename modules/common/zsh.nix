@@ -18,7 +18,6 @@ in
         enableCompletion = true;
         syntaxHighlighting = {
           enable = true;
-          catppuccin.enable = true;
         };
 
         completionInit = ''
