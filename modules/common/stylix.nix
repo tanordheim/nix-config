@@ -6,17 +6,14 @@ in
 {
   stylix = {
     enable = true;
-    # image = ../../wallpapers/themed/catppuccin/mocha/catppuccin-mocha-kurzgesagt-cloudy-quasar1.png;
     image = wallpaper;
     polarity = "dark";
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-storm.yaml";
-    # base16Scheme = ./stylix-themes/nightfox.yaml;
     base16Scheme = scheme;
 
     cursor = {
-      size = 28;
-      package = pkgs.catppuccin-cursors.mochaDark;
-      name = "Catppuccin-Mocha-Dark-Cursors";
+      size = 24;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
     };
 
     fonts = {
