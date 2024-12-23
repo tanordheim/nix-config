@@ -5,6 +5,7 @@
       ripgrep
     ];
     plugins = with pkgs.vimPlugins; [
+      plenary-nvim
       telescope-fzf-native-nvim
       telescope-ui-select-nvim
       {

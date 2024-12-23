@@ -22,12 +22,6 @@
             vim.g.mapleader = ' '
             vim.g.maplocalleader = ' '
           '';
-
-        # core plugins used by various other plugins
-        plugins = with pkgs.vimPlugins; [
-          plenary-nvim
-          nvim-web-devicons
-        ];
       };
     };
 
