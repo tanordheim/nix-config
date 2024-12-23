@@ -147,6 +147,10 @@
           # screenshots
           "$mainMod SHIFT, 4, exec, ${pkgs.hyprshot}/bin/hyprshot -m region"
           "$mainMod $altMod SHIFT, 4, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
+
+          # media keys
+          ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%+"
+          ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%-"
         ];
 
         bindm = [
