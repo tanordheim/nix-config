@@ -24,7 +24,6 @@ in
 {
   imports = [
     ./1password.nix
-    ./alacritty.nix
     ./aws.nix
     ./base-packages.nix
     ./brave.nix
@@ -35,6 +34,7 @@ in
     ./go.nix
     ./jetbrains
     ./kaf.nix
+    ./kitty.nix
     ./kubectl.nix
     ./neovim
     ./nix.nix

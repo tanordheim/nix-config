@@ -102,7 +102,7 @@
 
         bind = [
           # launchers
-          "$mainMod, return, exec, ${pkgs.alacritty}/bin/alacritty"
+          "$mainMod, return, exec, ${pkgs.kitty}/bin/kitty"
           "$mainMod SHIFT, W, killactive"
           "$mainMod $altMod, Q, exit"
           "$mainMod, space, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"

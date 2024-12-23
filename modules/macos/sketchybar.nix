@@ -176,14 +176,17 @@ in
           #!/usr/bin/env bash
           function __icon_map() {
             case "$1" in
-              "Alacritty")
-                icon_result=":alacritty:"
+              "1Password")
+                icon_result=":one_password:"
                 ;;
               "App Store")
                 icon_result=":app_store:"
                 ;;
               "Brave Browser")
                 icon_result=":brave_browser:"
+                ;;
+              "Chromium" | "Google Chrome")
+                icon_result=":google_chrome:"
                 ;;
               "Code" | "Code - Insiders")
                 icon_result=":code:"
@@ -200,14 +203,11 @@ in
               "Firefox")
                 icon_result=":firefox:"
                 ;;
-              "System Preferences" | "System Settings")
-                icon_result=":gear:"
-                ;;
               "GoLand")
                 icon_result=":goland:"
                 ;;
-              "Chromium" | "Google Chrome")
-                icon_result=":google_chrome:"
+              "kitty")
+                icon_result=":kitty:"
                 ;;
               "Linear")
                 icon_result=":linear:"
@@ -215,7 +215,7 @@ in
               "Miro")
                 icon_result=":miro:"
                 ;;
-             "Neovide" | "neovide")
+              "Neovide" | "neovide")
                 icon_result=":neovide:"
                 ;;
               "Neovim" | "neovim" | "nvim")
@@ -223,9 +223,6 @@ in
                 ;;
               "Obsidian")
                 icon_result=":obsidian:"
-                ;;
-              "1Password")
-                icon_result=":one_password:"
                 ;;
               "Rider" | "JetBrains Rider")
                 icon_result=":rider:"
@@ -244,6 +241,9 @@ in
                 ;;
               "Spotlight")
                 icon_result=":spotlight:"
+                ;;
+              "System Preferences" | "System Settings")
+                icon_result=":gear:"
                 ;;
               "Telegram")
                 icon_result=":telegram:"

@@ -125,7 +125,7 @@ in
         # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
 
         # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-        cmd-enter = "exec-and-forget open --new -b org.alacritty";
+        cmd-enter = "exec-and-forget ${pkgs.kitty}/bin/kitty";
 
         # See: https://nikitabobko.github.io/AeroSpace/commands#layout
         cmd-shift-slash = "layout tiles horizontal vertical";

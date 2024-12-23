@@ -3,7 +3,7 @@
   home-manager.users.${config.username}.programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
-    terminal = "${pkgs.alacritty}/bin/alacritty";
+    terminal = "${pkgs.kitty}/bin/kitty";
     extraConfig = {
       modi = "run,drun,window";
       drun-display-format = "{icon} {name}";
