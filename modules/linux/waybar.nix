@@ -88,7 +88,7 @@ in
                 ];
               };
               tooltip = false;
-              on-click = "pavucontrol";
+              on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
             };
             backlight = {
               device = "intel_backlight";
