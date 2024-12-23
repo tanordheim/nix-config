@@ -11,6 +11,7 @@
     ./brave.nix
     ./chromium.nix
     ./discord.nix
+    ./docker.nix
     ./dunst.nix
     ./hyprland.nix
     ./hyprlock.nix
