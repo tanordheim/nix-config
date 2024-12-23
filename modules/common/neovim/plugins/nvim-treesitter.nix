@@ -22,6 +22,7 @@
             markdown_inline
             nix
             query
+            rasi
             terraform
             vim
             vimdoc

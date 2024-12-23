@@ -9,6 +9,7 @@
     ./conform.nix
     ./lspconfig.nix
     ./mini-statusline.nix
+    ./nvim-highlight-colors.nix
     ./nvim-tree.nix
     ./nvim-treesitter.nix
     ./telescope.nix
