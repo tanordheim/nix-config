@@ -97,5 +97,9 @@ in
           };
         };
       };
+
+      wayland.windowManager.hyprland.settings.bind = [
+        "$mainMod $altMod, L, exec, hyprlock"
+      ];
     };
 }

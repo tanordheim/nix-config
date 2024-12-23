@@ -108,7 +108,6 @@
           "$mainMod SHIFT, W, killactive"
           "$mainMod $altMod, Q, exit"
           "$mainMod, space, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"
-          "$mainMod $altMod, L, exec, hyprlock"
 
           # switch workspaces
           "$mehMod, a, workspace, 1"
