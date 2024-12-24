@@ -105,7 +105,8 @@
           "$mainMod, return, exec, ${pkgs.kitty}/bin/kitty"
           "$mainMod SHIFT, W, killactive"
           "$mainMod $altMod, Q, exit"
-          "$mainMod, space, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"
+          "$mainMod, space, exec, rofi -show drun"
+          "$mainMod, c, exec, rofi -show calc -modi calc -no-show-match -no-sort -calc-command \"echo -n '{result}' | wl-copy\""
           "$mainMod, e, exec, ${pkgs.nautilus}/bin/nautilus"
 
           # switch workspaces

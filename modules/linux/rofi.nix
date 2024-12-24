@@ -9,7 +9,6 @@
       theme =
         builtins.toFile "rofi-theme.rasi" # rasi
           ''
-            // rofi squared inspired
             * {
               font: "${config.stylix.fonts.monospace.name} ${toString config.stylix.fonts.sizes.popups}";
 
@@ -111,11 +110,24 @@
         package = pkgs.rofi-wayland;
         theme = theme;
         terminal = "${pkgs.kitty}/bin/kitty";
+        plugins = with pkgs; [
+          # see https://github.com/NixOS/nixpkgs/issues/298539, needs some special handling due to ABI incompatibiliby
+          (rofi-calc.override { rofi-unwrapped = rofi-wayland-unwrapped; })
+        ];
         extraConfig = {
-          modi = "drun";
+          modes = [
+            "drun"
+            "calc"
+          ];
           show-icons = true;
-          display-drun = "";
+
+          # drun
+          separator-style = "dash";
+          display-drun = "> ";
           drun-display-format = "{icon} {name}";
+
+          # calc
+          calc-command = "echo -n '{result}' | wl-copy";
         };
       };
     };
