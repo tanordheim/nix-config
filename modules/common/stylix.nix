@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 let
   scheme = ./stylix-themes/${config.theming.nightfoxStyle}.yaml;
-  wallpaper = ../../wallpapers/themed/nightfox/${config.theming.nightfoxStyle}.png;
+  wallpaper = ../../wallpapers/generic/scenery/generic-scenery-7.png;
 in
 {
   stylix = {

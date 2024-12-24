@@ -63,7 +63,7 @@ in
       githubUsername = mkString "tanordheim";
     };
     theming = {
-      nightfoxStyle = mkString "duskfox";
+      nightfoxStyle = mkString "carbonfox";
     };
   };
 
