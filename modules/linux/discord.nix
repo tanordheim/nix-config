@@ -2,11 +2,13 @@
 
 {
   environment.systemPackages = [
+    # TODO: remove js-flags when chromium v31 fixes decommit-pooled-pages issue on systems with 16k pages
     (pkgs.writeShellScriptBin "discord-pwa" ''
       ${pkgs.chromium}/bin/chromium \
         --app="https://discord.com/channels/@me" \
         --class="discord-pwa" \
         --user-data-dir="$HOME/.config/discord-pwa" \
+        --js-flags=--no-decommit-pooled-pages \
         --enable-features=WebAppEnableUrlHandlers \
         --enable-features=WebAppEnableDarkMode \
         --disable-notifications \
