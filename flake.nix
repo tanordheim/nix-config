@@ -8,8 +8,8 @@
 
     # Apple silicon support (for NixOS on Mac)
     apple-silicon-support = {
-      # url = "github:tpwrules/nixos-apple-silicon";
-      url = "github:oliverbestmann/nixos-apple-silicon";
+      url = "github:tpwrules/nixos-apple-silicon";
+      # url = "github:oliverbestmann/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
