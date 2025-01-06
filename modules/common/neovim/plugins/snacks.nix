@@ -7,7 +7,7 @@ let
         owner = "folke";
         repo = "snacks.nvim";
         rev = "v2.12.0";
-        hash = "sha256-0RLVkdV/R+9eXRCIj8MbpdAx7Tq4h6aRppEFzZC+ILw=";
+        hash = "sha256-bPKN+jawWWO4CTd4z6JoJszylrZ/93vWLJRmr7E2n0c=";
       };
     }
   );
