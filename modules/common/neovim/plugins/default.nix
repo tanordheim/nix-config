@@ -2,7 +2,7 @@
 {
   imports = [
     # needs to be loaded early
-    # ./snacks.nix
+    ./snacks.nix
     ./mini-icons.nix
 
     ./blink-cmp.nix
