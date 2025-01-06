@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 let
   scheme = ./stylix-themes/kanagawa-dragon.yaml;
-  wallpaper = ../../wallpapers/generic/scenery/generic-scenery-7.png;
+  wallpaper = ../../wallpapers/generic/scenery/generic-scenery-24.png;
 in
 {
   stylix = {
