@@ -62,9 +62,6 @@ in
       email = mkString "trond@nordheim.io";
       githubUsername = mkString "tanordheim";
     };
-    theming = {
-      nightfoxStyle = mkString "carbonfox";
-    };
   };
 
   config = {

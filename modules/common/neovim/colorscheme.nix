@@ -3,18 +3,16 @@
   home-manager.users.${config.username}.programs.neovim = {
     plugins = with pkgs.vimPlugins; [
       {
-        plugin = nightfox-nvim;
+        plugin = kanagawa-nvim;
         type = "lua";
         config = # lua
           ''
-            local nightfox = require('nightfox')
-            nightfox.setup {
-              options = {
-                transparent = true,
-                dim_inactive = true,
-              }
+            local kanagawa = require('kanagawa')
+            kanagawa.setup {
+              transparent = true,
+              dim_inactive = true,
             }
-            vim.cmd[[colorscheme ${config.theming.nightfoxStyle}]]
+            vim.cmd[[colorscheme kanagawa-dragon]]
           '';
       }
     ];

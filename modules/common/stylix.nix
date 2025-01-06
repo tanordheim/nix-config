@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 let
-  scheme = ./stylix-themes/${config.theming.nightfoxStyle}.yaml;
+  scheme = ./stylix-themes/kanagawa-dragon.yaml;
   wallpaper = ../../wallpapers/generic/scenery/generic-scenery-7.png;
 in
 {
