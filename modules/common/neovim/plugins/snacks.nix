@@ -6,7 +6,7 @@ let
       src = pkgs.fetchFromGitHub {
         owner = "folke";
         repo = "snacks.nvim";
-        rev = "v2.11.0";
+        rev = "v2.12.0";
         hash = "sha256-0RLVkdV/R+9eXRCIj8MbpdAx7Tq4h6aRppEFzZC+ILw=";
       };
     }
