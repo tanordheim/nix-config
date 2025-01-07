@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  pkgs-hyprland-0460,
   ...
 }:
 {
@@ -10,7 +9,7 @@
   ];
 
   programs.hyprland.enable = true;
-  programs.hyprland.package = pkgs-hyprland-0460.hyprland;
+  programs.hyprland.package = with pkgs; stable.hyprland;
 
   home-manager.users.${config.username} = {
     xdg.portal = {
@@ -24,13 +23,13 @@
         };
       };
       extraPortals = with pkgs; [
-        xdg-desktop-portal-hyprland
+        stable.xdg-desktop-portal-hyprland
       ];
       xdgOpenUsePortal = true;
     };
     wayland.windowManager.hyprland = {
       enable = true;
-      package = pkgs-hyprland-0460.hyprland;
+      package = with pkgs; stable.hyprland;
       settings = {
         "$mainMod" = "SUPER";
         "$altMod" = "CTRL";

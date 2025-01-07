@@ -1,11 +1,7 @@
 { inputs, ... }:
 inputs.nixpkgs.lib.nixosSystem rec {
   system = "aarch64-linux";
-  specialArgs = inputs // {
-    pkgs-hyprland-0460 = import inputs.nixpkgs-hyprland-0460 {
-      inherit system;
-    };
-  };
+  specialArgs = inputs;
   modules =
     [
       inputs.apple-silicon-support.nixosModules.apple-silicon-support
