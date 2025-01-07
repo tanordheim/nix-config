@@ -124,7 +124,8 @@ in
                     }, handler, req_bufnr)
                   end
                 end
-              })
+              }
+            })
           '';
       }
       {
