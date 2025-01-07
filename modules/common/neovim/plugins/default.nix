@@ -7,6 +7,7 @@
 
     ./blink-cmp.nix
     ./conform.nix
+    ./easy-dotnet.nix
     ./lspconfig.nix
     ./mini-statusline.nix
     ./nvim-highlight-colors.nix
