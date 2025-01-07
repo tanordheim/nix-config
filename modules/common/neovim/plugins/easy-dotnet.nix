@@ -37,6 +37,7 @@ in
           ''
             local roslyn = require('roslyn')
             roslyn.setup({
+              exe = 'Microsoft.CodeAnalysis.LanguageServer',
               config = {
                 settings = {
                   ['csharp|background_analysis'] = {
