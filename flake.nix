@@ -4,7 +4,7 @@
   inputs = {
     # Nixpkgs
     # temporarily pin nixpkgs-unstable due to a mesa-issue with asahi
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/b74a56e2acce8fe88a575287a20ac196d8d01938";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
 
     # Apple silicon support (for NixOS on Mac)
