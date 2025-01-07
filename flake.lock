@@ -392,19 +392,19 @@
         "type": "indirect"
       }
     },
-    "nixpkgs-hyprland-0461": {
+    "nixpkgs-hyprland-0460": {
       "locked": {
-        "lastModified": 1734453322,
-        "narHash": "sha256-G1h+o0LkFqKSwk9Cxl+cL/SooaNZhBGPzIQDns+jp08=",
+        "lastModified": 1734407195,
+        "narHash": "sha256-Otec8V1Y9VG9jL7e4Ng/M056eHzK08u7fquOZqZ1qT8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6e0b46aa9d3e51480e9731b62a7aca55639d6193",
+        "rev": "6c7c078917d2e4b5c98d36102c90714b41ba82bb",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6e0b46aa9d3e51480e9731b62a7aca55639d6193",
+        "rev": "6c7c078917d2e4b5c98d36102c90714b41ba82bb",
         "type": "github"
       }
     },
@@ -468,7 +468,7 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-hyprland-0461": "nixpkgs-hyprland-0461",
+        "nixpkgs-hyprland-0460": "nixpkgs-hyprland-0460",
         "nixpkgs-stable": "nixpkgs-stable",
         "stylix": "stylix"
       }
