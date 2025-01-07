@@ -5,6 +5,7 @@
     # Nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs-hyprland-0461.url = "github:NixOS/nixpkgs/6e0b46aa9d3e51480e9731b62a7aca55639d6193";
 
     # Apple silicon support (for NixOS on Mac)
     apple-silicon-support = {
