@@ -13,11 +13,11 @@
     ./discord.nix
     ./docker.nix
     ./dunst.nix
-    ./hypridle.nix
+    # ./hypridle.nix
     ./hyprland.nix
-    ./hyprlock.nix
-    ./hyprpaper.nix
-    ./hyprpolkitagent.nix
+    # ./hyprlock.nix
+    # ./hyprpaper.nix
+    # ./hyprpolkitagent.nix
     ./keyboard.nix
     ./linear.nix
     ./obsidian.nix
