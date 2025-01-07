@@ -7,7 +7,7 @@ let
         owner = "GustavEikaas";
         repo = "easy-dotnet.nvim";
         rev = "b0a1fa6a087925fc716291d3ff910d496d259510";
-        hash = "sha256-bPKN+jawWWO4CTd4z6JoJszylrZ/93vWLJRmr7E2n0c=";
+        hash = "sha256-gvV41ek19KFljE82G0bfP6pTkKqYO4yh2eAUe4asFtw=";
       };
     }
   );
