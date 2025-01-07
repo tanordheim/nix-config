@@ -2,6 +2,7 @@
 {
   home-manager.users.${config.username}.programs.neovim = {
     extraPackages = with pkgs; [
+      fd
       ripgrep
     ];
     plugins = with pkgs.vimPlugins; [
