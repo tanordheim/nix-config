@@ -3,13 +3,14 @@
 
   inputs = {
     # Nixpkgs
+    # temporarily pin nixpkgs-unstable due to a mesa-issue with asahi
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
 
     # Apple silicon support (for NixOS on Mac)
     apple-silicon-support = {
-      url = "github:tpwrules/nixos-apple-silicon";
-      # url = "github:oliverbestmann/nixos-apple-silicon";
+      # url = "github:tpwrules/nixos-apple-silicon";
+      url = "github:oliverbestmann/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
