@@ -4,6 +4,7 @@
     home.packages = with pkgs; [
       gh
       git-lfs
+      lazygit
     ];
 
     programs.git = {
