@@ -22,7 +22,13 @@
     optimise.automatic = true;
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      # TODO: https://github.com/NixOS/nixpkgs/issues/326335
+      "dotnet-sdk-6.0.428"
+    ];
+  };
   nixpkgs.overlays = [
     (prev: final: {
       stable = import nixpkgs-stable { inherit (prev) system; };
