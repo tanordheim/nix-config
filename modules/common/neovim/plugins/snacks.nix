@@ -1,9 +1,23 @@
 { pkgs, config, ... }:
+let
+  snacks-nvim-git = (
+    pkgs.vimUtils.buildVimPlugin {
+      name = "snacks.nvim";
+      src = pkgs.fetchFromGitHub {
+        owner = "folke";
+        repo = "snacks.nvim";
+        rev = "v2.12.0";
+        hash = "sha256-bPKN+jawWWO4CTd4z6JoJszylrZ/93vWLJRmr7E2n0c=";
+      };
+    }
+  );
+
+in
 {
   home-manager.users.${config.username}.programs.neovim = {
-    plugins = with pkgs.vimPlugins; [
+    plugins = [
       {
-        plugin = snacks-nvim;
+        plugin = snacks-nvim-git;
         type = "lua";
         config = # lua
           ''
