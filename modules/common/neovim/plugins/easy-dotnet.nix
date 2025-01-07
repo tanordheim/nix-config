@@ -20,7 +20,10 @@ in
         plugin = easy-dotnet-nvim-git;
         type = "lua";
         config = # lua
-          '''';
+          ''
+            local dotnet = require('easy-dotnet')
+            dotnet.setup()
+          '';
       }
     ];
   };
