@@ -23,6 +23,7 @@
     ./obsidian.nix
     ./rofi.nix
     ./slack.nix
+    ./sway.nix
     ./users.nix
     ./waybar.nix
   ];
