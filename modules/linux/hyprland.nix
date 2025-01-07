@@ -5,6 +5,7 @@
 }:
 {
   environment.systemPackages = with pkgs; [
+    hyprland-qtutils
     wl-clipboard
   ];
 
