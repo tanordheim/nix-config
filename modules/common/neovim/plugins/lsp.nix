@@ -11,6 +11,18 @@ let
       };
     }
   );
+  # TODO: cant update to latest nixpkgs-unstable due to asahi issue, pull this from there once I can
+  rzls-nvim-git = (
+    pkgs.vimUtils.buildVimPlugin {
+      name = "rzls.nvim";
+      src = pkgs.fetchFromGitHub {
+        owner = "tris203";
+        repo = "rzls.nvim";
+        rev = "b76f942a9b58bdd0df21b2dfac5f109ad09454bc";
+        # hash = "sha256-gvV41ek19KFljE82G0bfP6pTkKqYO4yh2eAUe4asFtw=";
+      };
+    }
+  );
 
 in
 {
@@ -18,6 +30,7 @@ in
     extraPackages = with pkgs; [
       gopls
       roslyn-ls
+      vscode-langservers-extracted
       yaml-language-server
     ];
     plugins = with pkgs.vimPlugins; [
@@ -53,6 +66,11 @@ in
                   staticcheck = true,
                 },
               },
+            }
+
+            lspconfig.html.setup {
+              cmd = { "${pkgs.vscode-langservers-extracted}/bin/vscode-html-language-server", "--stdio" },
+              capabilities = capabilities,
             }
 
             lspconfig.yamlls.setup {
