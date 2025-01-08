@@ -53,7 +53,7 @@ in
 
             vim.keymap.set('n', '<leader>bd', function() Snacks.bufdelete() end, { desc = "[D]elete current [b]uffer" })
             vim.keymap.set('n', '<leader>un', function() Snacks.notifier.hide() end, { desc = "Dismiss all notifications" })
-            vim.keymap.set('n', '<leader>sn', function() Snacks.notifier.show_history() end, { desc = "Show notification history" })
+            vim.keymap.set('n', '<leader>uN', function() Snacks.notifier.show_history() end, { desc = "Show notification history" })
             vim.keymap.set('n', '<leader>rN', function() Snacks.rename.rename_file() end, { desc = "[R]e[n]ame File" })
             vim.keymap.set(''\'', '<C-;>', function() Snacks.terminal() end, { desc = "Toggle terminal" })
 
