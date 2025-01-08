@@ -56,7 +56,6 @@ in
             vim.keymap.set('n', '<leader>uN', function() Snacks.notifier.show_history() end, { desc = "Show notification history" })
             vim.keymap.set('n', '<leader>rN', function() Snacks.rename.rename_file() end, { desc = "[R]e[n]ame File" })
             vim.keymap.set(''\'', '<C-;>', function() Snacks.terminal() end, { desc = "Toggle terminal" })
-
           '';
       }
     ];
