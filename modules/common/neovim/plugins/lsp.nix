@@ -206,7 +206,7 @@ in
                 "--razorSourceGenerator=${pkgs.vscode-extensions.ms-dotnettools.csharp}/share/vscode/extensions/ms-dotnettools.csharp/.razor/Microsoft.CodeAnalysis.Razor.Compiler.dll",
                 "--razorDesignTimePath=${pkgs.vscode-extensions.ms-dotnettools.csharp}/share/vscode/extensions/ms-dotnettools.csharp/.razor/Targets/Microsoft.NET.Sdk.Razor.DesignTime.targets",
               },
-              filewatching = false, -- slow on large projects
+              -- filewatching = false, -- slow on large projects
               lock_target = true, -- stick to the first picked solution
             })
           '';
