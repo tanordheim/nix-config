@@ -44,7 +44,7 @@
               formatters = {
                 csharpier = {
                   command = "${pkgs.dotnet-sdk}/bin/dotnet",
-                  args = { 'tool', 'run', '--allow-roll-forward', 'dotnet-csharpier', '--write-stdout' },
+                  args = { 'tool', 'run', '--allow-roll-forward', 'csharpier', '--write-stdout' },
                 },
                 goimports = {
                   command = "${pkgs.gotools}/bin/goimports"
