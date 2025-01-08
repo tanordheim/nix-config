@@ -19,7 +19,7 @@ let
         owner = "tris203";
         repo = "rzls.nvim";
         rev = "b76f942a9b58bdd0df21b2dfac5f109ad09454bc";
-        # hash = "sha256-gvV41ek19KFljE82G0bfP6pTkKqYO4yh2eAUe4asFtw=";
+        hash = "sha256-vSTTaWM42cAg1fHDlsZzZ9NQab1Iy7RK+it7px0kRbM=";
       };
     }
   );
@@ -145,6 +145,9 @@ in
               max_height = max_height,
             })
           '';
+      }
+      {
+        plugin = rzls-nvim-git;
       }
       {
         plugin = roslyn-nvim;
