@@ -4,6 +4,7 @@
     programs.tmux = {
       enable = true;
       sensibleOnTop = true;
+      prefix = "C-a";
     };
   };
 }
