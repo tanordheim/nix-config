@@ -6,5 +6,10 @@
       sensibleOnTop = true;
       prefix = "C-a";
     };
+    home.shellAliases = {
+      tma = "tmux attach-session -t";
+      tmls = "tmux list-sessions";
+      tmn = "tmux new-session -s";
+    };
   };
 }
