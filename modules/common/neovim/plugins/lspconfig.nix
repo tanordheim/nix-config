@@ -75,7 +75,6 @@
             vim.api.nvim_create_autocmd('LspAttach', {
               group = vim.api.nvim_create_augroup('UserLspConfig', {}),
               callback = function(ev)
-                print("in lsp attach")
                 local telescope_builtin = require('telescope.builtin')
 
                 local client = vim.lsp.get_client_by_id(ev.data.client_id)
