@@ -30,6 +30,7 @@ in
     extraPackages = with pkgs; [
       gopls
       roslyn-ls
+      vscode-extensions.ms-dotnettools.csharp
       vscode-langservers-extracted
       yaml-language-server
     ];
