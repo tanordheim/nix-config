@@ -73,9 +73,11 @@
             -- Use LspAttach autocommand to only map the following keys
             -- after the language server attaches to the current buffer
             vim.api.nvim_create_autocmd('LspAttach', {
+              print("in lsp attach")
               group = vim.api.nvim_create_augroup('UserLspConfig', {}),
               callback = function(ev)
                 local telescope_builtin = require('telescope.builtin')
+
 
                 local client = vim.lsp.get_client_by_id(ev.data.client_id)
                 if client.server_capabilities.inlayHintProvider then
