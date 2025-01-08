@@ -20,6 +20,7 @@
     ./hyprpolkitagent.nix
     ./keyboard.nix
     ./linear.nix
+    ./nixld.nix
     ./obsidian.nix
     ./rofi.nix
     ./slack.nix
