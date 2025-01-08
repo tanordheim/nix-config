@@ -98,7 +98,7 @@ in
                     }, handler, req_bufnr)
                   end
                 end,
-              }
+              },
               exe = 'Microsoft.CodeAnalysis.LanguageServer',
               args = {
                 "--logLevel=Debug", "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path())
