@@ -158,6 +158,7 @@ in
               config = {
                 on_attach = function() end,
                 capabilities = capabilities,
+                handlers = require('rzls.roslyn_handlers'),
                 settings = {
                   ['csharp|background_analysis'] = {
                     dotnet_analyzer_diagnostics_scope = 'fullSolution',
@@ -194,9 +195,13 @@ in
                   },
                 },
               },
+              -- share/vscode/extensions/ms-dotnettools.csharp/.razor/Targets/Microsoft.NET.Sdk.Razor.DesignTime.targets
               exe = 'Microsoft.CodeAnalysis.LanguageServer',
               args = {
-                "--logLevel=Debug", "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path())
+                "--logLevel=Debug",
+                "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
+                "--razorSourceGenerator=${pkgs.vscode-extensions.ms-dotnettools.csharp}/share/vscode/extensions/ms-dotnettools.csharp/.razor/Microsoft.CodeAnalysis.Razor.Compiler.dll",
+                "--razorDesignTimePath=${pkgs.vscode-extensions.ms-dotnettools.csharp}/share/vscode/extensions/ms-dotnettools.csharp/.razor/Targets/Microsoft.NET.Sdk.Razor.DesignTime.targets",
               },
               filewatching = false, -- slow on large projects
               lock_target = true, -- stick to the first picked solution
