@@ -12,7 +12,7 @@
               transparent = true,
               dim_inactive = true,
             }
-            vim.cmd[[colorscheme kanagawa-dragon]]
+            vim.cmd[[colorscheme kanagawa]]
           '';
       }
     ];
