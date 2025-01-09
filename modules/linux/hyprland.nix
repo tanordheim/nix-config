@@ -166,6 +166,10 @@
           # add color to xwayland window borders
           "bordercolor $red, xwayland: 1"
 
+          # make sure the polkit agent window is front and center
+          "pin, title:^(Hyprland Polkit Agent)$"
+          "stayfocused, title:^(Hyprland Polkit Agent)$"
+
           # assign apps to certain workspaces
           "workspace 6 silent, class:^(chrome-app.slack.com__)(.*)$"
           "workspace 7 silent, class:^(org.telegram.desktop)$"
