@@ -212,7 +212,11 @@ in
           '';
       }
       {
-        plugin = easy-dotnet-nvim-git;
+        plugin = easy-dotnet-nvim-git.overrideAttrs {
+          nvimSkipModule = [
+            "easy-dotnet.nuget"
+          ];
+        };
         type = "lua";
         config = # lua
           ''

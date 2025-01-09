@@ -9,11 +9,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1734359084,
-        "narHash": "sha256-BGQv92cEmgWjJwQsLmiApztfYB5ofwKwV7FNu8Nqimw=",
+        "lastModified": 1736347834,
+        "narHash": "sha256-Pr2tzjMfLott12pxz0DdeySBUt3o1h5do92tKX6zFe8=",
         "owner": "oliverbestmann",
         "repo": "nixos-apple-silicon",
-        "rev": "1ec6f5033bac9c290f2b772fdb94113b8ce3668d",
+        "rev": "cca963541234e607b6517aac8d32ca7dd6da4665",
         "type": "github"
       },
       "original": {
@@ -266,11 +266,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1736204492,
-        "narHash": "sha256-CoBPRgkUex9Iz6qGSzi/BFVUQjndB0PmME2B6eEyeCs=",
+        "lastModified": 1736421950,
+        "narHash": "sha256-RyrX0WFXxFrYvzHNLTIyuk3NcNl3UBykuYru/P0zW5E=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "20665c6efa83d71020c8730f26706258ba5c6b2a",
+        "rev": "d4aebb947a301b8da8654a804979a738c5c5da50",
         "type": "github"
       },
       "original": {
@@ -479,17 +479,17 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1734978744,
-        "narHash": "sha256-R80xsDCKZOPJv5T+fB5G1ZVgS/51tJgUenGmGFjZat4=",
+        "lastModified": 1736344531,
+        "narHash": "sha256-8YVQ9ZbSfuUk2bUf2KRj60NRraLPKPS0Q4QFTbc+c2c=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b74a56e2acce8fe88a575287a20ac196d8d01938",
+        "rev": "bffc22eb12172e6db3c5dde9e3e5628f8e3e7912",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "rev": "b74a56e2acce8fe88a575287a20ac196d8d01938",
         "type": "github"
       }
     },
@@ -561,11 +561,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1736201929,
-        "narHash": "sha256-TC6nITVcD+qxjPOWGmLAshuOkILocvzxfHj0Vsu6FAI=",
+        "lastModified": 1736300059,
+        "narHash": "sha256-z3mR+0gBN/iVM8UgfCSIxjgw4jm1bu1kjMKyQx9mGBc=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "1d7b70ed9ee4c3b24ed6b0c7c64a0ee5fcc4ae10",
+        "rev": "168306ce7f5d823ccee8b7d4e112ea20671c2b8f",
         "type": "github"
       },
       "original": {
