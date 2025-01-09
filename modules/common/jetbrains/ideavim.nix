@@ -61,7 +61,7 @@
       nnoremap gd :action GotoDeclaration<CR>
       nnoremap gi :action GotoImplementation<CR>
       nnoremap gr :action FindUsages<CR>
-      nnoremap <leader>ws :GotoSymbol<CR>
+      nnoremap <leader>ws :action GotoSymbol<CR>
       nnoremap <C-k> :action ParameterInfo<CR>
       nnoremap <leader>rn :action RenameElement<CR>
       nnoremap <leader>ca :action ShowIntentionActions<CR>
