@@ -11,18 +11,6 @@ let
       };
     }
   );
-  # TODO: cant update to latest nixpkgs-unstable due to asahi issue, pull this from there once I can
-  rzls-nvim-git = (
-    pkgs.vimUtils.buildVimPlugin {
-      name = "rzls.nvim";
-      src = pkgs.fetchFromGitHub {
-        owner = "tris203";
-        repo = "rzls.nvim";
-        rev = "b76f942a9b58bdd0df21b2dfac5f109ad09454bc";
-        hash = "sha256-vSTTaWM42cAg1fHDlsZzZ9NQab1Iy7RK+it7px0kRbM=";
-      };
-    }
-  );
 
 in
 {
@@ -147,7 +135,7 @@ in
           '';
       }
       {
-        plugin = rzls-nvim-git;
+        plugin = rzls-nvim;
       }
       {
         plugin = roslyn-nvim;
