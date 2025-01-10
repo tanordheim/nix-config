@@ -24,6 +24,7 @@
     ./obsidian.nix
     ./rofi.nix
     ./slack.nix
+    ./sudo.nix
     ./sysctl.nix
     ./users.nix
     ./waybar.nix
