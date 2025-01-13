@@ -181,8 +181,8 @@
         ];
 
         exec-once = [
-          "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-          "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+          # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+          # "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "${pkgs.waybar}/bin/waybar &"
           "${pkgs._1password-gui}/bin/1password &"
           "blueman-applet &"
