@@ -16,6 +16,8 @@
       set matchpairs=(:),{:},[:],<:> " characters that form pairs, can be jumped between using %
 
       " temporarily disabled due to slowdowns in ideavim
+      set nohlsearch
+      set noincsearch
       " set hlsearch " highlight all matches
       " set incsearch " show matches as you type
 
