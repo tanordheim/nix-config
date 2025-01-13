@@ -8,14 +8,16 @@
 
       " general settings
       set number " show line numbers
-      set hlsearch " highlight all matches
       set ignorecase " ignore case when searching
       set smartcase " case sensitive search if the search term is not all lower case
-      set incsearch " show matches as you type
       set scrolloff=15  " minimum number of lines to show above/below the current line
       set sidescrolloff=3 " minimum number of columns to show to the left/right of the current column
       set clipboard=unnamedplus,unnamed,ideaput " use system clipboard
       set matchpairs=(:),{:},[:],<:> " characters that form pairs, can be jumped between using %
+
+      " temporarily disabled due to slowdowns in ideavim
+      " set hlsearch " highlight all matches
+      " set incsearch " show matches as you type
 
       " make ideavim act more like neovim
       " from https://gist.github.com/mikeslattery/d2f2562e5bbaa7ef036cf9f5a13deff5
