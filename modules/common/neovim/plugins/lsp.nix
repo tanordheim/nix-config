@@ -87,6 +87,24 @@
                 ["textDocument/definition"] = require('csharpls_extended').handler,
                 ["textDocument/typeDefinition"] = require('csharpls_extended').handler,
               },
+              settings = {
+                RoslynExtensionsOptions = {
+                  InlayHintsOptions = {
+                    EnableForParameters = true,
+                    ForLiteralParameters = true,
+                    ForIndexerParameters = true,
+                    ForObjectCreationParameters = true,
+                    ForOtherParameters = true,
+                    SuppressForParametersThatDifferOnlyBySuffix = false,
+                    SuppressForParametersThatMatchMethodIntent = false,
+                    SuppressForParametersThatMatchArgumentName = false,
+                    EnableForTypes = true,
+                    ForImplicitVariableTypes = true,
+                    ForLambdaParameterTypes = true,
+                    ForImplicitObjectCreatio = true,
+                  },
+                },
+              }
             }
 
             -- Use LspAttach autocommand to only map the following keys
