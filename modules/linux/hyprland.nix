@@ -9,6 +9,12 @@
     wl-clipboard
   ];
 
+  programs.hyprland = {
+    enable = true;
+    package = pkgs.hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
+  };
+
   home-manager.users.${config.username} = {
     xdg.portal = {
       enable = true;
@@ -21,7 +27,7 @@
         };
       };
       extraPortals = with pkgs; [
-        stable.xdg-desktop-portal-hyprland
+        xdg-desktop-portal-hyprland
       ];
       xdgOpenUsePortal = true;
     };
