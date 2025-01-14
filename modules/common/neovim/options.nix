@@ -1,7 +1,7 @@
 { config, ... }:
 {
-  home-manager.users.${config.username}.programs.neovim = {
-    extraLuaConfig = # lua
+  home-manager.users.${config.username}.programs.nixvim = {
+    extraConfigLua = # lua
       ''
         -- Make line numbers default
         vim.opt.number = true

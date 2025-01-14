@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  nixvim,
   ...
 }:
 let
@@ -77,6 +78,10 @@ in
         home = {
           stateVersion = "24.11";
         };
+
+        imports = [
+          nixvim.homeManagerModules.nixvim
+        ];
       };
     };
   };

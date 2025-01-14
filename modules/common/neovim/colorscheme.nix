@@ -1,20 +1,14 @@
-{ pkgs, config, ... }:
+{ config, ... }:
 {
-  home-manager.users.${config.username}.programs.neovim = {
-    plugins = with pkgs.vimPlugins; [
-      {
-        plugin = kanagawa-nvim;
-        type = "lua";
-        config = # lua
-          ''
-            local kanagawa = require('kanagawa')
-            kanagawa.setup {
-              transparent = true,
-              dim_inactive = true,
-            }
-            vim.cmd[[colorscheme kanagawa]]
-          '';
-      }
-    ];
+
+  home-manager.users.${config.username} = {
+    # stylix interferes a little with how I want neovim to look
+    stylix.targets.nixvim.enable = false;
+
+    programs.nixvim = {
+      colorschemes.kanagawa = {
+        enable = true;
+      };
+    };
   };
 }

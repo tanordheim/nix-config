@@ -1,17 +1,15 @@
 { pkgs, config, ... }:
 {
-  home-manager.users.${config.username}.programs.neovim = {
-    plugins = with pkgs.vimPlugins; [
+  home-manager.users.${config.username}.programs.nixvim = {
+    plugins.trouble = {
+      enable = true;
+    };
+    keymaps = [
       {
-        plugin = trouble-nvim;
-        type = "lua";
-        config = # lua
-          ''
-            require('trouble').setup {
-            }
-
-            vim.keymap.set('n', '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', { desc = "Toggle diagnostics" })
-          '';
+        key = "<leader>dt";
+        mode = "n";
+        action = "<cmd>Trouble diagnostics toggle<cr>";
+        options.desc = "[D]iagnostics [t]oggle";
       }
     ];
   };
