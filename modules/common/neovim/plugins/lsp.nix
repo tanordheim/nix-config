@@ -87,6 +87,10 @@
                 ["textDocument/definition"] = require('csharpls_extended').handler,
                 ["textDocument/typeDefinition"] = require('csharpls_extended').handler,
               },
+              on_attach = func(_, bufnr)
+                -- csharp_ls does not seem to provide an inlayHintProvider on the server capabilities, even though it supports inlay hints, causing it to not be autoconfigured in the LspAttach autocmd.
+                vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+              end,
             }
 
             -- Use LspAttach autocommand to only map the following keys
