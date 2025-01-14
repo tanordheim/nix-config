@@ -89,8 +89,7 @@
               },
               on_attach = function(_, bufnr)
                 -- csharp_ls does not seem to provide an inlayHintProvider on the server capabilities, even though it supports inlay hints, causing it to not be autoconfigured in the LspAttach autocmd.
-                -- vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-                -- print("force enabling inlay hints")
+                vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
               end,
             }
 
