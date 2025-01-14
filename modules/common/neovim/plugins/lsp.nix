@@ -87,24 +87,6 @@
                 ["textDocument/definition"] = require('csharpls_extended').handler,
                 ["textDocument/typeDefinition"] = require('csharpls_extended').handler,
               },
-              settings = {
-                RoslynExtensionsOptions = {
-                  InlayHintsOptions = {
-                    EnableForParameters = true,
-                    ForLiteralParameters = true,
-                    ForIndexerParameters = true,
-                    ForObjectCreationParameters = true,
-                    ForOtherParameters = true,
-                    SuppressForParametersThatDifferOnlyBySuffix = false,
-                    SuppressForParametersThatMatchMethodIntent = false,
-                    SuppressForParametersThatMatchArgumentName = false,
-                    EnableForTypes = true,
-                    ForImplicitVariableTypes = true,
-                    ForLambdaParameterTypes = true,
-                    ForImplicitObjectCreatio = true,
-                  },
-                },
-              }
             }
 
             -- Use LspAttach autocommand to only map the following keys
@@ -117,9 +99,6 @@
                 local client = vim.lsp.get_client_by_id(ev.data.client_id)
                 if client.server_capabilities.inlayHintProvider then
                   vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
-                  print("enabling inlay hints provider")
-                else
-                  print("no inlay hints provider, not enabling")
                 end
 
                 -- Buffer local mappings.
