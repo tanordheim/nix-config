@@ -30,7 +30,7 @@
 
     keymaps = [
       {
-        key = "<leader>gd";
+        key = "gd";
         mode = "n";
         action.__raw = # lua
           ''
@@ -41,7 +41,7 @@
         options.desc = "[G]oto [D]efinition";
       }
       {
-        key = "<leader>gi";
+        key = "gi";
         mode = "n";
         action.__raw = # lua
           ''
@@ -52,7 +52,7 @@
         options.desc = "[G]oto [I]mplementation";
       }
       {
-        key = "<leader>gr";
+        key = "gr";
         mode = "n";
         action.__raw = # lua
           ''
@@ -119,6 +119,32 @@
             end
           '';
         options.desc = "[C]ode [A]ction";
+      }
+      {
+        key = "[d";
+        mode = [
+          "n"
+        ];
+        action.__raw = # lua
+          ''
+            function()
+              vim.diagnostic.goto_prev()
+            end
+          '';
+        options.desc = "Goto previous diagnostic";
+      }
+      {
+        key = "]d";
+        mode = [
+          "n"
+        ];
+        action.__raw = # lua
+          ''
+            function()
+              vim.diagnostic.goto_next()
+            end
+          '';
+        options.desc = "Goto next diagnostic";
       }
     ];
   };
