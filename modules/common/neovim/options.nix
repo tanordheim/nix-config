@@ -61,6 +61,10 @@
 
         -- Minimal number of screen lines to keep above and below the cursor.
         vim.opt.scrolloff = 10
+
+        -- enable undercurl
+        vim.cmd([[let &t_Cs = "\e[4:3m"]])
+        vim.cmd([[let &t_Ce = "\e[4:0m"]])
       '';
   };
 }

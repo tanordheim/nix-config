@@ -35,7 +35,6 @@ in
     ./go.nix
     ./jetbrains
     ./kaf.nix
-    ./kitty.nix
     ./kubectl.nix
     ./neovim
     ./nix.nix
@@ -50,6 +49,7 @@ in
     ./terraform.nix
     ./timezone.nix
     ./tmux.nix
+    ./wezterm.nix
     ./zsh.nix
   ];
 

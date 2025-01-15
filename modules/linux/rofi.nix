@@ -109,7 +109,7 @@
         enable = true;
         package = pkgs.rofi-wayland;
         theme = theme;
-        terminal = "${pkgs.kitty}/bin/kitty";
+        terminal = "${pkgs.wezterm}/bin/wezterm";
         plugins = with pkgs; [
           # see https://github.com/NixOS/nixpkgs/issues/298539, needs some special handling due to ABI incompatibiliby
           (rofi-calc.override { rofi-unwrapped = rofi-wayland-unwrapped; })
