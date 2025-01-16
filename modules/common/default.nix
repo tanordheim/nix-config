@@ -39,6 +39,7 @@ in
     ./neovim
     ./nix.nix
     ./node.nix
+    ./python.nix
     ./shell-aliases.nix
     ./signal.nix
     ./ssh.nix
