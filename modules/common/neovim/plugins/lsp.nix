@@ -153,6 +153,8 @@
     ./lsp/csharp.nix
     ./lsp/go.nix
     ./lsp/html.nix
+    ./lsp/proto.nix
+    ./lsp/python.nix
     ./lsp/yaml.nix
   ];
 }

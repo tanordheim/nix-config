@@ -2,6 +2,8 @@
 {
   home-manager.users.${config.username}.programs.nixvim = {
     extraPackages = with pkgs; [
+      black
+      buf
       nixfmt-rfc-style
       stylua
     ];
@@ -31,9 +33,14 @@
           go = [ "goimports" ];
           lua = [ "stylua" ];
           nix = [ "nixfmt" ];
+          proto = [ "buf" ];
+          python = [ "black" ];
           terraform = [ "terraform_fmt" ];
         };
         formatters = {
+          black = {
+            command = "${pkgs.black}/bin/black";
+          };
           csharpier = {
             command = "dotnet";
             args = [
@@ -49,6 +56,9 @@
           };
           nixfmt = {
             command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
+          };
+          buf = {
+            command = "${pkgs.buf}/bin/buf";
           };
           stylua = {
             command = "${pkgs.stylua}/bin/stylua";

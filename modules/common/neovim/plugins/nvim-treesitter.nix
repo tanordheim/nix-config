@@ -19,6 +19,8 @@
       markdown
       markdown_inline
       nix
+      proto
+      python
       query
       rasi
       terraform
