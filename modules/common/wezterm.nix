@@ -32,17 +32,17 @@
                 end)
               },
               {
-                key = '.',
+                key = '>',
                 mods = 'CTRL|SHIFT',
                 action = wezterm.action.IncreaseFontSize
               },
               {
-                key = ',',
+                key = '<',
                 mods = 'CTRL|SHIFT',
                 action = wezterm.action.DecreaseFontSize
               },
               {
-                key = '/',
+                key = '?',
                 mods = 'CTRL|SHIFT',
                 action = wezterm.action.ResetFontSize
               },
