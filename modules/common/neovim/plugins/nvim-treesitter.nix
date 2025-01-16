@@ -7,6 +7,9 @@
       c
       css
       diff
+      go
+      gomod
+      gosum
       helm
       html
       ini
