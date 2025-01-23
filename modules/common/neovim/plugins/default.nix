@@ -6,6 +6,7 @@
 
     ./blink-cmp.nix
     ./conform.nix
+    ./copilot-lua.nix
     ./lsp.nix
     ./lualine.nix
     ./neotest.nix
