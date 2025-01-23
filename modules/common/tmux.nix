@@ -6,6 +6,10 @@
       sensibleOnTop = true;
       prefix = "C-a";
       baseIndex = 1;
+      terminal = "xterm-256color";
+      extraConfig = ''
+        set-option -sa terminal-features ',xterm-256color:RGB'
+      '';
     };
     home.shellAliases = {
       tma = "tmux attach-session -t";
