@@ -10,7 +10,7 @@
             enable_scroll_bar = true,
             scrollback_lines = 10000,
             automatically_reload_config = true,
-            window_decorations = 'RESIZE',
+            window_decorations = 'NONE',
             default_cursor_style = 'BlinkingUnderline',
 
             hide_tab_bar_if_only_one_tab = false,

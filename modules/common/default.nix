@@ -29,6 +29,7 @@ in
     ./base-packages.nix
     ./brave.nix
     ./docker.nix
+    ./eza.nix
     ./dotnet
     ./fonts.nix
     ./git.nix
@@ -50,6 +51,7 @@ in
     ./terraform.nix
     ./timezone.nix
     ./wezterm.nix
+    ./zoxide.nix
     ./zsh.nix
   ];
 
