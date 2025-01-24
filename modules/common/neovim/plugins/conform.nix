@@ -1,13 +1,6 @@
 { pkgs, config, ... }:
 {
   home-manager.users.${config.username}.programs.nixvim = {
-    extraPackages = with pkgs; [
-      black
-      buf
-      nixfmt-rfc-style
-      stylua
-    ];
-
     plugins.conform-nvim = {
       enable = true;
 
@@ -28,45 +21,6 @@
               }
             end
           '';
-        formatters_by_ft = {
-          cs = [ "csharpier" ];
-          go = [ "goimports" ];
-          lua = [ "stylua" ];
-          nix = [ "nixfmt" ];
-          proto = [ "buf" ];
-          python = [ "black" ];
-          terraform = [ "terraform_fmt" ];
-        };
-        formatters = {
-          black = {
-            command = "${pkgs.black}/bin/black";
-          };
-          csharpier = {
-            command = "dotnet";
-            args = [
-              "tool"
-              "run"
-              "--allow-roll-forward"
-              "dotnet-csharpier"
-              "--write-stdout"
-            ];
-          };
-          goimports = {
-            command = "${pkgs.gotools}/bin/goimports";
-          };
-          nixfmt = {
-            command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
-          };
-          buf = {
-            command = "${pkgs.buf}/bin/buf";
-          };
-          stylua = {
-            command = "${pkgs.stylua}/bin/stylua";
-          };
-          terraform_fmt = {
-            command = "${pkgs.terraform}/bin/terraform";
-          };
-        };
       };
     };
 

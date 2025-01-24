@@ -19,5 +19,8 @@
     ./vim-sleuth.nix
     ./web-devicons.nix
     ./which-key.nix
+
+    # supported languages, loaded last
+    ./languages
   ];
 }

@@ -3,10 +3,6 @@
   home-manager.users.${config.username}.programs.nixvim = {
     plugins.neotest = {
       enable = true;
-      adapters = {
-        dotnet.enable = true;
-        golang.enable = true;
-      };
     };
 
     keymaps = [

@@ -5,6 +5,10 @@
       yaml-language-server
     ];
 
+    plugins.treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+      yaml
+    ];
+
     plugins.lsp.servers.yamlls = {
       enable = true;
       cmd = [

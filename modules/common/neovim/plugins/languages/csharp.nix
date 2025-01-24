@@ -8,6 +8,10 @@
       csharpls-extended-lsp-nvim
     ];
 
+    plugins.treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+      c_sharp
+    ];
+
     plugins.lsp.servers.csharp_ls = {
       enable = true;
       cmd = [ "${pkgs.csharp-ls}/bin/csharp-ls" ];
@@ -29,5 +33,21 @@
           vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
         '';
     };
+
+    plugins.conform-nvim = {
+      settings.formatters_by_ft.cs = [ "csharpier" ];
+      settings.formatters.csharpier = {
+        command = "dotnet";
+        args = [
+          "tool"
+          "run"
+          "--allow-roll-forward"
+          "dotnet-csharpier"
+          "--write-stdout"
+        ];
+      };
+    };
+
+    plugins.neotest.adapters.dotnet.enable = true;
   };
 }

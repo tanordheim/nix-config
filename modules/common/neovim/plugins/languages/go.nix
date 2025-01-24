@@ -5,6 +5,12 @@
       gopls
     ];
 
+    plugins.treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+      go
+      gomod
+      gosum
+    ];
+
     plugins.lsp.servers.gopls = {
       enable = true;
       settings = {
@@ -29,5 +35,14 @@
         };
       };
     };
+
+    plugins.conform-nvim = {
+      settings.formatters_by_ft.go = [ "goimports" ];
+      settings.formatters.goimports = {
+        command = "${pkgs.gotools}/bin/goimports";
+      };
+    };
+
+    plugins.neotest.adapters.golang.enable = true;
   };
 }

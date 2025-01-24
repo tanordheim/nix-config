@@ -4,6 +4,7 @@
     plugins.snacks = {
       enable = true;
       settings = {
+        lazygit.enabled = true;
         notifier.enabled = true;
         statuscolumn.enabled = true;
       };
@@ -61,46 +62,32 @@
       {
         key = "<leader>bd";
         mode = "n";
-        action.__raw = # lua
-          ''
-            function()
-              Snacks.bufdelete()
-            end
-          '';
+        action = "<cmd>lua Snacks.bufdelete()<CR>";
         options.desc = "[D]elete current [b]uffer";
       }
       {
         key = "<leader>nd";
         mode = "n";
-        action.__raw = # lua
-          ''
-            function()
-              Snacks.notifier.hide()
-            end
-          '';
+        action = "<cmd>lua Snacks.notifier.hide()<CR>";
         options.desc = "[D]ismiss [n]otifications";
       }
       {
         key = "<leader>ns";
         mode = "n";
-        action.__raw = # lua
-          ''
-            function()
-              Snacks.notifier.show_history()
-            end
-          '';
+        action = "<cmd>lua Snacks.notifier.show_history()<CR>";
         options.desc = "[S]how [n]otification history";
       }
       {
         key = "<leader>rN";
         mode = "n";
-        action.__raw = # lua
-          ''
-            function()
-              Snacks.rename.rename_file()
-            end
-          '';
+        action = "<cmd>lua Snacks.rename.rename_file()<CR>";
         options.desc = "[R]e[n]ame file with Snacks";
+      }
+      {
+        key = "<leader>gg";
+        mode = "n";
+        action = "<cmd>lua Snacks.lazygit.open()<CR>";
+        options.desc = "Open LazyGit";
       }
     ];
   };

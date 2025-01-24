@@ -10,6 +10,11 @@
         '';
     };
 
+    plugins.lspsaga = {
+      enable = true;
+      lightbulb.enable = false;
+    };
+
     extraConfigLua = # lua
       ''
          local max_width = math.max(math.floor(vim.o.columns * 0.7), 100)
@@ -98,12 +103,7 @@
       {
         key = "<leader>rn";
         mode = "n";
-        action.__raw = # lua
-          ''
-            function()
-              vim.lsp.buf.rename()
-            end
-          '';
+        action = "<cmd>Lspsaga rename<CR>";
         options.desc = "[R]e[n]ame";
       }
       {
@@ -112,12 +112,7 @@
           "n"
           "v"
         ];
-        action.__raw = # lua
-          ''
-            function()
-              vim.lsp.buf.code_action()
-            end
-          '';
+        action = "<cmd>Lspsaga code_action<CR>";
         options.desc = "[C]ode [A]ction";
       }
       {
@@ -125,36 +120,16 @@
         mode = [
           "n"
         ];
-        action.__raw = # lua
-          ''
-            function()
-              vim.diagnostic.goto_prev()
-            end
-          '';
-        options.desc = "Goto previous diagnostic";
+        action = "<cmd>Lspsaga diagnostic_jump_prev<CR>";
       }
       {
         key = "]d";
         mode = [
           "n"
         ];
-        action.__raw = # lua
-          ''
-            function()
-              vim.diagnostic.goto_next()
-            end
-          '';
+        action = "<cmd>Lspsaga diagnostic_jump_next<CR>";
         options.desc = "Goto next diagnostic";
       }
     ];
   };
-
-  imports = [
-    ./lsp/csharp.nix
-    ./lsp/go.nix
-    ./lsp/html.nix
-    ./lsp/proto.nix
-    ./lsp/python.nix
-    ./lsp/yaml.nix
-  ];
 }

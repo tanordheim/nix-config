@@ -5,6 +5,10 @@
       vscode-langservers-extracted
     ];
 
+    plugins.treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+      html
+    ];
+
     plugins.lsp.servers.html = {
       enable = true;
       cmd = [
