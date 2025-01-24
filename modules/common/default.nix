@@ -49,7 +49,6 @@ in
     ./telegram.nix
     ./terraform.nix
     ./timezone.nix
-    ./tmux.nix
     ./wezterm.nix
     ./zsh.nix
   ];
