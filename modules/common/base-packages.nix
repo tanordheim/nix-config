@@ -14,6 +14,7 @@
     gnupatch
     gnused
     gnutar
+    grpcurl
     gzip
     jq
     killall
