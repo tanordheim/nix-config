@@ -32,6 +32,18 @@
         action = "<C-w><C-k>";
         options.desc = "Move focus to the upper window";
       }
+      {
+        key = "[b";
+        mode = "n";
+        action = "<cmd>bprev<cr>";
+        options.desc = "Go to the previous buffer";
+      }
+      {
+        key = "]b";
+        mode = "n";
+        action = "<cmd>bnext<cr>";
+        options.desc = "Go to the next buffer";
+      }
     ];
 
     extraConfigLua = # lua
