@@ -48,6 +48,11 @@
       };
     };
 
-    plugins.neotest.adapters.dotnet.enable = true;
+    plugins.neotest.adapters.dotnet = {
+      enable = true;
+      settings = {
+        discovery_root = "solution";
+      };
+    };
   };
 }
