@@ -18,17 +18,13 @@ in
 
     fonts = {
       serif = {
-        # package = pkgs.dejavu_fonts;
-        # name = "DejaVu Serif";
-        package = pkgs.nerd-fonts.iosevka;
-        name = "Iosevka Nerd Font";
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Serif";
       };
 
       sansSerif = {
-        # package = pkgs.dejavu_fonts;
-        # name = "DejaVu Sans";
-        package = pkgs.nerd-fonts.iosevka;
-        name = "Iosevka Nerd Font";
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans";
       };
 
       monospace = {

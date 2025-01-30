@@ -3,6 +3,10 @@
   home-manager.users.${config.username}.programs.nixvim = {
     plugins.nvim-tree = {
       enable = true;
+      view.width = {
+        min = 30;
+        max = -1;
+      };
     };
 
     extraConfigLua = # lua
