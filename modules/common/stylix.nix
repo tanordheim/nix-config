@@ -18,20 +18,20 @@ in
 
     fonts = {
       serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
+        # package = pkgs.dejavu_fonts;
+        # name = "DejaVu Serif";
+        package = pkgs.nerd-fonts.iosevka;
+        name = "Iosevka Nerd Font";
       };
 
       sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
+        # package = pkgs.dejavu_fonts;
+        # name = "DejaVu Sans";
+        package = pkgs.nerd-fonts.iosevka;
+        name = "Iosevka Nerd Font";
       };
 
       monospace = {
-        # package = pkgs.nerd-fonts.jetbrains-mono;
-        # package = pkgs.nerd-fonts.iosevka-term;
-        # name = "IosevkaTerm Nerd Font Mono";
-        # name = "JetBrainsMono Nerd Font";
         package = pkgs.nerd-fonts.iosevka;
         name = "Iosevka Nerd Font Mono";
       };
