@@ -29,9 +29,11 @@ in
 
       monospace = {
         # package = pkgs.nerd-fonts.jetbrains-mono;
-        package = pkgs.nerd-fonts.iosevka-term;
-        name = "IosevkaTerm Nerd Font Mono";
+        # package = pkgs.nerd-fonts.iosevka-term;
+        # name = "IosevkaTerm Nerd Font Mono";
         # name = "JetBrainsMono Nerd Font";
+        package = pkgs.nerd-fonts.iosevka;
+        name = "Iosevka Nerd Font Mono";
       };
 
       emoji = {
