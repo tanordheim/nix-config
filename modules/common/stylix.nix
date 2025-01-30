@@ -39,7 +39,7 @@ in
 
       sizes = {
         popups = 13;
-        terminal = 13;
+        terminal = 12;
       };
     };
 
