@@ -12,10 +12,12 @@
       bash
       c
       css
+      devicetree
       diff
       helm
       ini
       javascript
+      just
       json
       jsonc
       typescript
