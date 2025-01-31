@@ -23,6 +23,7 @@
     ./nixld.nix
     ./obsidian.nix
     ./rofi.nix
+    ./shell-aliases.nix
     ./slack.nix
     ./sudo.nix
     ./sysctl.nix
