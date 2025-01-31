@@ -29,6 +29,7 @@ in
     ./base-packages.nix
     ./brave.nix
     ./docker.nix
+    ./direnv.nix
     ./eza.nix
     ./dotnet
     ./fonts.nix
