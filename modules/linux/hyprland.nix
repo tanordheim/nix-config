@@ -18,16 +18,15 @@
   home-manager.users.${config.username} = {
     xdg.portal = {
       enable = true;
-      config = {
-        common = {
-          default = [ "hyprland" ];
-        };
-        hyprland = {
-          default = [ "hyprland" ];
-        };
-      };
+      configPackages = with pkgs; [
+        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal
+      ];
       extraPortals = with pkgs; [
         xdg-desktop-portal-hyprland
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal
       ];
       xdgOpenUsePortal = true;
     };
