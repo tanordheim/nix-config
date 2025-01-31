@@ -1,10 +1,8 @@
+{ pkgs, config, ... }:
 {
-  pkgs,
-  ...
-}:
-{
-  environment.systemPackages = with pkgs; [
-    direnv
-    nix-direnv
-  ];
+  home-manager.users.${config.username}.programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
 }
