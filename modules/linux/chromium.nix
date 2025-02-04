@@ -6,9 +6,12 @@
     extensions = [
       # 1Password
       "aeblfdkhhhdcdjpifhhbdiojplfjncoa"
+
+      # Detrumpify
+      "hfhaalldkgmfbjjehkiddheghljjdjln"
+
+      # Feedly Notifier
+      "egikgfbhipinieabdmcpigejkaomgjgb"
     ];
   };
-  # environment.systemPackages = with pkgs; [
-  #   chromium
-  # ];
 }
