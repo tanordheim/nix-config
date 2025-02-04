@@ -1,6 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    chromium
-  ];
+  home-manager.users.${config.username}.programs.chromium = {
+    enable = true;
+  };
+  # environment.systemPackages = with pkgs; [
+  #   chromium
+  # ];
 }
