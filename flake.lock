@@ -541,6 +541,7 @@
         ]
       },
       "locked": {
+        "allRefs": false,
         "lastModified": 1738139173,
         "narHash": "sha256-ZbMTjjy28UGk8TvfxJ3Ju1pZqVz41uFdrr+EFexTL6E=",
         "ref": "main",
@@ -550,6 +551,7 @@
         "url": "ssh://git@github.com/tanordheim/nix-config-private.git"
       },
       "original": {
+        "allRefs": false,
         "ref": "main",
         "type": "git",
         "url": "ssh://git@github.com/tanordheim/nix-config-private.git"

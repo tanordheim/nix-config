@@ -28,6 +28,7 @@ in
     ./aws.nix
     ./base-packages.nix
     ./brave.nix
+    ./chromium.nix
     ./docker.nix
     ./direnv.nix
     ./eza.nix
