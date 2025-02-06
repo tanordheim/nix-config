@@ -124,7 +124,7 @@
           "$mehMod, e, workspace, 8"
           "$mehMod, i, workspace, 9"
           "$mehMod, o, workspace, 10"
-          "$mainMod, 87, workspace, 1"
+          "$mainMod, code:87, workspace, 1"
           "$mainMod, KP_2, workspace, 2"
           "$mainMod, KP_3, workspace, 3"
           "$mainMod, KP_4, workspace, 4"
