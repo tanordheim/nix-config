@@ -3,6 +3,20 @@
   config,
   ...
 }:
+let
+  keypadNumberToKeyCode = {
+    "0" = 90;
+    "1" = 87;
+    "2" = 88;
+    "3" = 89;
+    "4" = 83;
+    "5" = 84;
+    "6" = 85;
+    "7" = 79;
+    "8" = 80;
+    "9" = 81;
+  };
+in
 {
   environment.systemPackages = with pkgs; [
     hyprland-qtutils
