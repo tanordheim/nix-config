@@ -49,8 +49,6 @@ in
       settings = {
         "$mainMod" = "SUPER";
         "$altMod" = "CTRL";
-        "$mehMod" = "CTRL SHIFT ALT";
-        "$hypMod" = "SUPER CTRL SHIFT ALT";
 
         env = [
           "QT_QPA_PLATFORMTHEME,qt5ct"
@@ -140,20 +138,6 @@ in
           "$mainMod, ${keypadNumberToKeyCode."0"}, workspace, 10"
 
           # move window to workspace
-          # "$hypMod, left, movetoworkspace, -1"
-          # "$hypMod, right, movetoworkspace, +1"
-          # "$hypMod, a, movetoworkspace, 1"
-          # "$hypMod, r, movetoworkspace, 2"
-          # "$hypMod, s, movetoworkspace, 3"
-          # "$hypMod, t, movetoworkspace, 4"
-          # "$hypMod, g, movetoworkspace, 5"
-          # "$hypMod, m, movetoworkspace, 6"
-          # "$hypMod, n, movetoworkspace, 7"
-          # "$hypMod, e, movetoworkspace, 8"
-          # "$hypMod, i, movetoworkspace, 9"
-          # "$hypMod, o, movetoworkspace, 10"
-          # "$mainMod $altMod, left, movetoworkspace, -1"
-          # "$mainMod $altMod, right, movetoworkspace, +1"
           "$mainMod $altMod, ${keypadNumberToKeyCode."1"}, movetoworkspace, 1"
           "$mainMod $altMod, ${keypadNumberToKeyCode."2"}, movetoworkspace, 2"
           "$mainMod $altMod, ${keypadNumberToKeyCode."3"}, movetoworkspace, 3"
@@ -170,10 +154,6 @@ in
           "$mainMod, up, movefocus, u"
           "$mainMod, down, movefocus, d"
           "$mainMod, right, movefocus, r"
-          # "$altMod, left, movefocus, l"
-          # "$altMod, up, movefocus, u"
-          # "$altMod, down, movefocus, d"
-          # "$altMod, right, movefocus, r"
 
           # scratch/special workspace
           "$mainMod, S, togglespecialworkspace, magic"
