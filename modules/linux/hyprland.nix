@@ -5,16 +5,16 @@
 }:
 let
   keypadNumberToKeyCode = {
-    "0" = 90;
-    "1" = 87;
-    "2" = 88;
-    "3" = 89;
-    "4" = 83;
-    "5" = 84;
-    "6" = 85;
-    "7" = 79;
-    "8" = 80;
-    "9" = 81;
+    "0" = "code:90";
+    "1" = "code:87";
+    "2" = "code:88";
+    "3" = "code:89";
+    "4" = "code:83";
+    "5" = "code:84";
+    "6" = "code:85";
+    "7" = "code:79";
+    "8" = "code:80";
+    "9" = "code:81";
   };
 in
 {
@@ -138,7 +138,7 @@ in
           "$mehMod, e, workspace, 8"
           "$mehMod, i, workspace, 9"
           "$mehMod, o, workspace, 10"
-          "$mainMod, code:87, workspace, 1"
+          "$mainMod, ${keypadNumberToKeyCode."1"}, workspace, 1"
           "$mainMod, KP_2, workspace, 2"
           "$mainMod, KP_3, workspace, 3"
           "$mainMod, KP_4, workspace, 4"
