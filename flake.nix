@@ -8,8 +8,8 @@
 
     # Apple silicon support (for NixOS on Mac)
     apple-silicon-support = {
-      # url = "github:tpwrules/nixos-apple-silicon";
-      url = "github:oliverbestmann/nixos-apple-silicon";
+      url = "github:tpwrules/nixos-apple-silicon";
+      # url = "github:oliverbestmann/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -28,7 +28,7 @@
     # Nixvim vim config management
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Stylix system wide color scheming/styling
@@ -58,7 +58,7 @@
 
     # Private config
     nix-config-private = {
-      url = "git+ssh://git@github.com/tanordheim/nix-config-private.git?ref=main&allRefs=true";
+      url = "git+ssh://git@github.com/tanordheim/nix-config-private.git?ref=main";
       # url = "git+file:///home/trond/code/nix-config-private?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
