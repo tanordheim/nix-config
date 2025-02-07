@@ -32,6 +32,7 @@
             rangeVariableTypes = true;
           };
           gofumpt = true;
+          usePlaceholders = true;
           semanticTokens = true;
           staticcheck = true;
         };
