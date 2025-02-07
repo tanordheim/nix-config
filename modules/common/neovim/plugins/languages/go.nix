@@ -2,6 +2,7 @@
 {
   home-manager.users.${config.username}.programs.nixvim = {
     extraPackages = with pkgs; [
+      golangci-lint-langserver
       gopls
       gofumpt
     ];
@@ -42,6 +43,7 @@
     plugins.lsp.servers.golangci_lint_ls = {
       enable = true;
       settings = {
+        cmd = [ pkgs.golangci-lint-langserver ];
         init_options = {
           command = [
             pkgs.golangci-lint
