@@ -13,6 +13,7 @@
     ./discord.nix
     ./docker.nix
     ./dunst.nix
+    ./evince.nix
     ./hypridle.nix
     ./hyprland.nix
     ./hyprlock.nix
