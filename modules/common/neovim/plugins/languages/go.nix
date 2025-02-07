@@ -3,6 +3,7 @@
   home-manager.users.${config.username}.programs.nixvim = {
     extraPackages = with pkgs; [
       gopls
+      gofumpt
     ];
 
     plugins.treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
@@ -37,9 +38,9 @@
     };
 
     plugins.conform-nvim = {
-      settings.formatters_by_ft.go = [ "goimports" ];
-      settings.formatters.goimports = {
-        command = "${pkgs.gotools}/bin/goimports";
+      settings.formatters_by_ft.go = [ "gofumpt" ];
+      settings.formatters.gofumpt = {
+        command = "${pkgs.gofumpt}/bin/gofumpt";
       };
     };
 
