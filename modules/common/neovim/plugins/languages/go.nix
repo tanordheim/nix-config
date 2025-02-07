@@ -39,6 +39,20 @@
       };
     };
 
+    plugins.lsp.servers.golangci_lint_ls = {
+      enable = true;
+      settings = {
+        init_options = {
+          command = [
+            pkgs.golangci-lint
+            "run"
+            "--out-format"
+            "json"
+          ];
+        };
+      };
+    };
+
     plugins.conform-nvim = {
       settings.formatters_by_ft.go = [ "gofumpt" ];
       settings.formatters.gofumpt = {
