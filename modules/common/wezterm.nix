@@ -42,6 +42,12 @@
                   end
                 end)
               },
+              -- ctrl+a ctrl+a sends ctrl+a to the terminal, as ctrl+a is also the leader key
+              {
+                key="a",
+                mods="LEADER|CTRL",
+                action = wezterm.action{SendString="\x01"}
+              },
               {
                 key = '>',
                 mods = 'CTRL|SHIFT',
