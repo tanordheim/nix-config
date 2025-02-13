@@ -19,7 +19,7 @@
             show_new_tab_button_in_tab_bar = false,
 
             leader = {
-              key = ' ',
+              key = 'a',
               mods = 'CTRL',
               timeout_milliseconds = 1000,
             },
