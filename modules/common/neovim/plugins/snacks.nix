@@ -3,6 +3,7 @@
   home-manager.users.${config.username}.programs.nixvim = {
     plugins.snacks = {
       enable = true;
+      package = pkgs.vimPlugins.snacks-nvim;
       settings = {
         explorer = {
           enabled = true;
