@@ -4,6 +4,10 @@
     plugins.snacks = {
       enable = true;
       settings = {
+        explorer = {
+          enabled = true;
+          replace_netrw = true;
+        };
         lazygit.enabled = true;
         notifier.enabled = true;
         statuscolumn.enabled = true;
@@ -88,6 +92,17 @@
         mode = "n";
         action = "<cmd>lua Snacks.lazygit.open()<CR>";
         options.desc = "Open LazyGit";
+      }
+      {
+        key = "<S-T>";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              Snacks.explorer()
+            end
+          '';
+        options.desc = "Show tree";
       }
     ];
   };
