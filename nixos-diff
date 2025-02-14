@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -e
+
+PREV_VERSION="$1"
+if [ -z "$PREV_VERSION" ]
+then
+	PREV_VERSION=$(/run/current-system/sw/bin/ls -d1v /nix/var/nix/profiles/system-*-link|tail -n 2|head -n 1)
+fi
+
+CUR_VERSION="$1"
+if [ -z "$CUR_VERSION" ]
+then
+	CUR_VERSION=$(/run/current-system/sw/bin/ls -d1v /nix/var/nix/profiles/system-*-link|tail -n 1)
+fi
+
+nvd diff "$PREV_VERSION" "$CUR_VERSION"
