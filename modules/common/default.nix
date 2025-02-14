@@ -47,6 +47,7 @@ in
     ./signal.nix
     ./ssh.nix
     ./starship.nix
+    ./stern.nix
     ./stylix.nix
     ./sudo.nix
     ./telegram.nix
