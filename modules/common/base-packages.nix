@@ -21,6 +21,7 @@
     lsof
     unixtools.watch
     unzip
+    tree
     zip
   ];
 }
