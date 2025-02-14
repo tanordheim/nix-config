@@ -12,7 +12,6 @@
     ./neotest.nix
     ./nvim-highlight-colors.nix
     ./nvim-treesitter.nix
-    ./telescope.nix
     ./todo-comments.nix
     ./trouble.nix
     ./vim-sleuth.nix

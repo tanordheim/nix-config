@@ -132,6 +132,75 @@ in
           '';
         options.desc = "[S]earch [f]iles";
       }
+      {
+        key = "<leader>sh";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              Snacks.picker.keymaps()
+            end
+          '';
+        options.desc = "[S]earch [k]eymaps";
+      }
+      {
+        key = "<leader>sw";
+        mode = [
+          "n"
+          "x"
+        ];
+        action.__raw = # lua
+          ''
+            function()
+              Snacks.picker.grep_word()
+            end
+          '';
+        options.desc = "[S]earch for current [w]ord";
+      }
+      {
+        key = "<leader>sg";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              Snacks.picker.grep()
+            end
+          '';
+        options.desc = "[S]earch with [g]rep";
+      }
+      {
+        key = "<leader>sr";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              Snacks.picker.resume()
+            end
+          '';
+        options.desc = "[R]esume current [s]earch";
+      }
+      {
+        key = "<leader>s.";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              Snacks.picker.recent()
+            end
+          '';
+        options.desc = "[S]earch recent files";
+      }
+      {
+        key = "<leader>st";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              Snacks.picker.todo_comments()
+            end
+          '';
+        options.desc = "[S]earch [t]odo comments";
+      }
     ];
   };
 }
