@@ -40,7 +40,7 @@
         action.__raw = # lua
           ''
             function()
-              require('telescope.builtin').lsp_definitions()
+              Snacks.picker.lsp_definitions()
             end
           '';
         options.desc = "[G]oto [D]efinition";
@@ -51,7 +51,7 @@
         action.__raw = # lua
           ''
             function()
-              require('telescope.builtin').lsp_implementations()
+              Snacks.picker.lsp_implementations()
             end
           '';
         options.desc = "[G]oto [I]mplementation";
@@ -62,7 +62,7 @@
         action.__raw = # lua
           ''
             function()
-              require('telescope.builtin').lsp_references()
+              Snacks.picker.lsp_references()
             end
           '';
         options.desc = "[G]oto [R]eferences";
@@ -73,7 +73,7 @@
         action.__raw = # lua
           ''
             function()
-              require('telescope.builtin').lsp_document_symbols()
+              Snacks.picker.lsp_symbols()
             end
           '';
         options.desc = "[S]ymbols in [D]ocument";
@@ -84,7 +84,7 @@
         action.__raw = # lua
           ''
             function()
-              require('telescope.builtin').lsp_dynamic_workspace_symbols()
+              Snacks.picker.lsp_workspace_symbols()
             end
           '';
         options.desc = "[S]ymbols in [W]orkspace";
