@@ -27,17 +27,6 @@
         options.desc = "[S]earch [k]eymaps";
       }
       {
-        key = "<leader>sf";
-        mode = "n";
-        action.__raw = # lua
-          ''
-            function()
-              require('telescope.builtin').find_files()
-            end
-          '';
-        options.desc = "[S]earch [f]iles";
-      }
-      {
         key = "<leader>sw";
         mode = "n";
         action.__raw = # lua

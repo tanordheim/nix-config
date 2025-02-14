@@ -22,9 +22,11 @@ in
           enabled = true;
           replace_netrw = true;
         };
-        input.enabled = true;
         lazygit.enabled = true;
         notifier.enabled = true;
+        picker = {
+          enabled = true;
+        };
         statuscolumn.enabled = true;
       };
 
@@ -118,6 +120,17 @@ in
             end
           '';
         options.desc = "Show tree";
+      }
+      {
+        key = "<leader>sf";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              Snacks.picker.files()
+            end
+          '';
+        options.desc = "[S]earch [f]iles";
       }
     ];
   };
