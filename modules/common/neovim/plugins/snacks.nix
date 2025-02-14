@@ -10,12 +10,6 @@ let
       rev = "1491b543ef1d8a0eb29a6ebc35db4fb808dcb47f";
       hash = "sha256-DLbXRDBKGxe3JcgrqNp4FPJq/yKZZcGdOR6I9b3+YCo=";
     };
-
-    #
-    # meta = {
-    #   description = "🍿 A collection of QoL plugins for Neovim";
-    #   homepage = "https://github.com/folke/snacks.nvim";
-    # };
   };
 in
 {
@@ -28,6 +22,7 @@ in
           enabled = true;
           replace_netrw = true;
         };
+        input.enabled = true;
         lazygit.enabled = true;
         notifier.enabled = true;
         statuscolumn.enabled = true;
