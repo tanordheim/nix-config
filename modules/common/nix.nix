@@ -37,7 +37,7 @@
       vimPlugins = prev.vimPlugins // {
         snacks-vim =
           let
-            version = "2025-02-12";
+            version = "v2.20.0";
           in
           (prev.vimUtils.buildVimPlugin {
             pname = "snacks.nvim";
@@ -46,7 +46,7 @@
             src = prev.fetchFromGitHub {
               owner = "folke";
               repo = "snacks.nvim";
-              rev = "1491b543ef1d8a0eb29a6ebc35db4fb808dcb47f";
+              rev = "76a5dcfb318d623022dada44c66453d9cb9a6eaa";
               hash = "sha256-DLbXRDBKGxe3JcgrqNp4FPJq/yKZZcGdOR6I9b3+YCo=";
             };
 
