@@ -6,7 +6,7 @@
     stylix.targets.nixvim.enable = false;
 
     programs.nixvim = {
-      colorschemes.kanagawa = {
+      colorschemes.tokyonight = {
         enable = true;
       };
     };
