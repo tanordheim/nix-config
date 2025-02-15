@@ -29,7 +29,6 @@ in
         };
         statuscolumn.enabled = true;
       };
-
     };
 
     extraConfigLua = # lua
