@@ -127,7 +127,7 @@ in
         action.__raw = # lua
           ''
             function()
-              Snacks.picker.files()
+              Snacks.picker.files({ hidden = true })
             end
           '';
         options.desc = "[S]earch [f]iles";
