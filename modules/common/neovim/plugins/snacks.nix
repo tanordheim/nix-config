@@ -116,7 +116,7 @@ in
         action.__raw = # lua
           ''
             function()
-              Snacks.explorer()
+              Snacks.explorer({ hidden = true })
             end
           '';
         options.desc = "Show tree";
