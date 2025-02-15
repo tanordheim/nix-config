@@ -1,6 +1,7 @@
 { pkgs, config, ... }:
 let
-  scheme = ./stylix-themes/kanagawa.yaml;
+  # scheme = ./stylix-themes/kanagawa.yaml;
+  scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
   wallpaper = ../../wallpapers/generic/scenery/generic-scenery-24.png;
 in
 {
