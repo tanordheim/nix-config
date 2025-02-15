@@ -11,6 +11,7 @@
     ./lsp.nix
     ./lualine.nix
     ./neotest.nix
+    ./noice.nix
     ./nvim-highlight-colors.nix
     ./nvim-treesitter.nix
     ./todo-comments.nix
