@@ -52,6 +52,7 @@ in
 
         env = [
           "QT_QPA_PLATFORMTHEME,qt5ct"
+          "GSK_RENDERER,gl" # required for some GTK apps, see https://gitlab.gnome.org/GNOME/gtk/-/issues/7010
         ];
 
         general = {
