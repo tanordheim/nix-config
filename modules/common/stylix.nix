@@ -28,10 +28,8 @@ in
       };
 
       monospace = {
-        package = pkgs.nerd-fonts.fira-code;
-        name = "Fira Code Nerd Font Mono";
-        # package = pkgs.nerd-fonts.iosevka;
-        # name = "Iosevka Nerd Font Mono";
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font Mono";
       };
 
       emoji = {
