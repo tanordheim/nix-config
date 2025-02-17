@@ -490,11 +490,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1739824457,
-        "narHash": "sha256-Ld+kd7PG/NAsB6nrOCjBczHGQBPaQTG87OeUGVb2EjA=",
+        "lastModified": 1739825361,
+        "narHash": "sha256-i2DLn/GowO1eLCNblpxlXFEV+vDAq8l5A33tYxaOPu0=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "fe48d0b4a738b8460ec2adcaac06eee64bc7fb5c",
+        "rev": "abc21a898655e567bb84e015a7f93c217c8d3b42",
         "type": "github"
       },
       "original": {
@@ -541,11 +541,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1739824516,
-        "narHash": "sha256-7x4nSz0lPBCCb9/HXMGOXy5eIsee0vAoz9M+fLimIs8=",
+        "lastModified": 1739825623,
+        "narHash": "sha256-CbRxEXLSgr5GQqjKQOuhsbk/RF37AiJ/KVeip6c0BKw=",
         "ref": "main",
-        "rev": "6f4aca6610fd79c4facba1ff7a7ad4ef6cd7e4de",
-        "revCount": 14,
+        "rev": "3e2fc7cc75941cd065038ef235bb08f74d14bb09",
+        "revCount": 15,
         "type": "git",
         "url": "ssh://git@github.com/tanordheim/nix-config-private.git"
       },
