@@ -6,11 +6,12 @@
     stylix.targets.nixvim.enable = false;
 
     programs.nixvim = {
-      colorschemes.tokyonight = {
+      colorschemes.catppuccin = {
         enable = true;
         settings = {
-          style = "night";
-          transparent = true;
+          flavour = "mocha";
+          dim_inactive.enabled = true;
+          transparent_background = true;
         };
       };
     };

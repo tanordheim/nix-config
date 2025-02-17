@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 let
-  scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+  scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
   wallpaper = ../../wallpapers/themed/nord/nord-space-station-astronaut.png;
 in
 {
