@@ -547,12 +547,12 @@
         "rev": "6f4aca6610fd79c4facba1ff7a7ad4ef6cd7e4de",
         "revCount": 14,
         "type": "git",
-        "url": "file:///home/trond/code/nix-config-private"
+        "url": "ssh://git@github.com/tanordheim/nix-config-private.git"
       },
       "original": {
         "ref": "main",
         "type": "git",
-        "url": "file:///home/trond/code/nix-config-private"
+        "url": "ssh://git@github.com/tanordheim/nix-config-private.git"
       }
     },
     "nix-darwin": {
