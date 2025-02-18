@@ -6,11 +6,11 @@
       provider = "openai";
       openai = {
         endpoint = "https://api.openai.com/v1";
-        model = "gpt-4o";
+        model = "o1-mini";
         timeout = 30000;
         temperature = 0;
         max_tokens = 4096;
-        # reasoning_effort = "high";
+        reasoning_effort = "high";
       };
     };
   };
