@@ -24,6 +24,7 @@
     ./colorscheme.nix
     ./keymaps.nix
     ./options.nix
+    ./remember-cursor-position.nix
     ./plugins
   ];
 }
