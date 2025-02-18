@@ -1,5 +1,17 @@
-{ ... }:
+{ pkgs, config, ... }:
 {
+  # commonly needed libraries
+  home-manager.users.${config.username}.programs.nixvim = {
+    plugins = {
+      nui.enable = true;
+      dressing.enable = true;
+    };
+
+    extraPlugins = with pkgs.vimPlugins; [
+      plenary-nvim
+    ];
+  };
+
   imports = [
     # needs to be loaded early
     ./snacks.nix
