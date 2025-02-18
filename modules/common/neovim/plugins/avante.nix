@@ -10,7 +10,7 @@
         timeout = 30000;
         temperature = 0;
         max_tokens = 4096;
-        reasoning_effort = "high";
+        # reasoning_effort = "high";
       };
     };
   };
