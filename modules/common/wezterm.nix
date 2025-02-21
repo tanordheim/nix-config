@@ -1,4 +1,7 @@
 { pkgs, config, ... }:
+let
+  windowDecorations = if pkgs.stdenv.isLinux then "NONE" else "RESIZE";
+in
 {
   home-manager.users.${config.username} = {
     programs.wezterm = {
@@ -10,7 +13,7 @@
             enable_scroll_bar = true,
             scrollback_lines = 10000,
             automatically_reload_config = true,
-            window_decorations = 'NONE',
+            window_decorations = '${windowDecorations}',
             default_cursor_style = 'BlinkingUnderline',
 
             hide_tab_bar_if_only_one_tab = false,
