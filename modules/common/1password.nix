@@ -3,7 +3,7 @@ let
   ssh = {
     agent =
       if pkgs.stdenv.isDarwin then
-        "/Users/${config.username}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+        "/Users/${config.username}/Library/Group\\ Containers/2BUA8C4S2C.com.1password/t/agent.sock"
       else
         "/home/${config.username}/.1password/agent.sock";
     sign =
