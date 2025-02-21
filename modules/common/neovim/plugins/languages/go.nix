@@ -2,6 +2,7 @@
 {
   home-manager.users.${config.username}.programs.nixvim = {
     extraPackages = with pkgs; [
+      delve
       golangci-lint-langserver
       gopls
       gofumpt
@@ -63,6 +64,9 @@
     };
 
     plugins.neotest.adapters.golang.enable = true;
-    plugins.dap.extensions.dap-go.enable = true;
+    plugins.dap-go = {
+      enable = true;
+      settings.delve.path = "${pkgs.delve}/bin/dlv";
+    };
   };
 }
