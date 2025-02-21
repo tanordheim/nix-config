@@ -6,10 +6,10 @@
     };
     keymaps = [
       {
-        key = "<leader>dt";
+        key = "<leader>xx";
         mode = "n";
         action = "<cmd>Trouble diagnostics toggle<cr>";
-        options.desc = "[D]iagnostics [t]oggle";
+        options.desc = "Toggle diagnostics";
       }
     ];
   };
