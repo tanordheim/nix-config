@@ -20,6 +20,7 @@
     ./blink-cmp.nix
     ./conform.nix
     ./copilot-lua.nix
+    ./dap.nix
     ./gitsigns.nix
     ./lsp.nix
     ./lualine.nix
