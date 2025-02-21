@@ -63,5 +63,6 @@
     };
 
     plugins.neotest.adapters.golang.enable = true;
+    plugins.dap.extensions.dap-go.enable = true;
   };
 }
