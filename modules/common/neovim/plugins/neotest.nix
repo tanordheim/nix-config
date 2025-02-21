@@ -46,6 +46,17 @@
         options.desc = "Run nearest tests";
       }
       {
+        key = "<leader>tR";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              require("neotest").run.run({ strategy = "dap" })
+            end
+          '';
+        options.desc = "Debug nearest tests";
+      }
+      {
         key = "<leader>tl";
         mode = "n";
         action.__raw = # lua
