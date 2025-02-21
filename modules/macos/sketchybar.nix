@@ -5,9 +5,10 @@
   ...
 }:
 let
-  configHome = "${home-manager.users.${config.username}.xdg.configHome}/sketchybar";
-  itemDir = "${home-manager.users.${config.username}.xdg.configHome}/sketchybar/items";
-  pluginDir = "${home-manager.users.${config.username}.xdg.configHome}/sketchybar/plugins";
+
+  configHome = "/Users/${config.username}/.config/sketchybar";
+  itemDir = "/Users/${config.username}/.config/sketchybar/items";
+  pluginDir = "/Users/${config.username}/.config/sketchybar/plugins";
 
   # TODO: load this from the catppuccin palette, I can't get catppuccin.sources to work
   palette = {
@@ -118,290 +119,287 @@ in
         ProgramArguments = [
           "${pkgs.sketchybar}/bin/sketchybar"
           "-c"
-          "${home-manager.users.${config.username}.xdg.configHome}/sketchybar/sketchybarrc"
+          "/Users/${config.username}/.config/sketchybar/sketchybarrc"
         ];
         KeepAlive = true;
         RunAtLoad = true;
-        StandardOutPath = "${
-          home-manager.users.${config.username}.xdg.dataHome
-        }/sketchybar/sketchybar.stdout.log";
-        StandardErrorPath = "${
-          home-manager.users.${config.username}.xdg.dataHome
-        }/sketchybar/sketchybar.stderr.log";
+        StandardOutPath = "/Users/${config.username}/.local/share/sketchybar/sketchybar.stdout.log";
+        StandardErrorPath = "/Users/${config.username}/.local/share/sketchybar/sketchybar.stderr.log";
         EnvironmentVariables = {
           PATH = "${pkgs.sketchybar}/bin:${config.environment.systemPath}";
         };
       };
     };
 
-    home-manager.users.${config.username}.home.shellAliases = {
-      restart-sketchybar = ''launchctl kickstart -k gui/"$(id -u)"/org.nixos.sketchybar'';
-    };
-
-    home-manager.users.${config.username}.xdg.configFile = {
-      "sketchybar/plugins/aerospace.sh" = {
-        executable = true;
-        text = ''
-          #!/usr/bin/env bash
-          set -e
-          TS=$(date +'%Y-%m-%dT%H:%M:%S')
-          echo "$TS triggering aerospace workspace switch - arg is '$1', NAME is '$NAME', FOCUSED_WORKSPACE is '$FOCUSED_WORKSPACE'" >> /Users/trond/sketchybar-workspace-switch.log
-          BACKGROUND_DRAWING=off
-          HIGHLIGHT=false
-          if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
-            BACKGROUND_DRAWING=on
-            HIGHLIGHT=true
-          fi
-          echo "$TS determined BACKGROUND_DRAWING to be '$BACKGROUND_DRAWING' and HIGHLIGHT to be '$HIGHLIGHT'" >> /Users/trond/sketchybar-workspace-switch.log
-
-          sketchybar --set $NAME \
-                           label.highlight=$HIGHLIGHT \
-                           background.drawing=$BACKGROUND_DRAWING
-          echo "$TS successfully executed sketchybar --set $NAME label.highlight=$HIGHLIGHT background.drawing=$BACKGROUND_DRAWING" >> /Users/trond/sketchybar-workspace-switch.log
-        '';
+    home-manager.users.${config.username} = {
+      home.shellAliases = {
+        restart-sketchybar = ''launchctl kickstart -k gui/"$(id -u)"/org.nixos.sketchybar'';
       };
 
-      "sketchybar/plugins/front-app.sh" = {
-        executable = true;
-        text = ''
-          #!/usr/bin/env bash
-          icon=$(${pluginDir}/icon-map.sh "$INFO")
-          sketchybar --set "$NAME" label="$INFO" icon="$icon"
-        '';
-      };
+      xdg.configFile = {
+        "sketchybar/plugins/aerospace.sh" = {
+          executable = true;
+          text = ''
+            #!/usr/bin/env bash
+            set -e
+            TS=$(date +'%Y-%m-%dT%H:%M:%S')
+            echo "$TS triggering aerospace workspace switch - arg is '$1', NAME is '$NAME', FOCUSED_WORKSPACE is '$FOCUSED_WORKSPACE'" >> /Users/trond/sketchybar-workspace-switch.log
+            BACKGROUND_DRAWING=off
+            HIGHLIGHT=false
+            if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
+              BACKGROUND_DRAWING=on
+              HIGHLIGHT=true
+            fi
+            echo "$TS determined BACKGROUND_DRAWING to be '$BACKGROUND_DRAWING' and HIGHLIGHT to be '$HIGHLIGHT'" >> /Users/trond/sketchybar-workspace-switch.log
 
-      "sketchybar/plugins/icon-map.sh" = {
-        executable = true;
-        text = ''
-          #!/usr/bin/env bash
-          function __icon_map() {
-            case "$1" in
-              "1Password")
-                icon_result=":one_password:"
-                ;;
-              "App Store")
-                icon_result=":app_store:"
-                ;;
-              "Brave Browser")
-                icon_result=":brave_browser:"
-                ;;
-              "Chromium" | "Google Chrome")
-                icon_result=":google_chrome:"
-                ;;
-              "Code" | "Code - Insiders")
-                icon_result=":code:"
-                ;;
-              "DataGrip")
-                icon_result=":datagrip:"
-                ;;
-              "Discord")
-                icon_result=":discord:"
-                ;;
-              "Finder")
-                icon_result=":finder:"
-                ;;
-              "Firefox")
-                icon_result=":firefox:"
-                ;;
-              "GoLand")
-                icon_result=":goland:"
-                ;;
-              "kitty")
-                icon_result=":kitty:"
-                ;;
-              "Linear")
-                icon_result=":linear:"
-                ;;
-              "Miro")
-                icon_result=":miro:"
-                ;;
-              "Neovide" | "neovide")
-                icon_result=":neovide:"
-                ;;
-              "Neovim" | "neovim" | "nvim")
-                icon_result=":neovim:"
-                ;;
-              "Obsidian")
-                icon_result=":obsidian:"
-                ;;
-              "Rider" | "JetBrains Rider")
-                icon_result=":rider:"
-                ;;
-              "Safari")
-                icon_result=":safari:"
-                ;;
-              "Signal")
-                icon_result=":signal:"
-                ;;
-              "Slack")
-                icon_result=":slack:"
-                ;;
-              "Spotify")
-                icon_result=":spotify:"
-                ;;
-              "Spotlight")
-                icon_result=":spotlight:"
-                ;;
-              "System Preferences" | "System Settings")
-                icon_result=":gear:"
-                ;;
-              "Telegram")
-                icon_result=":telegram:"
-                ;;
-              "Terminal")
-                icon_result=":terminal:"
-                ;;
-              "WebStorm")
-                icon_result=":web_storm:"
-                ;;
-              "Xcode")
-                icon_result=":xcode:"
-                ;;
-              *)
-                icon_result=":default:"
-                ;;
-              esac
-          }
+            sketchybar --set $NAME \
+                             label.highlight=$HIGHLIGHT \
+                             background.drawing=$BACKGROUND_DRAWING
+            echo "$TS successfully executed sketchybar --set $NAME label.highlight=$HIGHLIGHT background.drawing=$BACKGROUND_DRAWING" >> /Users/trond/sketchybar-workspace-switch.log
+          '';
+        };
 
-          __icon_map "$1"
-          echo "$icon_result"
-        '';
-      };
+        "sketchybar/plugins/front-app.sh" = {
+          executable = true;
+          text = ''
+            #!/usr/bin/env bash
+            icon=$(${pluginDir}/icon-map.sh "$INFO")
+            sketchybar --set "$NAME" label="$INFO" icon="$icon"
+          '';
+        };
 
-      "sketchybar/items/aerospace-workspaces.sh" = {
-        executable = true;
-        text = ''
-          #!/usr/bin/env bash
+        "sketchybar/plugins/icon-map.sh" = {
+          executable = true;
+          text = ''
+            #!/usr/bin/env bash
+            function __icon_map() {
+              case "$1" in
+                "1Password")
+                  icon_result=":one_password:"
+                  ;;
+                "App Store")
+                  icon_result=":app_store:"
+                  ;;
+                "Brave Browser")
+                  icon_result=":brave_browser:"
+                  ;;
+                "Chromium" | "Google Chrome")
+                  icon_result=":google_chrome:"
+                  ;;
+                "Code" | "Code - Insiders")
+                  icon_result=":code:"
+                  ;;
+                "DataGrip")
+                  icon_result=":datagrip:"
+                  ;;
+                "Discord")
+                  icon_result=":discord:"
+                  ;;
+                "Finder")
+                  icon_result=":finder:"
+                  ;;
+                "Firefox")
+                  icon_result=":firefox:"
+                  ;;
+                "GoLand")
+                  icon_result=":goland:"
+                  ;;
+                "kitty")
+                  icon_result=":kitty:"
+                  ;;
+                "Linear")
+                  icon_result=":linear:"
+                  ;;
+                "Miro")
+                  icon_result=":miro:"
+                  ;;
+                "Neovide" | "neovide")
+                  icon_result=":neovide:"
+                  ;;
+                "Neovim" | "neovim" | "nvim")
+                  icon_result=":neovim:"
+                  ;;
+                "Obsidian")
+                  icon_result=":obsidian:"
+                  ;;
+                "Rider" | "JetBrains Rider")
+                  icon_result=":rider:"
+                  ;;
+                "Safari")
+                  icon_result=":safari:"
+                  ;;
+                "Signal")
+                  icon_result=":signal:"
+                  ;;
+                "Slack")
+                  icon_result=":slack:"
+                  ;;
+                "Spotify")
+                  icon_result=":spotify:"
+                  ;;
+                "Spotlight")
+                  icon_result=":spotlight:"
+                  ;;
+                "System Preferences" | "System Settings")
+                  icon_result=":gear:"
+                  ;;
+                "Telegram")
+                  icon_result=":telegram:"
+                  ;;
+                "Terminal")
+                  icon_result=":terminal:"
+                  ;;
+                "WebStorm")
+                  icon_result=":web_storm:"
+                  ;;
+                "Xcode")
+                  icon_result=":xcode:"
+                  ;;
+                *)
+                  icon_result=":default:"
+                  ;;
+                esac
+            }
 
-          # Add event that aerospace can trigger when workspaces change
-          sketchybar --add event aerospace_workspace_change
+            __icon_map "$1"
+            echo "$icon_result"
+          '';
+        };
 
-          # Paddings on brackets does not work, add a fake element at the start to get some padding
-          # See https://github.com/FelixKratz/SketchyBar/issues/639
-          space_padding=(
-            label=""
-            label.padding_left=${toString style.itemPadding}
-          )
-          sketchybar --add item space.padding_left left \
-                     --set space.padding_left "''${space_padding[@]}"
+        "sketchybar/items/aerospace-workspaces.sh" = {
+          executable = true;
+          text = ''
+            #!/usr/bin/env bash
 
-          for m in $(${pkgs.aerospace}/bin/aerospace list-monitors | awk '{print $1}'); do
-            for i in $(${pkgs.aerospace}/bin/aerospace list-workspaces --monitor $m); do
-              sid=$i
-              # skip scratch workspace
-              if [ "$sid" == "Z" ]; then
-                continue
-              fi
+            # Add event that aerospace can trigger when workspaces change
+            sketchybar --add event aerospace_workspace_change
 
-              space=(
-                display=$m
-                label.padding_left=10
-                label.padding_right=10
-                label="$sid"
-                label.color=0xff${palette.text.hex}
-                label.highlight_color=0xff${palette.surface0.hex}
-                label.y_offset=1
-                background.color=0xff${palette.subtext0.hex}
-                background.drawing=off
-                click_script="${pkgs.aerospace}/bin/aerospace workspace $sid"
-                script="${pluginDir}/aerospace.sh $sid"
-              )
-              sketchybar --add item space.$sid left \
-                         --set space.$sid "''${space[@]}" \
-                         --subscribe space.$sid mouse.clicked \
-                         --subscribe space.$sid aerospace_workspace_change
+            # Paddings on brackets does not work, add a fake element at the start to get some padding
+            # See https://github.com/FelixKratz/SketchyBar/issues/639
+            space_padding=(
+              label=""
+              label.padding_left=${toString style.itemPadding}
+            )
+            sketchybar --add item space.padding_left left \
+                       --set space.padding_left "''${space_padding[@]}"
+
+            for m in $(${pkgs.aerospace}/bin/aerospace list-monitors | awk '{print $1}'); do
+              for i in $(${pkgs.aerospace}/bin/aerospace list-workspaces --monitor $m); do
+                sid=$i
+                # skip scratch workspace
+                if [ "$sid" == "Z" ]; then
+                  continue
+                fi
+
+                space=(
+                  display=$m
+                  label.padding_left=10
+                  label.padding_right=10
+                  label="$sid"
+                  label.color=0xff${palette.text.hex}
+                  label.highlight_color=0xff${palette.surface0.hex}
+                  label.y_offset=1
+                  background.color=0xff${palette.subtext0.hex}
+                  background.drawing=off
+                  click_script="${pkgs.aerospace}/bin/aerospace workspace $sid"
+                  script="${pluginDir}/aerospace.sh $sid"
+                )
+                sketchybar --add item space.$sid left \
+                           --set space.$sid "''${space[@]}" \
+                           --subscribe space.$sid mouse.clicked \
+                           --subscribe space.$sid aerospace_workspace_change
+              done
             done
-          done
 
-          sketchybar --add item space.padding_right left \
-                     --set space.padding_right "''${space_padding[@]}"
+            sketchybar --add item space.padding_right left \
+                       --set space.padding_right "''${space_padding[@]}"
 
-          spaces_bracket=(
-            background.color=0xff${palette.base.hex}
-            background.height=${toString style.height}
-          )
-          sketchybar --add bracket spaces_bracket '/space\..*/'  \
-                     --set spaces_bracket "''${spaces_bracket[@]}"
-        '';
-      };
+            spaces_bracket=(
+              background.color=0xff${palette.base.hex}
+              background.height=${toString style.height}
+            )
+            sketchybar --add bracket spaces_bracket '/space\..*/'  \
+                       --set spaces_bracket "''${spaces_bracket[@]}"
+          '';
+        };
 
-      "sketchybar/items/clock.sh" = {
-        executable = true;
-        text = ''
-          #!/usr/bin/env bash
-          clock=(
-            update_freq=10
-            label.padding_left=${toString style.itemPadding}
-            label.padding_right=${toString style.itemPadding}
-            background.color=0xff${palette.base.hex}
-            script="${pluginDir}/clock.sh"
-          )
-          sketchybar --add item clock right \
-                     --set clock "''${clock[@]}"
-        '';
-      };
+        "sketchybar/items/clock.sh" = {
+          executable = true;
+          text = ''
+            #!/usr/bin/env bash
+            clock=(
+              update_freq=10
+              label.padding_left=${toString style.itemPadding}
+              label.padding_right=${toString style.itemPadding}
+              background.color=0xff${palette.base.hex}
+              script="${pluginDir}/clock.sh"
+            )
+            sketchybar --add item clock right \
+                       --set clock "''${clock[@]}"
+          '';
+        };
 
-      "sketchybar/plugins/clock.sh" = {
-        executable = true;
-        text = ''
-          #!/usr/bin/env bash
-          sketchybar --set "$NAME" label="$(date '+%a %b %d, %H:%M')"
-        '';
-      };
+        "sketchybar/plugins/clock.sh" = {
+          executable = true;
+          text = ''
+            #!/usr/bin/env bash
+            sketchybar --set "$NAME" label="$(date '+%a %b %d, %H:%M')"
+          '';
+        };
 
-      "sketchybar/items/front-app.sh" = {
-        executable = true;
-        text = ''
-          #!/usr/bin/env bash
-          front_app=(
-            display=active
-            icon.font="${fonts.apps}"
-            icon.color=0xff${palette.lavender.hex}
-            icon.padding_left=${toString style.itemPadding}
-            icon.padding_right=${toString style.itemPadding}
-            icon.y_offset=-1
-            label.padding_left=0
-            label.padding_right=${toString style.itemPadding}
-            background.color=0xff${palette.base.hex}
-            script="${pluginDir}/front-app.sh"
-          )
-          sketchybar --add item front_app center \
-                     --set front_app "''${front_app[@]}" \
-                     --subscribe front_app front_app_switched
-        '';
-      };
+        "sketchybar/items/front-app.sh" = {
+          executable = true;
+          text = ''
+            #!/usr/bin/env bash
+            front_app=(
+              display=active
+              icon.font="${fonts.apps}"
+              icon.color=0xff${palette.lavender.hex}
+              icon.padding_left=${toString style.itemPadding}
+              icon.padding_right=${toString style.itemPadding}
+              icon.y_offset=-1
+              label.padding_left=0
+              label.padding_right=${toString style.itemPadding}
+              background.color=0xff${palette.base.hex}
+              script="${pluginDir}/front-app.sh"
+            )
+            sketchybar --add item front_app center \
+                       --set front_app "''${front_app[@]}" \
+                       --subscribe front_app front_app_switched
+          '';
+        };
 
-      "sketchybar/sketchybarrc" = {
-        executable = true;
-        text = ''
-          #!/usr/bin/env bash
+        "sketchybar/sketchybarrc" = {
+          executable = true;
+          text = ''
+            #!/usr/bin/env bash
 
-          # Create bar
-          sketchybar --bar \
-                     color=0x00000000 \
-                     height=${toString style.height} \
-                     margin=0 \
-                     corner_radius=0 \
-                     padding_left=10 \
-                     padding_right=10
+            # Create bar
+            sketchybar --bar \
+                       color=0x00000000 \
+                       height=${toString style.height} \
+                       margin=0 \
+                       corner_radius=0 \
+                       padding_left=10 \
+                       padding_right=10
 
-          # Set bar defaults
-          sketchybar --default \
-                     icon.font="${fonts.icon}" \
-                     label.font="${fonts.label}" \
-                     background.height=${toString style.height} \
-                     background.corner_radius=${toString style.itemCornerRadius}
+            # Set bar defaults
+            sketchybar --default \
+                       icon.font="${fonts.icon}" \
+                       label.font="${fonts.label}" \
+                       background.height=${toString style.height} \
+                       background.corner_radius=${toString style.itemCornerRadius}
 
-          # Load all items
-          source "${itemDir}/aerospace-workspaces.sh"
-          source "${itemDir}/front-app.sh"
-          source "${itemDir}/clock.sh"
+            # Load all items
+            source "${itemDir}/aerospace-workspaces.sh"
+            source "${itemDir}/front-app.sh"
+            source "${itemDir}/clock.sh"
 
-          # Force all scripts to run
-          sketchybar --update
-        '';
+            # Force all scripts to run
+            sketchybar --update
+          '';
+        };
       };
     };
   };
-
 }

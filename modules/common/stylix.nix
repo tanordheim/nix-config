@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
   wallpaper = ../../wallpapers/themed/nord/nord-space-station-astronaut.png;
@@ -9,12 +14,6 @@ in
     image = wallpaper;
     polarity = "dark";
     base16Scheme = scheme;
-
-    cursor = {
-      size = 24;
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Ice";
-    };
 
     fonts = {
       serif = {
@@ -39,7 +38,7 @@ in
 
       sizes = {
         popups = 13;
-        terminal = 11;
+        terminal = lib.mkDefault 11;
       };
     };
 

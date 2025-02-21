@@ -6,7 +6,7 @@
     gotools
   ];
 
-  environment.sessionVariables = {
+  home-manager.users.${config.username}.home.sessionVariables = {
     GOPATH = "$HOME/.local/share/go";
     GOPRIVATE = "github.com/${config.git.githubUsername},github.com/tibber";
   };

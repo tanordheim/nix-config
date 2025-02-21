@@ -18,10 +18,10 @@
     ./raycast.nix
     ./sketchybar.nix
     ./slack.nix
+    ./stylix.nix
     ./system-defaults.nix
     ./touch-id.nix
     ./users.nix
-    ./wallpaper.nix
   ];
 
   # Automatically reload settings from the database and apply them to the current session, avoiding relog to get changes to take effect

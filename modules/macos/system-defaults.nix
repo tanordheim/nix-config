@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   # https://macos-defaults.com/finder/
 

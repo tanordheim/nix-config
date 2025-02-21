@@ -9,6 +9,6 @@ inputs.nix-darwin.lib.darwinSystem {
       inputs.stylix.darwinModules.stylix
       ../../modules/macos
     ]
-    ++ (builtins.attrValues nix-config-private.outputs.homeManagerModules)
-    ++ (builtins.attrValues nix-config-private.outputs.nixModules);
+    ++ (builtins.attrValues inputs.nix-config-private.outputs.homeManagerModules)
+    ++ (builtins.attrValues inputs.nix-config-private.outputs.nixModules);
 }

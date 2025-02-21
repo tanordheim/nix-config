@@ -26,6 +26,7 @@
     ./rofi.nix
     ./shell-aliases.nix
     ./slack.nix
+    ./stylix.nix
     ./sudo.nix
     ./sysctl.nix
     ./users.nix
