@@ -1,12 +1,18 @@
-{ pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 let
   plugins = import ./plugins.nix { inherit pkgs; };
+  versionMajorMinor = lib.versions.majorMinor pkgs.jetbrains.rider.version;
 
   vmOptionsFile =
     if pkgs.stdenv.isDarwin then
-      "Library/Application Support/JetBrains/Rider${pkgs.jetbrains.rider.version}/rider.vmoptions"
+      "Library/Application Support/JetBrains/Rider${versionMajorMinor}/rider.vmoptions"
     else
-      ".config/JetBrains/Rider${pkgs.jetbrains.rider.version}/rider64.vmoptions";
+      ".config/JetBrains/Rider${versionMajorMinor}/rider64.vmoptions";
 
   vmOptionsContent =
     if pkgs.stdenv.isDarwin then
