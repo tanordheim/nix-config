@@ -18,6 +18,7 @@ let
       ''
         -Xms1g
         -Xmx2g
+        -Dawt.toolkit.name=WLToolkit
       '';
 in
 {
