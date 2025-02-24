@@ -1,12 +1,18 @@
-{ pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 let
   plugins = import ./plugins.nix { inherit pkgs; };
+  versionMajorMinor = lib.versions.majorMinor pkgs.jetbrains.datagrip.version;
 
   vmOptionsFile =
     if pkgs.stdenv.isDarwin then
-      "Library/Application Support/JetBrains/DataGrip${pkgs.jetbrains.datagrip.version}/rider.vmoptions"
+      "Library/Application Support/JetBrains/DataGrip${versionMajorMinor}/rider.vmoptions"
     else
-      ".config/JetBrains/DataGrip${pkgs.jetbrains.datagrip.version}/datagrip64.vmoptions";
+      ".config/JetBrains/DataGrip${versionMajorMinor}/datagrip64.vmoptions";
 
   vmOptionsContent =
     if pkgs.stdenv.isDarwin then

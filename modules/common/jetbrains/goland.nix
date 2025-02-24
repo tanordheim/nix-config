@@ -1,12 +1,18 @@
-{ pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 let
   plugins = import ./plugins.nix { inherit pkgs; };
+  versionMajorMinor = lib.versions.majorMinor pkgs.jetbrains.datagrip.version;
 
   vmOptionsFile =
     if pkgs.stdenv.isDarwin then
-      "Library/Application Support/JetBrains/GoLand${pkgs.jetbrains.goland.version}/goland.vmoptions"
+      "Library/Application Support/JetBrains/GoLand${versionMajorMinor}/goland.vmoptions"
     else
-      ".config/JetBrains/GoLand${pkgs.jetbrains.goland.version}/goland64.vmoptions";
+      ".config/JetBrains/GoLand${versionMajorMinor}/goland64.vmoptions";
 
   vmOptionsContent =
     if pkgs.stdenv.isDarwin then
