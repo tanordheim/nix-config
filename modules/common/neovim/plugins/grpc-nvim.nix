@@ -47,5 +47,17 @@ in
           end
         '';
     };
+    extraConfigLua = # lua
+      ''
+        local grpc_group = vim.api.nvim_create_augroup("grpc", { clear = true })
+        vim.api.nvim_create_autocmd(
+          { 'BufNewFile', 'BufRead' },
+          {
+            group = grpc_group,
+            pattern = { '*.grpc' },
+            command = 'set ft=grpcnvim'
+          }
+        )
+      '';
   };
 }
