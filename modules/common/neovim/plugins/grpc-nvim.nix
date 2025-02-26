@@ -8,6 +8,7 @@ let
       owner = "hudclark";
       repo = "grpc-nvim";
       rev = "cd235398a9922ae412f59ebeabb0b13957be0d39";
+      hash = "sha256-hXf0BsmgOcPtgDfdN0akjtNiL42mTlFX+5C8Dd0qs9s=";
     };
   };
 in
