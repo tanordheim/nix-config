@@ -15,6 +15,7 @@
   imports = [
     # needs to be loaded early
     ./snacks.nix
+    ./nvim-treesitter.nix
 
     ./avante.nix
     ./blink-cmp.nix
@@ -30,7 +31,6 @@
     ./neotest.nix
     ./noice.nix
     ./nvim-highlight-colors.nix
-    ./nvim-treesitter.nix
     ./render-markdown.nix
     ./todo-comments.nix
     ./trouble.nix
