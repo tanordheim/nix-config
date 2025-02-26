@@ -15,6 +15,7 @@
       devicetree
       diff
       helm
+      http
       ini
       javascript
       just
