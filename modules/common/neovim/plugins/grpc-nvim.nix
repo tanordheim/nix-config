@@ -30,8 +30,23 @@ in
       treesitter-grpc-nvim-grammar
     ];
 
-    plugins.treesitter.grammarPackages = [
-      treesitter-grpc-nvim-grammar
-    ];
+    plugins.treesitter = {
+      grammarPackages = [
+        treesitter-grpc-nvim-grammar
+      ];
+      luaConfig.post = # lua
+        ''
+            do
+            local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+            parser_config.grpc = {
+              install_info = {
+                url = "''${treesitter-grpc-nvim-grammar}",
+                files = {"src/parser.c"},
+              },
+              filetype = "grpc",
+            }
+          end
+        '';
+    };
   };
 }
