@@ -23,6 +23,7 @@
     ./copilot-lua.nix
     ./dap.nix
     ./gitsigns.nix
+    ./grpc-nvim.nix
     ./lsp.nix
     ./lualine.nix
     ./luasnip
