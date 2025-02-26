@@ -18,6 +18,7 @@
         };
         completion.trigger.show_in_snippet = false;
         signature.enabled = true;
+        snippets.preset = "luasnip";
 
         sources = {
           default = [

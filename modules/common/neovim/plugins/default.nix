@@ -25,6 +25,7 @@
     ./gitsigns.nix
     ./lsp.nix
     ./lualine.nix
+    ./luasnip
     ./neotest.nix
     ./noice.nix
     ./nvim-highlight-colors.nix
