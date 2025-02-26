@@ -12,7 +12,7 @@ let
     };
   };
   treesitter-grpc-nvim-grammar = pkgs.tree-sitter.buildGrammar {
-    language = "grpc";
+    language = "grpcnvim";
     version = "2025-01-19";
     src = pkgs.fetchFromGitHub {
       owner = "antosha417";
@@ -38,11 +38,11 @@ in
         ''
             do
             local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-            parser_config.grpc = {
+            parser_config.grpcnvim = {
               install_info = {
                 files = {"src/parser.c", "src/scanner.cc"},
               },
-              filetype = "grpc",
+              filetype = "grpcnvim",
             }
           end
         '';
