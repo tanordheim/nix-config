@@ -40,8 +40,7 @@ in
             local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
             parser_config.grpc = {
               install_info = {
-                url = "''${treesitter-grpc-nvim-grammar}",
-                files = {"src/parser.c"},
+                files = {"src/parser.c", "src/scanner.cc"},
               },
               filetype = "grpc",
             }
