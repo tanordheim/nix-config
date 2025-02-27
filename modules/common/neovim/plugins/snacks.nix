@@ -2,13 +2,13 @@
 let
   snacks-nvim-plugin = pkgs.vimUtils.buildVimPlugin {
     pname = "snacks.nvim";
-    version = "2.2.20";
+    version = "2.22.0";
     doCheck = false;
     src = pkgs.fetchFromGitHub {
       owner = "folke";
       repo = "snacks.nvim";
-      rev = "1491b543ef1d8a0eb29a6ebc35db4fb808dcb47f";
-      hash = "sha256-DLbXRDBKGxe3JcgrqNp4FPJq/yKZZcGdOR6I9b3+YCo=";
+      rev = "v2.22.0";
+      hash = "sha256-iXfOTmeTm8/BbYafoU6ZAstu9+rMDfQtuA2Hwq0jdcE=";
     };
   };
 in
@@ -199,6 +199,28 @@ in
             end
           '';
         options.desc = "[S]earch [t]odo comments";
+      }
+      {
+        key = "<leader>sd";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              Snacks.picker.diagnostics()
+            end
+          '';
+        options.desc = "[S]earch [d]iagnostics";
+      }
+      {
+        key = "<leader>sD";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              Snacks.picker.diagnostics_buffer()
+            end
+          '';
+        options.desc = "[S]earch [d]iagnostics in buffer";
       }
     ];
   };

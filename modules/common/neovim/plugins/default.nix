@@ -33,7 +33,6 @@
     ./nvim-highlight-colors.nix
     ./render-markdown.nix
     ./todo-comments.nix
-    ./trouble.nix
     ./vim-sleuth.nix
     ./web-devicons.nix
     ./which-key.nix
