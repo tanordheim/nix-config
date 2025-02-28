@@ -13,6 +13,7 @@
     plugins.lspsaga = {
       enable = true;
       lightbulb.enable = false;
+      rename.inSelect = false;
     };
 
     extraConfigLua = # lua
