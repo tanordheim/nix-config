@@ -42,6 +42,6 @@ in
         };
       };
     };
-    extraPlugins = [ img-clip-plugin ];
+    # extraPlugins = [ img-clip-plugin ];
   };
 }
