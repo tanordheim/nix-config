@@ -1,26 +1,12 @@
-{ config, pkgs, ... }:
-let
-  avante-nvim-plugin = pkgs.vimUtils.buildVimPlugin {
-    pname = "avante.nvim";
-    version = "2025-02-28";
-    doCheck = false;
-    src = pkgs.fetchFromGitHub {
-      owner = "yetone";
-      repo = "avante.nvim";
-      rev = "814bba5ef2207223330721f6a1fb24ac2ae74596";
-      hash = "sha256-+ve7Stk47hWKWSynpUlCO/qk9ikisJ5Z9jap9B37PC0=";
-    };
-  };
-in
+{ config, ... }:
 {
   home-manager.users.${config.username}.programs.nixvim.plugins.avante = {
     enable = true;
-    package = avante-nvim-plugin;
     settings = {
       provider = "claude";
       claude = {
         endpoint = "https://api.anthropic.com";
-        model = "claude-3-7-sonnet-20250219";
+        model = "claude-3-5-sonnet-20241022";
         temperature = 0;
         max_tokens = 4096;
       };
