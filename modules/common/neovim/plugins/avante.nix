@@ -1,13 +1,16 @@
 { config, pkgs, ... }:
 let
-  avante-nvim-plugin = pkgs.vimPlugins.avante-nvim.overrideAttrs (_: {
+  avante-nvim-plugin = pkgs.vimUtils.buildVimPlugin {
+    pname = "avante.nvim";
+    version = "2025-02-28";
+    doCheck = false;
     src = pkgs.fetchFromGitHub {
       owner = "yetone";
       repo = "avante.nvim";
       rev = "814bba5ef2207223330721f6a1fb24ac2ae74596";
       hash = "sha256-+ve7Stk47hWKWSynpUlCO/qk9ikisJ5Z9jap9B37PC0=";
     };
-  });
+  };
   img-clip-plugin = pkgs.vimUtils.buildVimPlugin {
     pname = "img-clip.nvim";
     version = "0.6.0";
