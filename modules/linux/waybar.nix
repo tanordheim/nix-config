@@ -140,8 +140,8 @@ in
               };
             };
             clock = {
-              format = "{:%H:%M}";
-              format-alt = "{:%b %d %Y %H:%M}";
+              format = "{:%b %d %Y %H:%M}";
+              format-alt = "{:%H:%M}";
             };
           };
         };
