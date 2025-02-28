@@ -78,7 +78,10 @@ in
       useUserPackages = true;
 
       users.${config.username} = {
-        xdg.enable = true;
+        xdg = {
+          enable = true;
+          mimeApps.enable = true;
+        };
         programs.home-manager.enable = true;
 
         home = {
