@@ -16,12 +16,12 @@
       ];
     };
     xdg.mimeApps.defaultApplications = {
-      "default-web-browser" = [ "chromium-desktop.desktop" ];
-      "text/html" = [ "chromium-desktop.desktop" ];
-      "x-scheme-handler/http" = [ "chromium-desktop.desktop" ];
-      "x-scheme-handler/https" = [ "chromium-desktop.desktop" ];
-      "x-scheme-handler/about" = [ "chromium-desktop.desktop" ];
-      "x-scheme-handler/unknown" = [ "chromium-desktop.desktop" ];
+      "default-web-browser" = [ "chromium.desktop" ];
+      "text/html" = [ "chromium.desktop" ];
+      "x-scheme-handler/http" = [ "chromium.desktop" ];
+      "x-scheme-handler/https" = [ "chromium.desktop" ];
+      "x-scheme-handler/about" = [ "chromium.desktop" ];
+      "x-scheme-handler/unknown" = [ "chromium.desktop" ];
     };
   };
 }
