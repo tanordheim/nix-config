@@ -55,6 +55,26 @@
           };
         };
       };
+      move = {
+        enable = true;
+        setJumps = true;
+        gotoNextStart = {
+          "]m" = "@function.outer";
+          "]]" = "@class.outer";
+        };
+        gotoNextEnd = {
+          "]M" = "@function.outer";
+          "][" = "@class.outer";
+        };
+        gotoPreviousStart = {
+          "[m" = "@function.outer";
+          "[[" = "@class.outer";
+        };
+        gotoPreviousEnd = {
+          "[M" = "@function.outer";
+          "[]" = "@class.outer";
+        };
+      };
     };
   };
 }
