@@ -13,7 +13,6 @@
     plugins.lspsaga = {
       enable = true;
       lightbulb.enable = false;
-      rename.inSelect = false;
     };
 
     extraConfigLua = # lua
@@ -106,6 +105,12 @@
         mode = "n";
         action = "<cmd>Lspsaga rename<CR>";
         options.desc = "[R]e[n]ame";
+      }
+      {
+        key = "<leader>rN";
+        mode = "n";
+        action = "<cmd>Lspsaga rename mode=n<CR>";
+        options.desc = "[R]e[n]ame (normal mode)";
       }
       {
         key = "<leader>ca";
