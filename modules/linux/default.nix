@@ -29,6 +29,7 @@
     ./stylix.nix
     ./sudo.nix
     ./sysctl.nix
+    ./telegram.nix
     ./users.nix
     ./waybar.nix
   ];
