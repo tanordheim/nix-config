@@ -28,7 +28,7 @@
     # Nixvim vim config management
     nixvim = {
       url = "github:nix-community/nixvim";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Stylix system wide color scheming/styling
