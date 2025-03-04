@@ -7,7 +7,7 @@
         provider = "claude";
         claude = {
           endpoint = "https://api.anthropic.com";
-          model = "claude-3-7-sonnet";
+          model = "claude-3-7-sonnet-20250219";
           temperature = 0;
           max_tokens = 4096;
         };
