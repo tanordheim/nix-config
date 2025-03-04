@@ -19,6 +19,7 @@
 
     ./avante.nix
     ./blink-cmp.nix
+    ./codecompanion-nvim.nix
     ./conform.nix
     ./copilot-lua.nix
     ./dap.nix

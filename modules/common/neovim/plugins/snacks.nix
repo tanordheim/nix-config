@@ -1,8 +1,22 @@
-{ config, ... }:
+{ pkgs, config, ... }:
+let
+  snacks-nvim-plugin = pkgs.vimUtils.buildVimPlugin {
+    pname = "snacks.nvim";
+    version = "2.22.0";
+    doCheck = false;
+    src = pkgs.fetchFromGitHub {
+      owner = "folke";
+      repo = "snacks.nvim";
+      rev = "v2.22.0";
+      hash = "sha256-iXfOTmeTm8/BbYafoU6ZAstu9+rMDfQtuA2Hwq0jdcE=";
+    };
+  };
+in
 {
   home-manager.users.${config.username}.programs.nixvim = {
     plugins.snacks = {
       enable = true;
+      package = snacks-nvim-plugin;
       settings = {
         explorer = {
           enabled = true;
