@@ -3,7 +3,7 @@
   home-manager.users.${config.username} = {
     programs.chromium = {
       enable = true;
-      package = pkgs.chromium;
+      package = pkgs.chromium.override { enableWideVine = true; };
       extensions = [
         # 1Password
         "aeblfdkhhhdcdjpifhhbdiojplfjncoa"
