@@ -72,6 +72,18 @@
         options.desc = "[D]elete current [b]uffer";
       }
       {
+        key = "<leader>bD";
+        mode = "n";
+        action = "<cmd>lua Snacks.bufdelete.other()<CR>";
+        options.desc = "[D]elete all buffers except current [b]uffer";
+      }
+      {
+        key = "<leader>bx";
+        mode = "n";
+        action = "<cmd>lua Snacks.bufdelete.all()<CR>";
+        options.desc = "[D]elete all buffers";
+      }
+      {
         key = "<leader>nd";
         mode = "n";
         action = "<cmd>lua Snacks.notifier.hide()<CR>";
