@@ -18,11 +18,9 @@
         helm
         http
         ini
-        javascript
         just
         json
         jsonc
-        typescript
         markdown
         markdown_inline
         query
