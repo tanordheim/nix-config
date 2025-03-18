@@ -10,7 +10,7 @@
       typescript
     ];
 
-    plugins.lsp.servers.tsserver = {
+    plugins.lsp.servers.ts_ls = {
       enable = true;
     };
   };

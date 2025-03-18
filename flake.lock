@@ -9,17 +9,18 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1742300221,
-        "narHash": "sha256-amjIZDaFMuC2fijntoTho9zuLUi4FfUwR6DOm6A6DeE=",
-        "owner": "oliverbestmann",
-        "repo": "nixos-apple-silicon",
-        "rev": "31be5731f74d62404c245c210b8046cc50e0f946",
-        "type": "github"
+        "lastModified": 1742304171,
+        "narHash": "sha256-31CHHVqjNWab97V0UphqBTPYwSZs/DvtNJgiG+Yq2P0=",
+        "ref": "mesa-deprecation-fix",
+        "rev": "de45551897c3b26d34b828b68b2d0b6fb65bda04",
+        "revCount": 546,
+        "type": "git",
+        "url": "file:///home/trond/code/nixos-apple-silicon"
       },
       "original": {
-        "owner": "oliverbestmann",
-        "repo": "nixos-apple-silicon",
-        "type": "github"
+        "ref": "mesa-deprecation-fix",
+        "type": "git",
+        "url": "file:///home/trond/code/nixos-apple-silicon"
       }
     },
     "base16": {
@@ -391,11 +392,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1742299321,
-        "narHash": "sha256-gLKS0w7qzAd38nXDf7R0D5tEf+p4XG8LkHH4KKSc0uY=",
+        "lastModified": 1742304233,
+        "narHash": "sha256-vLE8K/GrUTYv+9CRmf0Vskpe5hiHXWQa2fIT6Rqu1Tg=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "9fdf587cda857d3398652c226ff9f3723e8f9c1d",
+        "rev": "f225c055acc4dc9df195f80ec5ac4362d3d233b9",
         "type": "github"
       },
       "original": {
