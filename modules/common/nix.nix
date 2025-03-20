@@ -1,6 +1,7 @@
 {
   nixpkgs,
   nixpkgs-stable,
+  nixpkgs-unstable-small,
   config,
   ...
 }:
@@ -32,6 +33,7 @@
   nixpkgs.overlays = [
     (prev: final: {
       stable = import nixpkgs-stable { inherit (prev) system; };
+      bleeding = import nixpkgs-unstable-small { inherit (prev) system; };
     })
   ];
 }
