@@ -6,6 +6,7 @@ let
     combinePackages [
       # latest major versions
       bleeding.dotnetCorePackages.sdk_9_0
+      sdk_9_0
       sdk_8_0
 
       # specific older versions
