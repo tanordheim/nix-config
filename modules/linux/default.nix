@@ -10,6 +10,7 @@
     ./bluetooth.nix
     ./brave.nix
     ./chromium.nix
+    ./dagger.nix
     ./discord.nix
     ./docker.nix
     ./dunst.nix

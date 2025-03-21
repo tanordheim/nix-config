@@ -34,6 +34,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Dagger CI/CD
+    dagger = {
+      url = "github:dagger/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Stylix system wide color scheming/styling
     stylix.url = "github:danth/stylix";
 

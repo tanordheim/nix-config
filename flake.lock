@@ -107,6 +107,26 @@
         "type": "github"
       }
     },
+    "dagger": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1742503124,
+        "narHash": "sha256-eFYjzvS8cCNfi/970yVJriSOQASZfOFgDhoqGEY/bsE=",
+        "owner": "dagger",
+        "repo": "nix",
+        "rev": "126e5c49a7195dbaf3b4f96110e6c640faf09d7e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dagger",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -459,11 +479,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1742506438,
-        "narHash": "sha256-/pMUZ+KNt54KYfp9KFPzmXEBcLjW32Ly7BfD6yumBuI=",
+        "lastModified": 1742546060,
+        "narHash": "sha256-3OOzlpTYASPCDT4qdTt7H2qHlv1e/O5V+7dzMfeo+h8=",
         "ref": "main",
-        "rev": "82f5f4176760507dbbf3776531bd2ba160d85ab1",
-        "revCount": 21,
+        "rev": "a0af8d16dee8f2ea20ca4d18b1c49509dcba4fbf",
+        "revCount": 22,
         "type": "git",
         "url": "ssh://git@github.com/tanordheim/nix-config-private.git"
       },
@@ -681,6 +701,7 @@
     "root": {
       "inputs": {
         "apple-silicon-support": "apple-silicon-support",
+        "dagger": "dagger",
         "home-manager": "home-manager",
         "homebrew-aerospace": "homebrew-aerospace",
         "homebrew-bundle": "homebrew-bundle",
