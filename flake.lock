@@ -566,6 +566,22 @@
         "type": "indirect"
       }
     },
+    "nixpkgs-dotnet": {
+      "locked": {
+        "lastModified": 1742809146,
+        "narHash": "sha256-oMin7FMYfwteMQS/fCIjBFz1fWuHZZ+ALt2SVXmAcX8=",
+        "ref": "dotnet90202",
+        "rev": "b1150e428bb64d73773c87dcae3b191de654dded",
+        "revCount": 773411,
+        "type": "git",
+        "url": "file:///home/trond/code/nixpkgs"
+      },
+      "original": {
+        "ref": "dotnet90202",
+        "type": "git",
+        "url": "file:///home/trond/code/nixpkgs"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1735563628,
@@ -711,6 +727,7 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-dotnet": "nixpkgs-dotnet",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unstable-small": "nixpkgs-unstable-small",
         "nixvim": "nixvim",
