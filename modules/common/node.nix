@@ -33,6 +33,7 @@ in
     environment.systemPackages = with pkgs; [
       nodejs
       pnpm
+      yarn
     ];
     home-manager.users.${config.username}.home.file.".npmrc".source = buildNpmConfig cfg.npmRegistries;
   };
