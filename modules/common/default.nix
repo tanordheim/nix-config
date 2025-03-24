@@ -39,7 +39,7 @@ in
     ./go.nix
     ./jetbrains
     ./kaf.nix
-    ./kubectl.nix
+    ./kubernetes.nix
     ./neovim
     ./nix.nix
     ./node.nix
