@@ -44,6 +44,7 @@ in
     ./nix.nix
     ./node.nix
     ./python.nix
+    ./redis.nix
     ./shell-aliases.nix
     ./signal.nix
     ./ssh.nix
