@@ -56,6 +56,7 @@ in
     ./telegram.nix
     ./terraform.nix
     ./timezone.nix
+    ./weylus.nix
     ./wezterm.nix
     ./zoxide.nix
     ./zsh.nix

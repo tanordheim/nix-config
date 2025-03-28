@@ -203,6 +203,7 @@ in
           "blueman-applet &"
           "${pkgs.networkmanagerapplet}/bin/nm-applet &"
           "hyprctl dispatch workspace 1"
+          "${pkgs.weylus}/bin/weylus --no-gui --try-vaapi --wayland-support"
         ];
 
         input = {
