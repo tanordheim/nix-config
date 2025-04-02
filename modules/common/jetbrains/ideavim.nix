@@ -54,7 +54,7 @@
       nnoremap ]D :action ReSharperGotoPrevErrorInSolution<CR>
       nnoremap [[ :action MethodUp<CR>
       nnoremap ]] :action MethodDown<CR>
-      nnoremap <leader>sf :action GotoFile<CR>
+      nnoremap <leader>sf :action SearchEverywhere<CR>
       nnoremap <leader>sg :action FindInPath<CR>
       nnoremap <leader>xx :action ActivateProblemsViewToolWindow<CR>
       nnoremap <C-i> :action ActivateTerminalToolWindow<CR>
