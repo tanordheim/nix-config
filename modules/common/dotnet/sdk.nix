@@ -5,7 +5,7 @@ let
     with dotnetCorePackages;
     combinePackages [
       # latest major versions
-      dotnet.dotnetCorePackages.sdk_9_0
+      # dotnet.dotnetCorePackages.sdk_9_0
       sdk_9_0
       sdk_8_0
 

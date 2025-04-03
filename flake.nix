@@ -6,14 +6,14 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    nixpkgs-dotnet.url = "git+file:///home/trond/code/nixpkgs?ref=dotnet90202";
+    # nixpkgs-dotnet.url = "git+file:///home/trond/code/nixpkgs?ref=dotnet90202";
 
     # Apple silicon support (for NixOS on Mac)
     apple-silicon-support = {
       # temp fix for mesa deprecation, see https://github.com/tpwrules/nixos-apple-silicon/issues/285 and https://github.com/tpwrules/nixos-apple-silicon/pull/284
-      url = "git+file:///home/trond/code/nixos-apple-silicon?ref=mesa-deprecation-fix";
+      # url = "git+file:///home/trond/code/nixos-apple-silicon?ref=mesa-deprecation-fix";
       # url = "github:tpwrules/nixos-apple-silicon";
-      # url = "github:oliverbestmann/nixos-apple-silicon";
+      url = "github:oliverbestmann/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -32,12 +32,6 @@
     # Nixvim vim config management
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Dagger CI/CD
-    dagger = {
-      url = "github:dagger/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
