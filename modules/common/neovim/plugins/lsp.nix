@@ -23,7 +23,8 @@
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
             end, { desc = 'Toggle inlay hints' })
 
-            vim.lsp.inlay_hint.enable()
+            -- disable inlay hints by default
+            vim.lsp.inlay_hint.disable()
           end
         '';
     };
