@@ -22,7 +22,6 @@
         require('roslyn').setup {
           config = {
             on_attach = function(client)
-              print("on attach")
               -- TODO: this is duplicated from lsp.nix and the default onAttach, since this is not using regular lsp setup
               if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
                 vim.keymap.set('n', '<leader>uh', function()
