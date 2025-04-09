@@ -21,7 +21,7 @@
           if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
             vim.keymap.set('n', '<leader>uh', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-            end, 'Toggle inlay hints')
+            end, { desc = 'Toggle inlay hints' })
 
             vim.lsp.inlay_hint.enable()
           end
