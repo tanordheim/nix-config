@@ -21,6 +21,10 @@
       programs.neovide = {
         enable = true;
         settings = {
+          font = {
+            normal = [ "${config.stylix.fonts.monospace.name}" ];
+            size = "${builtins.toString config.stylix.fonts.sizes.terminal}";
+          };
         };
       };
     };
