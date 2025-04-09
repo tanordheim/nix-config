@@ -18,6 +18,11 @@
         # set <space> as the leader key; this must happen before anything else
         globals.mapleader = " ";
       };
+      programs.neovide = {
+        enable = true;
+        settings = {
+        };
+      };
     };
 
   imports = [
