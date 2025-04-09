@@ -65,6 +65,14 @@
         -- enable undercurl
         vim.cmd([[let &t_Cs = "\e[4:3m"]])
         vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
+        -- neovide config
+        if vim.g.neovide then
+          vim.g.neovide_floating_blur_amount_x = 2.0
+          vim.g.neovide_floating_blur_amount_y = 2.0
+          vim.g.neovide_cursor_animation_length = 0.03
+          vim.g.neovide_hide_mouse_when_typing = true
+        end
       '';
   };
 }
