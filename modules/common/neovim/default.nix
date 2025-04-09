@@ -23,7 +23,7 @@
         settings = {
           font = {
             normal = [ "${config.stylix.fonts.monospace.name}" ];
-            size = "${builtins.toString config.stylix.fonts.sizes.terminal}";
+            size = config.stylix.fonts.sizes.terminal;
           };
         };
       };
