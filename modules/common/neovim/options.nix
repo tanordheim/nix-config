@@ -72,6 +72,10 @@
           vim.g.neovide_floating_blur_amount_y = 2.0
           vim.g.neovide_cursor_animation_length = 0.03
           vim.g.neovide_hide_mouse_when_typing = true
+          vim.g.neovide_padding_top = 2
+          vim.g.neovide_padding_right = 2
+          vim.g.neovide_padding_bottom = 2
+          vim.g.neovide_padding_left = 2
         end
       '';
   };
