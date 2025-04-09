@@ -220,6 +220,17 @@
           '';
         options.desc = "[S]earch [d]iagnostics in buffer";
       }
+      {
+        key = "<leader>sb";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              Snacks.picker.buffers()
+            end
+          '';
+        options.desc = "[S]earch [b]uffers";
+      }
     ];
   };
 }
