@@ -3,10 +3,19 @@
   home-manager.users.${config.username}.programs.nixvim = {
     plugins.lsp = {
       enable = true;
-      inlayHints = true;
       capabilities = # lua
         ''
           capabilities = require('blink.cmp').get_lsp_capabilities()
+        '';
+      onAttach = # lua
+        ''
+          if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+            map('<leader>it', function()
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+            end, '[T]oggle inlay [h]ints')
+
+            vim.lsp.inlay_hint.enable()
+          end
         '';
     };
 
