@@ -25,11 +25,11 @@
             useany = true;
           };
           hints = {
-            assignVariableTypes = true;
+            assignVariableTypes = false;
             compositeLiteralFields = true;
-            compositeLiteralTypes = true;
+            compositeLiteralTypes = false;
             constantValues = true;
-            functionTypeParameters = true;
+            functionTypeParameters = false;
             parameterNames = true;
             rangeVariableTypes = true;
           };
