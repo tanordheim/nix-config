@@ -9,6 +9,15 @@
         '';
       onAttach = # lua
         ''
+          if client then
+            print("got client")
+          end
+          if client.server_capabilities.inlayHintProvider then
+            print("got inlay hint provider")
+          end
+          if vim.lsp.inlay_hint then
+            print("got inlay hint")
+          end
           if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
             map('<leader>uh', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
