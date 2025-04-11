@@ -9,6 +9,7 @@
 
       # run dotnet apps directly
       icu
+      icu75
     ];
   };
 }
