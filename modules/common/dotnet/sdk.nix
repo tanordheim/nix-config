@@ -15,16 +15,14 @@ let
 
 in
 {
-  # environment.systemPackages = [ dotnet-packages ];
-  environment.systemPackages = [ pkgs.dotnetCorePackages.sdk_9_0 ];
+  environment.systemPackages = [ dotnet-packages ];
 
   home-manager.users.${config.username}.home = {
     sessionPath = [
       "$HOME/.dotnet/tools"
     ];
     sessionVariables = {
-      # DOTNET_ROOT = "${dotnet-packages}/share/dotnet";
-      DOTNET_ROOT = "${pkgs.dotnetCorePackages.sdk_9_0}/share/dotnet";
+      DOTNET_ROOT = "${dotnet-packages}/share/dotnet";
     };
   };
 }
