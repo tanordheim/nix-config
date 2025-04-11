@@ -22,7 +22,7 @@ in
       "$HOME/.dotnet/tools"
     ];
     sessionVariables = {
-      DOTNET_ROOT = "${dotnet-packages}";
+      DOTNET_ROOT = "${dotnet-packages}/share/dotnet";
     };
   };
 }
