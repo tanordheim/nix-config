@@ -6,6 +6,9 @@
     libraries = with pkgs; [
       # protobuf/grpc tools via nuget
       libgcc
+
+      # run dotnet apps directly
+      icu
     ];
   };
 }
