@@ -15,7 +15,8 @@ let
 
 in
 {
-  environment.systemPackages = [ dotnet-packages ];
+  # environment.systemPackages = [ dotnet-packages ];
+  environment.systemPackages = [ pkgs.dotnetCorePackages.sdk_9_0 ];
 
   home-manager.users.${config.username}.home = {
     sessionPath = [
