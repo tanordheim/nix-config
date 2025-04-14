@@ -29,7 +29,7 @@ in
 {
   home-manager.users.${config.username}.home = {
     packages = with pkgs; [
-      jetbrains.rider
+      custom.jetbrains.rider
     ];
   };
 }

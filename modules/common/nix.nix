@@ -35,7 +35,12 @@
     (prev: final: {
       stable = import nixpkgs-stable { inherit (prev) system; };
       bleeding = import nixpkgs-unstable-small { inherit (prev) system; };
-      custom = import nixpkgs-custom { inherit (prev) system; };
+      custom = import nixpkgs-custom {
+        inherit (prev) system;
+        config = {
+          allowUnfree = true;
+        };
+      };
     })
   ];
 }
