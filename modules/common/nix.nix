@@ -2,7 +2,7 @@
   nixpkgs,
   nixpkgs-stable,
   nixpkgs-unstable-small,
-  nixpkgs-dotnet,
+  nixpkgs-custom,
   config,
   ...
 }:
@@ -35,7 +35,7 @@
     (prev: final: {
       stable = import nixpkgs-stable { inherit (prev) system; };
       bleeding = import nixpkgs-unstable-small { inherit (prev) system; };
-      # dotnet = import nixpkgs-dotnet { inherit (prev) system; };
+      custom = import nixpkgs-custom { inherit (prev) system; };
     })
   ];
 }

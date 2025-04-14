@@ -545,6 +545,22 @@
         "type": "indirect"
       }
     },
+    "nixpkgs-custom": {
+      "locked": {
+        "lastModified": 1744376863,
+        "narHash": "sha256-6lpuhHZCukdCwkN396ONGiIxEJCk4fWotsSaJ1SGDM0=",
+        "owner": "tanordheim",
+        "repo": "nixpkgs",
+        "rev": "79b5a673168c4e265a3995a41863b0ff49fe03b6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tanordheim",
+        "ref": "custom-patches",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1735563628,
@@ -689,6 +705,7 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-custom": "nixpkgs-custom",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unstable-small": "nixpkgs-unstable-small",
         "nixvim": "nixvim",
