@@ -5,8 +5,7 @@
   ...
 }:
 let
-  plugins = import ./plugins.nix { inherit pkgs; };
-  versionMajorMinor = lib.versions.majorMinor pkgs.jetbrains.rider.version;
+  versionMajorMinor = lib.versions.majorMinor pkgs.custom.jetbrains.rider.version;
 
   vmOptionsFile =
     if pkgs.stdenv.isDarwin then
@@ -29,12 +28,8 @@ let
 in
 {
   home-manager.users.${config.username}.home = {
-    packages = [
-      (pkgs.jetbrains.plugins.addPlugins pkgs.jetbrains.rider plugins)
+    packages = with pkgs; [
+      jetbrains.rider
     ];
-
-    file = {
-      "${vmOptionsFile}".text = vmOptionsContent;
-    };
   };
 }

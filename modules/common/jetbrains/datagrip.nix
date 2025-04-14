@@ -5,12 +5,11 @@
   ...
 }:
 let
-  plugins = import ./plugins.nix { inherit pkgs; };
   versionMajorMinor = lib.versions.majorMinor pkgs.jetbrains.datagrip.version;
 
   vmOptionsFile =
     if pkgs.stdenv.isDarwin then
-      "Library/Application Support/JetBrains/DataGrip${versionMajorMinor}/rider.vmoptions"
+      "Library/Application Support/JetBrains/DataGrip${versionMajorMinor}/datagrip.vmoptions"
     else
       ".config/JetBrains/DataGrip${versionMajorMinor}/datagrip64.vmoptions";
 
@@ -24,9 +23,7 @@ let
 in
 {
   home-manager.users.${config.username}.home = {
-    packages = [
-      (pkgs.jetbrains.plugins.addPlugins pkgs.jetbrains.datagrip plugins)
-    ];
+    packages = with pkgs; [ jetbrains.datagrip ];
 
     file = {
       "${vmOptionsFile}".text = vmOptionsContent;

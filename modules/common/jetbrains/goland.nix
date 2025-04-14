@@ -5,7 +5,6 @@
   ...
 }:
 let
-  plugins = import ./plugins.nix { inherit pkgs; };
   versionMajorMinor = lib.versions.majorMinor pkgs.jetbrains.datagrip.version;
 
   vmOptionsFile =
@@ -30,9 +29,7 @@ let
 in
 {
   home-manager.users.${config.username}.home = {
-    packages = [
-      (pkgs.jetbrains.plugins.addPlugins pkgs.jetbrains.goland plugins)
-    ];
+    packages = with pkgs; [ jetbrains.goland ];
 
     file = {
       "${vmOptionsFile}".text = vmOptionsContent;
