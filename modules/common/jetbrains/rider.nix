@@ -5,7 +5,7 @@
   ...
 }:
 let
-  versionMajorMinor = lib.versions.majorMinor pkgs.custom.jetbrains.rider.version;
+  versionMajorMinor = lib.versions.majorMinor pkgs.jetbrains.rider.version;
 
   vmOptionsFile =
     if pkgs.stdenv.isDarwin then
@@ -29,7 +29,7 @@ in
 {
   home-manager.users.${config.username}.home = {
     packages = with pkgs; [
-      custom.jetbrains.rider
+      jetbrains.rider
     ];
   };
 }
