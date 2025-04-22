@@ -31,5 +31,9 @@ in
     packages = with pkgs; [
       jetbrains.rider
     ];
+
+    file = {
+      "${vmOptionsFile}".text = vmOptionsContent;
+    };
   };
 }
