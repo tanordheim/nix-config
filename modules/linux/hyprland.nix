@@ -115,6 +115,7 @@ in
           animate_manual_resizes = true;
           mouse_move_enables_dpms = true;
           key_press_enables_dpms = true;
+          middle_click_paste = false;
         };
 
         bind = [
