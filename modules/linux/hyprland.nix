@@ -122,8 +122,7 @@ in
           "$mainMod, return, exec, ${pkgs.wezterm}/bin/wezterm"
           "$mainMod SHIFT, W, killactive"
           "$mainMod $altMod, Q, exit"
-          "$mainMod, space, exec, rofi -show drun"
-          "$mainMod, c, exec, rofi -show calc -modi calc -no-show-match -no-sort -calc-command \"echo -n '{result}' | wl-copy\""
+          "$mainMod, space, exec, sherlock"
           "$mainMod, e, exec, ${pkgs.nautilus}/bin/nautilus"
 
           # switch workspaces
@@ -240,7 +239,7 @@ in
         ];
       };
     };
-    programs.zsh.initExtra = # zsh
+    programs.zsh.initContent = # zsh
       ''
         if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
           dbus-run-session Hyprland

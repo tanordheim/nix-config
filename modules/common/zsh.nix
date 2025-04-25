@@ -28,7 +28,7 @@ in
           compdef _c c
         '';
 
-        initExtra = ''
+        initContent = ''
           # AUTO COMPLETION
 
           # Make completions:

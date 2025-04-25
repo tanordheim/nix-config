@@ -25,6 +25,7 @@
     ./obsidian.nix
     ./rofi.nix
     ./shell-aliases.nix
+    ./sherlock.nix
     ./slack.nix
     ./stylix.nix
     ./sudo.nix

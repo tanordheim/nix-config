@@ -9,7 +9,7 @@
       "....." = "cd ../../../../";
     };
 
-    programs.zsh.initExtra = # zsh
+    programs.zsh.initContent = # zsh
       ''
         # convenience function to convert dash-less guids to dashed guids
         fixguid() {
