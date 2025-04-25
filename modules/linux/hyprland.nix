@@ -167,6 +167,8 @@ in
           # media keys
           ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%+"
           ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%-"
+          ", mouse_left, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%+"
+          ", mouse_right, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%-"
         ];
 
         bindm = [
