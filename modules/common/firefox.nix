@@ -25,9 +25,6 @@ in
             "middlemouse.paste" = false;
             "privacy.donottrackheader.enabled" = true;
           };
-          extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-            onepassword-password-manager
-          ];
         };
       };
     };
