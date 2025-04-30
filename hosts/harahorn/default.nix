@@ -6,6 +6,7 @@ inputs.nixpkgs.lib.nixosSystem rec {
     [
       inputs.apple-silicon-support.nixosModules.apple-silicon-support
       inputs.home-manager.nixosModules.home-manager
+      inputs.nur.modules.nixos.default
       inputs.stylix.nixosModules.stylix
       ../../modules/linux
       ./hardware-configuration.nix

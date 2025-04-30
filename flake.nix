@@ -39,6 +39,12 @@
     # sherlock.url = "github:Skxxtz/sherlock";
     sherlock.url = "github:tanordheim/sherlock/fix-aarch64-build";
 
+    # Community packages, for Firefox extensions
+    nur = {
+      url = "github:nix-community/nur";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Stylix system wide color scheming/styling
     stylix.url = "github:danth/stylix";
 

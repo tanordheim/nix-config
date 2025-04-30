@@ -32,8 +32,9 @@ in
     ./chromium.nix
     ./docker.nix
     ./direnv.nix
-    ./eza.nix
     ./dotnet
+    ./eza.nix
+    ./firefox.nix
     ./fonts.nix
     ./git.nix
     ./go.nix
