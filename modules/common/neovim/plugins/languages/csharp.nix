@@ -34,8 +34,8 @@
             end,
           },
           handlers = require('rzls.roslyn_handlers'),
-          exe = '${pkgs.roslyn-ls}/bin/Microsoft.CodeAnalysis.LanguageServer',
-          args = {
+          cmd = {
+            "${pkgs.roslyn-ls}/bin/Microsoft.CodeAnalysis.LanguageServer",
             "--logLevel=Debug",
             "--stdio",
             "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
