@@ -27,6 +27,10 @@ in
           };
         };
       };
+      policies = {
+        DisableTelemetry = true;
+        PasswordManagerEnabled = false;
+      };
     };
     xdg.mimeApps.defaultApplications = {
       "default-web-browser" = "firefox.desktop";
