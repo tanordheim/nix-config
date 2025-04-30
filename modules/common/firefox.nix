@@ -13,6 +13,7 @@ let
 in
 {
   home-manager.users.${config.username} = {
+    stylix.targets.firefox.profileNames = [ "default" ];
     programs.firefox = {
       enable = true;
       profiles = {
