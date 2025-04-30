@@ -10,6 +10,7 @@
     ./brave.nix
     ./chromium.nix
     ./discord.nix
+    ./firefox.nix
     ./homebrew.nix
     ./linear.nix
     ./nix.nix

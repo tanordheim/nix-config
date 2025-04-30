@@ -3,14 +3,6 @@
   config,
   ...
 }:
-let
-  downloadDirectory =
-    if pkgs.stdenv.isDarwin then
-      "/Users/${config.username}/Downloads"
-    else
-      "/home/${config.username}/downloads";
-
-in
 {
   home-manager.users.${config.username} = {
     stylix.targets.firefox.profileNames = [ "default" ];
@@ -21,7 +13,7 @@ in
           id = 0;
           name = "default";
           settings = {
-            "browser.download.dir" = downloadDirectory;
+            "browser.download.dir" = "/home/${config.username}/downloads";
             "middlemouse.paste" = false;
             "privacy.donottrackheader.enabled" = true;
           };

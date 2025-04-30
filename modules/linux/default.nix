@@ -14,6 +14,7 @@
     ./docker.nix
     ./dunst.nix
     ./evince.nix
+    ./firefox.nix
     ./hypridle.nix
     ./hyprland.nix
     ./hyprlock.nix
@@ -33,7 +34,14 @@
     ./telegram.nix
     ./users.nix
     ./waybar.nix
+    ./weylus.nix
   ];
 
-  home-manager.users.${config.username}.home.homeDirectory = "/home/${config.username}";
+  home-manager.users.${config.username}.home = {
+    homeDirectory = "/home/${config.username}";
+    xdg = {
+      enable = true;
+      mimeApps.enable = true;
+    };
+  };
 }

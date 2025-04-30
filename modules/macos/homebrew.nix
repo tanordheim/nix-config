@@ -25,6 +25,7 @@
     onActivation = {
       cleanup = "zap";
       upgrade = true;
+      autoUpdate = true;
     };
     taps = builtins.attrNames config.nix-homebrew.taps;
   };

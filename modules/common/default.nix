@@ -34,7 +34,6 @@ in
     ./direnv.nix
     ./dotnet
     ./eza.nix
-    ./firefox.nix
     ./fonts.nix
     ./git.nix
     ./go.nix
@@ -57,7 +56,6 @@ in
     ./telegram.nix
     ./terraform.nix
     ./timezone.nix
-    ./weylus.nix
     ./wezterm.nix
     ./zoxide.nix
     ./zsh.nix
@@ -82,10 +80,6 @@ in
       useUserPackages = true;
 
       users.${config.username} = {
-        xdg = {
-          enable = true;
-          mimeApps.enable = true;
-        };
         programs.home-manager.enable = true;
 
         home = {

@@ -131,15 +131,15 @@ in
             cmd-enter = "exec-and-forget ${pkgs.wezterm}/bin/wezterm";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-            cmd-shift-slash = "layout tiles horizontal vertical";
-            cmd-shift-period = "layout accordion horizontal vertical";
-            cmd-shift-f = "layout floating tiling";
+            # cmd-shift-t = "layout tiles horizontal vertical";
+            # cmd-shift-a = "layout accordion horizontal vertical";
+            # cmd-shift-f = "layout floating tiling";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-            ctrl-h = "focus left";
-            ctrl-j = "focus down";
-            ctrl-k = "focus up";
-            ctrl-l = "focus right";
+            # ctrl-left = "focus left";
+            # ctrl-right = "focus down";
+            # ctrl-up = "focus up";
+            # ctrl-down = "focus right";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#move
             ctrl-cmd-h = "move left";
@@ -148,65 +148,64 @@ in
             ctrl-cmd-l = "move right";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-            ctrl-shift-alt-comma = "resize smart -50";
-            ctrl-shift-alt-period = "resize smart +50";
+            # ctrl-shift-alt-comma = "resize smart -50";
+            # ctrl-shift-alt-period = "resize smart +50";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-            ctrl-shift-alt-a = "workspace 1";
-            ctrl-shift-alt-r = "workspace 2";
-            ctrl-shift-alt-s = "workspace 3";
-            ctrl-shift-alt-t = "workspace 4";
-            ctrl-shift-alt-g = "workspace 5";
-            ctrl-shift-alt-m = "workspace 6";
-            ctrl-shift-alt-n = "workspace 7";
-            ctrl-shift-alt-e = "workspace 8";
-            ctrl-shift-alt-i = "workspace 9";
-            ctrl-shift-alt-o = "workspace 10";
-            cmd-s = "workspace Z";
+            cmd-ctrl-keypad1 = "workspace 1";
+            cmd-ctrl-keypad2 = "workspace 2";
+            cmd-ctrl-keypad3 = "workspace 3";
+            cmd-ctrl-keypad4 = "workspace 4";
+            cmd-ctrl-keypad5 = "workspace 5";
+            cmd-ctrl-keypad6 = "workspace 6";
+            cmd-ctrl-keypad7 = "workspace 7";
+            cmd-ctrl-keypad8 = "workspace 8";
+            cmd-ctrl-keypad9 = "workspace 9";
+            cmd-ctrl-keypad0 = "workspace 10";
+            cmd-ctrl-s = "workspace Z";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-            cmd-ctrl-shift-alt-a = [
+            cmd-shift-keypad1 = [
               "move-node-to-workspace 1"
               "workspace 1"
             ];
-            cmd-ctrl-shift-alt-r = [
+            cmd-shift-keypad2 = [
               "move-node-to-workspace 2"
               "workspace 2"
             ];
-            cmd-ctrl-shift-alt-s = [
+            cmd-shift-keypad3 = [
               "move-node-to-workspace 3"
               "workspace 3"
             ];
-            cmd-ctrl-shift-alt-t = [
+            cmd-shift-keypad4 = [
               "move-node-to-workspace 4"
               "workspace 4"
             ];
-            cmd-ctrl-shift-alt-g = [
+            cmd-shift-keypad5 = [
               "move-node-to-workspace 5"
               "workspace 5"
             ];
-            cmd-ctrl-shift-alt-m = [
+            cmd-shift-keypad6 = [
               "move-node-to-workspace 6"
               "workspace 6"
             ];
-            cmd-ctrl-shift-alt-n = [
+            cmd-shift-keypad7 = [
               "move-node-to-workspace 7"
               "workspace 7"
             ];
-            cmd-ctrl-shift-alt-e = [
+            cmd-shift-keypad8 = [
               "move-node-to-workspace 8"
               "workspace 8"
             ];
-            cmd-ctrl-shift-alt-i = [
+            cmd-shift-keypad9 = [
               "move-node-to-workspace 9"
               "workspace 9"
             ];
-            cmd-ctrl-shift-alt-o = [
+            cmd-shift-keypad0 = [
               "move-node-to-workspace 10"
               "workspace 10"
             ];
             cmd-shift-s = "move-node-to-workspace Z";
-
             cmd-shift-c = "reload-config";
           };
 
