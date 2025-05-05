@@ -233,7 +233,7 @@ in
             }
             {
               "if".app-id = "com.tdesktop.Telegram";
-              run = [ "move-node-to-workspace 7" ];
+              run = [ "move-node-to-workspace 6" ];
             }
             {
               "if".app-id = "org.whispersystems.signal-desktop";
@@ -241,7 +241,7 @@ in
             }
             {
               "if".app-id = "com.hnc.Discord";
-              run = [ "move-node-to-workspace 8" ];
+              run = [ "move-node-to-workspace 7" ];
             }
             {
               "if".app-id = "com.linear";

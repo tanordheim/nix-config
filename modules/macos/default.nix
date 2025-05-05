@@ -13,6 +13,7 @@
     ./firefox.nix
     ./homebrew.nix
     ./linear.nix
+    ./logitech.nix
     ./nix.nix
     ./obsidian.nix
     ./orbstack.nix
