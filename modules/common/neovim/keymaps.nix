@@ -15,7 +15,19 @@
         options.desc = "Move focus to the left window";
       }
       {
+        key = "<C-h>";
+        mode = "n";
+        action = "<C-w><C-h>";
+        options.desc = "Move focus to the left window";
+      }
+      {
         key = "<C-Right>";
+        mode = "n";
+        action = "<C-w><C-l>";
+        options.desc = "Move focus to the right window";
+      }
+      {
+        key = "<C-l>";
         mode = "n";
         action = "<C-w><C-l>";
         options.desc = "Move focus to the right window";
@@ -27,7 +39,19 @@
         options.desc = "Move focus to the lower window";
       }
       {
+        key = "<C-j>";
+        mode = "n";
+        action = "<C-w><C-j>";
+        options.desc = "Move focus to the lower window";
+      }
+      {
         key = "<C-Up>";
+        mode = "n";
+        action = "<C-w><C-k>";
+        options.desc = "Move focus to the upper window";
+      }
+      {
+        key = "<C-k>";
         mode = "n";
         action = "<C-w><C-k>";
         options.desc = "Move focus to the upper window";
