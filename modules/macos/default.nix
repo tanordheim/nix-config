@@ -24,6 +24,7 @@
     ./system-defaults.nix
     ./touch-id.nix
     ./users.nix
+    ./vial.nix
   ];
 
   # Automatically reload settings from the database and apply them to the current session, avoiding relog to get changes to take effect
