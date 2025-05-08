@@ -19,6 +19,7 @@
     jq
     killall
     lsof
+    nvd
     unixtools.watch
     unzip
     tree
