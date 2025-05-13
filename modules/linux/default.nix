@@ -11,6 +11,7 @@
     ./brave.nix
     ./chromium.nix
     ./discord.nix
+    ./displaylink.nix
     ./docker.nix
     ./dunst.nix
     ./evince.nix
