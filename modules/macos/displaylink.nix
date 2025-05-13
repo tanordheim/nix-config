@@ -1,0 +1,8 @@
+{
+  ...
+}:
+{
+  homebrew.casks = [
+    "displaylink"
+  ];
+}
