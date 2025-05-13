@@ -127,28 +127,28 @@ in
           "$mainMod, e, exec, ${pkgs.nautilus}/bin/nautilus"
 
           # switch workspaces
-          "$mainMod, ${keypadNumberToKeyCode."1"}, workspace, 1"
-          "$mainMod, ${keypadNumberToKeyCode."2"}, workspace, 2"
-          "$mainMod, ${keypadNumberToKeyCode."3"}, workspace, 3"
-          "$mainMod, ${keypadNumberToKeyCode."4"}, workspace, 4"
-          "$mainMod, ${keypadNumberToKeyCode."5"}, workspace, 5"
-          "$mainMod, ${keypadNumberToKeyCode."6"}, workspace, 6"
-          "$mainMod, ${keypadNumberToKeyCode."7"}, workspace, 7"
-          "$mainMod, ${keypadNumberToKeyCode."8"}, workspace, 8"
-          "$mainMod, ${keypadNumberToKeyCode."9"}, workspace, 9"
-          "$mainMod, ${keypadNumberToKeyCode."0"}, workspace, 10"
+          "$mainMod SHIFT, 1, workspace, 1"
+          "$mainMod SHIFT, 2, workspace, 2"
+          "$mainMod SHIFT, 3, workspace, 3"
+          "$mainMod SHIFT, 4, workspace, 4"
+          "$mainMod SHIFT, 5, workspace, 5"
+          "$mainMod SHIFT, 6, workspace, 6"
+          "$mainMod SHIFT, 7, workspace, 7"
+          "$mainMod SHIFT, 8, workspace, 8"
+          "$mainMod SHIFT, 9, workspace, 9"
+          "$mainMod SHIFT, 0, workspace, 10"
 
           # move window to workspace
-          "$mainMod $altMod, ${keypadNumberToKeyCode."1"}, movetoworkspace, 1"
-          "$mainMod $altMod, ${keypadNumberToKeyCode."2"}, movetoworkspace, 2"
-          "$mainMod $altMod, ${keypadNumberToKeyCode."3"}, movetoworkspace, 3"
-          "$mainMod $altMod, ${keypadNumberToKeyCode."4"}, movetoworkspace, 4"
-          "$mainMod $altMod, ${keypadNumberToKeyCode."5"}, movetoworkspace, 5"
-          "$mainMod $altMod, ${keypadNumberToKeyCode."6"}, movetoworkspace, 6"
-          "$mainMod $altMod, ${keypadNumberToKeyCode."7"}, movetoworkspace, 7"
-          "$mainMod $altMod, ${keypadNumberToKeyCode."8"}, movetoworkspace, 8"
-          "$mainMod $altMod, ${keypadNumberToKeyCode."9"}, movetoworkspace, 9"
-          "$mainMod $altMod, ${keypadNumberToKeyCode."0"}, movetoworkspace, 10"
+          "$mainMod CTRL, 1, movetoworkspace, 1"
+          "$mainMod CTRL, 2, movetoworkspace, 2"
+          "$mainMod CTRL, 3, movetoworkspace, 3"
+          "$mainMod CTRL, 4, movetoworkspace, 4"
+          "$mainMod CTRL, 5, movetoworkspace, 5"
+          "$mainMod CTRL, 6, movetoworkspace, 6"
+          "$mainMod CTRL, 7, movetoworkspace, 7"
+          "$mainMod CTRL, 8, movetoworkspace, 8"
+          "$mainMod CTRL, 9, movetoworkspace, 9"
+          "$mainMod CTRL, 0, movetoworkspace, 10"
 
           # move focused window
           "$mainMod, left, movefocus, l"
@@ -210,7 +210,7 @@ in
         ];
 
         input = {
-          kb_layout = "us";
+          kb_layout = "no";
           float_switch_override_focus = false;
           numlock_by_default = true;
           repeat_rate = 50;
@@ -224,8 +224,9 @@ in
         };
 
         monitor = [
-          "HDMI-A-1,3840x1600,0x0,1"
-          "eDP-1,3456x2160,3840x192,2"
+          "HDMI-A-1,3440x1440@100.00Hz,1440x350,1"
+          "DVI-I-1,preferred,0x0,1,transform,1"
+          "eDP-1,preferred,4880x0,1"
           ",preferred,auto,1"
         ];
 
@@ -235,10 +236,10 @@ in
           "3, monitor:HDMI-A-1"
           "4, monitor:HDMI-A-1"
           "5, monitor:HDMI-A-1"
-          "6, monitor:eDP-1"
-          "7, monitor:eDP-1"
-          "8, monitor:eDP-1"
-          "9, monitor:eDP-1"
+          "6, monitor:DVI-I-1"
+          "7, monitor:DVI-I-1"
+          "8, monitor:DVI-I-1"
+          "9, monitor:DVI-I-1"
           "10, monitor:eDP-1"
         ];
       };
