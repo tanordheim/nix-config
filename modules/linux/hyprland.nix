@@ -190,10 +190,10 @@ in
 
           # assign apps to certain workspaces
           "workspace 6 silent, class:^(chrome-app.slack.com__)(.*)$"
-          "workspace 7 silent, class:^(org.telegram.desktop)$"
+          "workspace 6 silent, class:^(org.telegram.desktop)$"
           "workspace 7 silent, class:^(Signal)$"
-          "workspace 8 silent, class:^(chrome-discord.com__)(.*)$"
-          "workspace 9 silent, class:^(chrome-linear.app__)(.*)$"
+          "workspace 7 silent, class:^(chrome-discord.com__)(.*)$"
+          "workspace 8 silent, class:^(chrome-linear.app__)(.*)$"
           "workspace 10 silent, class:^(1Password)$, floating:0"
           "pin, class:^(1Password)$, title:^(1Password)$, floating:1"
         ];
