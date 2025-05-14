@@ -236,10 +236,10 @@ in
           "3, monitor:HDMI-A-1"
           "4, monitor:HDMI-A-1"
           "5, monitor:HDMI-A-1"
-          "6, monitor:DVI-I-1"
-          "7, monitor:DVI-I-1"
-          "8, monitor:DVI-I-1"
-          "9, monitor:DVI-I-1"
+          "6, monitor:DVI-I-1, layoutopt:orientation:top"
+          "7, monitor:DVI-I-1, layoutopt:orientation:top"
+          "8, monitor:DVI-I-1, layoutopt:orientation:top"
+          "9, monitor:DVI-I-1, layoutopt:orientation:top"
           "10, monitor:eDP-1"
         ];
       };
