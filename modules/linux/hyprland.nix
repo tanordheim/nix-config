@@ -47,7 +47,7 @@ in
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
-        "$mainMod" = "SUPER";
+        "$mainMod" = "ALT";
         "$altMod" = "CTRL";
 
         env = [
