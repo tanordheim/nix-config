@@ -38,8 +38,8 @@
     ./weylus.nix
   ];
 
-  home-manager.users.${config.username}.home = {
-    homeDirectory = "/home/${config.username}";
+  home-manager.users.${config.username} = {
+    home.homeDirectory = "/home/${config.username}";
     xdg = {
       enable = true;
       mimeApps.enable = true;
