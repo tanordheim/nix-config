@@ -4,6 +4,7 @@
     asahi-bless
     libnotify
     nvd
+    usbutils
     xdg-utils
   ];
 }

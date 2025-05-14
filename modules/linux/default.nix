@@ -34,6 +34,7 @@
     ./sysctl.nix
     ./telegram.nix
     ./users.nix
+    ./via-udev.nix
     ./waybar.nix
     ./weylus.nix
   ];
