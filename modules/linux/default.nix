@@ -25,6 +25,7 @@
     ./linear.nix
     ./nixld.nix
     ./obsidian.nix
+    ./qmk.nix
     ./rofi.nix
     ./shell-aliases.nix
     ./sherlock.nix
@@ -34,7 +35,6 @@
     ./sysctl.nix
     ./telegram.nix
     ./users.nix
-    ./via-udev.nix
     ./waybar.nix
     ./weylus.nix
   ];
