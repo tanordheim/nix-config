@@ -3,20 +3,6 @@
   config,
   ...
 }:
-let
-  keypadNumberToKeyCode = {
-    "0" = "code:90";
-    "1" = "code:87";
-    "2" = "code:88";
-    "3" = "code:89";
-    "4" = "code:83";
-    "5" = "code:84";
-    "6" = "code:85";
-    "7" = "code:79";
-    "8" = "code:80";
-    "9" = "code:81";
-  };
-in
 {
   environment.systemPackages = with pkgs; [
     hyprland-qtutils
@@ -175,6 +161,12 @@ in
           # move/resize using $mainMod + mouse drag
           "$mainMod, mouse:272, movewindow"
           "$mainMod, mouse:273, resizewindow"
+        ];
+
+        bindl = [
+          # enable/disable built in screen when lid opens/closes
+          ", switch:off:Lid Switch, exec, hyprctl keyword monitor 'eDP-1,preferred,4880x0,1'"
+          ", switch:on:Lid Switch, exec, hyprctl keyword monitor 'eDP-1,disable'"
         ];
 
         windowrulev2 = [
