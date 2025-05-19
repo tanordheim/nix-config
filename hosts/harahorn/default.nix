@@ -24,6 +24,9 @@ inputs.nixpkgs.lib.nixosSystem rec {
             enable = true;
           };
         };
+
+        # run in clamshell mode
+        services.logind.lidSwitchExternalPower = "ignore";
       }
     ]
     ++ (builtins.attrValues inputs.nix-config-private.outputs.homeManagerModules)
