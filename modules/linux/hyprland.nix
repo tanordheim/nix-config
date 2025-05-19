@@ -165,8 +165,8 @@
 
         bindl = [
           # enable/disable built in screen when lid opens/closes
-          ", switch:off:Lid Switch, exec, hyprctl keyword monitor 'eDP-1,preferred,4880x0,1'"
-          ", switch:on:Lid Switch, exec, hyprctl keyword monitor 'eDP-1,disable'"
+          ", switch:off:Apple SMC power/lid events, exec, hyprctl keyword monitor 'eDP-1,preferred,4880x0,1'"
+          ", switch:on:Apple SMC power/lid events, exec, hyprctl keyword monitor 'eDP-1,disable'"
         ];
 
         windowrulev2 = [
