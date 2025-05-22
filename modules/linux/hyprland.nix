@@ -115,12 +115,13 @@
           # switch workspaces
           "$mainMod SHIFT, 1, workspace, 1"
           "$mainMod SHIFT, 2, workspace, 2"
-          "$mainMod MOD5,  2, workspace, 2" # US on NO keymap          "$mainMod SHIFT, 3, workspace, 3"
+          "$mainMod MOD5,  2, workspace, 2" # US on NO keymap
+          "$mainMod SHIFT, 3, workspace, 3"
           "$mainMod SHIFT, 4, workspace, 4"
           "$mainMod MOD5,  4, workspace, 4" # US on NO keymap
           "$mainMod SHIFT, 5, workspace, 5"
           "$mainMod SHIFT, 6, workspace, 6"
-          "$mainMod SHIFT, dead_circumflex, workspace, 6" # US on NO keymap
+          "$mainMod, dead_circumflex, workspace, 6" # US on NO keymap
           "$mainMod SHIFT, 7, workspace, 7"
           "$mainMod SHIFT, 8, workspace, 8"
           "$mainMod SHIFT, 9, workspace, 9"
