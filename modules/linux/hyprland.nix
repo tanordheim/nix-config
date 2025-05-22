@@ -121,7 +121,7 @@
           "$mainMod MOD5,  4, workspace, 4" # US on NO keymap
           "$mainMod SHIFT, 5, workspace, 5"
           "$mainMod SHIFT, 6, workspace, 6"
-          "$mainMod, dead_circumflex, workspace, 6" # US on NO keymap
+          "ALT, dead_circumflex, workspace, 6" # US on NO keymap
           "$mainMod SHIFT, 7, workspace, 7"
           "$mainMod SHIFT, 8, workspace, 8"
           "$mainMod SHIFT, 9, workspace, 9"
