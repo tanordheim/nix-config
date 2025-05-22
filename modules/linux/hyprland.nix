@@ -109,14 +109,13 @@
           "$mainMod, return, exec, ${pkgs.wezterm}/bin/wezterm"
           "$mainMod SHIFT, W, killactive"
           "$mainMod $altMod, Q, exit"
-          "$mainMod, space, exec, sherlock"
+          "CTRL, space, exec, sherlock"
           "$mainMod, e, exec, ${pkgs.nautilus}/bin/nautilus"
 
           # switch workspaces
           "$mainMod SHIFT, 1, workspace, 1"
           "$mainMod SHIFT, 2, workspace, 2"
-          "$mainMod MOD5,  2, workspace, 2" # US on NO keymap
-          "$mainMod SHIFT, 3, workspace, 3"
+          "$mainMod MOD5,  2, workspace, 2" # US on NO keymap          "$mainMod SHIFT, 3, workspace, 3"
           "$mainMod SHIFT, 4, workspace, 4"
           "$mainMod MOD5,  4, workspace, 4" # US on NO keymap
           "$mainMod SHIFT, 5, workspace, 5"
