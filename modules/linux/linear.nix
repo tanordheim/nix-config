@@ -4,7 +4,7 @@
   environment.systemPackages = [
     # TODO: remove js-flags when chromium v31 fixes decommit-pooled-pages issue on systems with 16k pages
     (pkgs.writeShellScriptBin "linear-pwa" ''
-      ${pkgs.chromium}/bin/chromium \
+      ${pkgs.stable.chromium}/bin/chromium \
         --app="https://linear.app" \
         --class="linear-pwa" \
         --user-data-dir="$HOME/.config/linear-pwa" \
@@ -15,6 +15,7 @@
         --protocol-handler=linear \
         --no-default-browser-check \
         --disable-features=DefaultBrowserInSettingsMenu \
+        --ozone-platform=wayland \
         --allow-external-pages=false \
         "$@"
     '')
