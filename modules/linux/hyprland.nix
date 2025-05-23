@@ -109,7 +109,7 @@
           "$mainMod, return, exec, ${pkgs.wezterm}/bin/wezterm"
           "$mainMod SHIFT, W, killactive"
           "$mainMod $altMod, Q, exit"
-          "CTRL, space, exec, sherlock"
+          "$mainMod space, exec, sherlock"
           "$mainMod, e, exec, ${pkgs.nautilus}/bin/nautilus"
 
           # switch workspaces
