@@ -15,7 +15,6 @@
         --protocol-handler=slack \
         --no-default-browser-check \
         --disable-features=DefaultBrowserInSettingsMenu \
-        --ozone-platform=wayland \
         --allow-external-pages=false \
         "$@"
     '')
