@@ -4,7 +4,7 @@
   environment.systemPackages = [
     # TODO: remove js-flags when chromium v31 fixes decommit-pooled-pages issue on systems with 16k pages
     (pkgs.writeShellScriptBin "slack-pwa" ''
-      ${pkgs.chromium}/bin/chromium \
+      ${pkgs.stable.chromium}/bin/chromium \
         --app="https://app.slack.com/client" \
         --class="slack-pwa" \
         --user-data-dir="$HOME/.config/slack-pwa" \
