@@ -25,6 +25,7 @@
     ./linear.nix
     ./nixld.nix
     ./obsidian.nix
+    ./printers.nix
     ./qmk.nix
     ./rofi.nix
     ./shell-aliases.nix

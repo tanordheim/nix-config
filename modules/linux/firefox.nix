@@ -15,6 +15,7 @@
           settings = {
             "browser.download.dir" = "/home/${config.username}/downloads";
             "middlemouse.paste" = false;
+            "print.prefer_system_dialog" = true;
             "privacy.donottrackheader.enabled" = true;
           };
         };
