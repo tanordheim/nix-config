@@ -4,13 +4,8 @@ let
     with pkgs;
     with dotnetCorePackages;
     combinePackages [
-      # latest major versions
-      # dotnet.dotnetCorePackages.sdk_9_0
-      sdk_9_0
-      sdk_8_0
-
-      # specific older versions
-      sdk_9_0_1xx
+      sdk_9_0-bin
+      sdk_8_0-bin
     ];
 
 in
