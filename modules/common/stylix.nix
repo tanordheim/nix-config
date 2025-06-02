@@ -6,7 +6,7 @@
 }:
 let
   scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-  wallpaper = ../../wallpapers/themed/nord/nord-space-station-astronaut.png;
+  wallpaper = ../../wallpapers/themed/catppuccin/mocha/catppuccin-mocha-kurzgesagt-galaxy3.png;
 in
 {
   stylix = {

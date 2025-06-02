@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  nixvim,
   ...
 }:
 let
@@ -28,7 +27,6 @@ in
     ./aws.nix
     ./base-packages.nix
     ./brave.nix
-    ./bruno.nix
     ./chromium.nix
     ./docker.nix
     ./direnv.nix
@@ -85,10 +83,6 @@ in
         home = {
           stateVersion = "24.11";
         };
-
-        imports = [
-          nixvim.homeManagerModules.nixvim
-        ];
       };
     };
   };

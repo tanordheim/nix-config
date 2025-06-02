@@ -14,7 +14,6 @@
     ./displaylink.nix
     ./docker.nix
     ./dunst.nix
-    ./evince.nix
     ./firefox.nix
     ./hypridle.nix
     ./hyprland.nix
@@ -27,7 +26,7 @@
     ./obsidian.nix
     ./printers.nix
     ./qmk.nix
-    ./rofi.nix
+    ./sddm.nix
     ./shell-aliases.nix
     ./sherlock.nix
     ./slack.nix

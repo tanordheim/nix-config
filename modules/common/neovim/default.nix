@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  nixvim,
   config,
   ...
 }:
@@ -8,6 +9,9 @@
   home-manager.users.${config.username} =
     { config, ... }:
     {
+      imports = [
+        nixvim.homeManagerModules.nixvim
+      ];
       programs.nixvim = {
         enable = true;
         defaultEditor = true;

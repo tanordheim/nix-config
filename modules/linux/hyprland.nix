@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   config,
   ...
 }:
@@ -42,32 +43,40 @@
         ];
 
         general = {
-          gaps_in = 5;
+          gaps_in = 10;
           gaps_out = 15;
           border_size = 2;
           layout = "master";
           allow_tearing = false;
+
+          # more snassy border than the default one in Stylix
+          "col.active_border" = lib.mkForce "rgb(8aadf4) rgb(24273A) rgb(24273A) rgb(8aadf4) 45deg";
+          "col.inactive_border" = lib.mkForce "rgb(24273A) rgb(24273A) rgb(24273A) rgb(27273A) 45deg";
         };
 
         decoration = {
           active_opacity = 1;
           fullscreen_opacity = 1;
           inactive_opacity = 1;
-          dim_inactive = false;
+          dim_inactive = true;
           dim_strength = 0.2;
+          rounding = 5;
 
           blur = {
             enabled = true;
-            size = 8;
-            passes = 1;
+            size = 2;
+            passes = 4;
+            vibrancy = 0.1000;
+            ignore_opacity = true;
             new_optimizations = true;
           };
 
           shadow = {
             enabled = true;
-            range = 6;
-            render_power = 3;
+            range = 3;
+            render_power = 1;
             ignore_window = true;
+            offset = "20 20";
           };
         };
 

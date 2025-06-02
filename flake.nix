@@ -12,8 +12,8 @@
     apple-silicon-support = {
       # temp fix for mesa deprecation, see https://github.com/tpwrules/nixos-apple-silicon/issues/285 and https://github.com/tpwrules/nixos-apple-silicon/pull/284
       # url = "git+file:///home/trond/code/nixos-apple-silicon?ref=mesa-deprecation-fix";
-      # url = "github:tpwrules/nixos-apple-silicon";
-      url = "github:oliverbestmann/nixos-apple-silicon";
+      url = "github:nix-community/nixos-apple-silicon";
+      # url = "github:oliverbestmann/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -36,8 +36,16 @@
     };
 
     # Sherlock app launcher
-    # sherlock.url = "github:Skxxtz/sherlock";
-    sherlock.url = "github:tanordheim/sherlock/fix-aarch64-build";
+    sherlock = {
+      url = "github:Skxxtz/sherlock/unstable/release-v0.1.13";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # HyprPanel Hyprland bar
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Stylix system wide color scheming/styling
     stylix.url = "github:danth/stylix";
