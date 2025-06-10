@@ -70,8 +70,9 @@
           theme.bar.buttons.workspaces.enableBorder = false;
 
           bar.clock.format = "%b %d %Y %H:%M";
-          bar.customModules.netstat.icon = "󰣺";
-          bar.customModules.netstat.round = true;
+          # bar.customModules.netstat.icon = "󰣺";
+          # bar.customModules.netstat.round = true;
+          bar.customModules.netstat.labelType = "full";
           notifications.active_monitor = true;
           menus.clock.time.military = true;
         };
