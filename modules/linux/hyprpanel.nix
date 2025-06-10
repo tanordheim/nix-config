@@ -65,6 +65,8 @@
           theme.bar.buttons.borderSize = "0.1em";
           theme.bar.buttons.radius = "0.3em";
           theme.bar.buttons.workspaces.enableBorder = false;
+
+          bar.clock.format = "%b %d %Y %H:%M";
           menus.clock.time.military = true;
         };
       };
