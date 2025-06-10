@@ -77,6 +77,10 @@
           notifications.active_monitor = true;
           menus.clock.time.military = true;
         };
+
+        override = {
+          theme.bar.buttons.modules.netstat.icon_background = "#11111b";
+        };
       };
     };
 }
