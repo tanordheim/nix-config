@@ -5,6 +5,10 @@
   ...
 }:
 {
+  environment.systemPackages = with pkgs; [
+    gdk-pixbuf
+    librsvg
+  ];
   services.dbus.packages = with pkgs; [
     gdk-pixbuf
     librsvg
