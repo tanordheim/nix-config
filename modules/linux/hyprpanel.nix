@@ -30,7 +30,6 @@
               # portrait monitor
               "1" = {
                 left = [
-                  "dashboard"
                   "workspaces"
                   "netstat"
                 ];
@@ -67,6 +66,7 @@
           theme.bar.buttons.workspaces.enableBorder = false;
 
           bar.clock.format = "%b %d %Y %H:%M";
+          notifications.active_monitor = true;
           menus.clock.time.military = true;
         };
       };
