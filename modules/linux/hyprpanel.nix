@@ -4,6 +4,9 @@
   ...
 }:
 {
+  services.power-profiles-daemon.enable = true; # Required for hyprpanel battery module
+  services.upower.enable = true; # Required for hyprpanel battery module
+
   home-manager.users.${config.username} =
     { config, ... }:
     let
@@ -39,7 +42,6 @@
                   "volume"
                   "network"
                   "cpu"
-                  "cpuTemp"
                   "ram"
                   "battery"
                   "clock"
@@ -68,7 +70,6 @@
           theme.bar.buttons.workspaces.enableBorder = false;
 
           bar.clock.format = "%b %d %Y %H:%M";
-          bar.customModules.cpuTemp.sensor = "/sys/devices/platform/soc/290400000.smc/macsmc_hwmon/hwmon/hwmon4/temp1_input";
           notifications.active_monitor = true;
           menus.clock.time.military = true;
         };
