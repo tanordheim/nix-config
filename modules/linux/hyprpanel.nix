@@ -33,6 +33,7 @@
               # portrait monitor
               "1" = {
                 left = [
+                  "dashboard"
                   "workspaces"
                   "netstat"
                 ];
