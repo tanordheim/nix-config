@@ -19,6 +19,7 @@
     ./hypridle.nix
     ./hyprland.nix
     ./hyprlock.nix
+    ./hyprpanel.nix
     ./hyprpaper.nix
     ./hyprpolkitagent.nix
     ./keyboard.nix
