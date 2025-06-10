@@ -13,6 +13,7 @@
     ./discord.nix
     ./displaylink.nix
     ./docker.nix
+    ./dolphin.nix
     ./dunst.nix
     ./firefox.nix
     ./hypridle.nix
