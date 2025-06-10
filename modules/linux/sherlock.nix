@@ -5,19 +5,6 @@
   ...
 }:
 {
-  environment.systemPackages = with pkgs; [
-    gdk-pixbuf
-    (gdk-pixbuf.dev)
-    librsvg
-  ];
-  system.activationScripts.gdk-pixbuf = ''
-    ${pkgs.gdk-pixbuf.dev}/bin/gdk-pixbuf-query-loaders --update-cache
-  '';
-  services.dbus.packages = with pkgs; [
-    gdk-pixbuf
-    librsvg
-  ];
-
   home-manager.users.${config.username} =
     { config, lib, ... }:
     let
