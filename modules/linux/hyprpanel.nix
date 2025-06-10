@@ -27,7 +27,6 @@
               # portrait monitor
               "1" = {
                 left = [
-                  "dashboard"
                   "workspaces"
                   "netstat"
                 ];
@@ -51,6 +50,10 @@
               };
             };
           };
+
+          theme.font.size = "1rem";
+          theme.bar.scaling = 85;
+          theme.bar.floating = true;
         };
       };
     };
