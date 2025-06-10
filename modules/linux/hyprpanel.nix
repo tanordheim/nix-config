@@ -58,9 +58,11 @@
           theme.font.name = "${config.stylix.fonts.monospace.name}";
           theme.font.size = "${builtins.toString config.stylix.fonts.sizes.desktop}pt";
           theme.bar.floating = true;
+          theme.bar.border_radius = "0.4em";
           theme.bar.buttons.enableBorders = true;
           theme.bar.buttons.borderSize = "0.1em";
-          theme.bar.buttons.y_margins = "-0.1em";
+          theme.bar.buttons.radius = "0.3em";
+          theme.bar.buttons.workspaces.enableBorder = false;
         };
       };
     };
