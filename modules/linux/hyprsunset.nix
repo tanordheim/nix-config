@@ -1,6 +1,7 @@
 { pkgs, config, ... }:
 {
   home-manager.users.${config.username}.services.hyprsunset = {
+    enable = true;
     transitions = {
       sunrise = {
         calendar = "*-*-* 7:00:00";
