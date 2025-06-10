@@ -21,6 +21,7 @@
     ./hyprpanel.nix
     ./hyprpaper.nix
     ./hyprpolkitagent.nix
+    ./hyprsunset.nix
     ./keyboard.nix
     ./linear.nix
     ./nixld.nix
