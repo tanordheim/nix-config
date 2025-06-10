@@ -5,6 +5,11 @@
   ...
 }:
 {
+  services.dbus.packages = with pkgs; [
+    gdk-pixbuf
+    librsvg
+  ];
+
   home-manager.users.${config.username} =
     { config, lib, ... }:
     let
