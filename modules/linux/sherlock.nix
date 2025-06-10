@@ -1,5 +1,13 @@
-{ sherlock, config, ... }:
 {
+  sherlock,
+  config,
+  pkgs,
+  ...
+}:
+{
+  environment.systemPackages = with pkgs; [
+    librsvg
+  ];
   home-manager.users.${config.username} =
     { config, lib, ... }:
     let
