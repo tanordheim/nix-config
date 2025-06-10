@@ -37,7 +37,7 @@
 
     # Sherlock app launcher
     sherlock = {
-      url = "github:Skxxtz/sherlock/unstable/release-v0.1.13";
+      url = "github:Skxxtz/sherlock";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

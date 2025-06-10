@@ -5,9 +5,6 @@
   ...
 }:
 {
-  environment.systemPackages = with pkgs; [
-    librsvg
-  ];
   home-manager.users.${config.username} =
     { config, lib, ... }:
     let
