@@ -6,6 +6,9 @@
 {
   home-manager.users.${config.username} =
     { config, ... }:
+    let
+      colors = config.lib.stylix.colors;
+    in
     {
       imports = [
         hyprpanel.homeManagerModules.hyprpanel
@@ -51,9 +54,9 @@
             };
           };
 
-          theme.font.size = "1rem";
-          theme.font.weight = 500;
-          theme.bar.scaling = 85;
+          theme.font.name = "${config.stylix.fonts.monospace.name}";
+          theme.font.size = "${builtins.toString config.stylix.fonts.sizes.desktop}pt";
+          # theme.bar.scaling = 85;
           theme.bar.floating = true;
           theme.bar.buttons.enableBorders = true;
           theme.bar.buttons.borderSize = "0.1em";
