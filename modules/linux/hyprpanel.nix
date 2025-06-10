@@ -19,6 +19,13 @@
             "bar.layouts" = {
               # internal monitor
               "0" = {
+                left = [ ];
+                middle = [ ];
+                right = [ ];
+              };
+
+              # portrait monitor
+              "1" = {
                 left = [
                   "dashboard"
                   "workspaces"
@@ -37,17 +44,10 @@
               };
 
               # portrait monitor
-              "1" = {
+              "2" = {
                 left = [ "workspaces" ];
                 middle = [ ];
                 right = [ "windowtitle" ];
-              };
-
-              # main monitor
-              "2" = {
-                left = [ ];
-                middle = [ ];
-                right = [ ];
               };
             };
           };
