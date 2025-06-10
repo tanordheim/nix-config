@@ -54,7 +54,7 @@
             };
           };
 
-          theme.font.name = "${config.stylix.fonts.monospace.name}";
+          theme.font.name = "${config.stylix.fonts.sansSerif.name}";
           theme.font.size = "${builtins.toString config.stylix.fonts.sizes.desktop}pt";
           # theme.bar.scaling = 85;
           theme.bar.floating = true;
