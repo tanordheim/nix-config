@@ -52,7 +52,7 @@
           };
 
           theme.font.size = "1rem";
-          theme.font.weight = 400;
+          theme.font.weight = 500;
           theme.bar.scaling = 85;
           theme.bar.floating = true;
           theme.bar.buttons.enableBorders = true;
