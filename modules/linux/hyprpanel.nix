@@ -55,9 +55,9 @@
           };
 
           theme.name = "catppuccin_mocha";
-          theme.font.name = "${config.stylix.fonts.sansSerif.name}";
+          theme.font.name = "${config.stylix.fonts.monospace.name}";
           theme.font.size = "${builtins.toString config.stylix.fonts.sizes.desktop}pt";
-          theme.font.weight = 600;
+          # theme.font.weight = 600;
           # theme.bar.scaling = 85;
           theme.bar.floating = true;
           theme.bar.buttons.enableBorders = true;
