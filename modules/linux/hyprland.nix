@@ -225,8 +225,8 @@
 
         monitor = [
           "HDMI-A-1,3440x1440@100.00Hz,1440x350,1"
-          "DVI-I-1,preferred,0x0,1,transform,1"
-          "eDP-1,preferred,4880x0,1"
+          "DVI-I-1,2560x1440,0x0,1,transform,1"
+          "eDP-1,3456x2160,4880x0,1"
           ",preferred,auto,1"
         ];
 
