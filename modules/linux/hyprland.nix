@@ -197,6 +197,10 @@
           "workspace 8 silent, class:^(chrome-linear.app__)(.*)$"
           "workspace 10 silent, class:^(1Password)$, floating:0"
           "pin, class:^(1Password)$, title:^(1Password)$, floating:1"
+
+          # fix dragging tabs/splits in jetbrains tools
+          "float, class:^(jetbrains-.*),title:^(win.*)"
+          "noinitialfocus, opacity 0.9 0.9, class:^(jetbrains-.*)"
         ];
 
         exec-once = [
