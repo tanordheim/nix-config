@@ -75,7 +75,6 @@
       nnoremap <leader>vr :source ~/.ideavimrc<CR>
 
       " building and testing
-      nnoremap <leader>b :action BuildSolutionAction<CR>
       nnoremap <leader>B :action BuildSolutionAction<CR>
       nnoremap <leader>tt :action RiderUnitTestRunContextAction<CR>
       nnoremap <leader>ta :action RunAllTestsInCurrentFile<CR>
