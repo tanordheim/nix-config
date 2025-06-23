@@ -15,6 +15,7 @@
     ./docker.nix
     ./dolphin.nix
     ./firefox.nix
+    ./gdm.nix
     ./hypridle.nix
     ./hyprland.nix
     ./hyprlock.nix
@@ -28,7 +29,6 @@
     ./obsidian.nix
     ./printers.nix
     ./qmk.nix
-    ./sddm.nix
     ./shell-aliases.nix
     ./sherlock.nix
     ./slack.nix
