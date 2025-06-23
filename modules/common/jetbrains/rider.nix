@@ -25,13 +25,18 @@ let
         -Xmx2g
         -Dawt.toolkit.name=WLToolkit
       '';
+
+  riderpkg = pkgs.jetbrains.rider.override {
+    libxml2 = pkgs.runCommand "libxml2.so.2" { } ''
+      install -Dm555                       \
+        ${pkgs.libxml2.out}/lib/libxml2.so \
+        $out/lib/libxml2.so.2
+    '';
+  };
 in
 {
   home-manager.users.${config.username}.home = {
-    packages = with pkgs; [
-      jetbrains.rider
-    ];
-
+    packages = [ riderpkg ];
     file = {
       "${vmOptionsFile}".text = vmOptionsContent;
     };
