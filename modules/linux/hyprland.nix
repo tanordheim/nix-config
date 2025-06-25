@@ -215,6 +215,7 @@
 
         input = {
           kb_layout = "no";
+          kb_variant = "nodeadkeys";
           float_switch_override_focus = false;
           numlock_by_default = true;
           repeat_rate = 50;
