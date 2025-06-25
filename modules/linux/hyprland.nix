@@ -75,7 +75,6 @@
             enabled = true;
             range = 4;
             render_power = 3;
-            offset = "2 2";
           };
         };
 
