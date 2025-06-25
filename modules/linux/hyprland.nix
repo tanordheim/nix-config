@@ -65,7 +65,7 @@
           blur = {
             enabled = true;
             size = 2;
-            passes = 4;
+            passes = 2;
             vibrancy = 0.1000;
             ignore_opacity = true;
             new_optimizations = true;
@@ -73,10 +73,9 @@
 
           shadow = {
             enabled = true;
-            range = 3;
+            range = 4;
             render_power = 1;
-            ignore_window = true;
-            offset = "20 20";
+            offset = "2 2";
           };
         };
 
