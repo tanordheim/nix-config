@@ -2,9 +2,13 @@
   pkgs,
   lib,
   config,
+  hyprland,
   ...
 }:
 {
+  imports = [
+    hyprland.nixosModules.default
+  ];
   environment.systemPackages = with pkgs; [
     hyprland-qtutils
     wl-clipboard
@@ -12,23 +16,24 @@
 
   programs.hyprland = {
     enable = true;
-    package = pkgs.hyprland;
-    portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
 
   home-manager.users.${config.username} = {
+    imports = [
+      hyprland.homeManagerModules.default
+    ];
     xdg.portal = {
       enable = true;
-      configPackages = with pkgs; [
-        xdg-desktop-portal-hyprland
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal
-      ];
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-hyprland
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal
-      ];
+      # configPackages = with pkgs; [
+      #   xdg-desktop-portal-hyprland
+      #   xdg-desktop-portal-gtk
+      #   xdg-desktop-portal
+      # ];
+      # extraPortals = with pkgs; [
+      #   xdg-desktop-portal-hyprland
+      #   xdg-desktop-portal-gtk
+      #   xdg-desktop-portal
+      # ];
       xdgOpenUsePortal = true;
     };
     wayland.windowManager.hyprland = {

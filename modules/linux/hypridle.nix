@@ -1,7 +1,14 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  hypridle,
+  ...
+}:
 {
   home-manager.users.${config.username}.services.hypridle = {
     enable = true;
+    package = hypridle.packages.${pkgs.system}.default;
+
     settings = {
       general = {
         lock_cmd = "pidof hyprlock || hyprlock"; # avoid starting multiple instances
