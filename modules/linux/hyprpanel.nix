@@ -18,7 +18,7 @@
 
         settings = {
           layout = {
-            "bar.layouts" = {
+            bar.layouts = {
               # internal monitor
               "0" = {
                 left = [ ];
