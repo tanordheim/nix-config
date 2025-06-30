@@ -17,41 +17,39 @@
         enable = true;
 
         settings = {
-          layout = {
-            bar.layouts = {
-              # internal monitor
-              "0" = {
-                left = [ ];
-                middle = [ ];
-                right = [ ];
-              };
+          bar.layouts = {
+            # internal monitor
+            "0" = {
+              left = [ ];
+              middle = [ ];
+              right = [ ];
+            };
 
-              # portrait monitor
-              "1" = {
-                left = [
-                  "dashboard"
-                  "workspaces"
-                  "netstat"
-                ];
-                middle = [ "windowtitle" ];
-                right = [
-                  "systray"
-                  "volume"
-                  "network"
-                  "cpu"
-                  "ram"
-                  "battery"
-                  "clock"
-                  "notifications"
-                ];
-              };
+            # portrait monitor
+            "1" = {
+              left = [
+                "dashboard"
+                "workspaces"
+                "netstat"
+              ];
+              middle = [ "windowtitle" ];
+              right = [
+                "systray"
+                "volume"
+                "network"
+                "cpu"
+                "ram"
+                "battery"
+                "clock"
+                "notifications"
+              ];
+            };
 
-              # portrait monitor
-              "2" = {
-                left = [ "workspaces" ];
-                middle = [ ];
-                right = [ "windowtitle" ];
-              };
+            # portrait monitor
+            "2" = {
+              left = [ "workspaces" ];
+              middle = [ ];
+              right = [ "windowtitle" ];
             };
           };
 
