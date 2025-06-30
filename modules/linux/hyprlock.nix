@@ -21,7 +21,6 @@ in
 
         settings = {
           general = {
-            disable_loading_bar = true;
             hide_cursor = true;
           };
 
@@ -33,7 +32,7 @@ in
           label = [
             {
               text = "$TIME";
-              color = colors.withHashtag.base05;
+              # color = colors.withHashtag.base05;
               font_size = config.stylix.fonts.sizes.applications * 7;
               font_family = config.stylix.fonts.sansSerif.name;
               position = "-30, 0";
@@ -42,7 +41,7 @@ in
             }
             {
               text = "cmd[update:43200000] date +\"%A, %d %B %Y\"";
-              color = colors.withHashtag.base05;
+              # color = colors.withHashtag.base05;
               font_size = config.stylix.fonts.sizes.applications * 2;
               font_family = config.stylix.fonts.sansSerif.name;
               position = "-30, -150";
@@ -54,7 +53,7 @@ in
           image = {
             path = "${config.lib.file.mkOutOfStoreSymlink facePath}";
             size = "100";
-            border_color = colors.withHashtag.base0E;
+            # border_color = colors.withHashtag.base0E;
             position = "0, 75";
             halign = "center";
             valign = "center";
@@ -70,7 +69,7 @@ in
             placeholder_text = "$USER";
             hide_input = false;
             fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
-            capslock_color = colors.withHashtag.base0A;
+            # capslock_color = colors.withHashtag.base0A;
             position = "0, -47";
             halign = "center";
             valign = "center";
