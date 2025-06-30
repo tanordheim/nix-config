@@ -1,5 +1,4 @@
 {
-  hyprpanel,
   pkgs,
   config,
   ...
@@ -14,12 +13,8 @@
       colors = config.lib.stylix.colors;
     in
     {
-      imports = [
-        hyprpanel.homeManagerModules.hyprpanel
-      ];
       programs.hyprpanel = {
         enable = true;
-        hyprland.enable = true;
 
         settings = {
           layout = {
