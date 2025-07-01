@@ -44,7 +44,6 @@
     # Hyprland
     hypridle.url = "github:hyprwm/hypridle";
     hyprland.url = "github:hyprwm/hyprland";
-    hyprlock.url = "github:hyprwm/hyprlock";
     hyprpaper.url = "github:hyprwm/hyprpaper";
     hyprpolkitagent.url = "github:hyprwm/hyprpolkitagent";
     hyprsunset.url = "github:hyprwm/hyprsunset";
