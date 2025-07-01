@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  hyprlock,
   ...
 }:
 let
@@ -16,6 +17,7 @@ in
     {
       programs.hyprlock = {
         enable = true;
+        package = hyprlock.packages.${pkgs.system}.default;
 
         settings = {
           general = {
