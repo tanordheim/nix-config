@@ -1,13 +1,12 @@
 {
   pkgs,
   config,
-  hyprpolkitagent,
   ...
 }:
 {
   home-manager.users.${config.username} = {
-    home.packages = [
-      hyprpolkitagent.packages.${pkgs.system}.default
+    home.packages = with pkgs; [
+      hyprpolkitagent
     ];
     wayland.windowManager.hyprland.settings.exec-once = [
       "systemctl --user start hyprpolkitagent"

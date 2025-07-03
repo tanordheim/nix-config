@@ -1,13 +1,11 @@
 {
   pkgs,
   config,
-  hypridle,
   ...
 }:
 {
   home-manager.users.${config.username}.services.hypridle = {
     enable = true;
-    package = hypridle.packages.${pkgs.system}.default;
 
     settings = {
       general = {
