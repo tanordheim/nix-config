@@ -218,12 +218,32 @@
           };
         };
 
-        monitor = [
-          "DVI-I-1, 2560x1440@60, 0x0, 1, transform, 1"
-          "DVI-I-1, addreserved, 0, 0, 0, 0"
-          "HDMI-A-1, 3440x1440@100, 1440x350, 1"
-          "eDP-1, 2456x2160@60, 4880x-10, 1"
-          ", preferred, auto, 1"
+        monitorv2 = [
+          {
+            output = "DVI-I-1";
+            mode = "2560x1440@60";
+            position = "0x0";
+            scale = 1;
+            transform = 1; # portrait
+          }
+          {
+            output = "HDMI-A-1";
+            mode = "3440x1440@100";
+            position = "1440x350";
+            scale = 1;
+          }
+          {
+            output = "eDP-1";
+            mode = "2456x2160@60";
+            position = "4880x-10";
+            scale = 1;
+          }
+          {
+            output = "";
+            mode = "preferred";
+            position = "auto";
+            scale = 1;
+          }
         ];
 
         workspace = [
