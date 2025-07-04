@@ -226,7 +226,7 @@
         };
 
         monitor = [
-          "DVI-I-1, 2560x1440@60, 0x0, 1, transform, 1"
+          "DVI-I-1, 2560x1440@60, 0x0, 1, transform, 1, addreserved, 0, 0, 0, 0"
           "HDMI-A-1, 3440x1440@100, 1440x350, 1"
           "eDP-1, 2456x2160@60, 4880x-10, 1"
           # "DVI-I-1,2560x1440,0x0,1,transform,1"
