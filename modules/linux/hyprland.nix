@@ -218,6 +218,10 @@
           };
         };
 
+        cursor = {
+          no_hardware_cursors = true;
+        };
+
         # monitorv2 = [
         #   {
         #     output = "DVI-I-1";
