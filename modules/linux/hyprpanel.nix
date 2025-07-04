@@ -25,7 +25,7 @@
               right = [ ];
             };
 
-            # portrait monitor
+            # landscape monitor
             "1" = {
               left = [
                 "dashboard"
@@ -47,9 +47,9 @@
 
             # portrait monitor
             "2" = {
-              left = [ "workspaces" ];
+              left = [ ];
               middle = [ ];
-              right = [ "windowtitle" ];
+              right = [ ];
             };
           };
 

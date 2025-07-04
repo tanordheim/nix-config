@@ -20,14 +20,7 @@
       enable = true;
       configPackages = with pkgs; [
         xdg-desktop-portal-hyprland
-        #   xdg-desktop-portal-gtk
-        #   xdg-desktop-portal
       ];
-      # extraPortals = with pkgs; [
-      # xdg-desktop-portal-hyprland
-      # xdg-desktop-portal-gtk
-      #   xdg-desktop-portal
-      # ];
       xdgOpenUsePortal = true;
     };
     wayland.windowManager.hyprland = {
@@ -227,7 +220,7 @@
 
         monitor = [
           "DVI-I-1, 2560x1440@60, 0x0, 1, transform, 1"
-          "DVI-I-1, addreserved, 0, -48, 0, 0"
+          "DVI-I-1, addreserved, 0, 0, 0, 0"
           "HDMI-A-1, 3440x1440@100, 1440x350, 1"
           "eDP-1, 2456x2160@60, 4880x-10, 1"
           ", preferred, auto, 1"
