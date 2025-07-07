@@ -18,7 +18,7 @@
     ./gdm.nix
     ./hypridle.nix
     ./hyprland.nix
-    ./hyprlock.nix
+    # ./hyprlock.nix
     ./hyprpanel.nix
     ./hyprpaper.nix
     ./hyprpolkitagent.nix
