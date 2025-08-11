@@ -6,16 +6,17 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    nixpkgs-custom.url = "github:NixOS/nixpkgs?ref=pull/419026/merge";
-    # nixpkgs-custom.url = "github:tanordheim/nixpkgs/custom-patches";
+    # nixpkgs-custom.url = "github:NixOS/nixpkgs?ref=pull/419026/merge";
+    nixpkgs-custom.url = "github:tanordheim/nixpkgs/custom-patches";
 
     # Apple silicon support (for NixOS on Mac)
     apple-silicon-support = {
       # temp fix for mesa deprecation, see https://github.com/tpwrules/nixos-apple-silicon/issues/285 and https://github.com/tpwrules/nixos-apple-silicon/pull/284
       # url = "git+file:///home/trond/code/nixos-apple-silicon?ref=mesa-deprecation-fix";
-      url = "github:nix-community/nixos-apple-silicon";
+      # url = "github:nix-community/nixos-apple-silicon";
+      url = "github:nix-community/nixos-apple-silicon?ref=pull/331/merge";
       # url = "github:oliverbestmann/nixos-apple-silicon";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Nix-darwin (for macOS machines)
@@ -33,13 +34,7 @@
     # Nixvim vim config management
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Sherlock app launcher
-    sherlock = {
-      url = "github:Skxxtz/sherlock";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Stylix system wide color scheming/styling
@@ -64,7 +59,7 @@
     };
     nix-homebrew = {
       url = "github:zhaofengli/nix-homebrew";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Private config

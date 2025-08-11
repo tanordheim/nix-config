@@ -37,9 +37,6 @@
         "${roundToString h}, ${roundToString s}%, ${roundToString l}%";
     in
     {
-      imports = [
-        sherlock.homeManagerModules.default
-      ];
       programs.sherlock = {
         enable = true;
         settings = {
@@ -94,7 +91,7 @@
               */
 
               :root {
-                  /* backgrounds */ 
+                  /* backgrounds */
                   --background: ${rgb-to-hsl "base00"}; /* default background */
                   --border: ${rgb-to-hsl "base0D"}; /* focused window border */
                   --text: ${rgb-to-hsl "base05"}; /* default text */
@@ -219,7 +216,7 @@
               .tile.event-tile:selected #time-label,
               .tile.event-tile:selected #title-label{
                   color: hsla(var(--text-active), 0.6);
-              } 
+              }
 
               /* NEXT PAGE */
               .next_tile {

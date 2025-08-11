@@ -10,7 +10,7 @@
     { config, ... }:
     {
       imports = [
-        nixvim.homeManagerModules.nixvim
+        nixvim.homeModules.nixvim
       ];
       programs.nixvim = {
         enable = true;

@@ -26,7 +26,8 @@ let
         -Dawt.toolkit.name=WLToolkit
       '';
 
-  riderpkg = pkgs.custom.jetbrains.rider;
+  # riderpkg = pkgs.custom.jetbrains.rider;
+  riderpkg = pkgs.jetbrains.rider;
   # riderpkg = pkgs.jetbrains.rider.override {
   #   libxml2 = pkgs.runCommand "libxml2.so.2" { } ''
   #     install -Dm555                       \

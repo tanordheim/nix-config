@@ -16,8 +16,8 @@ inputs.nixpkgs.lib.nixosSystem rec {
         hardware = {
           asahi = {
             peripheralFirmwareDirectory = /boot/asahi;
-            useExperimentalGPUDriver = true;
-            experimentalGPUInstallMode = "replace";
+            # useExperimentalGPUDriver = true;
+            # experimentalGPUInstallMode = "replace";
             setupAsahiSound = true;
           };
           graphics = {
