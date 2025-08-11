@@ -351,18 +351,18 @@
         ]
       },
       "locked": {
-        "lastModified": 1754896691,
-        "narHash": "sha256-x92S9H9+98ue4CIgVeEnjWj9OPENAjC8sE1pqiAh2qE=",
+        "lastModified": 1754899977,
+        "narHash": "sha256-+ive8iG/U5M8DRF2jujgx6Ki2gsO8RnqyvenwsgxtV0=",
         "ref": "main",
-        "rev": "a36357053a5770882e90a99451dc3c5816eae314",
-        "revCount": 32,
+        "rev": "9640ba6345fde3a2e5f50cec7a6e308ffce86eff",
+        "revCount": 33,
         "type": "git",
-        "url": "ssh://git@github.com/tanordheim/nix-config-private.git"
+        "url": "file:///home/trond/code/nix-config-private"
       },
       "original": {
         "ref": "main",
         "type": "git",
-        "url": "ssh://git@github.com/tanordheim/nix-config-private.git"
+        "url": "file:///home/trond/code/nix-config-private"
       }
     },
     "nix-darwin": {
