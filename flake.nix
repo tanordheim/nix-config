@@ -64,8 +64,8 @@
 
     # Private config
     nix-config-private = {
-      # url = "git+ssh://git@github.com/tanordheim/nix-config-private.git?ref=main";
-      url = "git+file:///home/trond/code/nix-config-private?ref=main";
+      url = "git+ssh://git@github.com/tanordheim/nix-config-private.git?ref=main";
+      # url = "git+file:///home/trond/code/nix-config-private?ref=main";
       # url = "git+file:///Users/trond/code/nix-config-private?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
