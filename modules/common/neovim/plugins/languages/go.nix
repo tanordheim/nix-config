@@ -63,7 +63,7 @@
       };
     };
 
-    plugins.neotest.adapters.golang.enable = true;
+    # plugins.neotest.adapters.golang.enable = true;
     plugins.dap-go = {
       enable = true;
       settings.delve.path = "${pkgs.delve}/bin/dlv";
