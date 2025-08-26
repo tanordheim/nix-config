@@ -63,13 +63,9 @@
       };
     };
 
-    plugins.neotest.adapters.golang = {
-      enable = true;
-      package = pkgs.vimPlugins.neotest.overrideAttrs {
-        # tests broken, see https://github.com/nvim-neotest/neotest/issues/530
-        doCheck = false;
-      };
-    };
+    # plugins.neotest.adapters.golang = {
+    #   enable = true;
+    # };
     plugins.dap-go = {
       enable = true;
       settings.delve.path = "${pkgs.delve}/bin/dlv";

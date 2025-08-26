@@ -104,21 +104,17 @@
       };
     };
 
-    plugins.neotest.adapters.dotnet = {
-      enable = true;
-      package = pkgs.vimPlugins.neotest.overrideAttrs {
-        # tests broken, see https://github.com/nvim-neotest/neotest/issues/530
-        doCheck = false;
-      };
-      settings = {
-        discovery_root = "solution";
-        dotnet_additional_args = [
-          "--no-restore"
-          "--no-build"
-          "--nologo"
-        ];
-      };
-    };
+    # plugins.neotest.adapters.dotnet = {
+    #   enable = true;
+    #   settings = {
+    #     discovery_root = "solution";
+    #     dotnet_additional_args = [
+    #       "--no-restore"
+    #       "--no-build"
+    #       "--nologo"
+    #     ];
+    #   };
+    # };
 
     plugins.dap = {
       configurations.cs = [
