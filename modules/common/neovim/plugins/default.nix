@@ -27,7 +27,7 @@
     ./lsp.nix
     ./lualine.nix
     ./luasnip
-    # ./neotest.nix
+    ./neotest.nix
     ./noice.nix
     ./nvim-highlight-colors.nix
     ./render-markdown.nix
