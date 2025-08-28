@@ -4,5 +4,6 @@
     pipenv
     pyenv
     python3
+    uv
   ];
 }
