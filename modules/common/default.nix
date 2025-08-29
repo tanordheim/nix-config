@@ -28,6 +28,7 @@ in
     ./base-packages.nix
     ./brave.nix
     ./chromium.nix
+    ./claude.nix
     ./docker.nix
     ./direnv.nix
     ./dotnet
