@@ -283,32 +283,29 @@ in
             sketchybar --add item space.padding_left left \
                        --set space.padding_left "''${space_padding[@]}"
 
-            for m in $(${pkgs.aerospace}/bin/aerospace list-monitors | awk '{print $1}'); do
-              for i in $(${pkgs.aerospace}/bin/aerospace list-workspaces --monitor $m); do
-                sid=$i
-                # skip scratch workspace
-                if [ "$sid" == "Z" ]; then
-                  continue
-                fi
+            for i in $(${pkgs.aerospace}/bin/aerospace list-workspaces); do
+              sid=$i
+              # skip scratch workspace
+              if [ "$sid" == "Z" ]; then
+                continue
+              fi
 
-                space=(
-                  display=$m
-                  label.padding_left=10
-                  label.padding_right=10
-                  label="$sid"
-                  label.color=0xff${palette.text.hex}
-                  label.highlight_color=0xff${palette.surface0.hex}
-                  label.y_offset=1
-                  background.color=0xff${palette.subtext0.hex}
-                  background.drawing=off
-                  click_script="${pkgs.aerospace}/bin/aerospace workspace $sid"
-                  script="${pluginDir}/aerospace.sh $sid"
-                )
-                sketchybar --add item space.$sid left \
-                           --set space.$sid "''${space[@]}" \
-                           --subscribe space.$sid mouse.clicked \
-                           --subscribe space.$sid aerospace_workspace_change
-              done
+              space=(
+                label.padding_left=10
+                label.padding_right=10
+                label="$sid"
+                label.color=0xff${palette.text.hex}
+                label.highlight_color=0xff${palette.surface0.hex}
+                label.y_offset=1
+                background.color=0xff${palette.subtext0.hex}
+                background.drawing=off
+                click_script="${pkgs.aerospace}/bin/aerospace workspace $sid"
+                script="${pluginDir}/aerospace.sh $sid"
+              )
+              sketchybar --add item space.$sid left \
+                         --set space.$sid "''${space[@]}" \
+                         --subscribe space.$sid mouse.clicked \
+                         --subscribe space.$sid aerospace_workspace_change
             done
 
             sketchybar --add item space.padding_right left \
