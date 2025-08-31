@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
   # https://macos-defaults.com/finder/
 
@@ -11,7 +11,7 @@
       SortDirection = 0; # descending
     };
     CustomUserPreferences = {
-      "~/Library/Preferences/ByHost/com.apple.controlcenter.plist" = {
+      "/Users/${config.username}/Library/Preferences/ByHost/com.apple.controlcenter.plist" = {
         "AirplayReceiverEnabled" = 0; # disable airplay receiver binding to port 5000 and 7000
       };
       "com.apple.desktopservices" = {
@@ -97,7 +97,7 @@
     };
   };
 
-  system.activationScripts.extraUserActivation.text =
+  system.activationScripts.disableHotKeys.text =
     let
       hotkeys = [
         32 # mission control
@@ -126,5 +126,6 @@
     in
     ''
       ${lib.concatStringsSep "\n" disableHotKeyCommands}
+      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
     '';
 }

@@ -2,6 +2,6 @@
 
 set -e
 
-nix run nix-darwin -- switch --flake .
-current=$(darwin-rebuild --list-generations | grep current)
+sudo darwin-rebuild switch --flake .
+current=$(sudo darwin-rebuild --list-generations | grep current)
 git commit -am "$current"

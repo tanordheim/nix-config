@@ -27,8 +27,5 @@
     ./users.nix
   ];
 
-  # Automatically reload settings from the database and apply them to the current session, avoiding relog to get changes to take effect
-  system.activationScripts.postUserActivation.text = ''
-    /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-  '';
+  system.primaryUser = "trond";
 }
