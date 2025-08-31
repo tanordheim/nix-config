@@ -6,6 +6,7 @@
     ./html.nix
     ./javascript.nix
     ./lua.nix
+    ./kotlin.nix
     ./nix.nix
     ./proto.nix
     ./python.nix

@@ -36,6 +36,7 @@ in
     ./fonts.nix
     ./git.nix
     ./go.nix
+    ./java.nix
     ./jetbrains
     ./kaf.nix
     ./kubernetes.nix

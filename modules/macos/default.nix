@@ -9,10 +9,12 @@
     ./awsvpn.nix
     ./brave.nix
     ./chromium.nix
+    ./cocoapods.nix
     ./discord.nix
     ./displaylink.nix
     ./firefox.nix
     ./homebrew.nix
+    ./java.nix
     ./linear.nix
     ./logitech.nix
     ./nix.nix
