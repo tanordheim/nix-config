@@ -283,7 +283,7 @@ in
             sketchybar --add item space.padding_left left \
                        --set space.padding_left "''${space_padding[@]}"
 
-            for i in $(${pkgs.aerospace}/bin/aerospace list-workspaces); do
+            for i in $(${pkgs.aerospace}/bin/aerospace list-workspaces --all); do
               sid=$i
               # skip scratch workspace
               if [ "$sid" == "Z" ]; then
@@ -291,7 +291,6 @@ in
               fi
 
               space=(
-                display=all
                 label.padding_left=10
                 label.padding_right=10
                 label="$sid"
