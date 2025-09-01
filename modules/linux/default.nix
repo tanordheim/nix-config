@@ -26,6 +26,7 @@
     ./linear.nix
     ./nixld.nix
     ./obsidian.nix
+    ./postgresql.nix
     ./printers.nix
     ./qmk.nix
     ./shell-aliases.nix
