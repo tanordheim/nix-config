@@ -24,7 +24,7 @@
     ./dap.nix
     ./gitsigns.nix
     ./grpc-nvim.nix
-    ./lensline.nvim
+    ./lensline.nix
     ./lsp.nix
     ./lualine.nix
     ./luasnip
