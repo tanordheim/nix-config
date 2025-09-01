@@ -142,10 +142,10 @@ in
             # ctrl-down = "focus right";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#move
-            ctrl-cmd-h = "move left";
-            ctrl-cmd-j = "move down";
-            ctrl-cmd-k = "move up";
-            ctrl-cmd-l = "move right";
+            shift-alt-m = "move left";
+            shift-alt-n = "move down";
+            shift-alt-e = "move up";
+            shift-alt-i = "move right";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#resize
             # ctrl-shift-alt-comma = "resize smart -50";
