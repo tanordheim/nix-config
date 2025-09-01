@@ -11,7 +11,6 @@
     ./chromium.nix
     ./cocoapods.nix
     ./discord.nix
-    ./displaylink.nix
     ./firefox.nix
     ./homebrew.nix
     ./java.nix
