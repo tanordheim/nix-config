@@ -19,7 +19,7 @@ in
       SSH_AUTH_SOCK = ssh.agent;
     };
     programs.ssh.extraConfig = ''
-      IdentityAgent ${ssh.agent}
+      IdentityAgent "${ssh.agent}"
     '';
     programs.git.extraConfig.gpg = {
       format = "ssh";
