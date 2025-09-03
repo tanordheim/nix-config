@@ -22,6 +22,7 @@
     ./raycast.nix
     ./sketchybar.nix
     ./slack.nix
+    ./spotify.nix
     ./stylix.nix
     ./system-defaults.nix
     ./touch-id.nix
