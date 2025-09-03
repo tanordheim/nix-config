@@ -131,9 +131,9 @@ in
             cmd-enter = "exec-and-forget ${pkgs.wezterm}/bin/wezterm";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-            # cmd-shift-t = "layout tiles horizontal vertical";
-            # cmd-shift-a = "layout accordion horizontal vertical";
-            # cmd-shift-f = "layout floating tiling";
+            ctrl-shift-alt-t = "layout tiles horizontal vertical";
+            ctrl-shift-alt-a = "layout accordion horizontal vertical";
+            ctrl-shift-alt-f = "layout floating tiling";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#focus
             # ctrl-left = "focus left";
