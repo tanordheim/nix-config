@@ -11,6 +11,7 @@
     ./chromium.nix
     ./cocoapods.nix
     ./discord.nix
+    ./docker.nix
     ./firefox.nix
     ./homebrew.nix
     ./java.nix
@@ -18,7 +19,6 @@
     ./logitech.nix
     ./nix.nix
     ./obsidian.nix
-    ./orbstack.nix
     ./raycast.nix
     ./sketchybar.nix
     ./slack.nix
