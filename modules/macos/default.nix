@@ -15,6 +15,7 @@
     ./firefox.nix
     ./homebrew.nix
     ./java.nix
+    ./kubernetes.nix
     ./linear.nix
     ./logitech.nix
     ./nix.nix
