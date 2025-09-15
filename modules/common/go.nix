@@ -5,12 +5,14 @@
       enable = true;
       package = pkgs.go_1_24;
 
-      goPath = ".local/share/go";
-      goBin = ".local/bin";
-      goPrivate = [
-        "github.com/${config.git.githubUsername}"
-        "github.com/tibber"
-      ];
+      env = {
+        GOPATH = ".local/share/go";
+        GOBIN = ".local/bin";
+        GOPRIVATE = [
+          "github.com/${config.git.githubUsername}"
+          "github.com/tibber"
+        ];
+      };
     };
 
     home.packages = with pkgs; [
