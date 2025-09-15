@@ -141,10 +141,10 @@ in
             ctrl-shift-alt-f = "layout floating tiling";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-            shift-alt-m = "focus left";
-            shift-alt-n = "focus down";
-            shift-alt-e = "focus up";
-            shift-alt-i = "focus right";
+            alt-m = "focus left";
+            alt-n = "focus down";
+            alt-e = "focus up";
+            alt-i = "focus right";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#move
             ctrl-alt-m = "move left";
