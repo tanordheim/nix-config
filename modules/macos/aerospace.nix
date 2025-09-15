@@ -147,10 +147,10 @@ in
             alt-i = "focus right";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#move
-            ctrl-alt-m = "move left";
-            ctrl-alt-n = "move down";
-            ctrl-alt-e = "move up";
-            ctrl-alt-i = "move right";
+            shift-alt-m = "move left";
+            shift-alt-n = "move down";
+            shift-alt-e = "move up";
+            shift-alt-i = "move right";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#resize
             # ctrl-shift-alt-comma = "resize smart -50";
