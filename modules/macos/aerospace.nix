@@ -127,6 +127,10 @@ in
 
             # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
 
+            # Disable annoying "hide application" shortcuts
+            cmd-h = [ ];
+            cmd-alt-h = [ ];
+
             # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
             cmd-enter = "exec-and-forget ${pkgs.wezterm}/bin/wezterm";
             alt-shift-s = "exec-and-forget screencapture -i -c";
