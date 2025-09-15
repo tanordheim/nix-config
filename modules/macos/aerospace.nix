@@ -28,6 +28,9 @@ in
 
   home-manager.users.${config.username} =
     { config, ... }:
+    let
+      colors = config.lib.stylix.colors;
+    in
     {
       xdg.configFile = {
         "aerospace/on-workspace-change.sh" = {
@@ -51,7 +54,9 @@ in
           # You can use it to add commands that run after AeroSpace startup.
           # 'after-startup-command' is run after 'after-login-command'
           # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-          after-startup-command = [ ];
+          after-startup-command = [
+            "exec-and-forget borders active_color=0x${colors.base0D} inactive_color=0x${colors.base03} width=5.0"
+          ];
 
           # Start AeroSpace at login
           start-at-login = true;
