@@ -127,38 +127,6 @@
     ''
       ${lib.concatStringsSep "\n" disableHotKeyCommands}
 
-      # copy picture of selected area to clipboard: SHIFT+OPTION+S
-      defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 31 '
-      <dict>
-        <key>enabled</key><true/>
-        <key>value</key>
-        <dict>
-          <key>type</key><string>standard</string>
-          <key>parameters</key>
-          <array>
-            <integer>115</integer>   <!-- ASCII "s" -->
-            <integer>1</integer>     <!-- key code for S -->
-            <integer>655360</integer><!-- Shift + Option -->
-          </array>
-        </dict>
-      </dict>'
-
-      # save picture of selected area as file: CTRL+OPTION+S
-      defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 30 '
-      <dict>
-        <key>enabled</key><true/>
-        <key>value</key>
-        <dict>
-          <key>type</key><string>standard</string>
-          <key>parameters</key>
-          <array>
-            <integer>115</integer>   <!-- ASCII "s" -->
-            <integer>1</integer>     <!-- key code for S -->
-            <integer>786432</integer><!-- Control + Option -->
-          </array>
-        </dict>
-      </dict>'
-
       /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
     '';
 }

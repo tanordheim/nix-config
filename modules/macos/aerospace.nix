@@ -129,6 +129,7 @@ in
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
             cmd-enter = "exec-and-forget ${pkgs.wezterm}/bin/wezterm";
+            alt-shift-s = "exec-and-forget screencapture -i -c";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#layout
             ctrl-shift-alt-t = "layout tiles horizontal vertical";
@@ -136,16 +137,16 @@ in
             ctrl-shift-alt-f = "layout floating tiling";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-            # ctrl-left = "focus left";
-            # ctrl-right = "focus down";
-            # ctrl-up = "focus up";
-            # ctrl-down = "focus right";
+            shift-alt-m = "focus left";
+            shift-alt-n = "focus down";
+            shift-alt-e = "focus up";
+            shift-alt-i = "focus right";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#move
-            shift-alt-m = "move left";
-            shift-alt-n = "move down";
-            shift-alt-e = "move up";
-            shift-alt-i = "move right";
+            ctrl-alt-m = "move left";
+            ctrl-alt-n = "move down";
+            ctrl-alt-e = "move up";
+            ctrl-alt-i = "move right";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#resize
             # ctrl-shift-alt-comma = "resize smart -50";
