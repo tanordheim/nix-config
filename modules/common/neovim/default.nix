@@ -21,6 +21,9 @@
 
         # set <space> as the leader key; this must happen before anything else
         globals.mapleader = " ";
+
+        # facilitates lazy loading
+        plugins.lz-n.enable = true;
       };
       programs.neovide = {
         enable = true;

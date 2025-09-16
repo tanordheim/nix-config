@@ -3,6 +3,11 @@
   home-manager.users.${config.username}.programs.nixvim = {
     plugins.avante = {
       enable = true;
+      lazyLoad = {
+        settings = {
+          event = "DeferredUIEnter";
+        };
+      };
       settings = {
         provider = "claude";
         providers = {

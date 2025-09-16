@@ -3,6 +3,11 @@
   home-manager.users.${config.username}.programs.nixvim = {
     plugins.lsp = {
       enable = true;
+      lazyLoad = {
+        settings = {
+          event = "DeferredUIEnter";
+        };
+      };
       capabilities = # lua
         ''
           capabilities = require('blink.cmp').get_lsp_capabilities()
@@ -22,6 +27,11 @@
 
     plugins.lspsaga = {
       enable = true;
+      lazyLoad = {
+        settings = {
+          event = "DeferredUIEnter";
+        };
+      };
       settings.lightbulb.enable = false;
     };
 
