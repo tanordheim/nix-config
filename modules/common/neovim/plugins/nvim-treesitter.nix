@@ -3,17 +3,6 @@
   home-manager.users.${config.username}.programs.nixvim.plugins = {
     treesitter = {
       enable = true;
-      lazyLoad = {
-        settings = {
-          event = [
-            "BufNewFile"
-            "BufReadPost"
-            "BufWritePost"
-            "DeferredUIEnter"
-          ];
-        };
-      };
-
       settings = {
         highlight.enable = true;
         indent.enable = true;

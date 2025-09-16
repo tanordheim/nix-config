@@ -20,6 +20,7 @@
     ./avante.nix
     ./blink-cmp.nix
     ./conform.nix
+    ./copilot-lua.nix
     ./dap.nix
     ./gitsigns.nix
     ./grpc-nvim.nix
