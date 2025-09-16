@@ -143,6 +143,7 @@ in
             # Disable annoying "hide application" shortcuts
             cmd-h = [ ];
             cmd-alt-h = [ ];
+            cmd-m = [ ];
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
             cmd-enter = "exec-and-forget ${pkgs.wezterm}/bin/wezterm";
