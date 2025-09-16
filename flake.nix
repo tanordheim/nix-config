@@ -75,12 +75,16 @@
     };
   };
 
-  outputs = inputs: {
-    darwinConfigurations = {
-      harahorn-mac = import ./hosts/harahorn-mac { inherit inputs; };
+  outputs =
+    inputs:
+    let
+    in
+    {
+      darwinConfigurations = {
+        harahorn-mac = import ./hosts/harahorn-mac { inherit inputs; };
+      };
+      nixosConfigurations = {
+        harahorn = import ./hosts/harahorn { inherit inputs; };
+      };
     };
-    nixosConfigurations = {
-      harahorn = import ./hosts/harahorn { inherit inputs; };
-    };
-  };
 }
