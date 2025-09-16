@@ -3,6 +3,10 @@
   home-manager.users.${config.username}.programs.nixvim = {
     plugins.conform-nvim = {
       enable = true;
+      lazyLoad.settings = {
+        event = "BufWritePre";
+        cmd = "ConformInfo";
+      };
 
       settings = {
         format_on_save = # lua
