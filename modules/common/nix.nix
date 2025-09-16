@@ -3,9 +3,10 @@
   nixpkgs-stable,
   nixpkgs-unstable-small,
   nixpkgs-custom,
+  inputs,
   config,
   ...
-}:
+}@args:
 {
   nix = {
     settings = {
@@ -42,5 +43,6 @@
         };
       };
     })
-  ];
+  ]
+  ++ (import ../../overlays args);
 }

@@ -356,6 +356,22 @@
         "type": "github"
       }
     },
+    "jankyborders-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1757857906,
+        "narHash": "sha256-LG3I2Zp7GU9khrDTBRMO0+qhreVL+4rwAQRI+AbXbW0=",
+        "owner": "FelixKratz",
+        "repo": "JankyBorders",
+        "rev": "13c2e69380b490d1ef24213c8c5037208e649207",
+        "type": "github"
+      },
+      "original": {
+        "owner": "FelixKratz",
+        "repo": "JankyBorders",
+        "type": "github"
+      }
+    },
     "nix-config-private": {
       "inputs": {
         "home-manager": [
@@ -594,6 +610,7 @@
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
         "homebrew-telepresence": "homebrew-telepresence",
+        "jankyborders-src": "jankyborders-src",
         "nix-config-private": "nix-config-private",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
