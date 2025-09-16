@@ -67,7 +67,7 @@
       ShowSeconds = false;
     };
     NSGlobalDomain = {
-      _HIHideMenuBar = true; # auto hide the menu bar
+      _HIHideMenuBar = false; # auto hide the menu bar
       "com.apple.swipescrolldirection" = false; # disable natural scroll
       AppleICUForce24HourTime = true;
       AppleInterfaceStyle = "Dark";

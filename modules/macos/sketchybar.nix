@@ -375,6 +375,7 @@ in
             sketchybar --bar \
                        color=0x00000000 \
                        height=${toString style.height} \
+                       position=bottom \
                        margin=0 \
                        corner_radius=0 \
                        padding_left=10 \
