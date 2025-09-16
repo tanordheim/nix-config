@@ -27,11 +27,18 @@ in
   ];
 
   home-manager.users.${config.username} =
-    { config, ... }:
+    { lib, config, ... }:
     let
       colors = config.lib.stylix.colors;
     in
     {
+      home.activation.aerospaceConfig =
+        lib.hm.dag.entryAfter [ "writeBoundary" ] # bash
+          ''
+            $VERBOSE_ECHO "Reloading configuration"
+            $DRY_RUN_CMD ${pkgs.aerospace}/bin/aerospace reload-config
+          '';
+
       xdg.configFile = {
         "aerospace/on-workspace-change.sh" = {
           executable = true;
