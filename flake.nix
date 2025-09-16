@@ -56,10 +56,6 @@
       url = "github:nikitabobko/homebrew-tap";
       flake = false;
     };
-    homebrew-felixkratz = {
-      url = "github:FelixKratz/homebrew-formulae";
-      flake = false;
-    };
     homebrew-telepresence = {
       url = "github:telepresenceio/homebrew-telepresence";
       flake = false;

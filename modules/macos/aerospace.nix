@@ -1,7 +1,6 @@
 {
   nix-homebrew,
   homebrew-aerospace,
-  homebrew-felixkratz,
   config,
   pkgs,
   ...
@@ -14,16 +13,15 @@ in
   nix-homebrew = {
     taps = {
       "nikitabobko/homebrew-tap" = homebrew-aerospace;
-      "felixkratz/homebrew-formulae" = homebrew-felixkratz;
     };
   };
 
-  homebrew.brews = [
-    "felixkratz/homebrew-formulae/borders"
-  ];
-
   homebrew.casks = [
     "aerospace"
+  ];
+
+  environment.systemPackages = with pkgs; [
+    jankyborders
   ];
 
   home-manager.users.${config.username} =
