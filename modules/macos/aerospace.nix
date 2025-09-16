@@ -117,7 +117,7 @@ in
             inner.horizontal = 8;
             inner.vertical = 8;
             outer.left = 7;
-            outer.bottom = 32;
+            outer.bottom = 40;
             outer.top = [
               { monitor."built-in.*" = 7; }
               32
