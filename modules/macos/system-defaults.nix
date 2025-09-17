@@ -93,6 +93,7 @@
       spans-displays = true; # use same space across all displays, works better with AeroSpace
     };
     WindowManager = {
+      StandardHideWidgets = true; # hide widgets on desktop
       EnableStandardClickToShowDesktop = false; # disable click to show desktop
     };
   };
