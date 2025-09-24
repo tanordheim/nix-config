@@ -86,6 +86,7 @@
     {
       darwinConfigurations = {
         harahorn-mac = import ./hosts/harahorn-mac { inherit inputs; };
+        napue = import ./hosts/napue { inherit inputs; };
       };
       nixosConfigurations = {
         harahorn = import ./hosts/harahorn { inherit inputs; };
