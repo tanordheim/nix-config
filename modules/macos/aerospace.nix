@@ -182,8 +182,8 @@ in
             cmd-shift-keypad9 = "workspace 9";
             cmd-shift-keypad0 = "workspace 10";
             cmd-shift-s = "workspace Z";
-            cmd-shift-left = "workspace prev";
-            cmd-shift-right = "workspace next";
+            cmd-home = "workspace prev";
+            cmd-end = "workspace next";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
             cmd-ctrl-keypad1 = [
