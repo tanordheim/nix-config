@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   homebrew-core,
   homebrew-cask,
   homebrew-bundle,
@@ -8,7 +9,7 @@
 {
   nix-homebrew = {
     enable = true;
-    enableRosetta = true;
+    enableRosetta = pkgs.stdenv.hostPlatform.isAarch64;
     user = config.username;
     autoMigrate = true;
     mutableTaps = false;

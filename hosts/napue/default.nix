@@ -1,6 +1,6 @@
 { inputs, ... }:
 inputs.nix-darwin.lib.darwinSystem {
-  system = "aarch64-darwin";
+  system = "x86_64-darwin";
   specialArgs = inputs;
   modules = [
     inputs.home-manager.darwinModules.home-manager
