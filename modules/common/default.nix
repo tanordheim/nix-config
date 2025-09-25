@@ -53,6 +53,7 @@ in
     ./telegram.nix
     ./terraform.nix
     ./timezone.nix
+    ./vscode.nix
     ./wezterm.nix
     ./zoxide.nix
     ./zsh.nix
