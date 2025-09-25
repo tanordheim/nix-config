@@ -147,7 +147,7 @@ in
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
             cmd-enter = "exec-and-forget ${pkgs.wezterm}/bin/wezterm";
-            alt-ctrl-s = "exec-and-forget screencapture -i -c";
+            alt-shift-s = "exec-and-forget screencapture -i -c";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#layout
             ctrl-shift-alt-t = "layout tiles horizontal vertical";
@@ -171,64 +171,64 @@ in
             # ctrl-shift-alt-period = "resize smart +50";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-            cmd-ctrl-keypad1 = "workspace 1";
-            cmd-ctrl-keypad2 = "workspace 2";
-            cmd-ctrl-keypad3 = "workspace 3";
-            cmd-ctrl-keypad4 = "workspace 4";
-            cmd-ctrl-keypad5 = "workspace 5";
-            cmd-ctrl-keypad6 = "workspace 6";
-            cmd-ctrl-keypad7 = "workspace 7";
-            cmd-ctrl-keypad8 = "workspace 8";
-            cmd-ctrl-keypad9 = "workspace 9";
-            cmd-ctrl-keypad0 = "workspace 10";
-            cmd-ctrl-s = "workspace Z";
+            cmd-shift-keypad1 = "workspace 1";
+            cmd-shift-keypad2 = "workspace 2";
+            cmd-shift-keypad3 = "workspace 3";
+            cmd-shift-keypad4 = "workspace 4";
+            cmd-shift-keypad5 = "workspace 5";
+            cmd-shift-keypad6 = "workspace 6";
+            cmd-shift-keypad7 = "workspace 7";
+            cmd-shift-keypad8 = "workspace 8";
+            cmd-shift-keypad9 = "workspace 9";
+            cmd-shift-keypad0 = "workspace 10";
+            cmd-shift-s = "workspace Z";
             cmd-pageDown = "workspace prev";
             cmd-pageUp = "workspace next";
             cmd-home = "workspace-back-and-forth";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-            cmd-shift-keypad1 = [
+            cmd-ctrl-keypad1 = [
               "move-node-to-workspace 1"
               "workspace 1"
             ];
-            cmd-shift-keypad2 = [
+            cmd-ctrl-keypad2 = [
               "move-node-to-workspace 2"
               "workspace 2"
             ];
-            cmd-shift-keypad3 = [
+            cmd-ctrl-keypad3 = [
               "move-node-to-workspace 3"
               "workspace 3"
             ];
-            cmd-shift-keypad4 = [
+            cmd-ctrl-keypad4 = [
               "move-node-to-workspace 4"
               "workspace 4"
             ];
-            cmd-shift-keypad5 = [
+            cmd-ctrl-keypad5 = [
               "move-node-to-workspace 5"
               "workspace 5"
             ];
-            cmd-shift-keypad6 = [
+            cmd-ctrl-keypad6 = [
               "move-node-to-workspace 6"
               "workspace 6"
             ];
-            cmd-shift-keypad7 = [
+            cmd-ctrl-keypad7 = [
               "move-node-to-workspace 7"
               "workspace 7"
             ];
-            cmd-shift-keypad8 = [
+            cmd-ctrl-keypad8 = [
               "move-node-to-workspace 8"
               "workspace 8"
             ];
-            cmd-shift-keypad9 = [
+            cmd-ctrl-keypad9 = [
               "move-node-to-workspace 9"
               "workspace 9"
             ];
-            cmd-shift-keypad0 = [
+            cmd-ctrl-keypad0 = [
               "move-node-to-workspace 10"
               "workspace 10"
             ];
-            cmd-shift-s = "move-node-to-workspace Z";
-            cmd-shift-c = "reload-config";
+            cmd-ctrl-s = "move-node-to-workspace Z";
+            cmd-ctrl-c = "reload-config";
           };
 
           # See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
