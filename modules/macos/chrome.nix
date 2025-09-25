@@ -1,5 +1,5 @@
 {
   homebrew.casks = [
-    "aws-vpn-client"
+    "google-chrome"
   ];
 }

@@ -6,9 +6,7 @@
     ../common
     ./1password.nix
     ./aerospace.nix
-    ./awsvpn.nix
-    ./brave.nix
-    ./chromium.nix
+    ./chrome.nix
     ./cocoapods.nix
     ./discord.nix
     ./docker.nix

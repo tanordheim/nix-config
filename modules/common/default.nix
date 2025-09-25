@@ -26,8 +26,6 @@ in
     ./1password.nix
     ./aws.nix
     ./base-packages.nix
-    ./brave.nix
-    ./chromium.nix
     ./claude.nix
     ./docker.nix
     ./direnv.nix
