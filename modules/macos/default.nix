@@ -7,7 +7,6 @@
     ./1password.nix
     ./aerospace.nix
     ./chrome.nix
-    ./cocoapods.nix
     ./discord.nix
     ./docker.nix
     ./firefox.nix
@@ -26,6 +25,7 @@
     ./system-defaults.nix
     ./touch-id.nix
     ./users.nix
+    ./xcode.nix
   ];
 
   system.primaryUser = "trond";
