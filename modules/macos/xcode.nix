@@ -4,7 +4,7 @@
     cocoapods
   ];
 
-  homebrew.casks = [
+  homebrew.brews = [
     "xcode-kotlin"
   ];
 }
