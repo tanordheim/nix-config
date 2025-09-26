@@ -41,6 +41,7 @@ in
     ./neovim
     ./nix.nix
     ./node.nix
+    ./postgresql.nix
     ./python.nix
     ./redis.nix
     ./shell-aliases.nix
