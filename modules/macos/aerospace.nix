@@ -270,6 +270,10 @@ in
               run = [ "move-node-to-workspace 9" ];
             }
             {
+              "if".app-id = "com.apple.iphonesimulator";
+              run = [ "layout floating" ];
+            }
+            {
               "if".app-id = "com.amazonaws.acvc.osx";
               run = [
                 "layout floating"
