@@ -182,41 +182,81 @@ in
             cmd-home = "workspace-back-and-forth";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+            cmd-ctrl-1 = [
+              "move-node-to-workspace 1"
+              "workspace 1"
+            ];
             cmd-ctrl-keypad1 = [
               "move-node-to-workspace 1"
               "workspace 1"
+            ];
+            cmd-ctrl-2 = [
+              "move-node-to-workspace 2"
+              "workspace 2"
             ];
             cmd-ctrl-keypad2 = [
               "move-node-to-workspace 2"
               "workspace 2"
             ];
+            cmd-ctrl-3 = [
+              "move-node-to-workspace 3"
+              "workspace 3"
+            ];
             cmd-ctrl-keypad3 = [
               "move-node-to-workspace 3"
               "workspace 3"
+            ];
+            cmd-ctrl-4 = [
+              "move-node-to-workspace 4"
+              "workspace 4"
             ];
             cmd-ctrl-keypad4 = [
               "move-node-to-workspace 4"
               "workspace 4"
             ];
+            cmd-ctrl-5 = [
+              "move-node-to-workspace 5"
+              "workspace 5"
+            ];
             cmd-ctrl-keypad5 = [
               "move-node-to-workspace 5"
               "workspace 5"
+            ];
+            cmd-ctrl-6 = [
+              "move-node-to-workspace 6"
+              "workspace 6"
             ];
             cmd-ctrl-keypad6 = [
               "move-node-to-workspace 6"
               "workspace 6"
             ];
+            cmd-ctrl-7 = [
+              "move-node-to-workspace 7"
+              "workspace 7"
+            ];
             cmd-ctrl-keypad7 = [
               "move-node-to-workspace 7"
               "workspace 7"
+            ];
+            cmd-ctrl-8 = [
+              "move-node-to-workspace 8"
+              "workspace 8"
             ];
             cmd-ctrl-keypad8 = [
               "move-node-to-workspace 8"
               "workspace 8"
             ];
+            cmd-ctrl-9 = [
+              "move-node-to-workspace 9"
+              "workspace 9"
+            ];
             cmd-ctrl-keypad9 = [
               "move-node-to-workspace 9"
               "workspace 9"
+            ];
+            cmd-ctrl-0 = [
+              "move-node-to-workspace 10"
+              "workspace 10"
             ];
             cmd-ctrl-keypad0 = [
               "move-node-to-workspace 10"
