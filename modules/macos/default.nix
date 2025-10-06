@@ -14,7 +14,6 @@
     ./java.nix
     ./kubernetes.nix
     ./linear.nix
-    ./logitech.nix
     ./nix.nix
     ./obsidian.nix
     ./raycast.nix
