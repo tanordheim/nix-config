@@ -6,6 +6,7 @@
     ../common
     ./1password.nix
     ./aerospace.nix
+    ./android-studio.nix
     ./chrome.nix
     ./discord.nix
     ./docker.nix
