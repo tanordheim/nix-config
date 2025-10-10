@@ -60,10 +60,6 @@
           enabled = true;
           autoupdate = true;
         };
-        url = {
-          "git@github.com:".insteadOf = "https://github.com/";
-          "git@gitlab.com:".insteadOf = "https://gitlab.com/";
-        };
       };
     };
   };
