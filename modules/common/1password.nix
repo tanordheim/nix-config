@@ -21,8 +21,8 @@ in
     programs.ssh.extraConfig = ''
       IdentityAgent "${ssh.agent}"
     '';
-    programs.git.extraConfig.gpg = {
-      format = "ssh";
+    programs.git.settings = {
+      gpg.format = "ssh";
       ssh.program = ssh.sign;
     };
   };
