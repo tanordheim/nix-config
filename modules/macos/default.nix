@@ -14,6 +14,7 @@
     ./homebrew.nix
     ./java.nix
     ./kubernetes.nix
+    ./libreoffice.nix
     ./linear.nix
     ./nix.nix
     ./obsidian.nix
