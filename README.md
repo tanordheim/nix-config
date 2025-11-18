@@ -1,10 +1,9 @@
-# setup notes
+# Installing
 
-- set the machine name to harahorn
-- install nix (`$ sh <(curl -L https://nixos.org/nix/install)`)
-- set initial nix config (`mkdir -p ~/.config/nix && echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf`)
-- clone repo
-- run `make darwin-rebuild`
+1. Set the correct hostname/computer name
+2. (if on MacOS) Install Nix using the Lix installer (`curl -sSf -L https://install.lix.systems/lix | sh -s -- install
+3. Clone this repository.
+4. Run `./darwin-rebuild` or `./nixos-rebuild` depending on OS.
 
 ## inspirations
 

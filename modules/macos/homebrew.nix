@@ -1,6 +1,6 @@
 {
   config,
-  pkgs,
+  lib,
   homebrew-core,
   homebrew-cask,
   homebrew-bundle,
@@ -9,7 +9,7 @@
 {
   nix-homebrew = {
     enable = true;
-    enableRosetta = pkgs.stdenv.hostPlatform.isAarch64;
+    enableRosetta = true;
     user = config.username;
     autoMigrate = true;
     mutableTaps = false;
@@ -29,5 +29,8 @@
       autoUpdate = true;
     };
     taps = builtins.attrNames config.nix-homebrew.taps;
+    brews = [
+      "mas"
+    ];
   };
 }

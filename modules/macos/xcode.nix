@@ -1,8 +1,8 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    cocoapods
-  ];
+  homebrew.masApps = {
+    Xcode = 497799835;
+  };
 
   homebrew.brews = [
     "xcode-kotlin"

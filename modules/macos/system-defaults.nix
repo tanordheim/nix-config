@@ -6,6 +6,7 @@
     ".GlobalPreferences" = {
       "com.apple.mouse.scaling" = 2.0;
     };
+
     ActivityMonitor = {
       SortColumn = "CPUUsage";
       SortDirection = 0; # descending
@@ -37,6 +38,31 @@
         # ask for password immediately after sleep or after screensaver has started
         askForPassword = 1;
         askForPasswordDelay = 1;
+      };
+      "com.apple.symbolichotkeys" = {
+        AppleSymbolicHotKeys = {
+          "28" = {
+            enabled = false; # screenshot entire screen
+          };
+          "30" = {
+            enabled = false; # screenshot portion of screen
+          };
+          "32" = {
+            enabled = false; # mission control
+          };
+          "33" = {
+            enabled = false; # application windows
+          };
+          "64" = {
+            enabled = false; # spotlight
+          };
+          "79" = {
+            enabled = false; # move space left
+          };
+          "81" = {
+            enabled = false; # move space right
+          };
+        };
       };
     };
     dock = {
@@ -98,36 +124,7 @@
     };
   };
 
-  system.activationScripts.configureHotHeys.text =
-    let
-      hotKeysToDisable = [
-        32 # mission control
-        33 # application windows
-        79 # move space left
-        81 # move space right
-      ];
-
-      disableHotKeyCommands = map (
-        key:
-        "defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add ${toString key} '
-<dict>
-  <key>enabled</key><false/>
-  <key>value</key>
-  <dict>
-    <key>type</key><string>standard</string>
-    <key>parameters</key>
-    <array>
-      <integer>65535</integer>
-      <integer>65535</integer>
-      <integer>0</integer>
-    </array>
-  </dict>
-</dict>'"
-      ) hotKeysToDisable;
-    in
-    ''
-      ${lib.concatStringsSep "\n" disableHotKeyCommands}
-
-      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-    '';
+  system.activationScripts.postActivation.text = ''
+    sudo -u ${config.username} /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+  '';
 }

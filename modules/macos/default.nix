@@ -13,8 +13,8 @@
     ./firefox.nix
     ./homebrew.nix
     ./java.nix
+    ./keyboard.nix
     ./kubernetes.nix
-    ./libreoffice.nix
     ./linear.nix
     ./nix.nix
     ./obsidian.nix

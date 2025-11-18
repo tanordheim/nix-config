@@ -1,7 +1,15 @@
 #/usr/bin/env bash
+set -euo pipefail
 
-set -e
+FLAKE_DIR=$(dirname "$(readlink -f "$0")")
 
-sudo darwin-rebuild switch --flake .
+if command -v darwin-rebuild >/dev/null 2>&1; then
+    sudo darwin-rebuild switch --flake .
+else
+    echo "nix-darwin not found in path, executing via nix-run instead..."
+    nix run nix-darwin/master#darwin-rebuild -- build --flake "$FLAKE_DIR"
+    sudo -i "$FLAKE_DIR/result/activate"
+fi
+
 current=$(sudo darwin-rebuild --list-generations | grep current)
 git commit -am "$current"
