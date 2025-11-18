@@ -1,6 +1,6 @@
-{ pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    telegram-desktop
+  homebrew.casks = [
+    # cannot use nixpkgs, as telegram crashes when sending media
+    "telegram"
   ];
 }
