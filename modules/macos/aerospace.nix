@@ -289,7 +289,7 @@ in
               run = [ "move-node-to-workspace 6" ];
             }
             {
-              "if".app-id = "com.tdesktop.Telegram";
+              "if".app-id = "ru.keepcoder.Telegram";
               run = [ "move-node-to-workspace 6" ];
             }
             {
