@@ -9,7 +9,7 @@
       };
 
       settings = {
-        format_on_save = # lua
+        format_after_save = # lua
           ''
             function(bufnr)
               local disable_filetypes = { c = true, cpp = true }
@@ -20,7 +20,6 @@
                 lsp_format_opt = 'fallback'
               end
               return {
-                timeout_ms = 500,
                 lsp_format = lsp_format_opt,
               }
             end
@@ -35,7 +34,7 @@
         action.__raw = # lua
           ''
             function()
-              require('conform').format { async = true, lsp_format = 'fallback' }
+              require('conform').format { async = true, lsp_fallback = true, lsp_format = 'fallback' }
             end
           '';
         options.desc = "[F]ormat buffer";
