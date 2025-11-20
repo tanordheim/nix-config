@@ -26,7 +26,7 @@
     ./system-defaults.nix
     ./touch-id.nix
     ./users.nix
-    ./xcode.nix
+    ./xcode
   ];
 
   system.primaryUser = "trond";
