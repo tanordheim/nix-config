@@ -3,12 +3,12 @@
   home-manager.users.${config.username} = {
     home.packages = with pkgs; [
       gh
-      git-lfs
       lazygit
     ];
 
     programs.git = {
       enable = true;
+      lfs.enable = true;
 
       signing = {
         signByDefault = true;
@@ -47,12 +47,6 @@
             pager = "less -FXRS -x2";
             autocrlf = "input";
             editor = "nvim";
-          };
-          "filter \"lfs\"" = {
-            clean = "${pkgs.git-lfs}/bin/git-lfs clean -- %f";
-            smudge = "${pkgs.git-lfs}/bin/git-lfs smudge --skip -- %f";
-            process = "${pkgs.git-lfs}/bin/git-lfs filter-process --skip";
-            required = true;
           };
           github.user = config.git.githubUsername;
           init.defaultBranch = "main";
