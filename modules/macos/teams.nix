@@ -1,0 +1,6 @@
+{ pkgs, ... }:
+{
+  home-manager.users.${config.username}.home.pagkages = with pkgs; [
+    teams
+  ];
+}

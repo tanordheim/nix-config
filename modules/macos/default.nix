@@ -24,6 +24,7 @@
     ./spotify.nix
     ./stylix.nix
     ./system-defaults.nix
+    ./teams.nix
     ./touch-id.nix
     ./users.nix
     ./whatsapp.nix
