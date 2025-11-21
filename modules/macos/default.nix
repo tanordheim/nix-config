@@ -26,6 +26,7 @@
     ./system-defaults.nix
     ./touch-id.nix
     ./users.nix
+    ./whatsapp.nix
     ./xcode
   ];
 
