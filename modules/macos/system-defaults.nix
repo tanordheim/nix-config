@@ -42,28 +42,34 @@
       "com.apple.symbolichotkeys" = {
         AppleSymbolicHotKeys = {
           "28" = {
-            enabled = false; # screenshot entire screen
+            enabled = false; # Save picture of screen as file (Shift+Cmd+3)
+          };
+          "29" = {
+            enabled = false; # Copy picture of screen to clipboard (Ctrl+Shift+Cmd+3)
           };
           "30" = {
-            enabled = false; # screenshot portion of screen
+            enabled = false; # Save picture of selected area as file (Shift+Cmd+4)
+          };
+          "31" = {
+            enabled = false; # Copy picture of selected area to clipboard (Ctrl+Shift+Cmd+4)
           };
           "32" = {
-            enabled = false; # mission control
+            enabled = false; # Mission Control (Ctrl+Up)
           };
           "33" = {
-            enabled = false; # application windows
+            enabled = false; # Application Windows (Ctrl+Down)
           };
           "64" = {
-            enabled = false; # spotlight
+            enabled = false; # Spotlight (Cmd+Space)
           };
           "79" = {
-            enabled = false; # move space left
+            enabled = false; # Move Space Left (Ctrl+Left)
           };
           "81" = {
-            enabled = false; # move space right
+            enabled = false; # Move Space Right (Ctrl+Right)
           };
           "184" = {
-            enabled = false; # screenshot / recording toolbar
+            enabled = false; # Screenshot and Recording Options (Shift+Cmd+5)
           };
         };
       };
