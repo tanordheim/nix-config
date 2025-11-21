@@ -62,6 +62,9 @@
           "81" = {
             enabled = false; # move space right
           };
+          "185" = {
+            enabled = false; # screenshot / recording toolbar
+          };
         };
       };
     };
