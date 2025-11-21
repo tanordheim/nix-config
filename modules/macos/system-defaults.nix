@@ -62,7 +62,7 @@
           "81" = {
             enabled = false; # move space right
           };
-          "185" = {
+          "184" = {
             enabled = false; # screenshot / recording toolbar
           };
         };
