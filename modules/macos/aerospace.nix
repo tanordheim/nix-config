@@ -131,7 +131,7 @@ in
             cmd-m = [ ];
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-            cmd-enter = "exec-and-forget ${pkgs.wezterm}/bin/wezterm";
+            cmd-enter = "exec-and-forget ${pkgs.ghostty-bin}/bin/ghostty";
             alt-shift-s = "exec-and-forget screencapture -i -c";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#layout
@@ -313,6 +313,12 @@ in
               run = [
                 "layout floating"
                 "move-node-to-workspace Z"
+              ];
+            }
+            {
+              "if".app-id = "com.mitchellh.ghostty";
+              run = [
+                "layout floating"
               ];
             }
           ];
