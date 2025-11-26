@@ -3,8 +3,7 @@
   home-manager.users.${config.username}.programs.nixvim = {
     extraPackages = with pkgs; [
       roslyn-ls
-      # TODO: temporarily disabled due to build error
-      # vscode-extensions.ms-dotnettools.csharp
+      vscode-extensions.ms-dotnettools.csharp
       netcoredbg
     ];
     extraPlugins = with pkgs.vimPlugins; [
