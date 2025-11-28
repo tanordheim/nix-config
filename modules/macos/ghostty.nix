@@ -6,7 +6,7 @@
     clearDefaultKeybinds = true;
     enableZshIntegration = true;
     settings = {
-      scrollback-limit = 1500000; # ballpark 10k lines @ 150 characters per line
+      scrollback-limit = 64000000;
       shell-integration-features = true;
       cursor-style = "underline";
       cursor-style-blink = true;
