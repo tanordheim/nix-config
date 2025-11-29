@@ -16,6 +16,7 @@
       "ctrl+shift+i" = "change_font_size all +1";
       "ctrl+shift+m" = "change_font_size all -1";
       "ctrl+shift+n" = "change_font_size all 0";
+      "ctrl+a>q" = "load_config_file";
       "ctrl+a>c" = "new_tab";
       "ctrl+a>x" = "close_tab";
       "ctrl+a>m" = "previous_tab";

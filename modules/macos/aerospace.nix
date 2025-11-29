@@ -131,7 +131,7 @@ in
             cmd-m = [ ];
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-            cmd-enter = "exec-and-forget ${pkgs.ghostty-bin}/bin/ghostty";
+            cmd-enter = "exec-and-forget ${pkgs.kitty}/bin/kitty";
             alt-shift-s = "exec-and-forget screencapture -i -c";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#layout
