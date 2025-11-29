@@ -37,6 +37,7 @@ in
     ./java.nix
     ./jetbrains
     ./kaf.nix
+    ./kitty.nix
     ./kubernetes.nix
     ./neovim
     ./nix.nix
