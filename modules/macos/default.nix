@@ -11,10 +11,10 @@
     ./discord.nix
     ./docker.nix
     ./firefox.nix
-    ./ghostty.nix
     ./homebrew.nix
     ./java.nix
     ./keyboard.nix
+    ./kitty.nix
     ./kubernetes.nix
     ./linear.nix
     ./nix.nix

@@ -11,8 +11,6 @@
     };
 
     keybindings = {
-      "cmd+c" = "copy_and_clear_or_interrupt";
-      "cmd+v" = "paste_from_clipboard";
       "ctrl+shift+i" = "change_font_size all +1";
       "ctrl+shift+m" = "change_font_size all -1";
       "ctrl+shift+n" = "change_font_size all 0";
