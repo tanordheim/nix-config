@@ -12,7 +12,9 @@
       cursor-style-blink = true;
       selection-clear-on-copy = true;
       clipboard-trim-trailing-spaces = true;
-      clipboard-paste-protection = true;
+      clipboard-paste-protection = false;
+      working-directory = "home";
+      window-inherit-working-directory = true;
       auto-update = "off";
       keybind = [
         "cmd+c=copy_to_clipboard"
