@@ -11,7 +11,6 @@
     };
 
     keybindings = {
-      "shift+enter" = "text:\\x0a"; # for claude code
       "ctrl+shift+i" = "change_font_size all +1";
       "ctrl+shift+m" = "change_font_size all -1";
       "ctrl+shift+n" = "change_font_size all 0";
@@ -30,6 +29,11 @@
       "ctrl+a>8" = "goto_tab 8";
       "ctrl+a>9" = "goto_tab 9";
       "ctrl+a>0" = "goto_tab 10";
+      "shift+enter" = "send_text all \\n";
     };
+
+    # extraConfig = ''
+    #   map --when-focus-on title:claude shift+enter send_text normal,application \\\n
+    # '';
   };
 }
