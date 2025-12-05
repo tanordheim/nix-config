@@ -11,7 +11,7 @@
     };
 
     keybindings = {
-      "shift+enter" = "text:\x0a"; # for claude code
+      "shift+enter" = "text:\\x0a"; # for claude code
       "ctrl+shift+i" = "change_font_size all +1";
       "ctrl+shift+m" = "change_font_size all -1";
       "ctrl+shift+n" = "change_font_size all 0";
