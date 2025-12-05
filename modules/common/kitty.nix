@@ -30,5 +30,9 @@
       "ctrl+a>9" = "goto_tab 9";
       "ctrl+a>0" = "goto_tab 10";
     };
+
+    extraConfig = ''
+      map --when-focus-on title:claude shift+enter send_text normal,application \\\n
+    '';
   };
 }
