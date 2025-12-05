@@ -32,7 +32,7 @@
     };
 
     extraConfig = ''
-      map --when-focus-on title:claude shift+enter send_text normal,application \\n
+      map --when-focus-on title:claude shift+enter send_text normal,application \\\n
     '';
   };
 }
