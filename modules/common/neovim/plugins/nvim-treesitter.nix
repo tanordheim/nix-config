@@ -31,7 +31,6 @@
         ini
         just
         json
-        jsonc
         markdown
         markdown_inline
         query

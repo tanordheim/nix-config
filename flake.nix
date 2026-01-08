@@ -37,7 +37,7 @@
     };
 
     # Stylix system wide color scheming/styling
-    stylix.url = "github:danth/stylix?ref=29dc3dd858c507bfd1038716197f84f40e41f28d";
+    stylix.url = "github:danth/stylix";
 
     # Homebrew
     homebrew-core = {
