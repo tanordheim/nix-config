@@ -34,10 +34,10 @@
   };
   nixpkgs.overlays = [
     (prev: final: {
-      stable = import nixpkgs-stable { inherit (prev) system; };
-      bleeding = import nixpkgs-unstable-small { inherit (prev) system; };
+      stable = import nixpkgs-stable { system = prev.stdenv.hostPlatform.system; };
+      bleeding = import nixpkgs-unstable-small { system = prev.stdenv.hostPlatform.system; };
       custom = import nixpkgs-custom {
-        inherit (prev) system;
+        system = prev.stdenv.hostPlatform.system;
         config = {
           allowUnfree = true;
         };

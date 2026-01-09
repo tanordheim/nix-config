@@ -1,8 +1,10 @@
 { inputs, ... }:
-inputs.nixpkgs.lib.nixosSystem rec {
-  system = "aarch64-linux";
+inputs.nixpkgs.lib.nixosSystem {
   specialArgs = inputs;
   modules = [
+    {
+      nixpkgs.hostPlatform = "aarch64-linux";
+    }
     inputs.apple-silicon-support.nixosModules.apple-silicon-support
     inputs.home-manager.nixosModules.home-manager
     inputs.stylix.nixosModules.stylix

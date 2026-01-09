@@ -1,8 +1,10 @@
 { inputs, ... }:
 inputs.nix-darwin.lib.darwinSystem {
-  system = "aarch64-darwin";
   specialArgs = inputs;
   modules = [
+    {
+      nixpkgs.hostPlatform = "aarch64-darwin";
+    }
     inputs.home-manager.darwinModules.home-manager
     inputs.nix-homebrew.darwinModules.nix-homebrew
     inputs.stylix.darwinModules.stylix
