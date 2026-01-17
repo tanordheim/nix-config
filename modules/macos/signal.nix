@@ -1,6 +1,6 @@
 { ... }:
 {
   homebrew.casks = [
-    "signal-desktop"
+    "signal"
   ];
 }
