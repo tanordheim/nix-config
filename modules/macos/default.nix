@@ -20,6 +20,7 @@
     ./nix.nix
     ./obsidian.nix
     ./raycast.nix
+    ./signal.nix
     ./sketchybar.nix
     ./slack.nix
     ./spotify.nix
