@@ -46,7 +46,6 @@ in
     ./python.nix
     ./redis.nix
     ./shell-aliases.nix
-    ./signal.nix
     ./ssh.nix
     ./starship.nix
     ./stern.nix

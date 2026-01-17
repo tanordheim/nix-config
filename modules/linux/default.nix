@@ -30,6 +30,7 @@
     ./qmk.nix
     ./shell-aliases.nix
     ./sherlock.nix
+    ./signal.nix
     ./slack.nix
     ./stylix.nix
     ./sudo.nix
