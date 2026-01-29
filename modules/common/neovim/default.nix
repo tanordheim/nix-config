@@ -26,7 +26,7 @@
         plugins.lz-n.enable = true;
       };
       programs.neovide = {
-        enable = true;
+        enable = false;
         settings = {
           font = {
             normal = [ "${config.stylix.fonts.monospace.name}" ];
