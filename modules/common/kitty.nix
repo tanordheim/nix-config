@@ -31,15 +31,15 @@
       "ctrl+a>9" = "goto_tab 9";
       "ctrl+a>0" = "goto_tab 10";
       "ctrl+a>0x53" = "goto_tab 1";
-      "ctrl+a>KP_2" = "goto_tab 2";
-      "ctrl+a>KP_3" = "goto_tab 3";
-      "ctrl+a>KP_4" = "goto_tab 4";
-      "ctrl+a>KP_5" = "goto_tab 5";
-      "ctrl+a>KP_6" = "goto_tab 6";
-      "ctrl+a>KP_7" = "goto_tab 7";
-      "ctrl+a>KP_8" = "goto_tab 8";
-      "ctrl+a>KP_9" = "goto_tab 9";
-      "ctrl+a>KP_0" = "goto_tab 10";
+      "ctrl+a>0x54" = "goto_tab 2";
+      "ctrl+a>0x55" = "goto_tab 3";
+      "ctrl+a>0x56" = "goto_tab 4";
+      "ctrl+a>0x57" = "goto_tab 5";
+      "ctrl+a>0x58" = "goto_tab 6";
+      "ctrl+a>0x59" = "goto_tab 7";
+      "ctrl+a>0x5b" = "goto_tab 8";
+      "ctrl+a>0x5c" = "goto_tab 9";
+      "ctrl+a>0x52" = "goto_tab 10";
       "shift+enter" = "send_text all \\n"; # for shift+enter in claude code
     };
   };
