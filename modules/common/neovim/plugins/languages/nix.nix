@@ -5,9 +5,9 @@
       nixfmt
     ];
 
-    plugins.treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-      nix
-    ];
+    # plugins.treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+    #   nix
+    # ];
 
     plugins.conform-nvim.settings = {
       formatters_by_ft.nix = [ "nixfmt" ];
