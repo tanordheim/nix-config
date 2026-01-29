@@ -30,7 +30,7 @@
       "ctrl+a>8" = "goto_tab 8";
       "ctrl+a>9" = "goto_tab 9";
       "ctrl+a>0" = "goto_tab 10";
-      "ctrl+a>KP_1" = "goto_tab 1";
+      "ctrl+a>0x53" = "goto_tab 1";
       "ctrl+a>KP_2" = "goto_tab 2";
       "ctrl+a>KP_3" = "goto_tab 3";
       "ctrl+a>KP_4" = "goto_tab 4";
