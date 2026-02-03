@@ -10,7 +10,7 @@
     serviceConfig = {
       Label = "set-stylix-wallpaper";
       ProgramArguments = [
-        "/opt/homebrew/bin/desktoppr"
+        "/usr/local/bin/desktoppr"
         (toString config.stylix.image)
       ];
       RunAtLoad = true;
