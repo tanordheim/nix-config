@@ -62,6 +62,13 @@
           "64" = {
             enabled = false; # Spotlight (Cmd+Space)
           };
+          "73" = {
+            enabled = true; # Lock Screen - remap from Ctrl+Cmd+Q to Cmd+Shift+L
+            value = {
+              parameters = [ 108 37 1179648 ]; # 'l', keycode 37, Cmd+Shift
+              type = "standard";
+            };
+          };
           "79" = {
             enabled = false; # Move Space Left (Ctrl+Left)
           };
