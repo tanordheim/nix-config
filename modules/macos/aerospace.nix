@@ -296,8 +296,16 @@ in
               run = [ "move-node-to-workspace 7" ];
             }
             {
-              "if".app-id = "com.hnc.Discord";
+              "if".app-id = "net.whatsapp.WhatsApp";
               run = [ "move-node-to-workspace 7" ];
+            }
+            {
+              "if".app-id = "com.hnc.Discord";
+              run = [ "move-node-to-workspace 8" ];
+            }
+            {
+              "if".app-id = "com.microsoft.teams2";
+              run = [ "move-node-to-workspace 8" ];
             }
             {
               "if".app-id = "com.linear";
@@ -306,19 +314,6 @@ in
             {
               "if".app-id = "com.apple.iphonesimulator";
               run = [ "layout floating" ];
-            }
-            {
-              "if".app-id = "com.amazonaws.acvc.osx";
-              run = [
-                "layout floating"
-                "move-node-to-workspace Z"
-              ];
-            }
-            {
-              "if".app-id = "com.mitchellh.ghostty";
-              run = [
-                "layout floating"
-              ];
             }
           ];
         };
