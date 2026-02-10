@@ -22,9 +22,9 @@
             "k8s/*.yaml"
             "manifest/*.yaml"
           ];
-          "http://json.schemastore.org/golangci-lint.json" = ".golangci.{yml,yaml}";
           "http://json.schemastore.org/github-workflow.json" = ".github/workflows/*.{yml,yaml}";
           "http://json.schemastore.org/github-action.json" = ".github/action.{yml,yaml}";
+          "http://json.schemastore.org/golangci-lint.json" = ".golangci.{yml,yaml}";
           "http://json.schemastore.org/ansible-stable-2.9.json" = "roles/tasks/*.{yml,yaml}";
           "http://json.schemastore.org/ansible-playbook.json" = "playbook.{yml,yaml}";
           "http://json.schemastore.org/prettierrc.json" = ".prettierrc.{yml,yaml}";
@@ -38,6 +38,10 @@
             "templates/**/*.{yml,yaml}";
           "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json" =
             "docker-compose.{yml,yaml}";
+          "https://raw.githubusercontent.com/argoproj/argo-workflows/main/api/jsonschema/schema.json" = [
+            "*workflow.{yml,yaml}"
+            "*workflows.{yml,yaml}"
+          ];
         };
       };
     };
