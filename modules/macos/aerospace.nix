@@ -308,7 +308,7 @@ in
               run = [ "move-node-to-workspace 8" ];
             }
             {
-              "if".app-id = "com.linear";
+              "if".app-id = "com.obsproject.obs-studio";
               run = [ "move-node-to-workspace 9" ];
             }
             {
