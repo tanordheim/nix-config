@@ -51,7 +51,15 @@
             enabled = false; # Save picture of selected area as file (Shift+Cmd+4)
           };
           "31" = {
-            enabled = false; # Copy picture of selected area to clipboard (Ctrl+Shift+Cmd+4)
+            enabled = true; # Copy picture of selected area to clipboard (Alt+Shift+S)
+            value = {
+              parameters = [
+                115
+                1
+                655360
+              ]; # 's', keycode 1, Alt+Shift
+              type = "standard";
+            };
           };
           "32" = {
             enabled = false; # Mission Control (Ctrl+Up)
@@ -65,7 +73,11 @@
           "73" = {
             enabled = true; # Lock Screen - remap from Ctrl+Cmd+Q to Cmd+Shift+L
             value = {
-              parameters = [ 108 37 1179648 ]; # 'l', keycode 37, Cmd+Shift
+              parameters = [
+                108
+                37
+                1179648
+              ]; # 'l', keycode 37, Cmd+Shift
               type = "standard";
             };
           };

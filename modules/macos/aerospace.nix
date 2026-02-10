@@ -132,7 +132,6 @@ in
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
             cmd-enter = "exec-and-forget ${pkgs.kitty}/bin/kitty --directory=$HOME";
-            alt-shift-s = "exec-and-forget screencapture -i -c";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#layout
             ctrl-shift-alt-t = "layout tiles horizontal vertical";
