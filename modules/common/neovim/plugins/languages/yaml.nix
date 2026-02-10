@@ -38,7 +38,7 @@
             "templates/**/*.{yml,yaml}";
           "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json" =
             "docker-compose.{yml,yaml}";
-          "https://json.schemastore.org/argo-workflows.json" = [
+          "https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json" = [
             "*workflow.{yml,yaml}"
             "*workflows.{yml,yaml}"
           ];
