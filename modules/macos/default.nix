@@ -19,6 +19,7 @@
     ./linear.nix
     ./logitech.nix
     ./nix.nix
+    ./obs.nix
     ./obsidian.nix
     ./raycast.nix
     ./signal.nix
