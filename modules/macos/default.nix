@@ -21,6 +21,7 @@
     ./nix.nix
     ./obs.nix
     ./obsidian.nix
+    ./proton.nix
     ./raycast.nix
     ./signal.nix
     ./sketchybar.nix
