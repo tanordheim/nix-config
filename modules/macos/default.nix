@@ -5,6 +5,7 @@
   imports = [
     ../common
     ./1password.nix
+    ./adobe.nix
     ./aerospace.nix
     ./android-studio.nix
     ./chrome.nix
