@@ -22,6 +22,7 @@
     ./obs.nix
     ./obsidian.nix
     ./pdfexpert.nix
+    ./pocketcasts.nix
     ./proton.nix
     ./raycast.nix
     ./signal.nix
