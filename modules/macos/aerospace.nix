@@ -308,6 +308,14 @@ in
               run = [ "move-node-to-workspace 8" ];
             }
             {
+              "if".app-id = "com.electron.pocket-casts";
+              run = [ "move-node-to-workspace 9" ];
+            }
+            {
+              "if".app-id = "com.spotify.client";
+              run = [ "move-node-to-workspace 9" ];
+            }
+            {
               "if".app-id = "com.obsproject.obs-studio";
               run = [ "move-node-to-workspace 9" ];
             }
