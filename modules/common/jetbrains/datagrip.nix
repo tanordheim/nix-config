@@ -15,7 +15,7 @@ let
 
   vmOptionsContent =
     if pkgs.stdenv.isDarwin then
-      ''''
+      ""
     else
       ''
         -Dawt.toolkit.name=WLToolkit
@@ -23,7 +23,7 @@ let
 in
 {
   home-manager.users.${config.username}.home = {
-    packages = with pkgs; [ jetbrains.datagrip ];
+    packages = [ pkgs.bleeding.jetbrains.datagrip ];
 
     file = {
       "${vmOptionsFile}".text = vmOptionsContent;

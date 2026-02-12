@@ -28,7 +28,7 @@ let
 in
 {
   home-manager.users.${config.username}.home = {
-    packages = with pkgs; [ jetbrains.pycharm ];
+    packages = [ pkgs.bleeding.jetbrains.pycharm ];
     file = {
       "${vmOptionsFile}".text = vmOptionsContent;
     };

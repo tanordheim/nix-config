@@ -29,7 +29,7 @@ let
 in
 {
   home-manager.users.${config.username}.home = {
-    packages = with pkgs; [ jetbrains.goland ];
+    packages = [ pkgs.bleeding.jetbrains.goland ];
 
     file = {
       "${vmOptionsFile}".text = vmOptionsContent;

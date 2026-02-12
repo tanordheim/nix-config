@@ -35,7 +35,12 @@
   nixpkgs.overlays = [
     (prev: final: {
       stable = import nixpkgs-stable { system = prev.stdenv.hostPlatform.system; };
-      bleeding = import nixpkgs-unstable-small { system = prev.stdenv.hostPlatform.system; };
+      bleeding = import nixpkgs-unstable-small {
+        system = prev.stdenv.hostPlatform.system;
+        config = {
+          allowUnfree = true;
+        };
+      };
       custom = import nixpkgs-custom {
         system = prev.stdenv.hostPlatform.system;
         config = {
