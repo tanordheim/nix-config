@@ -35,4 +35,11 @@ in
       "${vmOptionsFile}".text = vmOptionsContent;
     };
   };
+
+  jetbrains.ideavimConfigs.goland = ''
+    " testing
+    nnoremap <leader>tt :action ContextRun<CR>
+    nnoremap <leader>ta :action RunClass<CR>
+    nnoremap <leader>tl :action RerunTests<CR>
+  '';
 }

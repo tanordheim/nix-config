@@ -51,8 +51,6 @@ let
     nnoremap <leader>bD :action CloseAllEditors<CR>
     nnoremap [d :action GotoPreviousError<CR>
     nnoremap ]d :action GotoNextError<CR>
-    nnoremap [D :action ReSharperGotoNextErrorInSolution<CR>
-    nnoremap ]D :action ReSharperGotoPrevErrorInSolution<CR>
     nnoremap [[ :action MethodUp<CR>
     nnoremap ]] :action MethodDown<CR>
     nnoremap <leader>sf :action SearchEverywhere<CR>
@@ -72,14 +70,8 @@ let
     nnoremap <leader>ca :action ShowIntentionActions<CR>
 
     " edit and reload the ideavim config
-    nnoremap <leader>vv :e ~/.ideavimrc<CR>
-    nnoremap <leader>vr :source ~/.ideavimrc<CR>
-
-    " building and testing
-    nnoremap <leader>B :action BuildSolutionAction<CR>
-    nnoremap <leader>tt :action RiderUnitTestRunContextAction<CR>
-    nnoremap <leader>ta :action RunAllTestsInCurrentFile<CR>
-    nnoremap <leader>tl :action RiderUnitTestRepeatPreviousRunAction<CR>
+    nnoremap <leader>vv :e ~/.config/ideavim/ideavimrc<CR>
+    nnoremap <leader>vr :source ~/.config/ideavim/ideavimrc<CR>
 
     " clear search highlight
     nnoremap <Esc> :nohls<CR>

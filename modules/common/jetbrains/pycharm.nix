@@ -33,4 +33,11 @@ in
       "${vmOptionsFile}".text = vmOptionsContent;
     };
   };
+
+  jetbrains.ideavimConfigs.pycharm = ''
+    " testing
+    nnoremap <leader>tt :action ContextRun<CR>
+    nnoremap <leader>ta :action RunClass<CR>
+    nnoremap <leader>tl :action RerunTests<CR>
+  '';
 }

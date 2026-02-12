@@ -33,4 +33,16 @@ in
       "${vmOptionsFile}".text = vmOptionsContent;
     };
   };
+
+  jetbrains.ideavimConfigs.rider = ''
+    " solution-wide error navigation
+    nnoremap [D :action ReSharperGotoPrevErrorInSolution<CR>
+    nnoremap ]D :action ReSharperGotoNextErrorInSolution<CR>
+
+    " building and testing
+    nnoremap <leader>B :action BuildSolutionAction<CR>
+    nnoremap <leader>tt :action RiderUnitTestRunContextAction<CR>
+    nnoremap <leader>ta :action RiderUnitTestRunClassAction<CR>
+    nnoremap <leader>tl :action RiderUnitTestRepeatPreviousRunAction<CR>
+  '';
 }
