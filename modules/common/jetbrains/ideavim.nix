@@ -3,6 +3,12 @@ with lib;
 let
   cfg = config.jetbrains;
 
+  indent =
+    spaces: text:
+    lib.concatStringsSep "\n" (
+      map (line: if line == "" then "" else spaces + line) (lib.splitString "\n" text)
+    );
+
   baseConfig = ''
     " use space as the leader key
     let mapleader=" "
