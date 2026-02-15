@@ -20,15 +20,13 @@ in
           enable = true;
         };
 
-        completionInit = ''
+        initContent = ''
           # Add a "c" function with an autocomplete definition to allow easily
           # changing working directory into a source code directory.
           c() { cd ${codeDirectory}/$1; }
           _c() { _files -W ${codeDirectory} -/;  }
           compdef _c c
-        '';
 
-        initContent = ''
           # AUTO COMPLETION
 
           # Make completions:
