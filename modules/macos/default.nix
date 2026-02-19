@@ -20,7 +20,6 @@
     ./linear.nix
     ./logitech.nix
     ./nix.nix
-    ./obs.nix
     ./obsidian.nix
     ./pdfexpert.nix
     ./pocketcasts.nix
