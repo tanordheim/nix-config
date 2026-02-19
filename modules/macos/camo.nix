@@ -1,0 +1,5 @@
+{
+  homebrew.casks = [
+    "camo-studio"
+  ];
+}

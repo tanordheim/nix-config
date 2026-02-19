@@ -7,6 +7,7 @@
     ./1password.nix
     ./aerospace.nix
     ./android-studio.nix
+    ./camo.nix
     ./chrome.nix
     ./discord.nix
     ./docker.nix
