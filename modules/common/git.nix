@@ -3,6 +3,7 @@
   home-manager.users.${config.username} = {
     home.packages = with pkgs; [
       gh
+      git-filter-repo
       lazygit
     ];
 
