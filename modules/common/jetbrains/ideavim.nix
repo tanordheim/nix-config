@@ -80,7 +80,7 @@ let
     nnoremap <leader>vr :source ~/.config/ideavim/ideavimrc<CR>
 
     " clear search highlight
-    nnoremap <Esc> :nohls<CR>
+    nnoremap <leader>/ :nohls<CR>
   '';
 
   # Generate conditional blocks for each product
