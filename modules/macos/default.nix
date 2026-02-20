@@ -12,6 +12,7 @@
     ./discord.nix
     ./docker.nix
     ./firefox.nix
+    ./git.nix
     ./homebrew.nix
     ./java.nix
     ./keyboard.nix
