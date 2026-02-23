@@ -11,7 +11,9 @@
     ./nix.nix
     ./proto.nix
     ./python.nix
+    ./rust.nix
     ./terraform.nix
+    ./toml.nix
     ./yaml.nix
   ];
 }
