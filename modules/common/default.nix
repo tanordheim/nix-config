@@ -46,6 +46,7 @@ in
     ./postgresql.nix
     ./python.nix
     ./redis.nix
+    ./rust.nix
     ./shell-aliases.nix
     ./ssh.nix
     ./starship.nix
