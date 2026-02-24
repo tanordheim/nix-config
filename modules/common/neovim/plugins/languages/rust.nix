@@ -28,6 +28,24 @@
       };
     };
 
+    plugins.crates = {
+      enable = true;
+      settings = {
+        completion = {
+          crates = {
+            enabled = true;
+          };
+        };
+      };
+    };
+
+    plugins.blink-cmp.settings.sources.per_filetype.toml = [
+      "crates"
+      "lsp"
+      "path"
+      "snippets"
+    ];
+
     plugins.conform-nvim.settings = {
       formatters_by_ft.rust = [ "rustfmt" ];
       formatters.rustfmt = {
