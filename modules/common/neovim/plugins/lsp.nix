@@ -78,7 +78,7 @@
         options.desc = "[G]oto [R]eferences";
       }
       {
-        key = "<leader>sd";
+        key = "<leader>ss";
         mode = "n";
         action.__raw = # lua
           ''
@@ -86,10 +86,10 @@
               Snacks.picker.lsp_symbols()
             end
           '';
-        options.desc = "[S]ymbols in [D]ocument";
+        options.desc = "[S]ymbols in document";
       }
       {
-        key = "<leader>sw";
+        key = "<leader>sS";
         mode = "n";
         action.__raw = # lua
           ''
@@ -97,7 +97,7 @@
               Snacks.picker.lsp_workspace_symbols()
             end
           '';
-        options.desc = "[S]ymbols in [W]orkspace";
+        options.desc = "[S]ymbols in workspace";
       }
       {
         key = "<C-k>";
