@@ -17,7 +17,6 @@
     ./snacks.nix
     ./nvim-treesitter.nix
 
-    ./avante.nix
     ./blink-cmp.nix
     ./conform.nix
     ./dap.nix
