@@ -34,6 +34,7 @@
     ./teams.nix
     ./touch-id.nix
     ./users.nix
+    ./vlc.nix
     ./whatsapp.nix
     ./xcode
   ];
