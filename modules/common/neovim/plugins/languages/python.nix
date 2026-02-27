@@ -20,6 +20,11 @@
         "${pkgs.ty}/bin/ty"
         "server"
       ];
+      settings = {
+        ty = {
+          diagnosticMode = "workspace";
+        };
+      };
     };
 
     plugins.conform-nvim.settings = {
