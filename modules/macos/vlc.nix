@@ -1,6 +1,0 @@
-{ ... }:
-{
-  homebrew.casks = [
-    "vlc"
-  ];
-}
