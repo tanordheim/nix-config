@@ -5,6 +5,7 @@
     coreutils
     curl
     diffutils
+    ffmpeg
     file
     findutils
     gawk
