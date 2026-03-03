@@ -16,7 +16,10 @@
 
       settings = {
         highlight.enable = true;
-        indent.enable = true;
+        indent = {
+          enable = true;
+          disable = [ "python" "nix" ];
+        };
       };
 
       # grammar packages not covered by a language setup under ./languages/
