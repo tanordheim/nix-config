@@ -119,6 +119,17 @@
         options.desc = "Show tree";
       }
       {
+        key = "<leader><space>";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              Snacks.picker.smart({ hidden = true })
+            end
+          '';
+        options.desc = "Smart file picker (recent + buffers + files)";
+      }
+      {
         key = "<leader>sf";
         mode = "n";
         action.__raw = # lua
