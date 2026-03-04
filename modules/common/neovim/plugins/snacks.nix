@@ -66,22 +66,16 @@
 
     keymaps = [
       {
-        key = "<leader>bd";
+        key = "<leader>x";
         mode = "n";
         action = "<cmd>lua Snacks.bufdelete()<CR>";
-        options.desc = "[D]elete current [b]uffer";
+        options.desc = "Close current buffer";
       }
       {
-        key = "<leader>bD";
+        key = "<leader>X";
         mode = "n";
         action = "<cmd>lua Snacks.bufdelete.other()<CR>";
-        options.desc = "[D]elete all buffers except current [b]uffer";
-      }
-      {
-        key = "<leader>bx";
-        mode = "n";
-        action = "<cmd>lua Snacks.bufdelete.all()<CR>";
-        options.desc = "[D]elete all buffers";
+        options.desc = "Close all buffers except current";
       }
       {
         key = "<leader>nd";

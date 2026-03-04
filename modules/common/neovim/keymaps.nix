@@ -3,6 +3,12 @@
   home-manager.users.${config.username}.programs.nixvim = {
     keymaps = [
       {
+        key = "<BS>";
+        mode = "n";
+        action = "<C-^>";
+        options.desc = "Switch to alternate buffer";
+      }
+      {
         key = "<CR>";
         mode = "n";
         action = "<cmd>nohlsearch<cr>";
