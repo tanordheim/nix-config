@@ -22,7 +22,12 @@
       ];
       settings = {
         basedpyright.analysis = {
-          diagnosticMode = "workspace";
+          autoFormatStrings = true;
+          inlayHints = {
+            variableTypes = true;
+            callArgumentNames = true;
+            functionReturnTypes = true;
+          };
         };
       };
     };
