@@ -12,7 +12,7 @@
       settings = {
         current_line_blame = true;
         numhl = true;
-        linehl = true;
+        linehl = false;
       };
     };
 
@@ -59,7 +59,10 @@
       }
       {
         key = "<leader>gs";
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         action.__raw = "function() require('gitsigns').stage_hunk() end";
         options.desc = "[S]tage hunk";
       }
