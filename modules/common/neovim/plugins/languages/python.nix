@@ -2,7 +2,7 @@
 {
   home-manager.users.${config.username}.programs.nixvim = {
     extraPackages = with pkgs; [
-      ty
+      basedpyright
       ruff
     ];
 
@@ -14,14 +14,14 @@
       python
     ];
 
-    plugins.lsp.servers.ty = {
+    plugins.lsp.servers.basedpyright = {
       enable = true;
       cmd = [
-        "${pkgs.ty}/bin/ty"
-        "server"
+        "${pkgs.basedpyright}/bin/basedpyright-langserver"
+        "--stdio"
       ];
       settings = {
-        ty = {
+        basedpyright.analysis = {
           diagnosticMode = "workspace";
         };
       };
