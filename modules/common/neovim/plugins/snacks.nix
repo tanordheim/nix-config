@@ -29,12 +29,6 @@
             if not client or type(value) ~= "table" then
               return
             end
-            -- silence verbose progress spam from basedpyright
-            if client.name == "basedpyright" and (
-              (value.title and value.title:lower() == "finding references") or not value.title
-            ) then
-              return
-            end
             local p = progress[client.id]
 
             for i = 1, #p + 1 do
