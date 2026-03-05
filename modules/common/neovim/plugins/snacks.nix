@@ -13,7 +13,7 @@
         picker = {
           enabled = true;
         };
-        statuscolumn.enabled = false;
+        statuscolumn.enabled = true;
       };
     };
 

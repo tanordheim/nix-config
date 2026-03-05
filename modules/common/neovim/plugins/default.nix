@@ -21,7 +21,7 @@
     ./conform.nix
     ./dap.nix
     ./gitsigns.nix
-    ./lensline.nix
+    # ./lensline.nix
     ./lsp.nix
     ./lualine.nix
     ./luasnip
