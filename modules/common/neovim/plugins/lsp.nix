@@ -56,6 +56,12 @@
         options.desc = "[G]oto [D]efinition";
       }
       {
+        key = "gD";
+        mode = "n";
+        action = "<cmd>Lspsaga peek_definition<CR>";
+        options.desc = "Peek definition";
+      }
+      {
         key = "gi";
         mode = "n";
         action.__raw = # lua
