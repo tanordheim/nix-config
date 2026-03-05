@@ -15,6 +15,18 @@
         options.desc = "Paste without clobbering clipboard";
       }
       {
+        key = "<";
+        mode = "v";
+        action = "<gv";
+        options.desc = "Indent left and reselect";
+      }
+      {
+        key = ">";
+        mode = "v";
+        action = ">gv";
+        options.desc = "Indent right and reselect";
+      }
+      {
         key = "<CR>";
         mode = "n";
         action = "<cmd>nohlsearch<cr>";
