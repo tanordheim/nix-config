@@ -2,7 +2,7 @@
 {
   home-manager.users.${config.username}.programs.nixvim = {
     plugins.gitsigns = {
-      enable = true;
+      enable = false;
       lazyLoad = {
         settings = {
           event = "DeferredUIEnter";

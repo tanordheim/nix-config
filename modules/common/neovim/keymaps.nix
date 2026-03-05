@@ -11,7 +11,7 @@
       {
         key = "p";
         mode = "v";
-        action = ''"0p'';
+        action = ''"_dP'';
         options.desc = "Paste without clobbering clipboard";
       }
       {
