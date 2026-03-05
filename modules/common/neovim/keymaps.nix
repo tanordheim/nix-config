@@ -9,6 +9,12 @@
         options.desc = "Switch to alternate buffer";
       }
       {
+        key = "p";
+        mode = "v";
+        action = ''"0p'';
+        options.desc = "Paste without clobbering clipboard";
+      }
+      {
         key = "<CR>";
         mode = "n";
         action = "<cmd>nohlsearch<cr>";
