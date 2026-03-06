@@ -39,6 +39,11 @@
       };
     };
 
+    plugins.blink-cmp.settings.sources.providers.crates = {
+      module = "crates.src.blink";
+      name = "crates";
+    };
+
     plugins.blink-cmp.settings.sources.per_filetype.toml = [
       "crates"
       "lsp"
