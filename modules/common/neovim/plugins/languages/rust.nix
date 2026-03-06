@@ -40,7 +40,7 @@
     };
 
     plugins.blink-cmp.settings.sources.providers.crates = {
-      module = "crates.src.blink";
+      module = "blink.compat.source";
       name = "crates";
     };
 

@@ -3,6 +3,7 @@
   home-manager.users.${config.username}.programs.nixvim = {
     extraPlugins = with pkgs.vimPlugins; [
       blink-cmp-copilot
+      blink-compat
     ];
 
     plugins.blink-cmp = {
