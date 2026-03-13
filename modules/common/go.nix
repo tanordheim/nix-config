@@ -3,14 +3,13 @@
   home-manager.users.${config.username} = {
     programs.go = {
       enable = true;
-      package = pkgs.go_1_24;
+      package = pkgs.go;
 
       env = {
-        GOPATH = ".local/share/go";
-        GOBIN = ".local/bin";
+        GOPATH = "$HOME/.local/share/go";
+        GOBIN = "$HOME/.local/bin";
         GOPRIVATE = [
           "github.com/${config.git.githubUsername}"
-          "github.com/tibber"
         ];
       };
     };
