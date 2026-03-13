@@ -1,15 +1,18 @@
 { pkgs, config, ... }:
+let
+  githubUsername = config.git.githubUsername;
+in
 {
-  home-manager.users.${config.username} = {
+  home-manager.users.${config.username} = { config, ... }: {
     programs.go = {
       enable = true;
       package = pkgs.go;
 
       env = {
-        GOPATH = "$HOME/.local/share/go";
-        GOBIN = "$HOME/.local/bin";
+        GOPATH = "${config.home.homeDirectory}/.local/share/go";
+        GOBIN = "${config.home.homeDirectory}/.local/bin";
         GOPRIVATE = [
-          "github.com/${config.git.githubUsername}"
+          "github.com/${githubUsername}"
         ];
       };
     };
