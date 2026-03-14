@@ -1,74 +1,76 @@
 { pkgs, config, ... }:
 {
-  home-manager.users.${config.username}.programs.nixvim = {
-    extraPackages = with pkgs; [
-      delve
-      golangci-lint-langserver
-      gopls
-      gofumpt
-    ];
+  home-manager.users.${config.username}.programs.nixvim =
+    { config, ... }:
+    {
+      extraPackages = with pkgs; [
+        delve
+        golangci-lint-langserver
+        gopls
+        gofumpt
+      ];
 
-    plugins.treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-      go
-      gomod
-      gosum
-    ];
+      plugins.treesitter.grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
+        go
+        gomod
+        gosum
+      ];
 
-    plugins.lsp.servers.gopls = {
-      enable = true;
-      settings = {
-        gopls = {
-          analyses = {
-            unusedparams = true;
-            unusedvariable = true;
-            unusedwrite = true;
-            useany = true;
+      plugins.lsp.servers.gopls = {
+        enable = true;
+        settings = {
+          gopls = {
+            analyses = {
+              unusedparams = true;
+              unusedvariable = true;
+              unusedwrite = true;
+              useany = true;
+            };
+            hints = {
+              assignVariableTypes = false;
+              compositeLiteralFields = true;
+              compositeLiteralTypes = false;
+              constantValues = true;
+              functionTypeParameters = false;
+              parameterNames = true;
+              rangeVariableTypes = true;
+            };
+            gofumpt = true;
+            usePlaceholders = true;
+            semanticTokens = true;
+            staticcheck = true;
           };
-          hints = {
-            assignVariableTypes = false;
-            compositeLiteralFields = true;
-            compositeLiteralTypes = false;
-            constantValues = true;
-            functionTypeParameters = false;
-            parameterNames = true;
-            rangeVariableTypes = true;
-          };
-          gofumpt = true;
-          usePlaceholders = true;
-          semanticTokens = true;
-          staticcheck = true;
         };
       };
-    };
 
-    plugins.lsp.servers.golangci_lint_ls = {
-      enable = true;
-      settings = {
-        cmd = [ pkgs.golangci-lint-langserver ];
-        init_options = {
-          command = [
-            pkgs.golangci-lint
-            "run"
-            "--out-format"
-            "json"
-          ];
+      plugins.lsp.servers.golangci_lint_ls = {
+        enable = true;
+        settings = {
+          cmd = [ pkgs.golangci-lint-langserver ];
+          init_options = {
+            command = [
+              pkgs.golangci-lint
+              "run"
+              "--out-format"
+              "json"
+            ];
+          };
         };
       };
-    };
 
-    plugins.conform-nvim = {
-      settings.formatters_by_ft.go = [ "gofumpt" ];
-      settings.formatters.gofumpt = {
-        command = "${pkgs.gofumpt}/bin/gofumpt";
+      plugins.conform-nvim = {
+        settings.formatters_by_ft.go = [ "gofumpt" ];
+        settings.formatters.gofumpt = {
+          command = "${pkgs.gofumpt}/bin/gofumpt";
+        };
+      };
+
+      # plugins.neotest.adapters.golang = {
+      #   enable = true;
+      # };
+      plugins.dap-go = {
+        enable = true;
+        settings.delve.path = "${pkgs.delve}/bin/dlv";
       };
     };
-
-    # plugins.neotest.adapters.golang = {
-    #   enable = true;
-    # };
-    plugins.dap-go = {
-      enable = true;
-      settings.delve.path = "${pkgs.delve}/bin/dlv";
-    };
-  };
 }

@@ -1,17 +1,19 @@
 { pkgs, config, ... }:
 {
-  home-manager.users.${config.username}.programs.nixvim = {
-    extraPackages = with pkgs; [
-      typescript-language-server
-    ];
+  home-manager.users.${config.username}.programs.nixvim =
+    { config, ... }:
+    {
+      extraPackages = with pkgs; [
+        typescript-language-server
+      ];
 
-    plugins.treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-      javascript
-      typescript
-    ];
+      plugins.treesitter.grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
+        javascript
+        typescript
+      ];
 
-    plugins.lsp.servers.ts_ls = {
-      enable = true;
+      plugins.lsp.servers.ts_ls = {
+        enable = true;
+      };
     };
-  };
 }

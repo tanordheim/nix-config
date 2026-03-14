@@ -1,16 +1,18 @@
 { pkgs, config, ... }:
 {
-  home-manager.users.${config.username}.programs.nixvim = {
-    extraPackages = with pkgs; [
-      kotlin-language-server
-    ];
+  home-manager.users.${config.username}.programs.nixvim =
+    { config, ... }:
+    {
+      extraPackages = with pkgs; [
+        kotlin-language-server
+      ];
 
-    plugins.treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-      kotlin
-    ];
+      plugins.treesitter.grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
+        kotlin
+      ];
 
-    plugins.lsp.servers.kotlin_language_server = {
-      enable = true;
+      plugins.lsp.servers.kotlin_language_server = {
+        enable = true;
+      };
     };
-  };
 }
