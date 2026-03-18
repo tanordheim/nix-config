@@ -6,6 +6,7 @@
       extraPackages = with pkgs; [
         basedpyright
         ruff
+        ty
       ];
 
       extraPlugins = with pkgs.vimPlugins; [
@@ -16,20 +17,20 @@
         python
       ];
 
-      plugins.lsp.servers.basedpyright = {
+      plugins.lsp.servers.ty = {
         enable = true;
-        cmd = [
-          "${pkgs.basedpyright}/bin/basedpyright-langserver"
-          "--stdio"
-        ];
-        settings = {
-          basedpyright.analysis = {
-            autoFormatStrings = true;
-            inlayHints = {
-              variableTypes = true;
-              callArgumentNames = true;
-              functionReturnTypes = true;
-            };
+        config = {
+          cmd = [
+            "ty"
+            "server"
+          ];
+          filetypes = [
+            "python"
+          ];
+          root_dir = {
+            __raw = ''
+              require('lspconfig.util').root_pattern('pyproject.toml', 'uv.lock', '.git')
+            '';
           };
         };
       };
