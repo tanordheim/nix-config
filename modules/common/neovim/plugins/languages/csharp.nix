@@ -4,27 +4,27 @@
     { config, ... }:
     {
       extraPackages = with pkgs; [
-        # roslyn-ls
+        roslyn-ls
       ];
       extraPlugins = with pkgs.vimPlugins; [
-        # roslyn-nvim
+        roslyn-nvim
         # easy-dotnet-nvim
       ];
 
       plugins.treesitter.grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
         c_sharp
       ];
-      # cmd = {
-      #   "${pkgs.roslyn-ls}/bin/Microsoft.CodeAnalysis.LanguageServer",
-      #   "--logLevel=Debug",
-      #   "--stdio",
-      #   "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
-      # },
 
       extraConfigLua = # lua
         ''
           local capabilities = require('blink.cmp').get_lsp_capabilities()
           require('roslyn').setup {
+            cmd = {
+              "${pkgs.roslyn-ls}/bin/Microsoft.CodeAnalysis.LanguageServer",
+              "--logLevel=Debug",
+              "--stdio",
+              "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
+            },
             capabilities = capabilities,
             settings = {
               ['csharp|background_analysis'] = {
