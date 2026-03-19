@@ -1,8 +1,7 @@
 { ... }:
 {
   imports = [
-    # temporarily disabled as roslyn-ls is broken: https://github.com/NixOS/nixpkgs/pull/439459
-    # ./csharp.nix
+    ./csharp.nix
     ./go.nix
     ./html.nix
     ./javascript.nix

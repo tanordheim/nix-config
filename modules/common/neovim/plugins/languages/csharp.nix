@@ -4,33 +4,27 @@
     { config, ... }:
     {
       extraPackages = with pkgs; [
-        roslyn-ls
-        vscode-extensions.ms-dotnettools.csharp
-        netcoredbg
+        # roslyn-ls
       ];
       extraPlugins = with pkgs.vimPlugins; [
-        roslyn-nvim
-        rzls-nvim
-        easy-dotnet-nvim
+        # roslyn-nvim
+        # easy-dotnet-nvim
       ];
 
       plugins.treesitter.grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
         c_sharp
       ];
+      # cmd = {
+      #   "${pkgs.roslyn-ls}/bin/Microsoft.CodeAnalysis.LanguageServer",
+      #   "--logLevel=Debug",
+      #   "--stdio",
+      #   "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
+      # },
 
       extraConfigLua = # lua
         ''
           local capabilities = require('blink.cmp').get_lsp_capabilities()
           require('roslyn').setup {
-            handlers = require('rzls.roslyn_handlers'),
-            cmd = {
-              "${pkgs.roslyn-ls}/bin/Microsoft.CodeAnalysis.LanguageServer",
-              "--logLevel=Debug",
-              "--stdio",
-              "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
-              "--razorSourceGenerator=${pkgs.vscode-extensions.ms-dotnettools.csharp}/share/vscode/extensions/ms-dotnettools.csharp/.razor/Microsoft.CodeAnalysis.Razor.Compiler.dll",
-              "--razorDesignTimePath=${pkgs.vscode-extensions.ms-dotnettools.csharp}/share/vscode/extensions/ms-dotnettools.csharp/.razor/Targets/Microsoft.NET.Sdk.Razor.DesignTime.targets",
-            },
             capabilities = capabilities,
             settings = {
               ['csharp|background_analysis'] = {
@@ -104,34 +98,6 @@
             "--write-stdout"
           ];
         };
-      };
-
-      # plugins.neotest.adapters.dotnet = {
-      #   enable = true;
-      #   settings = {
-      #     discovery_root = "solution";
-      #     dotnet_additional_args = [
-      #       "--no-restore"
-      #       "--no-build"
-      #       "--nologo"
-      #     ];
-      #   };
-      # };
-
-      plugins.dap = {
-        configurations.cs = [
-          {
-            type = "coreclr";
-            request = "launch";
-            name = "launch - netcoredbg";
-            program = # lua
-              ''
-                function()
-                  return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-                end,
-              '';
-          }
-        ];
       };
     };
 }
