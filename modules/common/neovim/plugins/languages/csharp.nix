@@ -88,16 +88,7 @@
 
       plugins.conform-nvim = {
         settings.formatters_by_ft.cs = [ "csharpier" ];
-        settings.formatters.csharpier = {
-          command = "dotnet";
-          args = [
-            "tool"
-            "run"
-            "--allow-roll-forward"
-            "dotnet-csharpier"
-            "--write-stdout"
-          ];
-        };
+        settings.formatters.csharpier = { };
       };
     };
 }
