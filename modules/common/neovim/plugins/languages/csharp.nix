@@ -8,7 +8,7 @@
       ];
       extraPlugins = with pkgs.vimPlugins; [
         roslyn-nvim
-        # easy-dotnet-nvim
+        easy-dotnet-nvim
       ];
 
       plugins.treesitter.grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
