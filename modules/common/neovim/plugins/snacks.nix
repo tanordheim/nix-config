@@ -7,6 +7,12 @@
         explorer = {
           enabled = true;
           replace_netrw = true;
+          ignored = true;
+          exclude = [
+            ".git"
+            ".venv"
+            "node_modules"
+          ];
         };
         lazygit.enabled = true;
         notifier.enabled = true;
