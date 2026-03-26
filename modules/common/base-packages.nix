@@ -21,6 +21,7 @@
     jq
     killall
     lsof
+    nixfmt
     nvd
     unixtools.watch
     unzip
