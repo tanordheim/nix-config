@@ -20,6 +20,11 @@
         '';
     };
 
+    plugins.inc-rename = {
+      enable = true;
+      settings.input_buffer_type = "snacks";
+    };
+
     plugins.lspsaga = {
       enable = true;
       settings.lightbulb.enable = false;
@@ -119,14 +124,15 @@
       {
         key = "<leader>rn";
         mode = "n";
-        action = "<cmd>Lspsaga rename<CR>";
-        options.desc = "[R]e[n]ame";
-      }
-      {
-        key = "<leader>rN";
-        mode = "n";
-        action = "<cmd>Lspsaga rename mode=n<CR>";
-        options.desc = "[R]e[n]ame (normal mode)";
+        action.__raw = ''
+          function()
+            return ":IncRename " .. vim.fn.expand("<cword>")
+          end
+        '';
+        options = {
+          desc = "[R]e[n]ame";
+          expr = true;
+        };
       }
       {
         key = "<leader>ca";
