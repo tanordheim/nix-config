@@ -14,6 +14,7 @@
       signing = {
         signByDefault = true;
         key = config.user.ssh.key;
+        format = null;
       };
 
       settings = {
