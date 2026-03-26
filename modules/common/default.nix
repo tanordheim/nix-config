@@ -82,10 +82,6 @@ in
 
       users.${config.username} = {
         programs.home-manager.enable = true;
-
-        home = {
-          stateVersion = "24.11";
-        };
       };
     };
   };

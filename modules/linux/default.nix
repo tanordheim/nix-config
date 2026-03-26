@@ -1,8 +1,5 @@
 { config, ... }:
 {
-  # Used for backwards compatibility, please read the changelog before changing.
-  system.stateVersion = "24.11";
-
   imports = [
     ../common
     ./1password.nix
