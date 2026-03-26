@@ -8,6 +8,7 @@
     ./lua.nix
     ./kotlin.nix
     ./nix.nix
+    ./shell.nix
     ./proto.nix
     ./python.nix
     ./rust.nix
