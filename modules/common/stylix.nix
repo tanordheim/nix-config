@@ -46,4 +46,8 @@ in
       terminal = 0.95;
     };
   };
+
+  home-manager.users.${config.username} = {
+    gtk.gtk4.theme = null;
+  };
 }
