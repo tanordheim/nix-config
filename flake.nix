@@ -65,11 +65,6 @@
       url = "github:zhaofengli/nix-homebrew";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
-    jankyborders-src = {
-      url = "github:FelixKratz/JankyBorders";
-      flake = false;
-    };
-
     # Private config
     nix-config-private = {
       url = "git+ssh://git@ssh.github.com/tanordheim/nix-config-private.git?ref=main";

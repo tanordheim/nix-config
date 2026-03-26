@@ -10,10 +10,6 @@ let
 
 in
 {
-  environment.systemPackages = with pkgs; [
-    jankyborders
-  ];
-
   home-manager.users.${config.username} =
     { lib, config, ... }:
     let
@@ -47,9 +43,7 @@ in
           # You can use it to add commands that run after AeroSpace startup.
           # 'after-startup-command' is run after 'after-login-command'
           # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-          after-startup-command = [
-            "exec-and-forget ${pkgs.jankyborders}/bin/borders active_color=0xff${colors.base0D} inactive_color=0xff${colors.base03} width=5.0"
-          ];
+          after-startup-command = [ ];
 
           # Notify sketchybar on workspace change
           exec-on-workspace-change = [

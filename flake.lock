@@ -219,11 +219,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774379316,
-        "narHash": "sha256-0nGNxWDUH2Hzlj/R3Zf4FEK6fsFNB/dvewuboSRZqiI=",
+        "lastModified": 1774539458,
+        "narHash": "sha256-H9GIOqdMfQZ6lFetsQhO9TCq53hYzpTHDWOt3PRh9V0=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "1eb0549a1ab3fe3f5acf86668249be15fa0e64f7",
+        "rev": "e2e5f512b33ed19a7a3271d0b73ed5eefcc0be5f",
         "type": "github"
       },
       "original": {
@@ -267,11 +267,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1774513484,
-        "narHash": "sha256-nhyeLnGieNz3qGKLt0bSeZcMWhv2SyoaWwqHVo1Zc5M=",
+        "lastModified": 1774546209,
+        "narHash": "sha256-0FtA3Un6C0N/wra1pbSgyQ/QGVghHiG2hq1XmquKrHY=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "150da3a3d7fb1bfda25d2d9d642619481acae3aa",
+        "rev": "b28a4af2b6e28c2444e19c6c487921e038561910",
         "type": "github"
       },
       "original": {
@@ -283,11 +283,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1774507765,
-        "narHash": "sha256-YnUOneN3De1NdT0BhpZoLr1ROfphMQQ2ogpgG8ThfdQ=",
+        "lastModified": 1774542709,
+        "narHash": "sha256-PCBg+j5Wp1Yuv2JEo40teTSIXTmr9cvVHhnKN6tNJDA=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "dc21b19f04878fb04b9ed3a3fa1deb203162ece7",
+        "rev": "efd4df7a486248be42fa57deaaa3b500ab6b5d5c",
         "type": "github"
       },
       "original": {
@@ -309,22 +309,6 @@
       "original": {
         "owner": "telepresenceio",
         "repo": "homebrew-telepresence",
-        "type": "github"
-      }
-    },
-    "jankyborders-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1768056096,
-        "narHash": "sha256-odhoKy+aABfv19fxaINWtmY6hbmYyeQzWzxgOlD8ONE=",
-        "owner": "FelixKratz",
-        "repo": "JankyBorders",
-        "rev": "a56a76a8a6ed77325f03655b23fcf525144d120b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "FelixKratz",
-        "repo": "JankyBorders",
         "type": "github"
       }
     },
@@ -572,7 +556,6 @@
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
         "homebrew-telepresence": "homebrew-telepresence",
-        "jankyborders-src": "jankyborders-src",
         "nix-config-private": "nix-config-private",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
