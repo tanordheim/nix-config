@@ -36,6 +36,10 @@ When debugging nix build errors, check upstream issue trackers before attempting
 - nixos-apple-silicon: https://github.com/nix-community/nixos-apple-silicon/issues
 - nix-homebrew: https://github.com/zhaofengli/nix-homebrew/issues
 
+## Code Style
+
+Do not add comments to code. Preserve all existing comments.
+
 ## Neovim
 
 Configured with nixvim. Read `agent_docs/nixvim.md` when working on neovim configuration.
