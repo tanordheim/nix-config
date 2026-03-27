@@ -37,6 +37,7 @@ in
       };
 
       sizes = {
+        applications = 13;
         popups = 13;
         terminal = lib.mkDefault 11;
       };
