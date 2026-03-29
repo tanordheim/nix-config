@@ -13,8 +13,8 @@
         theme = "catppuccin";
         globalstatus = true;
         section_separators = {
-          left.__raw = "'\\xEE\\x82\\xB0'";
-          right.__raw = "'\\xEE\\x82\\xB2'";
+          left.__raw = "'\\xEE\\x82\\xBC'";
+          right.__raw = "'\\xEE\\x82\\xB8'";
         };
         component_separators = {
           left = "";
