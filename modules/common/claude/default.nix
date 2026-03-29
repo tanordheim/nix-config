@@ -3,8 +3,5 @@
   home-manager.users.${config.username}.home.packages = with pkgs; [
     claude-code
   ];
-  homebrew.casks = [
-    "claude"
-  ];
   imports = [ ./skills.nix ];
 }
