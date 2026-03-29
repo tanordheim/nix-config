@@ -26,7 +26,6 @@ in
     ./1password.nix
     ./aws.nix
     ./base-packages.nix
-    ./claude.nix
     ./docker.nix
     ./direnv.nix
     ./dotnet
