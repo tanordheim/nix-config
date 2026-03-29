@@ -1,12 +1,4 @@
-{ config, lib, ... }:
-let
-  skillsDir = ./skills;
-  skills = builtins.attrNames (builtins.readDir skillsDir);
-in
+{ config, ... }:
 {
-  home-manager.users.${config.username}.home.file = lib.mkMerge (
-    map (skill: {
-      ".claude/skills/${skill}".source = "${skillsDir}/${skill}";
-    }) skills
-  );
+  home-manager.users.${config.username}.home.file.".claude/skills".source = ./skills;
 }

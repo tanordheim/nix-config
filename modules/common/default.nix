@@ -25,6 +25,7 @@ in
   imports = [
     ./1password.nix
     ./aws.nix
+    ./claude
     ./base-packages.nix
     ./docker.nix
     ./direnv.nix
