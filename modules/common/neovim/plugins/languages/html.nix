@@ -3,10 +3,6 @@
   home-manager.users.${config.username}.programs.nixvim =
     { config, ... }:
     {
-      extraPackages = with pkgs; [
-        vscode-langservers-extracted
-      ];
-
       plugins.treesitter.grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
         html
       ];
@@ -18,5 +14,9 @@
           "--stdio"
         ];
       };
+
+      extraPackages = with pkgs; [
+        vscode-langservers-extracted
+      ];
     };
 }

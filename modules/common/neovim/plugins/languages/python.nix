@@ -3,16 +3,6 @@
   home-manager.users.${config.username}.programs.nixvim =
     { config, ... }:
     {
-      extraPackages = with pkgs; [
-        basedpyright
-        ruff
-        ty
-      ];
-
-      extraPlugins = with pkgs.vimPlugins; [
-        neotest-python
-      ];
-
       plugins.treesitter.grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
         python
       ];
@@ -47,6 +37,16 @@
           command = "${pkgs.ruff}/bin/ruff";
         };
       };
+
+      extraPackages = with pkgs; [
+        basedpyright
+        ruff
+        ty
+      ];
+
+      extraPlugins = with pkgs.vimPlugins; [
+        neotest-python
+      ];
 
       plugins.neotest.settings.adapters = [
         {

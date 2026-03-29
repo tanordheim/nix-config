@@ -3,10 +3,6 @@
   home-manager.users.${config.username}.programs.nixvim =
     { config, ... }:
     {
-      extraPackages = with pkgs; [
-        taplo
-      ];
-
       plugins.treesitter.grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
         toml
       ];
@@ -21,5 +17,9 @@
           command = "${pkgs.taplo}/bin/taplo";
         };
       };
+
+      extraPackages = with pkgs; [
+        taplo
+      ];
     };
 }

@@ -3,11 +3,6 @@
   home-manager.users.${config.username}.programs.nixvim =
     { config, ... }:
     {
-      extraPackages = with pkgs; [
-        buf
-        protols
-      ];
-
       plugins.treesitter.grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
         proto
       ];
@@ -23,5 +18,10 @@
           command = "${pkgs.buf}/bin/buf";
         };
       };
+
+      extraPackages = with pkgs; [
+        buf
+        protols
+      ];
     };
 }

@@ -3,32 +3,40 @@
   home-manager.users.${config.username}.programs.nixvim =
     { config, ... }:
     {
-      extraPackages = with pkgs; [
-        rust-analyzer
-        rustfmt
-      ];
-
       plugins.treesitter.grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
         rust
+        ron
       ];
 
-      plugins.lsp.servers.rust_analyzer = {
+      plugins.rustaceanvim = {
         enable = true;
-        installCargo = false;
-        installRustc = false;
         settings = {
-          rust-analyzer = {
-            check = {
-              command = "clippy";
-            };
-            inlayHints = {
-              chainingHints.enable = true;
-              typeHints.enable = true;
-              parameterHints.enable = true;
+          server = {
+            settings = {
+              "rust-analyzer" = {
+                check.command = "clippy";
+                inlayHints = {
+                  chainingHints.enable = true;
+                  typeHints.enable = true;
+                  parameterHints.enable = true;
+                };
+              };
             };
           };
         };
       };
+
+      plugins.conform-nvim.settings = {
+        formatters_by_ft.rust = [ "rustfmt" ];
+        formatters.rustfmt = {
+          command = "${pkgs.rustfmt}/bin/rustfmt";
+        };
+      };
+
+      extraPackages = with pkgs; [
+        rust-analyzer
+        rustfmt
+      ];
 
       plugins.crates = {
         enable = true;
@@ -52,12 +60,5 @@
         "path"
         "snippets"
       ];
-
-      plugins.conform-nvim.settings = {
-        formatters_by_ft.rust = [ "rustfmt" ];
-        formatters.rustfmt = {
-          command = "${pkgs.rustfmt}/bin/rustfmt";
-        };
-      };
     };
 }

@@ -19,6 +19,7 @@
 
     ./blink-cmp.nix
     ./conform.nix
+    ./lint.nix
     ./dap.nix
     ./gitsigns.nix
     # ./lensline.nix

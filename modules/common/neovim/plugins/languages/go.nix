@@ -3,13 +3,6 @@
   home-manager.users.${config.username}.programs.nixvim =
     { config, ... }:
     {
-      extraPackages = with pkgs; [
-        delve
-        golangci-lint-langserver
-        gopls
-        gofumpt
-      ];
-
       plugins.treesitter.grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
         go
         gomod
@@ -64,6 +57,13 @@
           command = "${pkgs.gofumpt}/bin/gofumpt";
         };
       };
+
+      extraPackages = with pkgs; [
+        delve
+        golangci-lint-langserver
+        gopls
+        gofumpt
+      ];
 
       # plugins.neotest.adapters.golang = {
       #   enable = true;

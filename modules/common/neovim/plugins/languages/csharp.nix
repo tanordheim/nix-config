@@ -3,16 +3,22 @@
   home-manager.users.${config.username}.programs.nixvim =
     { config, ... }:
     {
+      plugins.treesitter.grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
+        c_sharp
+      ];
+
+      plugins.conform-nvim = {
+        settings.formatters_by_ft.cs = [ "csharpier" ];
+        settings.formatters.csharpier = { };
+      };
+
       extraPackages = with pkgs; [
         roslyn-ls
       ];
+
       extraPlugins = with pkgs.vimPlugins; [
         roslyn-nvim
         easy-dotnet-nvim
-      ];
-
-      plugins.treesitter.grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
-        c_sharp
       ];
 
       extraConfigLua = # lua
@@ -85,10 +91,5 @@
             },
           }
         '';
-
-      plugins.conform-nvim = {
-        settings.formatters_by_ft.cs = [ "csharpier" ];
-        settings.formatters.csharpier = { };
-      };
     };
 }

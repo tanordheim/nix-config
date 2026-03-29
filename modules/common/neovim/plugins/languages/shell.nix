@@ -3,11 +3,6 @@
   home-manager.users.${config.username}.programs.nixvim =
     { config, ... }:
     {
-      extraPackages = with pkgs; [
-        bash-language-server
-        shfmt
-      ];
-
       plugins.treesitter.grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
         bash
       ];
@@ -26,5 +21,10 @@
           command = "${pkgs.shfmt}/bin/shfmt";
         };
       };
+
+      extraPackages = with pkgs; [
+        bash-language-server
+        shfmt
+      ];
     };
 }
