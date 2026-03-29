@@ -1,15 +1,3 @@
-# CLAUDE.md
-
-Personal NixOS/nix-darwin flake managing three hosts across Linux and macOS.
-
-## Hosts
-
-| Hostname | Platform | Arch |
-|---|---|---|
-| lyng | nix-darwin | aarch64-darwin |
-
-Run `hostname` to identify the current host if not clear from context.
-
 ## Structure
 
 - `modules/common/` — cross-platform home-manager and shared config
