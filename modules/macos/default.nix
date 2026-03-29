@@ -7,6 +7,7 @@
     ./audacity.nix
     ./camo.nix
     ./chrome.nix
+    ./claude.nix
     ./discord.nix
     ./docker.nix
     ./firefox.nix
