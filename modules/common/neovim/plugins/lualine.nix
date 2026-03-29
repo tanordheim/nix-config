@@ -14,7 +14,7 @@
         globalstatus = true;
         section_separators = {
           left.__raw = "'\\xEE\\x82\\xBC'";
-          right.__raw = "'\\xEE\\x82\\xB8'";
+          right.__raw = "'\\xEE\\x82\\xB6'";
         };
         component_separators = {
           left = "";
