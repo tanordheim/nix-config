@@ -123,6 +123,11 @@ let
         "Bash(gh run *)"
         "Bash(gh repo view *)"
 
+        # Linear CLI
+        "Bash(linear issue *)"
+        "Bash(linear project list *)"
+        "Bash(linear project view *)"
+
         # Nix
         "Bash(nix *)"
         "Bash(nixfmt *)"
