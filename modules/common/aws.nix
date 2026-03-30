@@ -1,6 +1,4 @@
-{ pkgs, ... }:
+{ config, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    stable.awscli2
-  ];
+  home-manager.users.${config.username}.programs.awscli.enable = true;
 }
