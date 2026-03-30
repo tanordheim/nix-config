@@ -19,9 +19,9 @@ let
 
     if [ -n "$DIR" ] && git -C "$DIR" rev-parse --git-dir > /dev/null 2>&1; then
         BRANCH=$(git -C "$DIR" branch --show-current 2>/dev/null)
-        printf "[%s]  %s |  %s | %s" "$MODEL" "$BASEDIR" "$BRANCH" "$CONTEXT"
+        printf "[%s] |  %s |  %s | 󱙺 %s" "$MODEL" "$BASEDIR" "$BRANCH" "$CONTEXT"
     else
-        printf "[%s]  %s | %s" "$MODEL" "$BASEDIR" "$CONTEXT"
+        printf "[%s] |  %s | 󱙺 %s" "$MODEL" "$BASEDIR" "$CONTEXT"
     fi
   '';
 
