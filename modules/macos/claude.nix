@@ -1,6 +1,6 @@
 { ... }:
 {
   homebrew.casks = [
-    # "claude"
+    "claude"
   ];
 }
