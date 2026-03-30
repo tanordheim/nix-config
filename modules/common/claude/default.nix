@@ -41,7 +41,6 @@ let
         context = "Chat";
         bindings = {
           f13 = "voice:pushToTalk";
-          space = null;
         };
       }
     ];
