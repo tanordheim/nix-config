@@ -322,11 +322,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774854494,
-        "narHash": "sha256-6n8Qf3IhhDJ2i6R9JNzIiBCJkLIUCm29pb7MCwb1Sb8=",
+        "lastModified": 1774855585,
+        "narHash": "sha256-PhKvSofb2hlfinATrKNDAbGBS63n9GQv/B64WOx2oM0=",
         "ref": "feature/privatestuff",
-        "rev": "610092900d88f74e116cc1596d57c3d1e6c4cde3",
-        "revCount": 48,
+        "rev": "f4ad702b118da000ec4d422d694bd980f4f7c713",
+        "revCount": 49,
         "type": "git",
         "url": "file:///Users/trond/code/private/nix-config-private"
       },
