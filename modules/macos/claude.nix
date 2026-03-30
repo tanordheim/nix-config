@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   statuslineScript = pkgs.writeShellScript "claude-statusline" ''
     input=$(cat)
@@ -38,7 +38,8 @@ in
     "claude"
   ];
 
-  system.activationScripts.claudeManagedSettings.text = ''
+  system.activationScripts.postActivation.text = lib.mkAfter ''
+    echo "setting up Claude Code managed settings..."
     mkdir -p "/Library/Application Support/ClaudeCode"
     ln -sf ${managedSettings} "/Library/Application Support/ClaudeCode/managed-settings.json"
   '';
