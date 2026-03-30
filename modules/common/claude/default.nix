@@ -64,8 +64,8 @@ in
   config = lib.mkMerge [
     (lib.mkIf pkgs.stdenv.isDarwin {
       system.activationScripts.claudeManagedSettings.text = ''
-        install -d "/Library/Application Support/ClaudeCode"
-        install -m 644 ${managedSettings} "/Library/Application Support/ClaudeCode/managed-settings.json"
+        mkdir -p "/Library/Application Support/ClaudeCode"
+        ln -sf ${managedSettings} "/Library/Application Support/ClaudeCode/managed-settings.json"
       '';
     })
     {
