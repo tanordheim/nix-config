@@ -31,6 +31,7 @@ let
         type = "command";
         command = "${statuslineScript}";
       };
+      voiceEnabled = true;
     }
   );
 in

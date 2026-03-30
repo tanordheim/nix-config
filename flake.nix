@@ -61,6 +61,10 @@
       url = "github:telepresenceio/homebrew-telepresence";
       flake = false;
     };
+    homebrew-schpet-tap = {
+      url = "github:schpet/homebrew-tap";
+      flake = false;
+    };
     nix-homebrew = {
       url = "github:zhaofengli/nix-homebrew";
       # inputs.nixpkgs.follows = "nixpkgs";
