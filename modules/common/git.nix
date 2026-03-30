@@ -36,29 +36,27 @@
           email = config.git.email;
         };
 
-        extraConfig = {
-          apply.whitespace = "nowarn";
-          branch.autosetupmerge = true;
-          color = {
-            branch = "auto";
-            diff = "auto";
-            interactive = "auto";
-            status = "auto";
-          };
-          core = {
-            pager = "less -FXRS -x2";
-            autocrlf = "input";
-            editor = "nvim";
-          };
-          github.user = config.git.githubUsername;
-          init.defaultBranch = "main";
-          merge.tool = "vimdiff";
-          push.default = "simple";
-          rebase.autosquash = true;
-          rerere = {
-            enabled = true;
-            autoupdate = true;
-          };
+        apply.whitespace = "nowarn";
+        branch.autosetupmerge = true;
+        color = {
+          branch = "auto";
+          diff = "auto";
+          interactive = "auto";
+          status = "auto";
+        };
+        core = {
+          pager = "less -FXRS -x2";
+          autocrlf = "input";
+          editor = "nvim";
+        };
+        github.user = config.git.githubUsername;
+        init.defaultBranch = "main";
+        merge.tool = "vimdiff";
+        push.default = "simple";
+        rebase.autosquash = true;
+        rerere = {
+          enabled = true;
+          autoupdate = true;
         };
       };
 
