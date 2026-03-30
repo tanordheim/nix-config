@@ -6,6 +6,7 @@ let
     MODEL=$(echo "$input" | jq -r '.model.display_name')
     PCT=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
     DIR=$(echo "$input" | jq -r '.workspace.current_dir')
+    BASEDIR=$(basename "$DIR")
 
     BAR_WIDTH=10
     FILLED=$((PCT * BAR_WIDTH / 100))
@@ -18,9 +19,9 @@ let
 
     if [ -n "$DIR" ] && git -C "$DIR" rev-parse --git-dir > /dev/null 2>&1; then
         BRANCH=$(git -C "$DIR" branch --show-current 2>/dev/null)
-        printf "%s   %s    %s" "$MODEL" "$CONTEXT" "$BRANCH"
+        printf "[%s]  %s |  %s | %s" "$MODEL" "$BASEDIR" "$BRANCH" "$CONTEXT"
     else
-        printf "%s   %s" "$MODEL" "$CONTEXT"
+        printf "[%s]  %s | %s" "$MODEL" "$BASEDIR" "$CONTEXT"
     fi
   '';
 
