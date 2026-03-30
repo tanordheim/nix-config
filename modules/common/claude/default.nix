@@ -127,9 +127,6 @@ let
         "Bash(nix *)"
         "Bash(nixfmt *)"
 
-        # Temp files
-        "Write(//tmp/*)"
-
         # Misc utilities
         "Bash(chmod *)"
         "Bash(openssl rand *)"
