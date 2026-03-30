@@ -35,9 +35,22 @@ let
     - At the end of each plan, give me a list of unresolved questions to answer, if any. Make the questions extremely concise. Sacrifice grammar for the sake of concision.
   '';
 
+  keybindings = builtins.toJSON {
+    bindings = [
+      {
+        context = "Chat";
+        bindings = {
+          f13 = "voice:pushToTalk";
+          space = null;
+        };
+      }
+    ];
+  };
+
   mkClaudeFiles = prefix: {
     "${prefix}/skills".source = skillsDir;
     "${prefix}/CLAUDE.md".text = claudeMd;
+    "${prefix}/keybindings.json".text = keybindings;
   };
 
   mkInstanceFiles = instance: mkClaudeFiles ".claude-${instance.name}";
@@ -75,6 +88,10 @@ let
 
   managedSettings = pkgs.writeText "claude-managed-settings" (
     builtins.toJSON {
+      permissions.allow = [
+        "Bash(gh search:*)"
+        "Bash(gh issue:*)"
+      ];
       statusLine = {
         type = "command";
         command = "${statuslineScript}";
