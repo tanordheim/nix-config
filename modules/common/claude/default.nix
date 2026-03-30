@@ -30,6 +30,15 @@ let
     fi
   '';
 
+  managedSettings = pkgs.writeText "claude-managed-settings" (
+    builtins.toJSON {
+      statusLine = {
+        type = "command";
+        command = "${statuslineScript}";
+      };
+    }
+  );
+
   mkInstanceFiles = instance: {
     ".claude-${instance.name}/skills".source = skillsDir;
   };
@@ -52,15 +61,23 @@ in
     default = [ ];
   };
 
-  config = {
-    home-manager.users.${config.username} = {
-      home.packages = [ pkgs.claude-code ] ++ map mkInstancePackage config.claude.instances;
-      home.file = lib.mkMerge (
-        [
-          { ".claude/skills".source = skillsDir; }
-        ]
-        ++ map mkInstanceFiles config.claude.instances
-      );
-    };
-  };
+  config = lib.mkMerge [
+    (lib.mkIf pkgs.stdenv.isDarwin {
+      system.activationScripts.claudeManagedSettings.text = ''
+        install -d "/Library/Application Support/ClaudeCode"
+        install -m 644 ${managedSettings} "/Library/Application Support/ClaudeCode/managed-settings.json"
+      '';
+    })
+    {
+      home-manager.users.${config.username} = {
+        home.packages = [ pkgs.claude-code ] ++ map mkInstancePackage config.claude.instances;
+        home.file = lib.mkMerge (
+          [
+            { ".claude/skills".source = skillsDir; }
+          ]
+          ++ map mkInstanceFiles config.claude.instances
+        );
+      };
+    }
+  ];
 }
