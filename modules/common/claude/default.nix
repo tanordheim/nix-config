@@ -88,8 +88,51 @@ let
   managedSettings = pkgs.writeText "claude-managed-settings" (
     builtins.toJSON {
       permissions.allow = [
-        "Bash(gh search:*)"
-        "Bash(gh issue:*)"
+        # Web
+        "WebFetch"
+        "WebSearch"
+
+        # Git
+        "Bash(git status)"
+        "Bash(git log *)"
+        "Bash(git diff *)"
+        "Bash(git show *)"
+        "Bash(git branch *)"
+        "Bash(git checkout *)"
+        "Bash(git switch *)"
+        "Bash(git add *)"
+        "Bash(git commit *)"
+        "Bash(git stash *)"
+        "Bash(git rev-parse *)"
+        "Bash(git fetch *)"
+        "Bash(git blame *)"
+        "Bash(git shortlog *)"
+        "Bash(git tag *)"
+        "Bash(git ls-files *)"
+        "Bash(git config *)"
+
+        # GitHub CLI
+        "Bash(gh pr list *)"
+        "Bash(gh pr view *)"
+        "Bash(gh pr diff *)"
+        "Bash(gh pr checks *)"
+        "Bash(gh issue list *)"
+        "Bash(gh issue view *)"
+        "Bash(gh api *)"
+        "Bash(gh search *)"
+        "Bash(gh run *)"
+        "Bash(gh repo view *)"
+
+        # Nix
+        "Bash(nix *)"
+        "Bash(nixfmt *)"
+
+        # Temp files
+        "Write(//tmp/*)"
+
+        # Misc utilities
+        "Bash(chmod *)"
+        "Bash(openssl rand *)"
       ];
       statusLine = {
         type = "command";
