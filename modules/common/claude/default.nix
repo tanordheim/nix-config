@@ -54,10 +54,35 @@ let
 
   mkInstanceFiles = instance: mkClaudeFiles ".claude-${instance.name}";
 
+  unwrappedClaude = pkgs.claude-code;
+
+  mkInstanceAwareClaudeWrapper =
+    instances:
+    let
+      matchBlock = lib.concatMapStrings (instance: ''
+        root=$(echo ${lib.escapeShellArg instance.rootDir} | sed 's|^~|'"$HOME"'|')
+        len=''${#root}
+        if ([[ "$cwd" == "$root" ]] || [[ "$cwd" == "$root/"* ]]) && [ "$len" -gt "$best_len" ]; then
+          best_match=${lib.escapeShellArg instance.name}
+          best_len=$len
+        fi
+      '') instances;
+    in
+    pkgs.writeShellScriptBin "claude" ''
+      cwd="$PWD"
+      best_match=""
+      best_len=0
+      ${matchBlock}
+      if [ -n "$best_match" ]; then
+        export CLAUDE_CONFIG_DIR="$HOME/.claude-$best_match"
+      fi
+      exec ${unwrappedClaude}/bin/claude "$@"
+    '';
+
   mkInstancePackage =
     instance:
     pkgs.writeShellScriptBin "claude-${instance.name}" ''
-      exec env CLAUDE_CONFIG_DIR="$HOME/.claude-${instance.name}" claude "$@"
+      exec env CLAUDE_CONFIG_DIR="$HOME/.claude-${instance.name}" ${unwrappedClaude}/bin/claude "$@"
     '';
 
   statuslineScript = pkgs.writeShellScript "claude-statusline" ''
@@ -151,6 +176,9 @@ in
         options.name = lib.mkOption {
           type = lib.types.str;
         };
+        options.rootDir = lib.mkOption {
+          type = lib.types.str;
+        };
       }
     );
     default = [ ];
@@ -159,7 +187,10 @@ in
   config = lib.mkMerge [
     {
       home-manager.users.${config.username} = {
-        home.packages = [ pkgs.claude-code ] ++ map mkInstancePackage config.claude.instances;
+        home.packages = [
+          (mkInstanceAwareClaudeWrapper config.claude.instances)
+        ]
+        ++ map mkInstancePackage config.claude.instances;
         home.file = lib.mkMerge (
           [
             (mkClaudeFiles ".claude")
