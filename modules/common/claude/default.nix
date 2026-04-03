@@ -36,11 +36,13 @@ let
   '';
 
   keybindings = builtins.toJSON {
-    bindings = [
+    "$schema" = "https://www.schemastore.org/claude-code-keybindings.json";
+    "$docs" = "https://code.claude.com/docs/en/keybindings";
+    "bindings" = [
       {
         context = "Chat";
         bindings = {
-          f13 = "voice:pushToTalk";
+          "ctrl+alt+d" = "voice:pushToTalk";
         };
       }
     ];
