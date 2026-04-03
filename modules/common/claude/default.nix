@@ -42,7 +42,7 @@ let
       {
         context = "Chat";
         bindings = {
-          "ctrl+alt+e" = "voice:pushToTalk";
+          # "ctrl+alt+e" = "voice:pushToTalk";
         };
       }
     ];
