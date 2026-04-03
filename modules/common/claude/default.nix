@@ -39,6 +39,12 @@ let
     "$schema" = "https://www.schemastore.org/claude-code-keybindings.json";
     "$docs" = "https://code.claude.com/docs/en/keybindings";
     "bindings" = [
+      {
+        context = "Chat";
+        bindings = {
+          "ctrl+alt+e" = "voice:pushToTalk";
+        };
+      }
     ];
   };
 
@@ -161,6 +167,7 @@ let
         type = "command";
         command = "${statuslineScript}";
       };
+      voiceEnabled = true;
     }
   );
 in
