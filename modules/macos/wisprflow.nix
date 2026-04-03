@@ -1,6 +1,6 @@
 { ... }:
 {
   homebrew.casks = [
-    "whispr-flow"
+    "wispr-flow"
   ];
 }
