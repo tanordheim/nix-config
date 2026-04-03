@@ -56,7 +56,7 @@ let
 
   mkInstanceFiles = instance: mkClaudeFiles ".claude-${instance.name}";
 
-  unwrappedClaude = pkgs.claude-code;
+  unwrappedClaude = pkgs.bleeding.claude-code;
 
   mkInstanceAwareClaudeWrapper =
     instances:

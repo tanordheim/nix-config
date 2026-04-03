@@ -92,6 +92,12 @@
         action = "<cmd>bnext<cr>";
         options.desc = "Go to the next buffer";
       }
+      {
+        key = "U";
+        mode = "n";
+        action = "<C-r>";
+        options.desc = "Redo";
+      }
     ];
 
     extraConfigLua = # lua
