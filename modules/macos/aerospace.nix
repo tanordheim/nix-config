@@ -12,9 +12,6 @@ in
 {
   home-manager.users.${config.username} =
     { lib, config, ... }:
-    let
-      colors = config.lib.stylix.colors;
-    in
     {
       xdg.configFile = {
         "aerospace/on-workspace-change.sh" = {
@@ -91,12 +88,16 @@ in
           #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
           #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
           gaps = {
-            inner.horizontal = 8;
-            inner.vertical = 8;
-            outer.left = 7;
-            outer.bottom = 40;
-            outer.top = 7;
-            outer.right = 7;
+            inner = {
+              horizontal = 8;
+              vertical = 8;
+            };
+            outer = {
+              left = 7;
+              bottom = 40;
+              top = 7;
+              right = 7;
+            };
           };
 
           # 'main' binding mode declaration
@@ -133,16 +134,16 @@ in
             ctrl-shift-alt-f = "layout floating tiling";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-            alt-m = "focus left";
-            alt-n = "focus down";
-            alt-e = "focus up";
-            alt-i = "focus right";
+            alt-h = "focus left";
+            alt-j = "focus down";
+            alt-k = "focus up";
+            alt-l = "focus right";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#move
-            ctrl-alt-m = "move left";
-            ctrl-alt-n = "move down";
-            ctrl-alt-e = "move up";
-            ctrl-alt-i = "move right";
+            ctrl-alt-h = "move left";
+            ctrl-alt-j = "move down";
+            ctrl-alt-k = "move up";
+            ctrl-alt-l = "move right";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#resize
             # ctrl-shift-alt-comma = "resize smart -50";
