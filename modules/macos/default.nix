@@ -33,6 +33,7 @@
     ./touch-id.nix
     ./users.nix
     ./whatsapp.nix
+    ./wisprflow.nix
     ./xcode
   ];
 
