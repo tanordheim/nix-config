@@ -6,6 +6,7 @@
 {
   homebrew.casks = [
     "firefox"
+    "warp"
   ];
 
   home-manager.users.${config.username}.home = {

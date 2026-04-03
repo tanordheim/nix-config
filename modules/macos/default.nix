@@ -11,7 +11,6 @@
     ./docker.nix
     ./firefox.nix
     ./homebrew.nix
-    ./iina.nix
     ./java.nix
     ./keyboard.nix
     ./kitty.nix
