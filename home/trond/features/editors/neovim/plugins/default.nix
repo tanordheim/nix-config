@@ -1,0 +1,41 @@
+{ pkgs, ... }:
+{
+  # commonly needed libraries
+  programs.nixvim = {
+    plugins = {
+      nui.enable = true;
+      dressing.enable = true;
+    };
+
+    extraPlugins = with pkgs.vimPlugins; [
+      plenary-nvim
+    ];
+  };
+
+  imports = [
+    # needs to be loaded early
+    ./snacks.nix
+    ./nvim-treesitter.nix
+
+    ./blink-cmp.nix
+    ./conform.nix
+    ./lint.nix
+    ./dap.nix
+    ./gitsigns.nix
+    # ./lensline.nix
+    ./lsp.nix
+    ./lualine.nix
+    ./luasnip
+    ./neotest.nix
+    ./noice.nix
+    ./nvim-highlight-colors.nix
+    ./render-markdown.nix
+    ./todo-comments.nix
+    ./vim-sleuth.nix
+    ./web-devicons.nix
+    ./which-key.nix
+
+    # supported languages, loaded last
+    ./languages
+  ];
+}

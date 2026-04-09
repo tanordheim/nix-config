@@ -2,17 +2,16 @@
 
 ## Structure
 
-- `modules/common/neovim/` — top-level config (options, keymaps, colorscheme, diagnostics)
-- `modules/common/neovim/plugins/` — one file per plugin
-- `modules/common/neovim/plugins/languages/` — per-language config
+- `home/trond/features/editors/neovim/` — base editor config (options, keymaps, colorscheme, diagnostics)
+- `home/trond/features/editors/neovim/plugins/` — one file per plugin
+- `home/trond/features/editors/neovim/plugins/languages/` — universal languages only (yaml, toml, shell, lua)
+- `home/trond/features/dev/<lang>/neovim.nix` — per-language LSP/formatter/DAP config (imports editors/neovim)
 
 ## Conventions
 
-All nixvim config is wrapped: `home-manager.users.${config.username}.programs.nixvim = ...`
-
 Prefer structured nixvim options over `extraConfigLua`/`extraConfig`. Use raw Lua only when no structured nixvim option exists for the behavior you need.
 
-Language files follow this pattern: treesitter grammars + LSP server(s) via `plugins.lsp.servers` + formatter via `plugins.conform-nvim` + `extraPackages` (required binaries). Add DAP config in the same file if applicable.
+Universal language files (yaml, toml, shell, lua) live in `plugins/languages/`. All other language configs live in `dev/<lang>/neovim.nix` and import `../../editors/neovim` so the base editor is included. Each language file follows: treesitter grammars + LSP server(s) via `plugins.lsp.servers` + formatter via `plugins.conform-nvim` + `extraPackages` (required binaries). Add DAP config in the same file if applicable.
 
 ## Reference
 

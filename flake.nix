@@ -73,21 +73,35 @@
     nix-config-private = {
       url = "git+ssh://git@ssh.github.com/tanordheim/nix-config-private.git?ref=main";
       # url = "git+file:///home/trond/code/nix-config-private?ref=main";
-      # url = "git+file:///Users/trond/code/private/nix-config-private?ref=feature/privatestuff";
+      # url = "git+file:///Users/trond/code/private/nix-config-private?ref=module-split";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
   };
 
   outputs =
-    inputs:
+    { self, ... }@inputs:
     let
+      outputs = self;
     in
     {
       darwinConfigurations = {
-        lyng = import ./hosts/lyng { inherit inputs; };
+        lyng = inputs.nix-darwin.lib.darwinSystem {
+          modules = [ ./hosts/lyng ];
+          specialArgs = {
+            inherit inputs outputs;
+          }
+          // inputs;
+        };
       };
       nixosConfigurations = {
+        hsrv = inputs.nixpkgs.lib.nixosSystem {
+          modules = [ ./hosts/hsrv ];
+          specialArgs = {
+            inherit inputs outputs;
+          }
+          // inputs;
+        };
       };
     };
 }
