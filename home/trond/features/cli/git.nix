@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     gh
     git-filter-repo
+    gnupg
     lazygit
   ];
 
