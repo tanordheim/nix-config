@@ -25,6 +25,7 @@ in
   home-manager.users.trond = {
     imports = [ ../../../home/trond/${config.networking.hostName}.nix ];
     home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/trond" else "/home/trond";
+    home.packages = lib.optionals pkgs.stdenv.isLinux [ pkgs.kitty.terminfo ];
     xdg = lib.mkIf pkgs.stdenv.isLinux {
       enable = true;
       mimeApps.enable = true;
