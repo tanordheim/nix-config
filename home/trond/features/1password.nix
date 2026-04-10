@@ -21,7 +21,6 @@ in
     IdentityAgent "${ssh.agent}"
   '';
   programs.git.settings = {
-    gpg.format = "ssh";
     ssh.program = ssh.sign;
   };
 }
