@@ -28,5 +28,5 @@
     "1.0.0.1"
   ];
 
-  home-manager.users.trond.home.stateVersion = "25.11";
+  home-manager.users.trond.home.stateVersion = "26.05";
 }
