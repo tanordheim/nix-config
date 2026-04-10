@@ -39,8 +39,8 @@
     ];
   };
 
-  fileSystems."/media" = {
-    device = "192.168.69.11:/data/media";
+  fileSystems."/data/media" = {
+    device = "192.168.69.11:/media";
     fsType = "nfs";
     options = [
       "nfsvers=4"
@@ -52,8 +52,8 @@
     ];
   };
 
-  fileSystems."/backups" = {
-    device = "192.168.69.11:/data/backups";
+  fileSystems."/data/backups" = {
+    device = "192.168.69.11:/backups";
     fsType = "nfs";
     options = [
       "nfsvers=4"
