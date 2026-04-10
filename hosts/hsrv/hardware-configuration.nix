@@ -39,6 +39,31 @@
     ];
   };
 
+  fileSystems."/media" = {
+    device = "192.168.69.11:/data/media";
+    fsType = "nfs";
+    options = [
+      "nfsvers=4"
+      "hard"
+      "noauto"
+      "x-systemd.automount"
+      "x-systemd.mount-timeout=90"
+      "noatime"
+    ];
+  };
+
+  fileSystems."/backups" = {
+    device = "192.168.69.11:/data/backups";
+    fsType = "nfs";
+    options = [
+      "nfsvers=4"
+      "hard"
+      "noauto"
+      "x-systemd.automount"
+      "x-systemd.mount-timeout=90"
+    ];
+  };
+
   swapDevices = [
     { device = "/dev/disk/by-uuid/e89a9815-6fb3-44b8-8a8f-3c10b140b4e5"; }
   ];
