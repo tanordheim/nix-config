@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
 
     ../common/global
+    ../common/global/nixos
     ../common/users/trond.nix
   ];
 

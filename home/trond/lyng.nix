@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   imports = [
     ./global
@@ -45,5 +46,8 @@
     ./features/qmk.nix
     ./features/media/audacity.nix
     ./features/telegram.nix
+
+    # private
+    inputs.nix-config-private.homeManagerModules.default
   ];
 }
