@@ -1,3 +1,4 @@
+{ pkgs, lib, ... }:
 {
   imports = [
     ../features/cli
@@ -5,4 +6,6 @@
   ];
 
   programs.home-manager.enable = true;
+
+  services.ssh-agent.enable = lib.mkIf pkgs.stdenv.isLinux true;
 }
