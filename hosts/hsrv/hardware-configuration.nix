@@ -64,6 +64,19 @@
     ];
   };
 
+  fileSystems."/data/downloads" = {
+    device = "192.168.69.11:/downloads";
+    fsType = "nfs";
+    options = [
+      "nfsvers=4"
+      "hard"
+      "noauto"
+      "x-systemd.automount"
+      "x-systemd.mount-timeout=90"
+      "noatime"
+    ];
+  };
+
   swapDevices = [
     { device = "/dev/disk/by-uuid/e89a9815-6fb3-44b8-8a8f-3c10b140b4e5"; }
   ];

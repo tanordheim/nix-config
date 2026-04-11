@@ -69,6 +69,12 @@
       url = "github:zhaofengli/nix-homebrew";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Secrets management
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Private config
     nix-config-private = {
       url = "git+ssh://git@ssh.github.com/tanordheim/nix-config-private.git?ref=main";

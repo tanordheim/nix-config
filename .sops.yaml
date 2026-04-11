@@ -1,0 +1,7 @@
+keys:
+  - &hsrv age1pw39f9ld4eu6c5js7w42tjy8p3244xkepgjgevufclznpng0j57se7c5j4
+creation_rules:
+  - path_regex: secrets/hsrv\.yaml$
+    key_groups:
+      - age:
+          - *hsrv
