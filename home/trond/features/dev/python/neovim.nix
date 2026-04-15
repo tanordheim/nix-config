@@ -9,22 +9,8 @@
         python
       ];
 
-      plugins.lsp.servers.ty = {
+      plugins.lsp.servers.basedpyright = {
         enable = true;
-        config = {
-          cmd = [
-            "ty"
-            "server"
-          ];
-          filetypes = [
-            "python"
-          ];
-          root_dir = {
-            __raw = ''
-              require('lspconfig.util').root_pattern('pyproject.toml', 'uv.lock', '.git')
-            '';
-          };
-        };
       };
 
       plugins.conform-nvim.settings = {
@@ -43,7 +29,6 @@
       extraPackages = with pkgs; [
         basedpyright
         ruff
-        ty
       ];
 
       extraPlugins = with pkgs.vimPlugins; [
