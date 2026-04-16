@@ -10,7 +10,7 @@
 
     settings = {
       options = {
-        theme = "catppuccin";
+        theme = "auto";
         globalstatus = true;
         section_separators = {
           left.__raw = "'\\xEE\\x82\\xBC'";
