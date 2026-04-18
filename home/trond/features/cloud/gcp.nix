@@ -41,13 +41,6 @@ let
     in
     iniContent;
 
-  configFiles = lib.mapAttrs' (
-    name: conf:
-    nameValuePair "gcloud/configurations/config_${name}" {
-      text = mkConfigFile name conf;
-    }
-  ) cfg.configurations;
-
   loginConfigFiles = lib.filterAttrs (_: conf: conf.audience != null) cfg.configurations;
 
   loginFiles = lib.mapAttrs' (
@@ -56,6 +49,26 @@ let
       text = loginConfigJson conf.audience;
     }
   ) loginConfigFiles;
+
+  configDir = "${config.xdg.configHome}/gcloud/configurations";
+
+  activationScript = lib.concatStringsSep "\n" (
+    lib.mapAttrsToList (
+      name: conf:
+      let
+        configPath = "${configDir}/config_${name}";
+        content = mkConfigFile name conf;
+      in
+      ''
+        mkdir -p "${configDir}"
+        if [ ! -f "${configPath}" ]; then
+          cat > "${configPath}" <<'GCLOUD_EOF'
+        ${content}
+        GCLOUD_EOF
+        fi
+      ''
+    ) cfg.configurations
+  );
 
 in
 {
@@ -79,6 +92,7 @@ in
 
   config = {
     home.packages = [ gcloud ];
-    xdg.configFile = configFiles // loginFiles;
+    xdg.configFile = loginFiles;
+    home.activation.gcloudConfigurations = lib.hm.dag.entryAfter [ "writeBoundary" ] activationScript;
   };
 }
