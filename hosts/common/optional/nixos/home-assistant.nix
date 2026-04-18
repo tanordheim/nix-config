@@ -45,8 +45,18 @@
         { platform = "google_translate"; }
       ];
       ffmpeg = { };
+      automation = "!include automations.yaml";
+      script = "!include scripts.yaml";
+      scene = "!include scenes.yaml";
     };
   };
+
+  systemd.services.home-assistant.preStart = ''
+    cd /var/lib/hass
+    for f in automations.yaml scripts.yaml scenes.yaml; do
+      [ -f "$f" ] || echo "[]" > "$f"
+    done
+  '';
 
   sops.templates."hass-secrets" = {
     owner = "hass";
