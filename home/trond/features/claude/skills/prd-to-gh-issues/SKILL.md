@@ -51,15 +51,17 @@ Iterate until the user approves the breakdown.
 
 ### 5. Create the GitHub issues
 
-For each approved slice, create a GitHub issue using `gh issue create`. Use the issue body template below.
+For each approved slice, create a GitHub sub-issue under the parent PRD using the bundled script. Pipe the issue body on STDIN:
+
+```bash
+echo "<issue body>" | ./scripts/create-github-subissue.sh <prd-issue-number> "<title>"
+```
+
+The script creates the issue and links it as a sub-issue of the parent PRD, printing the new issue URL to stdout.
 
 Create issues in dependency order (blockers first) so you can reference real issue numbers in the "Blocked by" field.
 
 <issue-template>
-## Parent PRD
-
-#<prd-issue-number>
-
 ## What to build
 
 A concise description of this vertical slice. Describe the end-to-end behavior, not layer-by-layer implementation. Reference specific sections of the parent PRD rather than duplicating content.
