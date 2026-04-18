@@ -25,7 +25,8 @@
 
     # cloud
     ./features/cloud/aws.nix
-    ./features/cloud/google.nix
+    ./features/cloud/gdrive.nix
+    ./features/cloud/gcp.nix
     ./features/cloud/kubernetes.nix
     ./features/cloud/kaf.nix
     ./features/cloud/stern.nix
