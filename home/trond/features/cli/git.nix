@@ -7,7 +7,7 @@
     lazygit
   ];
 
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     gwa() { git worktree add -b "$1" ".worktrees/$1" && cd ".worktrees/$1"; }
     gwr() { git worktree remove ".worktrees/$1"; }
     gwl() { git worktree list; }
