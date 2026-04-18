@@ -5,6 +5,9 @@
       docker_context = {
         disabled = true;
       };
+      gcloud = {
+        disabled = true;
+      };
     };
   };
 }
