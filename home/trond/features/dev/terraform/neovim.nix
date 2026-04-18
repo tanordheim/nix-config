@@ -24,11 +24,6 @@
         terraform = [ "tflint" ];
       };
 
-      extraPackages = with pkgs; [
-        terraform
-        tflint
-      ];
-
       filetype = {
         extension = {
           tf = "terraform";
