@@ -57,7 +57,6 @@
       done
 
       for cat in sonarr radarr; do
-        mkdir -p "/data/downloads/complete/qbittorrent/$cat"
         curl -sf -X POST "http://localhost:8181/api/v2/torrents/createCategory" \
           --data-urlencode "category=$cat" \
           --data-urlencode "savePath=/data/downloads/complete/qbittorrent/$cat" \
