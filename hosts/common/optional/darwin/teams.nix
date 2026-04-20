@@ -1,6 +1,6 @@
 { ... }:
 {
   homebrew.casks = [
-    "microsoft-teams"
+    # "microsoft-teams"
   ];
 }
