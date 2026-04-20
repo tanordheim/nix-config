@@ -40,27 +40,36 @@
       SABNZBD_KEY=$(echo "$keys" | jq -r .sabnzbdKey)
 
       for i in $(seq 1 30); do
-        curl -sf "http://localhost:8989/api/v3/health" -H "X-Api-Key: $SONARR_KEY" > /dev/null && break
+        curl -sSf "http://localhost:8989/api/v3/health" -H "X-Api-Key: $SONARR_KEY" > /dev/null && break
         sleep 2
       done
       for i in $(seq 1 30); do
-        curl -sf "http://localhost:7878/api/v3/health" -H "X-Api-Key: $RADARR_KEY" > /dev/null && break
+        curl -sSf "http://localhost:7878/api/v3/health" -H "X-Api-Key: $RADARR_KEY" > /dev/null && break
         sleep 2
       done
       for i in $(seq 1 30); do
-        curl -sf "http://localhost:8181/api/v2/app/version" > /dev/null && break
+        curl -sSf "http://localhost:8181/api/v2/app/version" > /dev/null && break
         sleep 2
       done
       for i in $(seq 1 30); do
-        curl -sf "http://127.0.0.1:8080/api?mode=version&output=json&apikey=$SABNZBD_KEY" > /dev/null && break
+        curl -sSf "http://127.0.0.1:8080/api?mode=version&output=json&apikey=$SABNZBD_KEY" > /dev/null && break
         sleep 2
       done
 
       for cat in sonarr radarr; do
-        curl -sf -X POST "http://localhost:8181/api/v2/torrents/createCategory" \
+        savepath="/data/downloads/complete/qbittorrent/$cat"
+        status=$(curl -sS -o /dev/null -w "%{http_code}" -X POST \
+          "http://localhost:8181/api/v2/torrents/createCategory" \
           --data-urlencode "category=$cat" \
-          --data-urlencode "savePath=/data/downloads/complete/qbittorrent/$cat" \
-          > /dev/null
+          --data-urlencode "savePath=$savepath")
+        if [ "$status" = "409" ]; then
+          curl -sSf -X POST "http://localhost:8181/api/v2/torrents/editCategory" \
+            --data-urlencode "category=$cat" \
+            --data-urlencode "savePath=$savepath" > /dev/null
+        elif [ "$status" != "200" ]; then
+          echo "qBit createCategory $cat failed: HTTP $status" >&2
+          exit 1
+        fi
       done
 
       configure_client() {
@@ -69,7 +78,7 @@
         local API="$arr_url/api/v3"
 
         local schema
-        schema=$(curl -sf "$API/downloadclient/schema" -H "X-Api-Key: $arr_key")
+        schema=$(curl -sSf "$API/downloadclient/schema" -H "X-Api-Key: $arr_key")
 
         local default_fields
         default_fields=$(echo "$schema" | jq -c \
@@ -89,7 +98,7 @@
           ')
 
         local existing
-        existing=$(curl -sf "$API/downloadclient" -H "X-Api-Key: $arr_key")
+        existing=$(curl -sSf "$API/downloadclient" -H "X-Api-Key: $arr_key")
 
         local id
         id=$(echo "$existing" | jq -r ".[] | select(.implementation == \"$impl\") | .id")
@@ -117,12 +126,12 @@
 
         if [ -n "$id" ]; then
           payload=$(echo "$payload" | jq --argjson id "$id" '. + {id: $id}')
-          curl -sf -X PUT "$API/downloadclient/$id" \
+          curl -sSf -X PUT "$API/downloadclient/$id" \
             -H "X-Api-Key: $arr_key" \
             -H "Content-Type: application/json" \
             -d "$payload" > /dev/null
         else
-          curl -sf -X POST "$API/downloadclient" \
+          curl -sSf -X POST "$API/downloadclient" \
             -H "X-Api-Key: $arr_key" \
             -H "Content-Type: application/json" \
             -d "$payload" > /dev/null
