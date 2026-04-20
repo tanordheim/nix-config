@@ -5,6 +5,7 @@
     inputs.stylix.nixosModules.stylix
     ./hardware-configuration.nix
     ./sops.nix
+    ./arr-download-clients.nix
 
     ../common/global
     ../common/global/nixos
