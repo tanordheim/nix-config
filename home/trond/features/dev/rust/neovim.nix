@@ -37,6 +37,16 @@
               };
             };
           };
+          dap = {
+            adapter.__raw = ''
+              require("rustaceanvim.config").get_codelldb_adapter(
+                "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb",
+                "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/lldb/lib/liblldb${
+                  if pkgs.stdenv.isDarwin then ".dylib" else ".so"
+                }"
+              )
+            '';
+          };
         };
       };
 
@@ -50,6 +60,7 @@
       extraPackages = with pkgs; [
         rust-analyzer
         rustfmt
+        vscode-extensions.vadimcn.vscode-lldb
       ];
 
       plugins.crates = {

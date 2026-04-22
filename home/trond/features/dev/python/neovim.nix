@@ -1,4 +1,7 @@
 { pkgs, config, ... }:
+let
+  pythonWithDebugpy = pkgs.python3.withPackages (ps: [ ps.debugpy ]);
+in
 {
   imports = [ ../../editors/neovim ];
 
@@ -44,5 +47,10 @@
           '';
         }
       ];
+
+      plugins.dap-python = {
+        enable = true;
+        settings.adapterPythonPath = "${pythonWithDebugpy}/bin/python";
+      };
     };
 }
