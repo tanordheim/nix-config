@@ -50,6 +50,9 @@
         -- Experimental ui2 (Neovim 0.12+): native cmdline/messages/pager
         require('vim._core.ui2').enable()
 
+        -- Reclaim the bottom row; ui2 handles overflow via its message window
+        vim.opt.cmdheight = 0
+
         -- Decrease update time
         vim.opt.updatetime = 250
 

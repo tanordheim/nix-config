@@ -99,17 +99,6 @@
         options.desc = "Document symbols";
       }
       {
-        key = "<leader>ss";
-        mode = "n";
-        action.__raw = # lua
-          ''
-            function()
-              Snacks.picker.lsp_symbols()
-            end
-          '';
-        options.desc = "[S]ymbols in document";
-      }
-      {
         key = "<leader>sS";
         mode = "n";
         action.__raw = # lua
@@ -141,20 +130,6 @@
             end
           '';
         options.desc = "Run [C]ode [L]ens";
-      }
-      {
-        key = "<leader>ca";
-        mode = [
-          "n"
-          "v"
-        ];
-        action.__raw = # lua
-          ''
-            function()
-              vim.lsp.buf.code_action()
-            end
-          '';
-        options.desc = "[C]ode [A]ction";
       }
       {
         key = "[d";
