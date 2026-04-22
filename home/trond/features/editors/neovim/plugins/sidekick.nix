@@ -29,7 +29,7 @@
         action.__raw = # lua
           ''
             function()
-              if require("sidekick.nes").jump_or_apply() then
+              if require("sidekick").nes_jump_or_apply() then
                 return
               end
               return vim.api.nvim_replace_termcodes("<Tab>", true, true, true)
