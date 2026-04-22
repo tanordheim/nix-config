@@ -41,6 +41,12 @@
         vim.opt.pumborder = 'rounded'
         vim.opt.pummaxwidth = 80
 
+        -- Treesitter-based folding (Neovim 0.12+)
+        vim.opt.foldmethod = 'expr'
+        vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        vim.opt.foldlevel = 99
+        vim.opt.foldlevelstart = 99
+
         -- Decrease update time
         vim.opt.updatetime = 250
 
