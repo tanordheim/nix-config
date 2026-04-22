@@ -23,8 +23,6 @@
             ini
             just
             json
-            markdown
-            markdown_inline
             query
             rasi
             vim
