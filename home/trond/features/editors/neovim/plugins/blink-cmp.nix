@@ -17,8 +17,15 @@
           use_nvim_cmp_as_default = true;
           nerd_font_variant = "mono";
         };
-        completion.trigger.show_in_snippet = false;
-        signature.enabled = true;
+        completion = {
+          trigger.show_in_snippet = false;
+          menu.border = "rounded";
+          documentation.window.border = "rounded";
+        };
+        signature = {
+          enabled = true;
+          window.border = "rounded";
+        };
         snippets.preset = "luasnip";
 
         sources = {

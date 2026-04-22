@@ -7,5 +7,6 @@
         event = "DeferredUIEnter";
       };
     };
+    settings.win.border = "rounded";
   };
 }

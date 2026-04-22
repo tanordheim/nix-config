@@ -36,6 +36,11 @@
         -- Keep signcolumn on by default
         vim.opt.signcolumn = 'yes'
 
+        -- Rounded borders for floating windows and popup menu (Neovim 0.12+)
+        vim.opt.winborder = 'rounded'
+        vim.opt.pumborder = 'rounded'
+        vim.opt.pummaxwidth = 80
+
         -- Decrease update time
         vim.opt.updatetime = 250
 
