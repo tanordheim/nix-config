@@ -26,7 +26,6 @@
     ./lualine.nix
     ./luasnip
     ./neotest.nix
-    ./noice.nix
     ./render-markdown.nix
     ./sidekick.nix
     ./todo-comments.nix

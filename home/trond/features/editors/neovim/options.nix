@@ -47,6 +47,9 @@
         vim.opt.foldlevel = 99
         vim.opt.foldlevelstart = 99
 
+        -- Experimental ui2 (Neovim 0.12+): native cmdline/messages/pager
+        require('vim._core.ui2').enable()
+
         -- Decrease update time
         vim.opt.updatetime = 250
 

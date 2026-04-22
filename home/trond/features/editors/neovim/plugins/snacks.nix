@@ -16,7 +16,7 @@
         };
         input.enabled = true;
         lazygit.enabled = true;
-        notifier.enabled = true;
+        notifier.enabled = false;
         picker = {
           enabled = true;
         };
