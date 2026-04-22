@@ -27,8 +27,13 @@
       filetype = {
         extension = {
           tf = "terraform";
-          tfvars = "terraform";
+          tfvars = "terraform-vars";
         };
       };
+
+      extraConfigLua = # lua
+        ''
+          vim.treesitter.language.register('terraform', 'terraform-vars')
+        '';
     };
 }

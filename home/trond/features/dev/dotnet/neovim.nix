@@ -9,6 +9,13 @@
         c_sharp
       ];
 
+      filetype = {
+        extension = {
+          razor = "razor";
+          cshtml = "razor";
+        };
+      };
+
       plugins.conform-nvim = {
         settings.formatters_by_ft.cs = [ "csharpier" ];
         settings.formatters.csharpier = { };

@@ -7,6 +7,29 @@
         yaml
       ];
 
+      filetype = {
+        filename = {
+          "docker-compose.yml" = "yaml.docker-compose";
+          "docker-compose.yaml" = "yaml.docker-compose";
+          "compose.yml" = "yaml.docker-compose";
+          "compose.yaml" = "yaml.docker-compose";
+          ".gitlab-ci.yml" = "yaml.gitlab";
+          "Chart.yaml" = "yaml.helm-values";
+          "Chart.yml" = "yaml.helm-values";
+        };
+        pattern = {
+          ".*/templates/.*%.ya?ml" = "yaml.helm-values";
+          ".*/values%.ya?ml" = "yaml.helm-values";
+        };
+      };
+
+      extraConfigLua = # lua
+        ''
+          vim.treesitter.language.register('yaml', 'yaml.docker-compose')
+          vim.treesitter.language.register('yaml', 'yaml.gitlab')
+          vim.treesitter.language.register('yaml', 'yaml.helm-values')
+        '';
+
       plugins.lsp.servers.yamlls = {
         enable = true;
         cmd = [

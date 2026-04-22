@@ -11,6 +11,15 @@
         gosum
       ];
 
+      filetype = {
+        filename = {
+          "go.work" = "gowork";
+        };
+        pattern = {
+          ".*%.gotmpl" = "gotmpl";
+        };
+      };
+
       plugins.lsp.servers.gopls = {
         enable = true;
         settings = {
