@@ -6,6 +6,14 @@
       capabilities = # lua
         ''
           capabilities = require('blink.cmp').get_lsp_capabilities()
+          capabilities.textDocument.diagnostic = {
+            dynamicRegistration = true,
+            relatedDocumentSupport = true,
+          }
+          capabilities.workspace = capabilities.workspace or {}
+          capabilities.workspace.diagnostics = {
+            refreshSupport = true,
+          }
         '';
       onAttach = # lua
         ''
