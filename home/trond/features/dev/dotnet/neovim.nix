@@ -38,7 +38,7 @@
               "${pkgs.roslyn-ls}/bin/Microsoft.CodeAnalysis.LanguageServer",
               "--logLevel=Debug",
               "--stdio",
-              "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
+              "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.log.get_filename()),
             },
             capabilities = capabilities,
             settings = {
