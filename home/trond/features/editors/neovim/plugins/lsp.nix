@@ -20,16 +20,6 @@
         '';
     };
 
-    plugins.inc-rename = {
-      enable = true;
-      settings.input_buffer_type = "snacks";
-    };
-
-    plugins.lspsaga = {
-      enable = true;
-      settings.lightbulb.enable = false;
-    };
-
     keymaps = [
       {
         key = "gd";
@@ -43,24 +33,7 @@
         options.desc = "[G]oto [D]efinition";
       }
       {
-        key = "gD";
-        mode = "n";
-        action = "<cmd>Lspsaga peek_definition<CR>";
-        options.desc = "Peek definition";
-      }
-      {
-        key = "gi";
-        mode = "n";
-        action.__raw = # lua
-          ''
-            function()
-              Snacks.picker.lsp_implementations()
-            end
-          '';
-        options.desc = "[G]oto [I]mplementation";
-      }
-      {
-        key = "gr";
+        key = "grr";
         mode = "n";
         action.__raw = # lua
           ''
@@ -68,7 +41,40 @@
               Snacks.picker.lsp_references()
             end
           '';
-        options.desc = "[G]oto [R]eferences";
+        options.desc = "Goto references";
+      }
+      {
+        key = "gri";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              Snacks.picker.lsp_implementations()
+            end
+          '';
+        options.desc = "Goto implementation";
+      }
+      {
+        key = "grt";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              Snacks.picker.lsp_type_definitions()
+            end
+          '';
+        options.desc = "Goto type definition";
+      }
+      {
+        key = "gO";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              Snacks.picker.lsp_symbols()
+            end
+          '';
+        options.desc = "Document symbols";
       }
       {
         key = "<leader>ss";
@@ -104,40 +110,39 @@
         options.desc = "Signature help";
       }
       {
-        key = "<leader>rn";
-        mode = "n";
-        action.__raw = ''
-          function()
-            return ":IncRename " .. vim.fn.expand("<cword>")
-          end
-        '';
-        options = {
-          desc = "[R]e[n]ame";
-          expr = true;
-        };
-      }
-      {
         key = "<leader>ca";
         mode = [
           "n"
           "v"
         ];
-        action = "<cmd>Lspsaga code_action<CR>";
+        action.__raw = # lua
+          ''
+            function()
+              vim.lsp.buf.code_action()
+            end
+          '';
         options.desc = "[C]ode [A]ction";
       }
       {
         key = "[d";
-        mode = [
-          "n"
-        ];
-        action = "<cmd>Lspsaga diagnostic_jump_prev<CR>";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              vim.diagnostic.jump({ count = -1, float = true })
+            end
+          '';
+        options.desc = "Goto previous diagnostic";
       }
       {
         key = "]d";
-        mode = [
-          "n"
-        ];
-        action = "<cmd>Lspsaga diagnostic_jump_next<CR>";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              vim.diagnostic.jump({ count = 1, float = true })
+            end
+          '';
         options.desc = "Goto next diagnostic";
       }
     ];
