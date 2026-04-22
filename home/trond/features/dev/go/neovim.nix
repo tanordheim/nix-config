@@ -77,9 +77,18 @@
         gofumpt
       ];
 
-      # plugins.neotest.adapters.golang = {
-      #   enable = true;
-      # };
+      extraPlugins = with pkgs.vimPlugins; [
+        neotest-golang
+      ];
+
+      plugins.neotest.settings.adapters = [
+        {
+          __raw = ''
+            require("neotest-golang")({})
+          '';
+        }
+      ];
+
       plugins.dap-go = {
         enable = true;
         settings.delve.path = "${pkgs.delve}/bin/dlv";

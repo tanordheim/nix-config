@@ -85,5 +85,13 @@
         "path"
         "snippets"
       ];
+
+      plugins.neotest.settings.adapters = [
+        {
+          __raw = ''
+            require("rustaceanvim.neotest")
+          '';
+        }
+      ];
     };
 }

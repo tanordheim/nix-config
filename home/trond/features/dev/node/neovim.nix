@@ -43,7 +43,24 @@ in
       ];
 
       extraPlugins = with pkgs.vimPlugins; [
+        neotest-jest
+        neotest-vitest
         nvim-dap-vscode-js
+      ];
+
+      plugins.neotest.settings.adapters = [
+        {
+          __raw = ''
+            require("neotest-jest")({
+              jestCommand = "npm test --",
+            })
+          '';
+        }
+        {
+          __raw = ''
+            require("neotest-vitest")
+          '';
+        }
       ];
 
       extraConfigLua = # lua
