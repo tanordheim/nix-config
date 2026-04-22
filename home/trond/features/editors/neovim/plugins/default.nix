@@ -19,6 +19,7 @@
 
     ./blink-cmp.nix
     ./conform.nix
+    ./copilot.nix
     ./lint.nix
     ./dap.nix
     ./gitsigns.nix
