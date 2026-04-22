@@ -37,7 +37,6 @@
       custom = import nixpkgs-custom {
         system = prev.stdenv.hostPlatform.system;
         config = {
-          allowUnfree = true;
         };
       };
     })
