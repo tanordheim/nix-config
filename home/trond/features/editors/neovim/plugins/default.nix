@@ -4,6 +4,7 @@
   programs.nixvim = {
     plugins = {
       nui.enable = true;
+      blink-pairs.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
@@ -21,7 +22,6 @@
     ./lint.nix
     ./dap.nix
     ./gitsigns.nix
-    # ./lensline.nix
     ./lsp.nix
     ./lualine.nix
     ./luasnip

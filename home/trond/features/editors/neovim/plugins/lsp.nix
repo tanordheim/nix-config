@@ -21,6 +21,16 @@
           if client and client:supports_method('textDocument/documentColor') and vim.lsp.document_color then
             vim.lsp.document_color.enable(true, bufnr, { style = 'virtual' })
           end
+
+          if client and client:supports_method('textDocument/codeLens') then
+            vim.lsp.codelens.refresh({ bufnr = bufnr })
+            vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
+              buffer = bufnr,
+              callback = function()
+                vim.lsp.codelens.refresh({ bufnr = bufnr })
+              end,
+            })
+          end
         '';
     };
 
@@ -112,6 +122,17 @@
             end
           '';
         options.desc = "Signature help";
+      }
+      {
+        key = "<leader>cl";
+        mode = "n";
+        action.__raw = # lua
+          ''
+            function()
+              vim.lsp.codelens.run()
+            end
+          '';
+        options.desc = "Run [C]ode [L]ens";
       }
       {
         key = "<leader>ca";

@@ -34,6 +34,16 @@
             usePlaceholders = true;
             semanticTokens = true;
             staticcheck = true;
+            codelenses = {
+              generate = true;
+              gc_details = false;
+              regenerate_cgo = false;
+              run_govulncheck = true;
+              test = true;
+              tidy = true;
+              upgrade_dependency = true;
+              vendor = true;
+            };
           };
         };
       };
