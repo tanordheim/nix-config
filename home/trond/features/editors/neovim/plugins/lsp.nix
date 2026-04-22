@@ -17,6 +17,10 @@
             -- enable inlay hints by default
             vim.lsp.inlay_hint.enable()
           end
+
+          if client and client:supports_method('textDocument/documentColor') and vim.lsp.document_color then
+            vim.lsp.document_color.enable(true, bufnr, { style = 'virtual' })
+          end
         '';
     };
 
