@@ -7,9 +7,11 @@
 
     extraConfigLua = # lua
       ''
+        vim.g.copilot_nes_debounce = 150
         require('sidekick').setup({
           nes = {
             enabled = true,
+            debounce = 100,
           },
           cli = {
             tools = {
@@ -31,6 +33,14 @@
             function()
               if require("sidekick").nes_jump_or_apply() then
                 return
+              end
+              if vim.b.nes_state then
+                local nes = require("copilot-lsp.nes")
+                local applied = nes.walk_cursor_start_edit()
+                  or (nes.apply_pending_nes() and nes.walk_cursor_end_edit())
+                if applied ~= nil then
+                  return
+                end
               end
               return vim.api.nvim_replace_termcodes("<Tab>", true, true, true)
             end
