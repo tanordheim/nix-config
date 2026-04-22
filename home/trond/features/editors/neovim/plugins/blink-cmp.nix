@@ -2,7 +2,6 @@
 {
   programs.nixvim = {
     extraPlugins = with pkgs.vimPlugins; [
-      blink-cmp-copilot
       blink-compat
     ];
 
@@ -11,7 +10,7 @@
 
       settings = {
         keymap = {
-          preset = "super-tab";
+          preset = "default";
         };
         appearance = {
           use_nvim_cmp_as_default = true;
@@ -32,17 +31,8 @@
           default = [
             "lsp"
             "path"
-            "copilot"
             "snippets"
           ];
-          providers = {
-            copilot = {
-              async = true;
-              module = "blink-cmp-copilot";
-              name = "copilot";
-              score_offset = 100;
-            };
-          };
         };
       };
     };
