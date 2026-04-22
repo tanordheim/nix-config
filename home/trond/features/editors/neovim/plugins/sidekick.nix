@@ -60,7 +60,7 @@
         action.__raw = # lua
           ''
             function()
-              require("sidekick.cli").send()
+              require("sidekick.cli").send({ name = "claude" })
             end
           '';
         options.desc = "Send prompt / selection to Claude";
