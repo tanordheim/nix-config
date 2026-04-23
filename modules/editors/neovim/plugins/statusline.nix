@@ -73,6 +73,7 @@
               vim.api.nvim_set_hl(0, "SlModeMid",   { fg = text, bg = mid })
               vim.api.nvim_set_hl(0, "SlModeAccent",{ fg = color, bg = mid, bold = true })
               vim.api.nvim_set_hl(0, "SlEnd",       { fg = color, bg = endcap })
+              vim.api.nvim_set_hl(0, "SlCap",       { fg = endcap, bg = "NONE" })
             end
 
             local function mode_block()
@@ -177,6 +178,8 @@
 
             function M.render()
               return table.concat({
+                "%#SlCap#",
+                "\238\130\182",
                 "%#SlEnd# ",
                 mode_block(),
                 recording(),
@@ -189,6 +192,8 @@
                 lsp_block(),
                 "%#SlModeLight# %l:%c ",
                 "%#SlEnd# ",
+                "%#SlCap#",
+                "\238\130\180",
               })
             end
 
