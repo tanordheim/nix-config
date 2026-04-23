@@ -30,6 +30,12 @@
       url = "github:nix-community/nixvim";
     };
 
+    # Neovim plugins not yet packaged in nixpkgs
+    tiny-cmdline-nvim = {
+      url = "github:rachartier/tiny-cmdline.nvim";
+      flake = false;
+    };
+
     # Stylix system wide color scheming/styling
     stylix.url = "github:danth/stylix";
 

@@ -2,4 +2,5 @@ args: [
   (import ./fish args)
   (import ./roslyn-ls args)
   (import ./swift args)
+  (import ./tiny-cmdline args)
 ]
