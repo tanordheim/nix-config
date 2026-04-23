@@ -64,15 +64,15 @@
               local color = P[color_name] or fallback[color_name]
               local base = P.base or fallback.base
               local text = P.text or fallback.text
-              local mid = blend(color, base, 0.78)
               local light = blend(color, text, 0.55)
-              local endcap = blend(color, base, 0.92)
+              local neutral = P.surface1 or fallback.surface1
+              local neutral_dim = P.surface0 or fallback.surface0
 
               vim.api.nvim_set_hl(0, "SlModeSolid", { fg = base, bg = color, bold = true })
               vim.api.nvim_set_hl(0, "SlModeLight", { fg = base, bg = light, bold = true })
-              vim.api.nvim_set_hl(0, "SlModeMid",   { fg = text, bg = mid })
-              vim.api.nvim_set_hl(0, "SlModeAccent",{ fg = color, bg = mid, bold = true })
-              vim.api.nvim_set_hl(0, "SlEnd",       { fg = color, bg = endcap })
+              vim.api.nvim_set_hl(0, "SlModeMid",   { fg = text, bg = neutral })
+              vim.api.nvim_set_hl(0, "SlModeAccent",{ fg = color, bg = neutral, bold = true })
+              vim.api.nvim_set_hl(0, "SlEnd",       { fg = color, bg = neutral_dim })
               vim.api.nvim_set_hl(0, "SlCap",       { fg = light, bg = "NONE" })
             end
 
