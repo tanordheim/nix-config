@@ -10,6 +10,10 @@
     nixpkgs-custom.url = "github:tanordheim/nixpkgs/custom-patches";
     nixpkgs-swift.url = "github:NixOS/nixpkgs?ref=70801e06d9730c4f1704fbd3bbf5b8e11c03a2a7";
 
+    # flake-parts + import-tree (dendritic)
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
+
     # Apple silicon support (for NixOS on Mac)
     apple-silicon-support = {
       # temp fix for mesa deprecation, see https://github.com/tpwrules/nixos-apple-silicon/issues/285 and https://github.com/tpwrules/nixos-apple-silicon/pull/284
@@ -87,27 +91,36 @@
 
   outputs =
     { self, ... }@inputs:
-    let
-      outputs = self;
-    in
-    {
-      darwinConfigurations = {
-        lyng = inputs.nix-darwin.lib.darwinSystem {
-          modules = [ ./hosts/lyng ];
-          specialArgs = {
-            inherit inputs outputs;
-          }
-          // inputs;
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "aarch64-darwin"
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
+      imports = [ (inputs.import-tree ./modules) ];
+      flake =
+        let
+          outputs = self;
+        in
+        {
+          darwinConfigurations = {
+            lyng = inputs.nix-darwin.lib.darwinSystem {
+              modules = [ ./hosts/lyng ];
+              specialArgs = {
+                inherit inputs outputs;
+              }
+              // inputs;
+            };
+          };
+          nixosConfigurations = {
+            hsrv = inputs.nixpkgs.lib.nixosSystem {
+              modules = [ ./hosts/hsrv ];
+              specialArgs = {
+                inherit inputs outputs;
+              }
+              // inputs;
+            };
+          };
         };
-      };
-      nixosConfigurations = {
-        hsrv = inputs.nixpkgs.lib.nixosSystem {
-          modules = [ ./hosts/hsrv ];
-          specialArgs = {
-            inherit inputs outputs;
-          }
-          // inputs;
-        };
-      };
     };
 }
