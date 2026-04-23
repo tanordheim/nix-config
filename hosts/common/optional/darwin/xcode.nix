@@ -1,5 +1,0 @@
-{
-  homebrew.brews = [
-    "xcode-kotlin"
-  ];
-}

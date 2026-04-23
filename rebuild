@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+FLAKE_DIR=$(cd "$(dirname "$0")" && pwd)
+cd "$FLAKE_DIR"
+
+notify() {
+  local message=$1
+  case "$(uname -s)" in
+  Darwin)
+    osascript -e "display notification \"$message\" with title \"nix-config\""
+    ;;
+  Linux)
+    notify-send -e "nix-config" "$message" --icon=software-update-available
+    ;;
+  esac
+}
+
+rebuild() {
+  local current
+  case "$(uname -s)" in
+  Darwin)
+    if command -v darwin-rebuild >/dev/null 2>&1; then
+      sudo darwin-rebuild switch --flake .
+    else
+      echo "nix-darwin not found in path, bootstrapping via nix run..."
+      nix run nix-darwin/master#darwin-rebuild -- build --flake "$FLAKE_DIR"
+      sudo -i "$FLAKE_DIR/result/activate"
+    fi
+    current=$(sudo darwin-rebuild --list-generations | grep current)
+    ;;
+  Linux)
+    sudo nixos-rebuild switch --impure --flake .
+    current=$(nixos-rebuild list-generations | grep True)
+    ;;
+  *)
+    echo "Unsupported platform: $(uname -s)" >&2
+    return 1
+    ;;
+  esac
+  git commit -am "$current"
+}
+
+rebuild
+notify "System rebuilt OK"

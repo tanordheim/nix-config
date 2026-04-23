@@ -6,22 +6,12 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    # nixpkgs-custom.url = "github:NixOS/nixpkgs?ref=pull/439459/merge";
     nixpkgs-custom.url = "github:tanordheim/nixpkgs/custom-patches";
     nixpkgs-swift.url = "github:NixOS/nixpkgs?ref=70801e06d9730c4f1704fbd3bbf5b8e11c03a2a7";
 
     # flake-parts + import-tree (dendritic)
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
-
-    # Apple silicon support (for NixOS on Mac)
-    apple-silicon-support = {
-      # temp fix for mesa deprecation, see https://github.com/tpwrules/nixos-apple-silicon/issues/285 and https://github.com/tpwrules/nixos-apple-silicon/pull/284
-      # url = "git+file:///home/trond/code/nixos-apple-silicon?ref=mesa-deprecation-fix";
-      url = "github:nix-community/nixos-apple-silicon";
-      # url = "github:oliverbestmann/nixos-apple-silicon";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # Nix-darwin (for macOS machines)
     nix-darwin = {
@@ -38,7 +28,6 @@
     # Nixvim vim config management
     nixvim = {
       url = "github:nix-community/nixvim";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Stylix system wide color scheming/styling
@@ -71,8 +60,8 @@
     };
     nix-homebrew = {
       url = "github:zhaofengli/nix-homebrew";
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
+
     # Secrets management
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -82,15 +71,13 @@
     # Private config
     nix-config-private = {
       url = "git+ssh://git@ssh.github.com/tanordheim/nix-config-private.git?ref=main";
-      # url = "git+file:///home/trond/code/nix-config-private?ref=main";
-      # url = "git+file:///Users/trond/code/private/nix-config-private?ref=module-split";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
   };
 
   outputs =
-    { self, ... }@inputs:
+    { ... }@inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "aarch64-darwin"
@@ -98,29 +85,5 @@
         "aarch64-linux"
       ];
       imports = [ (inputs.import-tree ./modules) ];
-      flake =
-        let
-          outputs = self;
-        in
-        {
-          darwinConfigurations = {
-            lyng = inputs.nix-darwin.lib.darwinSystem {
-              modules = [ ./hosts/lyng ];
-              specialArgs = {
-                inherit inputs outputs;
-              }
-              // inputs;
-            };
-          };
-          nixosConfigurations = {
-            hsrv = inputs.nixpkgs.lib.nixosSystem {
-              modules = [ ./hosts/hsrv ];
-              specialArgs = {
-                inherit inputs outputs;
-              }
-              // inputs;
-            };
-          };
-        };
     };
 }

@@ -1,4 +1,0 @@
-{ ... }:
-{
-  programs.awscli.enable = true;
-}
