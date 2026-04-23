@@ -35,6 +35,10 @@
       url = "github:rachartier/tiny-cmdline.nvim";
       flake = false;
     };
+    tiny-code-action-nvim = {
+      url = "github:rachartier/tiny-code-action.nvim";
+      flake = false;
+    };
 
     # Stylix system wide color scheming/styling
     stylix.url = "github:danth/stylix";
