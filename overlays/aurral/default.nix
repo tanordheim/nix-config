@@ -44,6 +44,7 @@ let
       npm_config_nodedir = prev.nodejs;
       npm_config_sharp_binary_host = "";
       npm_config_sharp_libvips_binary_host = "";
+      NODE_PATH = "${prev.node-gyp}/lib/node_modules";
     };
 
     installPhase = ''
