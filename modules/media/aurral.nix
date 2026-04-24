@@ -17,7 +17,7 @@
           environment = {
             NODE_ENV = "production";
             PORT = "3001";
-            DATA_DIR = "/var/lib/aurral";
+            AURRAL_DATA_DIR = "/var/lib/aurral";
           };
 
           serviceConfig = {
