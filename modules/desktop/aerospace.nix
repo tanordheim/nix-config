@@ -41,7 +41,7 @@
       };
       fonts = {
         icon = "Symbols Nerd Font Mono:Bold:14.0";
-        label = "JetBrainsMono Nerd Font Mono:Bold:14.0";
+        label = "Iosevka Term Medium:Bold:14.0";
         apps = "sketchybar-app-font:Regular:14.0";
       };
       style = {
