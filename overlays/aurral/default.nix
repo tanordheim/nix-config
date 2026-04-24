@@ -35,11 +35,15 @@ let
     nativeBuildInputs = with prev; [
       python3
       pkg-config
+      nodejs
+      node-gyp
     ];
     buildInputs = with prev; [ vips ];
 
     env = {
-      npm_config_build_from_source = "true";
+      npm_config_nodedir = prev.nodejs;
+      npm_config_sharp_binary_host = "";
+      npm_config_sharp_libvips_binary_host = "";
     };
 
     installPhase = ''
@@ -95,7 +99,7 @@ in
       ln -s ${backend}/node_modules $out/share/aurral/backend/node_modules
 
       mkdir -p $out/bin
-      makeWrapper ${prev.nodejs_20}/bin/node $out/bin/aurral \
+      makeWrapper ${prev.nodejs}/bin/node $out/bin/aurral \
         --add-flags "$out/share/aurral/server.js" \
         --chdir "$out/share/aurral"
 
