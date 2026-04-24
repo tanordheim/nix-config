@@ -18,6 +18,8 @@
             NODE_ENV = "production";
             PORT = "3001";
             AURRAL_DATA_DIR = "/var/lib/aurral";
+            AUTH_PROXY_ENABLED = "true";
+            AUTH_PROXY_HEADER = "x-forwarded-user";
           };
 
           serviceConfig = {
@@ -35,7 +37,9 @@
         };
 
         services.caddy.virtualHosts."aurral.home.nordheim.io".extraConfig = ''
-          reverse_proxy localhost:3001
+          reverse_proxy localhost:3001 {
+            header_up X-Forwarded-User local
+          }
         '';
       };
     };
