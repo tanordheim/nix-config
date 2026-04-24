@@ -17,7 +17,7 @@
             cursor_shape = "underline";
             clear_all_shortcuts = true;
             paste_actions = "quote-urls-at-prompt,confirm-if-large";
-            font_features = "IosevkaTermNFM-Medium +ss14";
+            font_features = "IosevkaTermNFM-Regular +ss14";
             modify_font = "cell_width 105%";
           };
 
