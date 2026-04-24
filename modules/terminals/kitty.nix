@@ -17,6 +17,7 @@
             cursor_shape = "underline";
             clear_all_shortcuts = true;
             paste_actions = "quote-urls-at-prompt,confirm-if-large";
+            modify_font = "cell_width 105%";
           };
 
           keybindings = {
