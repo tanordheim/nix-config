@@ -8,7 +8,7 @@ let
     pname = "aurral-frontend";
     inherit version;
     src = "${aurral-src}/frontend";
-    npmDepsHash = prev.lib.fakeHash;
+    npmDepsHash = "sha256-mvj6MEePvKIRUY81OLVPEZvcJryK/bPEEVz69MD9mls=";
 
     env = {
       VITE_APP_VERSION = version;
@@ -27,7 +27,7 @@ let
     pname = "aurral-backend";
     inherit version;
     src = "${aurral-src}/backend";
-    npmDepsHash = prev.lib.fakeHash;
+    npmDepsHash = "sha256-mvj6MEePvKIRUY81OLVPEZvcJryK/bPEEVz69MD9mls=";
 
     dontNpmBuild = true;
     npmFlags = [ "--omit=dev" ];
