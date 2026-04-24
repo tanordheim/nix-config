@@ -25,7 +25,7 @@
             };
             monospace = {
               package = pkgs.nerd-fonts.iosevka-term;
-              name = "Iosevka Term";
+              name = "IosevkaTerm Nerd Font Mono";
             };
             emoji = {
               package = pkgs.noto-fonts-color-emoji;
@@ -71,7 +71,7 @@
             };
             monospace = {
               package = pkgs.nerd-fonts.iosevka-term;
-              name = "Iosevka Term";
+              name = "IosevkaTerm Nerd Font Mono";
             };
             emoji = {
               package = pkgs.noto-fonts-color-emoji;
