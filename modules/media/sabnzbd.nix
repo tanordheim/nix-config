@@ -49,6 +49,14 @@
                 newzbin = "";
                 priority = -100;
               };
+              music = {
+                name = "music";
+                pp = "";
+                script = "Default";
+                dir = "";
+                newzbin = "";
+                priority = -100;
+              };
               software = {
                 name = "software";
                 pp = "";

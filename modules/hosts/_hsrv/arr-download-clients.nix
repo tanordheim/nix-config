@@ -10,7 +10,7 @@
   };
 
   systemd.services.arr-download-clients-configure = {
-    description = "Configure Sonarr/Radarr download clients";
+    description = "Configure Arr download clients";
     after = [
       "sonarr.service"
       "radarr.service"
