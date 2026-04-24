@@ -40,6 +40,12 @@
       flake = false;
     };
 
+    # Aurral — music discovery/request manager for Lidarr
+    aurral-src = {
+      url = "github:lklynet/aurral/v1.50.1";
+      flake = false;
+    };
+
     # Stylix system wide color scheming/styling
     stylix.url = "github:danth/stylix";
 

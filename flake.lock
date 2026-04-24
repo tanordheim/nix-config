@@ -1,5 +1,22 @@
 {
   "nodes": {
+    "aurral-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1776885563,
+        "narHash": "sha256-Mm9RaEv3K4UTKagOF83BjRMmzJT4ELx24zqOFhf8ZNA=",
+        "owner": "lklynet",
+        "repo": "aurral",
+        "rev": "244e46292e0842d6aa9747c9ff7c589b54848103",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lklynet",
+        "ref": "v1.50.1",
+        "repo": "aurral",
+        "type": "github"
+      }
+    },
     "base16": {
       "inputs": {
         "fromYaml": "fromYaml"
@@ -561,6 +578,7 @@
     },
     "root": {
       "inputs": {
+        "aurral-src": "aurral-src",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "homebrew-aerospace": "homebrew-aerospace",

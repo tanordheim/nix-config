@@ -7,6 +7,7 @@ let
     aerospace.enable = mkEnableOption "AeroSpace + sketchybar";
     android-studio.enable = mkEnableOption "Android Studio";
     audacity.enable = mkEnableOption "Audacity";
+    aurral.enable = mkEnableOption "Aurral";
     aws.enable = mkEnableOption "AWS tooling";
     bazarr.enable = mkEnableOption "Bazarr";
     brave.enable = mkEnableOption "Brave";
