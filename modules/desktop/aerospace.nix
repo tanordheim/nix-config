@@ -58,7 +58,7 @@
         ];
 
         home.shellAliases = {
-          restart-sketchybar = ''launchctl kickstart -k gui/"$(id -u)"/org.nixos.sketchybar'';
+          restart-sketchybar = ''launchctl kickstart -k gui/"$(id -u)"/org.nix-community.home.sketchybar'';
         };
 
         services.macos-remap-keys = {
@@ -245,7 +245,18 @@
               sketchybar --add item space.padding_left left \
                          --set space.padding_left "''${space_padding[@]}"
 
-              for i in $(${pkgs.aerospace}/bin/aerospace list-workspaces --all); do
+              # aerospace server may not be ready yet when sketchybar launches
+              # at login; retry until list-workspaces returns something.
+              workspaces=""
+              for _ in $(seq 1 30); do
+                workspaces=$(${pkgs.aerospace}/bin/aerospace list-workspaces --all 2>/dev/null || true)
+                if [ -n "$workspaces" ]; then
+                  break
+                fi
+                sleep 1
+              done
+
+              for i in $workspaces; do
                 sid=$i
                 # skip scratch workspace
                 if [ "$sid" == "Z" ]; then
