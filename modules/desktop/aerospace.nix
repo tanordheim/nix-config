@@ -41,7 +41,7 @@
       };
       fonts = {
         icon = "Symbols Nerd Font Mono:Bold:14.0";
-        label = "Iosevka Custom:Bold:14.0";
+        label = "Aporetic Sans Mono:Bold:14.0";
         apps = "sketchybar-app-font:Regular:14.0";
       };
       style = {

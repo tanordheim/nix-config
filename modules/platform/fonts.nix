@@ -3,7 +3,7 @@
     { pkgs, ... }:
     {
       fonts.packages = [
-        pkgs.iosevka-custom-nerd
+        pkgs.aporetic-bin
         pkgs.nerd-fonts.jetbrains-mono
         pkgs.nerd-fonts.symbols-only
       ];
@@ -13,7 +13,7 @@
     { pkgs, ... }:
     {
       fonts.packages = [
-        pkgs.iosevka-custom-nerd
+        pkgs.aporetic-bin
         pkgs.nerd-fonts.jetbrains-mono
         pkgs.nerd-fonts.symbols-only
       ];

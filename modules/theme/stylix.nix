@@ -24,8 +24,8 @@
               name = "DejaVu Sans";
             };
             monospace = {
-              package = pkgs.iosevka-custom-nerd;
-              name = "Iosevka Custom";
+              package = pkgs.aporetic-bin;
+              name = "Aporetic Sans Mono";
             };
             emoji = {
               package = pkgs.noto-fonts-color-emoji;
@@ -70,8 +70,8 @@
               name = "DejaVu Sans";
             };
             monospace = {
-              package = pkgs.iosevka-custom-nerd;
-              name = "Iosevka Custom";
+              package = pkgs.aporetic-bin;
+              name = "Aporetic Sans Mono";
             };
             emoji = {
               package = pkgs.noto-fonts-color-emoji;
