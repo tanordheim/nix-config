@@ -24,8 +24,8 @@
               name = "DejaVu Sans";
             };
             monospace = {
-              package = pkgs.nerd-fonts.iosevka-term;
-              name = "IosevkaTerm Nerd Font Mono";
+              package = pkgs.iosevka-custom-nerd;
+              name = "Iosevka Custom";
             };
             emoji = {
               package = pkgs.noto-fonts-color-emoji;
@@ -70,8 +70,8 @@
               name = "DejaVu Sans";
             };
             monospace = {
-              package = pkgs.nerd-fonts.iosevka-term;
-              name = "IosevkaTerm Nerd Font Mono";
+              package = pkgs.iosevka-custom-nerd;
+              name = "Iosevka Custom";
             };
             emoji = {
               package = pkgs.noto-fonts-color-emoji;

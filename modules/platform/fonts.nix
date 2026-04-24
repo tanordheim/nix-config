@@ -3,6 +3,7 @@
     { pkgs, ... }:
     {
       fonts.packages = [
+        pkgs.iosevka-custom-nerd
         pkgs.nerd-fonts.jetbrains-mono
         pkgs.nerd-fonts.symbols-only
       ];
@@ -12,6 +13,7 @@
     { pkgs, ... }:
     {
       fonts.packages = [
+        pkgs.iosevka-custom-nerd
         pkgs.nerd-fonts.jetbrains-mono
         pkgs.nerd-fonts.symbols-only
       ];
