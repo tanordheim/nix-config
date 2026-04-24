@@ -55,6 +55,7 @@ let
     redis.enable = mkEnableOption "Redis";
     rust-dev.enable = mkEnableOption "Rust development tools";
     sabnzbd.enable = mkEnableOption "SABnzbd";
+    seerr.enable = mkEnableOption "Seerr";
     signal.enable = mkEnableOption "Signal";
     slack.enable = mkEnableOption "Slack";
     sonarr.enable = mkEnableOption "Sonarr";

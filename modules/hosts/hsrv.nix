@@ -59,6 +59,7 @@ in
         qbittorrent.enable = true;
         radarr.enable = true;
         sabnzbd.enable = true;
+        seerr.enable = true;
         sonarr.enable = true;
         stylix.enable = true;
         unpackerr.enable = true;
