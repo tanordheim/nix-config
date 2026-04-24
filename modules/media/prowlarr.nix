@@ -30,6 +30,7 @@
             prowlarrKey = config.sops.placeholder."prowlarr/api_key";
             sonarrKey = config.sops.placeholder."sonarr/api_key";
             radarrKey = config.sops.placeholder."radarr/api_key";
+            lidarrKey = config.sops.placeholder."lidarr/api_key";
           };
         };
 
@@ -53,6 +54,7 @@
             PROWLARR_KEY=$(echo "$keys" | jq -r .prowlarrKey)
             SONARR_KEY=$(echo "$keys" | jq -r .sonarrKey)
             RADARR_KEY=$(echo "$keys" | jq -r .radarrKey)
+            LIDARR_KEY=$(echo "$keys" | jq -r .lidarrKey)
 
             API="http://localhost:9696/api/v1"
 
@@ -113,6 +115,9 @@
 
             configure_app "Radarr" "Radarr" "RadarrSettings" \
               "http://localhost:7878" "$RADARR_KEY"
+
+            configure_app "Lidarr" "Lidarr" "LidarrSettings" \
+              "http://localhost:8686" "$LIDARR_KEY"
           '';
         };
 

@@ -50,6 +50,7 @@ in
         bazarr.enable = true;
         caddy.enable = true;
         home-assistant.enable = true;
+        lidarr.enable = true;
         mosquitto.enable = true;
         neovim.enable = true;
         nix-dev.enable = true;

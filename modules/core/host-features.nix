@@ -32,6 +32,7 @@ let
     kitty.enable = mkEnableOption "Kitty terminal";
     kotlin-dev.enable = mkEnableOption "Kotlin development tools";
     kubernetes.enable = mkEnableOption "Kubernetes tooling";
+    lidarr.enable = mkEnableOption "Lidarr";
     linear.enable = mkEnableOption "Linear";
     logitech.enable = mkEnableOption "Logi Options+";
     mosquitto.enable = mkEnableOption "Mosquitto MQTT broker";

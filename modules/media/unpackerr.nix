@@ -22,6 +22,9 @@
             UN_RADARR_0_URL=http://localhost:7878
             UN_RADARR_0_API_KEY=${config.sops.placeholder."radarr/api_key"}
             UN_RADARR_0_PATHS_0=/data/downloads
+            UN_LIDARR_0_URL=http://localhost:8686
+            UN_LIDARR_0_API_KEY=${config.sops.placeholder."lidarr/api_key"}
+            UN_LIDARR_0_PATHS_0=/data/downloads
           '';
           owner = "unpackerr";
           restartUnits = [ "unpackerr.service" ];
@@ -33,6 +36,7 @@
             "network.target"
             "sonarr.service"
             "radarr.service"
+            "lidarr.service"
           ];
           wantedBy = [ "multi-user.target" ];
           serviceConfig = {

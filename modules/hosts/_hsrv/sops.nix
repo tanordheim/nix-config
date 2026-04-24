@@ -12,6 +12,7 @@
       "mosquitto/password" = { };
       "sonarr/api_key" = { };
       "radarr/api_key" = { };
+      "lidarr/api_key" = { };
       "prowlarr/api_key" = { };
       "sabnzbd/servers" = { };
       "sabnzbd/api_key" = { };

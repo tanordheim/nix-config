@@ -3,6 +3,7 @@
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
+        age
         cloc
         cmake
         dos2unix
@@ -11,6 +12,7 @@
         gnumake
         gnupatch
         grpcurl
+        sops
         unixtools.watch
       ];
     };
