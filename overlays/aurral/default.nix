@@ -8,7 +8,7 @@ let
     pname = "aurral-frontend";
     inherit version;
     src = "${aurral-src}/frontend";
-    npmDepsHash = "sha256-mvj6MEePvKIRUY81OLVPEZvcJryK/bPEEVz69MD9mls=";
+    npmDepsHash = "sha256-GjnuqYOfYz6550ejDLrRRsbYA+tw2ar+Eq3VdVPv4dA=";
 
     env = {
       VITE_APP_VERSION = version;
@@ -62,7 +62,7 @@ let
       mkdir -p $out
       cp ${aurral-src}/package.json ${aurral-src}/package-lock.json $out/
     '';
-    npmDepsHash = prev.lib.fakeHash;
+    npmDepsHash = "sha256-92QGItcaLQb+upTNS8tO9BOqNXf9FCyOuDuu4eaS4Sk=";
 
     dontNpmBuild = true;
     npmFlags = [
