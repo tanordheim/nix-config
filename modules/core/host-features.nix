@@ -7,6 +7,7 @@ let
     aerospace.enable = mkEnableOption "AeroSpace + sketchybar";
     android-studio.enable = mkEnableOption "Android Studio";
     audacity.enable = mkEnableOption "Audacity";
+    atuin.enable = mkEnableOption "Atuin shell history sync";
     atuin-server.enable = mkEnableOption "Atuin sync server";
     aurral.enable = mkEnableOption "Aurral";
     aws.enable = mkEnableOption "AWS tooling";

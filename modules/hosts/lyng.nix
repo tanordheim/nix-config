@@ -34,6 +34,7 @@ in
       host.features = {
         _1password.enable = true;
         aerospace.enable = true;
+        atuin.enable = true;
         android-studio.enable = true;
         audacity.enable = true;
         aws.enable = true;
