@@ -15,6 +15,7 @@
               explorer = {
                 enabled = true;
                 replace_netrw = true;
+                hidden = true;
                 ignored = true;
                 exclude = [
                   ".git"

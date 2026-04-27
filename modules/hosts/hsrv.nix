@@ -47,6 +47,7 @@ in
       home-manager.users.trond.home.stateVersion = "26.05";
 
       host.features = {
+        atuin-server.enable = true;
         aurral.enable = true;
         bazarr.enable = true;
         caddy.enable = true;

@@ -66,6 +66,19 @@
     '';
   };
 
+  systemd.services.backup-atuin = {
+    description = "Backup Atuin database";
+    serviceConfig.Type = "oneshot";
+    path = [ "/run/current-system/sw" ];
+    script = ''
+      set -euo pipefail
+      dir=/data/backups/hsrv/atuin
+      mkdir -p "$dir"
+      sudo -u postgres pg_dump atuin | gzip > "$dir/atuin-$(date +%Y%m%d).sql.gz"
+      find "$dir" -name "atuin-*.sql.gz" -mtime +14 -delete
+    '';
+  };
+
   systemd.services.backup-zigbee2mqtt = {
     description = "Backup Zigbee2MQTT state";
     serviceConfig.Type = "oneshot";
@@ -106,6 +119,15 @@
   };
 
   systemd.timers.backup-home-assistant = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "daily";
+      RandomizedDelaySec = "1h";
+      Persistent = true;
+    };
+  };
+
+  systemd.timers.backup-atuin = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
       OnCalendar = "daily";
