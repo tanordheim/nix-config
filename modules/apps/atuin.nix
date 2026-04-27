@@ -7,10 +7,17 @@
     }:
     {
       config = lib.mkIf config.host.features.atuin.enable {
+        programs.zsh.initContent = ''
+          bindkey '^[r' atuin-search
+        '';
+
         programs.atuin = {
           enable = true;
           enableZshIntegration = true;
-          flags = [ "--disable-up-arrow" ];
+          flags = [
+            "--disable-up-arrow"
+            "--disable-ctrl-r"
+          ];
           settings = {
             sync_address = "https://atuin.home.nordheim.io";
             sync_frequency = "5m";
