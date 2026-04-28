@@ -46,6 +46,7 @@ in
         docker.enable = true;
         dotnet-dev.enable = true;
         firefox.enable = true;
+        gaming.enable = true;
         gcp.enable = true;
         gdrive.enable = true;
         go-dev.enable = true;
