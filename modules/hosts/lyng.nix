@@ -78,6 +78,7 @@ in
         spotify.enable = true;
         stern.enable = true;
         stylix.enable = true;
+        syncthing.enable = true;
         teams.enable = true;
         telegram.enable = true;
         terraform-dev.enable = true;

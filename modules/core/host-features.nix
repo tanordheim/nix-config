@@ -66,6 +66,7 @@ let
     spotify.enable = mkEnableOption "Spotify";
     stern.enable = mkEnableOption "stern (Kubernetes log tail)";
     stylix.enable = mkEnableOption "Stylix theming";
+    syncthing.enable = mkEnableOption "Syncthing";
     teams.enable = mkEnableOption "Microsoft Teams";
     telegram.enable = mkEnableOption "Telegram";
     terraform-dev.enable = mkEnableOption "Terraform development tools";
