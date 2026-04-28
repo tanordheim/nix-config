@@ -23,6 +23,7 @@ let
     docker.enable = mkEnableOption "Docker";
     dotnet-dev.enable = mkEnableOption ".NET development tools";
     firefox.enable = mkEnableOption "Firefox";
+    gaming.enable = mkEnableOption "Gaming (Battle.net on darwin)";
     gcp.enable = mkEnableOption "GCP tooling";
     gdrive.enable = mkEnableOption "Google Drive";
     go-dev.enable = mkEnableOption "Go development tools";
