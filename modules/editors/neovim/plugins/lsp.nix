@@ -50,6 +50,20 @@
               '';
           };
 
+          userCommands.LspRestart = {
+            command.__raw = # lua
+              ''
+                function(opts)
+                  local filter = opts.args ~= "" and { name = opts.args } or nil
+                  local clients = vim.lsp.get_clients(filter)
+                  for _, c in ipairs(clients) do vim.lsp.stop_client(c.id) end
+                  vim.defer_fn(function() vim.cmd.edit() end, 100)
+                end
+              '';
+            nargs = "?";
+            desc = "Restart LSP client(s)";
+          };
+
           keymaps = [
             {
               key = "gd";
