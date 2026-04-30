@@ -49,6 +49,17 @@
     ../../modules/_new/common/vscode
 
     ../../modules/_new/common/rust-dev
+
+    ../../modules/_new/common/dotnet-dev
+    ../../modules/_new/common/go-dev
+    ../../modules/_new/common/html-dev
+    ../../modules/_new/common/java-dev
+    ../../modules/_new/common/kotlin-dev
+    ../../modules/_new/common/nix-dev
+    ../../modules/_new/common/node-dev
+    ../../modules/_new/common/protobuf-dev
+    ../../modules/_new/common/python-dev
+    ../../modules/_new/common/terraform-dev
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
