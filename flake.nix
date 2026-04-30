@@ -95,27 +95,28 @@
   outputs =
     { ... }@inputs:
     let
-      fp = inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-        systems = [
-          "aarch64-darwin"
-          "x86_64-linux"
-        ];
-        imports = [ (inputs.import-tree ./modules) ];
-      };
+      libExtended = inputs.nixpkgs.lib.extend (
+        final: prev: {
+          mkPlatformImport = import ./lib/mkPlatformImport.nix;
+        }
+      );
     in
     {
       darwinConfigurations.lyng = inputs.nix-darwin.lib.darwinSystem {
         specialArgs = {
           inherit inputs;
           isDarwin = true;
-          lib = inputs.nixpkgs.lib.extend (
-            final: prev: {
-              mkPlatformImport = import ./lib/mkPlatformImport.nix;
-            }
-          );
+          lib = libExtended;
         };
         modules = [ ./hosts/lyng/default.nix ];
       };
-      nixosConfigurations.hsrv = fp.nixosConfigurations.hsrv;
+      nixosConfigurations.hsrv = inputs.nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          isDarwin = false;
+          lib = libExtended;
+        };
+        modules = [ ./hosts/hsrv/default.nix ];
+      };
     };
 }
