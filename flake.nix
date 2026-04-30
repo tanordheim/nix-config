@@ -94,11 +94,17 @@
 
   outputs =
     { ... }@inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [
-        "aarch64-darwin"
-        "x86_64-linux"
-      ];
-      imports = [ (inputs.import-tree ./modules) ];
+    let
+      fp = inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+        systems = [
+          "aarch64-darwin"
+          "x86_64-linux"
+        ];
+        imports = [ (inputs.import-tree ./modules) ];
+      };
+    in
+    {
+      darwinConfigurations.lyng = fp.darwinConfigurations.lyng;
+      nixosConfigurations.hsrv = fp.nixosConfigurations.hsrv;
     };
 }
