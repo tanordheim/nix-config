@@ -1,0 +1,13 @@
+{
+  home-manager.sharedModules = [
+    {
+      programs.starship = {
+        enable = true;
+        settings = {
+          docker_context.disabled = true;
+          gcloud.disabled = true;
+        };
+      };
+    }
+  ];
+}

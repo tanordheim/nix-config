@@ -105,6 +105,18 @@
     in
     {
       darwinConfigurations.lyng = fp.darwinConfigurations.lyng;
+      darwinConfigurations.lyng-next = inputs.nix-darwin.lib.darwinSystem {
+        specialArgs = {
+          inherit inputs;
+          isDarwin = true;
+          lib = inputs.nixpkgs.lib.extend (
+            final: prev: {
+              mkPlatformImport = import ./lib/mkPlatformImport.nix;
+            }
+          );
+        };
+        modules = [ ./hosts/lyng/default.nix ];
+      };
       nixosConfigurations.hsrv = fp.nixosConfigurations.hsrv;
     };
 }
