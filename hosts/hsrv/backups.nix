@@ -37,6 +37,7 @@
   systemd.services.backup-qbittorrent = {
     description = "Backup qBittorrent state";
     serviceConfig.Type = "oneshot";
+    path = [ "/run/current-system/sw" ];
     script = ''
       set -euo pipefail
       dir=/data/backups/hsrv/qbittorrent
@@ -83,6 +84,7 @@
   systemd.services.backup-zigbee2mqtt = {
     description = "Backup Zigbee2MQTT state";
     serviceConfig.Type = "oneshot";
+    path = [ "/run/current-system/sw" ];
     script = ''
       set -euo pipefail
       dir=/data/backups/hsrv/zigbee2mqtt
