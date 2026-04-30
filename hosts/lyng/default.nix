@@ -60,6 +60,8 @@
     ../../modules/_new/common/protobuf-dev
     ../../modules/_new/common/python-dev
     ../../modules/_new/common/terraform-dev
+
+    ../../modules/_new/common/private
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";

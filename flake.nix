@@ -104,8 +104,7 @@
       };
     in
     {
-      darwinConfigurations.lyng = fp.darwinConfigurations.lyng;
-      darwinConfigurations.lyng-next = inputs.nix-darwin.lib.darwinSystem {
+      darwinConfigurations.lyng = inputs.nix-darwin.lib.darwinSystem {
         specialArgs = {
           inherit inputs;
           isDarwin = true;
