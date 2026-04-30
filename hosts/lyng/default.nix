@@ -34,6 +34,11 @@
     ../../modules/_new/common/whatsapp
     ../../modules/_new/common/wispr-flow
     ../../modules/_new/common/xcode
+
+    ../../modules/_new/common/postgres
+    ../../modules/_new/common/redis
+    ../../modules/_new/common/kaf
+    ../../modules/_new/common/stern
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
