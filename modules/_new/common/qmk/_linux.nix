@@ -1,0 +1,9 @@
+{ pkgs, ... }:
+{
+  services.udev = {
+    packages = [ pkgs.qmk-udev-rules ];
+    extraRules = ''
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="0142", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+    '';
+  };
+}

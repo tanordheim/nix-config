@@ -1,0 +1,3 @@
+{
+  homebrew.casks = [ "battle-net" ];
+}
