@@ -39,6 +39,10 @@
     ../../modules/_new/common/redis
     ../../modules/_new/common/kaf
     ../../modules/_new/common/stern
+
+    ../../modules/_new/common/aws
+    ../../modules/_new/common/gcp
+    ../../modules/_new/common/kubernetes
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
