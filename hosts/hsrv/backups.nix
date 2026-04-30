@@ -24,6 +24,7 @@
   systemd.services.backup-sabnzbd = {
     description = "Backup SABnzbd state";
     serviceConfig.Type = "oneshot";
+    path = [ "/run/current-system/sw" ];
     script = ''
       set -euo pipefail
       dir=/data/backups/hsrv/sabnzbd

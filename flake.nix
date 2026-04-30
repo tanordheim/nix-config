@@ -9,10 +9,6 @@
     nixpkgs-custom.url = "github:tanordheim/nixpkgs/custom-patches";
     nixpkgs-swift.url = "github:NixOS/nixpkgs?ref=70801e06d9730c4f1704fbd3bbf5b8e11c03a2a7";
 
-    # flake-parts + import-tree (dendritic)
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    import-tree.url = "github:vic/import-tree";
-
     # Nix-darwin (for macOS machines)
     nix-darwin = {
       url = "github:LnL7/nix-darwin";

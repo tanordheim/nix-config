@@ -16,5 +16,5 @@
       };
     })
   ]
-  ++ (import ../../../overlays inputs);
+  ++ (import ../../overlays inputs);
 }

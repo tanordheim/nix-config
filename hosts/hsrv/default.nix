@@ -1,31 +1,31 @@
 {
   imports = [
-    ../../modules/_new/nixos/_base.nix
+    ../../modules/nixos/_base.nix
 
     ./hardware-configuration.nix
     ./sops.nix
     ./arr-download-clients.nix
     ./backups.nix
 
-    ../../modules/_new/common/neovim
-    ../../modules/_new/common/nix-dev
+    ../../modules/common/neovim
+    ../../modules/common/nix-dev
 
-    ../../modules/_new/nixos/atuin-server
-    ../../modules/_new/nixos/aurral
-    ../../modules/_new/nixos/bazarr
-    ../../modules/_new/nixos/caddy
-    ../../modules/_new/nixos/home-assistant
-    ../../modules/_new/nixos/lidarr
-    ../../modules/_new/nixos/mosquitto
-    ../../modules/_new/nixos/plex
-    ../../modules/_new/nixos/prowlarr
-    ../../modules/_new/nixos/qbittorrent
-    ../../modules/_new/nixos/radarr
-    ../../modules/_new/nixos/sabnzbd
-    ../../modules/_new/nixos/seerr
-    ../../modules/_new/nixos/sonarr
-    ../../modules/_new/nixos/unpackerr
-    ../../modules/_new/nixos/zigbee2mqtt
+    ../../modules/nixos/atuin-server
+    ../../modules/nixos/aurral
+    ../../modules/nixos/bazarr
+    ../../modules/nixos/caddy
+    ../../modules/nixos/home-assistant
+    ../../modules/nixos/lidarr
+    ../../modules/nixos/mosquitto
+    ../../modules/nixos/plex
+    ../../modules/nixos/prowlarr
+    ../../modules/nixos/qbittorrent
+    ../../modules/nixos/radarr
+    ../../modules/nixos/sabnzbd
+    ../../modules/nixos/seerr
+    ../../modules/nixos/sonarr
+    ../../modules/nixos/unpackerr
+    ../../modules/nixos/zigbee2mqtt
   ];
 
   boot.loader.systemd-boot.enable = true;
