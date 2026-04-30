@@ -18,7 +18,7 @@ Dendritic flake-parts layout. Every `.nix` file under `modules/` is auto-importe
 - `modules/users/trond.nix` — `flake.modules.{darwin,nixos}.trond` with user account, HM homeDir, nixos-only polkit + sudo rules.
 - `modules/cli/` — unconditional HM baseline (zsh, git, ssh, starship, eza, zoxide, direnv, shell-aliases, build-tools). All write to `flake.modules.homeManager.base`.
 - `modules/apps/<name>.nix` — user-facing applications (1password, slack, firefox, chrome, telegram, docker, qmk, xcode, claude/, …). Each declares one or more of `flake.modules.{darwin,nixos,homeManager}.<name>` gated by `lib.mkIf config.host.features.<name>.enable`.
-- `modules/cloud/`, `modules/terminals/`, `modules/desktop/` — feature-gated HM modules (aws, gcp, kubernetes, kitty, wezterm, aerospace, hyprland, etc.).
+- `modules/cloud/`, `modules/terminals/`, `modules/desktop/` — feature-gated HM modules (aws, gcp, kubernetes, kitty, aerospace, hyprland, etc.).
 - `modules/editors/neovim/` — nixvim-based neovim hub. `default.nix` sets base + imports `inputs.nixvim.homeModules.nixvim`. Plugin files under `plugins/` contribute to `flake.modules.homeManager.neovim.programs.nixvim.*`, all gated by `host.features.neovim.enable`.
 - `modules/editors/{jetbrains,vscode}.nix` — editor hubs that language modules contribute to.
 - `modules/dev/<lang>.nix` — language toolchain + editor integrations. Each file contributes to `flake.modules.homeManager.<lang>-dev` (toolchain, gated on `<lang>-dev.enable`), plus `flake.modules.homeManager.{neovim,jetbrains,vscode}` (integrations, gated on both `<lang>-dev.enable` AND `<editor>.enable`). Feature name convention: `<lang>-dev`.
