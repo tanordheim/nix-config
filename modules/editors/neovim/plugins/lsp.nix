@@ -56,8 +56,18 @@
                 function(opts)
                   local filter = opts.args ~= "" and { name = opts.args } or nil
                   local clients = vim.lsp.get_clients(filter)
-                  for _, c in ipairs(clients) do vim.lsp.stop_client(c.id) end
-                  vim.defer_fn(function() vim.cmd.edit() end, 100)
+                  local bufs = {}
+                  for _, c in ipairs(clients) do
+                    for buf in pairs(c.attached_buffers or {}) do bufs[buf] = true end
+                    c:stop()
+                  end
+                  vim.defer_fn(function()
+                    for buf in pairs(bufs) do
+                      if vim.api.nvim_buf_is_valid(buf) then
+                        vim.api.nvim_exec_autocmds("FileType", { buffer = buf })
+                      end
+                    end
+                  end, 100)
                 end
               '';
             nargs = "?";
