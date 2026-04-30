@@ -83,7 +83,6 @@ in
         telegram.enable = true;
         terraform-dev.enable = true;
         vscode.enable = true;
-        wezterm.enable = true;
         whatsapp.enable = true;
         wispr-flow.enable = true;
         xcode.enable = true;

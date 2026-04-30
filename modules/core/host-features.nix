@@ -73,7 +73,6 @@ let
     unpackerr.enable = mkEnableOption "Unpackerr";
     whatsapp.enable = mkEnableOption "WhatsApp";
     vscode.enable = mkEnableOption "VSCode";
-    wezterm.enable = mkEnableOption "WezTerm";
     wispr-flow.enable = mkEnableOption "Wispr Flow";
     xcode.enable = mkEnableOption "Xcode helpers";
     zigbee2mqtt.enable = mkEnableOption "Zigbee2MQTT";
