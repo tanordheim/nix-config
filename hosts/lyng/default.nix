@@ -43,6 +43,12 @@
     ../../modules/_new/common/aws
     ../../modules/_new/common/gcp
     ../../modules/_new/common/kubernetes
+
+    ../../modules/_new/common/neovim
+    ../../modules/_new/common/jetbrains
+    ../../modules/_new/common/vscode
+
+    ../../modules/_new/common/rust-dev
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
