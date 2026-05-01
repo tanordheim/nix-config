@@ -27,7 +27,7 @@
               active_opacity = 1;
               fullscreen_opacity = 1;
               inactive_opacity = 1;
-              dim_inactive = true;
+              dim_inactive = false;
               dim_strength = 0.2;
               rounding = 5;
               blur = {

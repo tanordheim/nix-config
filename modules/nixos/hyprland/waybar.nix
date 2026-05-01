@@ -47,6 +47,28 @@
           reload_style_on_change = true;
         };
 
+        fullscreenHide = pkgs.writeShellScript "waybar-fullscreen-hide" ''
+          SOCKET="$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
+          TARGET_MON="DP-2"
+
+          focused_mon="$(${pkgs.hyprland}/bin/hyprctl monitors -j \
+            | ${pkgs.jq}/bin/jq -r '.[] | select(.focused) | .name')"
+
+          ${pkgs.socat}/bin/socat -u "UNIX-CONNECT:$SOCKET" - \
+            | while IFS= read -r line; do
+              case "$line" in
+                "focusedmon>>"*)
+                  rest="''${line#focusedmon>>}"
+                  focused_mon="''${rest%%,*}"
+                  ;;
+                "fullscreen>>1"|"fullscreen>>0")
+                  [ "$focused_mon" = "$TARGET_MON" ] && \
+                    ${pkgs.systemd}/bin/systemctl --user kill -s SIGUSR1 waybar.service
+                  ;;
+              esac
+            done
+        '';
+
         sharedModules = {
           "hyprland/workspaces" = {
             all-outputs = false;
@@ -76,6 +98,21 @@
       in
       {
         stylix.targets.waybar.enable = false;
+
+        systemd.user.services.waybar-fullscreen-hide = {
+          Unit = {
+            Description = "Toggle waybar visibility on Hyprland DP-2 fullscreen";
+            After = [ "waybar.service" ];
+            Wants = [ "waybar.service" ];
+            PartOf = [ "graphical-session.target" ];
+          };
+          Service = {
+            ExecStart = "${fullscreenHide}";
+            Restart = "on-failure";
+            RestartSec = "2s";
+          };
+          Install.WantedBy = [ "graphical-session.target" ];
+        };
 
         programs.waybar = {
           enable = true;
