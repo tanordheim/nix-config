@@ -290,7 +290,6 @@
             }
 
             #left-workspaces,
-            #left-media,
             #left-status,
             #center-window,
             #right-system,
@@ -300,6 +299,10 @@
               background: ${c.base00};
               border-radius: 8px;
               padding: 0 10px;
+              margin: 2px 4px;
+            }
+
+            #left-media {
               margin: 2px 4px;
             }
 
