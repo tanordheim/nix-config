@@ -133,17 +133,23 @@
               };
 
               "custom/media-prev" = {
-                format = "⏮";
+                format = "{}";
+                exec = ''${playerctl} -l 2>/dev/null | grep -q . && echo "⏮" || echo ""'';
+                interval = 2;
                 tooltip = false;
                 on-click = "${playerctl} previous";
               };
               "custom/media-pause" = {
-                format = "⏯";
+                format = "{}";
+                exec = ''${playerctl} -l 2>/dev/null | grep -q . && echo "⏯" || echo ""'';
+                interval = 2;
                 tooltip = false;
                 on-click = "${playerctl} play-pause";
               };
               "custom/media-next" = {
-                format = "⏭";
+                format = "{}";
+                exec = ''${playerctl} -l 2>/dev/null | grep -q . && echo "⏭" || echo ""'';
+                interval = 2;
                 tooltip = false;
                 on-click = "${playerctl} next";
               };

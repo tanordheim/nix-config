@@ -4,6 +4,10 @@
       { pkgs, ... }:
       let
         configFormat = pkgs.formats.toml { };
+        whisperModel = pkgs.fetchurl {
+          url = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.en.bin";
+          hash = "sha256-xhONbVjsyDIgl+D5h8MvG+i7ChhTKj+I9zTRu/nEHl0=";
+        };
       in
       {
         home.packages = [ pkgs.voxtype ];
@@ -12,7 +16,7 @@
           state_file = "auto";
 
           whisper = {
-            model = "small.en";
+            model = "${whisperModel}";
             language = "en";
           };
 
