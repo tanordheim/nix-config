@@ -1,3 +1,4 @@
+{ lib, isDarwin, ... }:
 {
-  homebrew.casks = [ "obsidian" ];
+  imports = [ (lib.mkPlatformImport ./. isDarwin) ];
 }

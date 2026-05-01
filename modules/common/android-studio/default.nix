@@ -1,3 +1,4 @@
+{ lib, isDarwin, ... }:
 {
-  homebrew.casks = [ "android-studio" ];
+  imports = [ (lib.mkPlatformImport ./. isDarwin) ];
 }

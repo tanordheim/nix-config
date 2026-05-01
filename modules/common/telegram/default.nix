@@ -1,5 +1,6 @@
+{ lib, isDarwin, ... }:
 {
-  homebrew.casks = [ "telegram" ];
+  imports = [ (lib.mkPlatformImport ./. isDarwin) ];
 
   home-manager.sharedModules = [
     {

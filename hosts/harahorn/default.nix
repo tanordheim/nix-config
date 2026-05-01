@@ -8,16 +8,28 @@
     ../../modules/nixos/hyprland
 
     ../../modules/common/_1password
+    ../../modules/common/android-studio
     ../../modules/common/atuin
     ../../modules/common/chrome
     ../../modules/common/claude
+    ../../modules/common/discord
     ../../modules/common/docker
     ../../modules/common/firefox
     ../../modules/common/gdrive
+    ../../modules/common/jetbrains
     ../../modules/common/kitty
     ../../modules/common/neovim
+    ../../modules/common/obsidian
+    ../../modules/common/pocketcasts
     ../../modules/common/qmk
+    ../../modules/common/signal
+    ../../modules/common/slack
+    ../../modules/common/spotify
     ../../modules/common/syncthing
+    ../../modules/common/teams
+    ../../modules/common/telegram
+    ../../modules/common/vscode
+    ../../modules/common/whatsapp
 
     ../../modules/common/postgres
     ../../modules/common/redis

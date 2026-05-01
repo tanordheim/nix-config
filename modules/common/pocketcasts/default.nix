@@ -1,3 +1,4 @@
+{ lib, isDarwin, ... }:
 {
-  homebrew.casks = [ "pocket-casts" ];
+  imports = [ (lib.mkPlatformImport ./. isDarwin) ];
 }

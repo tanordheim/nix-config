@@ -1,3 +1,4 @@
+{ lib, isDarwin, ... }:
 {
-  homebrew.casks = [ "signal" ];
+  imports = [ (lib.mkPlatformImport ./. isDarwin) ];
 }

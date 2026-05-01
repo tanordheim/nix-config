@@ -1,3 +1,4 @@
+{ lib, isDarwin, ... }:
 {
-  homebrew.casks = [ "microsoft-teams" ];
+  imports = [ (lib.mkPlatformImport ./. isDarwin) ];
 }
