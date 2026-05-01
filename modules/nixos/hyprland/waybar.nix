@@ -77,12 +77,7 @@
               };
               "group/left-media" = {
                 orientation = "horizontal";
-                modules = [
-                  "mpris"
-                  "custom/media-prev"
-                  "custom/media-pause"
-                  "custom/media-next"
-                ];
+                modules = [ "mpris" ];
               };
               "group/left-status" = {
                 orientation = "horizontal";
@@ -130,28 +125,6 @@
                   stopped = "⏹";
                 };
                 dynamic-len = 30;
-              };
-
-              "custom/media-prev" = {
-                format = "{}";
-                exec = ''${playerctl} -l 2>/dev/null | grep -q . && echo "⏮" || echo ""'';
-                interval = 2;
-                tooltip = false;
-                on-click = "${playerctl} previous";
-              };
-              "custom/media-pause" = {
-                format = "{}";
-                exec = ''${playerctl} -l 2>/dev/null | grep -q . && echo "⏯" || echo ""'';
-                interval = 2;
-                tooltip = false;
-                on-click = "${playerctl} play-pause";
-              };
-              "custom/media-next" = {
-                format = "{}";
-                exec = ''${playerctl} -l 2>/dev/null | grep -q . && echo "⏭" || echo ""'';
-                interval = 2;
-                tooltip = false;
-                on-click = "${playerctl} next";
               };
 
               idle_inhibitor = {
@@ -290,6 +263,7 @@
             }
 
             #left-workspaces,
+            #left-media,
             #left-status,
             #center-window,
             #right-system,
@@ -299,10 +273,6 @@
               background: ${c.base00};
               border-radius: 8px;
               padding: 0 10px;
-              margin: 2px 4px;
-            }
-
-            #left-media {
               margin: 2px 4px;
             }
 
@@ -336,10 +306,7 @@
             #idle_inhibitor,
             #tray,
             #clock,
-            #custom-notification,
-            #custom-media-prev,
-            #custom-media-pause,
-            #custom-media-next {
+            #custom-notification {
               padding: 0 6px;
               color: ${c.base05};
             }
