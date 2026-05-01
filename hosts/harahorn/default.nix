@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
 
     ../../modules/nixos/hyprland
+    ../../modules/nixos/voxtype
 
     ../../modules/common/_1password
     ../../modules/common/android-studio

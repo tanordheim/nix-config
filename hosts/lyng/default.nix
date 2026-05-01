@@ -3,7 +3,7 @@
     ../../modules/darwin/_base.nix
 
     ../../modules/common/_1password
-    ../../modules/common/aerospace
+    ../../modules/darwin/aerospace
     ../../modules/common/android-studio
     ../../modules/common/atuin
     ../../modules/common/audacity
@@ -32,7 +32,7 @@
     ../../modules/common/teams
     ../../modules/common/telegram
     ../../modules/common/whatsapp
-    ../../modules/common/wispr-flow
+    ../../modules/darwin/wispr-flow
     ../../modules/common/xcode
 
     ../../modules/common/postgres
