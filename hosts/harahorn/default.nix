@@ -8,12 +8,14 @@
     ../../modules/nixos/hyprland
 
     ../../modules/common/_1password
+    ../../modules/common/atuin
     ../../modules/common/chrome
     ../../modules/common/claude
     ../../modules/common/gcp
     ../../modules/common/kitty
     ../../modules/common/neovim
     ../../modules/common/nix-dev
+    ../../modules/common/qmk
 
     ../../modules/common/private
   ];

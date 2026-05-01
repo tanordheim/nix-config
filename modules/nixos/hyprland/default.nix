@@ -6,7 +6,7 @@
   services.greetd = {
     enable = true;
     settings.default_session = {
-      command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+      command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd start-hyprland";
       user = "greeter";
     };
   };
@@ -309,7 +309,21 @@
             cursor.no_hardware_cursors = true;
 
             monitor = [
-              ", preferred, auto, 1"
+              "DP-1, 2560x1440@155, 0x0, 1, transform, 1"
+              "DP-2, 3440x1440@180, 1440x320, 1"
+            ];
+
+            workspace = [
+              "1, monitor:DP-2, default:true"
+              "2, monitor:DP-2"
+              "3, monitor:DP-2"
+              "4, monitor:DP-2"
+              "5, monitor:DP-2"
+              "6, monitor:DP-1, default:true"
+              "7, monitor:DP-1"
+              "8, monitor:DP-1"
+              "9, monitor:DP-1"
+              "10, monitor:DP-1"
             ];
           };
         };
