@@ -49,6 +49,10 @@
             "cmd+c" = "copy_and_clear_or_interrupt";
             "cmd+v" = "paste_from_clipboard";
             "cmd+q" = "quit";
+          }
+          // lib.optionalAttrs pkgs.stdenv.isLinux {
+            "ctrl+c" = "copy_and_clear_or_interrupt";
+            "ctrl+v" = "paste_from_clipboard";
           };
         };
       }
