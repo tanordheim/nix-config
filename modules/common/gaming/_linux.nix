@@ -6,7 +6,10 @@
 
   home-manager.sharedModules = [
     {
-      home.packages = [ pkgs.lutris ];
+      home.packages = [
+        pkgs.lutris
+        pkgs.instawow
+      ];
     }
   ];
 }

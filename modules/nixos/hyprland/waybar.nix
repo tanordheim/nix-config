@@ -89,7 +89,7 @@
                 "group/left-workspaces"
                 "mpris"
                 "group/left-status"
-                "group/left-voxtype"
+                "custom/voxtype"
               ];
               modules-center = [ "group/center-window" ];
               modules-right = [
@@ -106,10 +106,6 @@
               "group/left-status" = {
                 orientation = "horizontal";
                 modules = [ "idle_inhibitor" "tray" ];
-              };
-              "group/left-voxtype" = {
-                orientation = "horizontal";
-                modules = [ "custom/voxtype" ];
               };
               "group/center-window" = {
                 orientation = "horizontal";
@@ -300,17 +296,27 @@
 
             #left-workspaces,
             #left-status,
-            #left-voxtype,
             #center-window,
             #right-system,
             #right-conn,
             #right-notif,
             #right-clock,
-            #mpris {
+            #mpris,
+            #custom-voxtype {
               background: ${c.base00};
               border-radius: 8px;
               padding: 0 10px;
               margin: 2px 4px;
+            }
+
+            #custom-voxtype.recording {
+              background: ${c.base08};
+              color: ${c.base00};
+            }
+
+            #custom-voxtype.transcribing {
+              background: ${c.base0E};
+              color: ${c.base00};
             }
 
             #workspaces button {
@@ -342,8 +348,7 @@
             #idle_inhibitor,
             #tray,
             #clock,
-            #custom-notification,
-            #custom-voxtype {
+            #custom-notification {
               padding: 0 6px;
               color: ${c.base05};
             }

@@ -16,9 +16,10 @@
           state_file = "auto";
 
           hotkey = {
-            enabled = false;
-            key = "SCROLLLOCK";
-            modifiers = [ ];
+            enabled = true;
+            key = "D";
+            modifiers = [ "LEFTCTRL" "LEFTALT" ];
+            mode = "push_to_talk";
           };
 
           audio = {
@@ -58,9 +59,6 @@
           Install.WantedBy = [ "graphical-session.target" ];
         };
 
-        wayland.windowManager.hyprland.settings.bind = [
-          "$mainMod CTRL, D, exec, ${pkgs.voxtype}/bin/voxtype record toggle"
-        ];
       }
     )
   ];
