@@ -15,6 +15,12 @@
         xdg.configFile."voxtype/config.toml".source = configFormat.generate "voxtype-config.toml" {
           state_file = "auto";
 
+          hotkey = {
+            enabled = false;
+            key = "SCROLLLOCK";
+            modifiers = [ ];
+          };
+
           whisper = {
             model = "${whisperModel}";
             language = "en";

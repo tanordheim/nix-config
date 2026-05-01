@@ -16,6 +16,7 @@
     ../../modules/common/discord
     ../../modules/common/docker
     ../../modules/common/firefox
+    ../../modules/common/gaming
     ../../modules/common/gdrive
     ../../modules/common/jetbrains
     ../../modules/common/kitty

@@ -1,3 +1,4 @@
+{ lib, isDarwin, ... }:
 {
-  homebrew.casks = [ "battle-net" ];
+  imports = [ (lib.mkPlatformImport ./. isDarwin) ];
 }
