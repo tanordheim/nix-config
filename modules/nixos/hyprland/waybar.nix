@@ -8,6 +8,8 @@
         playerctl = "${pkgs.playerctl}/bin/playerctl";
         swayncClient = "${pkgs.swaynotificationcenter}/bin/swaync-client";
 
+        icon = g: "<span size='large'>${g}</span>";
+
         commonBar = {
           layer = "top";
           position = "top";
@@ -112,13 +114,13 @@
                 format = "{player_icon} {dynamic}";
                 format-paused = "{status_icon} <i>{dynamic}</i>";
                 player-icons = {
-                  default = "▶";
-                  spotify = "";
+                  default = icon "▶";
+                  spotify = icon "";
                 };
                 status-icons = {
-                  paused = "⏸";
-                  playing = "▶";
-                  stopped = "⏹";
+                  paused = icon "⏸";
+                  playing = icon "▶";
+                  stopped = icon "⏹";
                 };
                 dynamic-len = 30;
               };
@@ -126,8 +128,8 @@
               idle_inhibitor = {
                 format = "{icon}";
                 format-icons = {
-                  activated = "⚡";
-                  deactivated = "⏾";
+                  activated = icon "⚡";
+                  deactivated = icon "⏾";
                 };
               };
 
@@ -137,15 +139,15 @@
               };
 
               cpu = {
-                format = " {usage}%";
+                format = "${icon ""} {usage}%";
                 interval = 5;
               };
               memory = {
-                format = " {percentage}%";
+                format = "${icon ""} {percentage}%";
                 interval = 5;
               };
               disk = {
-                format = "󰋊 {percentage_used}%";
+                format = "${icon "󰋊"} {percentage_used}%";
                 path = "/";
                 interval = 30;
               };
@@ -154,49 +156,49 @@
                 hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:18.3/hwmon";
                 input-filename = "temp1_input";
                 critical-threshold = 85;
-                format = " {temperatureC}°";
+                format = "${icon ""} {temperatureC}°";
                 tooltip = false;
               };
               "temperature#gpu" = {
                 hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon";
                 input-filename = "temp2_input";
                 critical-threshold = 95;
-                format = "󰢮 {temperatureC}°";
+                format = "${icon "󰢮"} {temperatureC}°";
                 tooltip = false;
               };
               "temperature#nvme" = {
                 hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:02.2/0000:0c:00.0/nvme/nvme0/hwmon";
                 input-filename = "temp1_input";
                 critical-threshold = 70;
-                format = " {temperatureC}°";
+                format = "${icon ""} {temperatureC}°";
                 tooltip = false;
               };
               "temperature#dimm" = {
                 hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:14.0/i2c-0/0-0053/hwmon";
                 input-filename = "temp1_input";
                 critical-threshold = 75;
-                format = " {temperatureC}°";
+                format = "${icon ""} {temperatureC}°";
                 tooltip = false;
               };
 
               wireplumber = {
-                format = " {volume}%";
-                format-muted = " muted";
+                format = "${icon ""} {volume}%";
+                format-muted = "${icon ""} muted";
                 on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
               };
 
               bluetooth = {
-                format = " {status}";
-                format-disabled = " off";
-                format-connected = " {device_alias}";
+                format = "${icon ""} {status}";
+                format-disabled = "${icon ""} off";
+                format-connected = "${icon ""} {device_alias}";
                 tooltip-format = "{controller_alias}\n{num_connections} connected";
                 on-click = "${pkgs.blueman}/bin/blueman-manager";
               };
 
               network = {
-                format-wifi = " {essid}";
-                format-ethernet = "󰈀 {ifname}";
-                format-disconnected = "󰖪 disconnected";
+                format-wifi = "${icon ""} {essid}";
+                format-ethernet = "${icon "󰈀"} {ifname}";
+                format-disconnected = "${icon "󰖪"} disconnected";
                 tooltip-format = "{ifname}: {ipaddr}";
                 on-click = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
               };
