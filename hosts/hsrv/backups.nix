@@ -1,8 +1,12 @@
+{ pkgs, ... }:
 {
   systemd.services.backup-plex = {
     description = "Backup Plex library database";
     serviceConfig.Type = "oneshot";
-    path = [ "/run/current-system/sw" ];
+    path = [
+      "/run/current-system/sw"
+      pkgs.sqlite
+    ];
     script = ''
       set -euo pipefail
       dir=/data/backups/hsrv/plex
@@ -50,7 +54,10 @@
   systemd.services.backup-home-assistant = {
     description = "Backup Home Assistant state";
     serviceConfig.Type = "oneshot";
-    path = [ "/run/current-system/sw" ];
+    path = [
+      "/run/current-system/sw"
+      pkgs.sqlite
+    ];
     script = ''
       set -euo pipefail
       dir=/data/backups/hsrv/home-assistant

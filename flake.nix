@@ -114,5 +114,13 @@
         };
         modules = [ ./hosts/hsrv/default.nix ];
       };
+      nixosConfigurations.harahorn = inputs.nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          isDarwin = false;
+          lib = libExtended;
+        };
+        modules = [ ./hosts/harahorn/default.nix ];
+      };
     };
 }
