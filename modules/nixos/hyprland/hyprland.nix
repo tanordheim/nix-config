@@ -183,8 +183,6 @@
               sensitivity = 0;
             };
 
-            cursor.no_hardware_cursors = true;
-
             monitor = [
               "DP-1, 2560x1440@155, 0x0, 1, transform, 1"
               "DP-2, 3440x1440@180, 1440x320, 1"
