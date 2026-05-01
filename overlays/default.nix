@@ -5,4 +5,5 @@ args: [
   (import ./swift args)
   (import ./tiny-cmdline args)
   (import ./tiny-code-action args)
+  (import ./voxtype args)
 ]

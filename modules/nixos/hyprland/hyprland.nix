@@ -143,8 +143,8 @@
               "CTRL SHIFT ALT, F, togglefloating"
               "CTRL SHIFT ALT, T, togglesplit"
 
-              "$mainMod, print,       exec, ${pkgs.hyprshot}/bin/hyprshot -m region"
-              "$mainMod SHIFT, print, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
+              "ALT, S,       exec, ${pkgs.hyprshot}/bin/hyprshot -m region"
+              "ALT SHIFT, S, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
 
               ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%+"
               ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%-"
