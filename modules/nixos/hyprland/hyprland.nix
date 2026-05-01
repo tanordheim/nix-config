@@ -63,6 +63,8 @@
 
             master.new_status = "slave";
 
+            render.direct_scanout = 2;
+
             misc = {
               force_default_wallpaper = 0;
               disable_hyprland_logo = true;
