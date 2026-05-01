@@ -32,7 +32,7 @@
           spotify = fa "F1BC";
         };
 
-        icon = g: "<span size='large'>${g}</span>";
+        icon = g: g;
 
         commonBar = {
           layer = "top";
