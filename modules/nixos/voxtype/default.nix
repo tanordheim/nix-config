@@ -17,8 +17,8 @@
 
           hotkey = {
             enabled = true;
-            key = "D";
-            modifiers = [ "LEFTCTRL" "LEFTALT" ];
+            key = "F13";
+            modifiers = [ ];
             mode = "push_to_talk";
           };
 
