@@ -60,7 +60,7 @@
 
               modules-left = [
                 "group/left-workspaces"
-                "group/left-media"
+                "mpris"
                 "group/left-status"
               ];
               modules-center = [ "group/center-window" ];
@@ -74,10 +74,6 @@
               "group/left-workspaces" = {
                 orientation = "horizontal";
                 modules = [ "hyprland/workspaces" ];
-              };
-              "group/left-media" = {
-                orientation = "horizontal";
-                modules = [ "mpris" ];
               };
               "group/left-status" = {
                 orientation = "horizontal";
@@ -263,13 +259,13 @@
             }
 
             #left-workspaces,
-            #left-media,
             #left-status,
             #center-window,
             #right-system,
             #right-conn,
             #right-notif,
-            #right-clock {
+            #right-clock,
+            #mpris {
               background: ${c.base00};
               border-radius: 8px;
               padding: 0 10px;
@@ -295,7 +291,6 @@
             }
 
             #window,
-            #mpris,
             #cpu,
             #memory,
             #disk,
