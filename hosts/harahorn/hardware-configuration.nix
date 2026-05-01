@@ -45,6 +45,31 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
+  fileSystems."/mnt/nas/backups" = {
+    device = "192.168.69.11:/backups";
+    fsType = "nfs";
+    options = [
+      "nfsvers=4"
+      "hard"
+      "noauto"
+      "x-systemd.automount"
+      "x-systemd.mount-timeout=90"
+    ];
+  };
+
+  fileSystems."/mnt/nas/trond" = {
+    device = "192.168.69.11:/trond";
+    fsType = "nfs";
+    options = [
+      "nfsvers=4"
+      "hard"
+      "noauto"
+      "x-systemd.automount"
+      "x-systemd.mount-timeout=90"
+      "noatime"
+    ];
+  };
+
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
