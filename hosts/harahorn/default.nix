@@ -7,6 +7,7 @@
 
     ../../modules/nixos/hyprland
 
+    ../../modules/common/_1password
     ../../modules/common/chrome
     ../../modules/common/claude
     ../../modules/common/gcp
