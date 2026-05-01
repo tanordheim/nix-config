@@ -136,9 +136,9 @@
         wayland.windowManager.hyprland = {
           enable = true;
           settings = {
-            "$mainMod" = "SUPER";
-            "$focusMod" = "ALT";
-            "$moveMod" = "CTRL ALT";
+            "$mainMod" = "ALT";
+            "$focusMod" = "SUPER";
+            "$moveMod" = "CTRL SUPER";
 
             env = [
               "QT_QPA_PLATFORMTHEME,qt5ct"
@@ -192,7 +192,6 @@
             };
 
             master.new_status = "slave";
-            gestures.workspace_swipe = false;
 
             misc = {
               force_default_wallpaper = 0;
@@ -273,8 +272,8 @@
               "CTRL SHIFT ALT, F, togglefloating"
               "CTRL SHIFT ALT, T, togglesplit"
 
-              "SUPER, print, exec, ${pkgs.hyprshot}/bin/hyprshot -m region"
-              "SUPER SHIFT, print, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
+              "$mainMod, print,       exec, ${pkgs.hyprshot}/bin/hyprshot -m region"
+              "$mainMod SHIFT, print, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
 
               ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%+"
               ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%-"
