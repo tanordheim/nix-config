@@ -62,10 +62,6 @@
       url = "github:nikitabobko/homebrew-tap";
       flake = false;
     };
-    homebrew-telepresence = {
-      url = "github:telepresenceio/homebrew-telepresence";
-      flake = false;
-    };
     homebrew-schpet-tap = {
       url = "github:schpet/homebrew-tap";
       flake = false;

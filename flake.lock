@@ -293,22 +293,6 @@
         "type": "github"
       }
     },
-    "homebrew-telepresence": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1775686064,
-        "narHash": "sha256-mn27TaS5KbVFTbiOZoLY43+tPFdsBetX5shC6cB7oyg=",
-        "owner": "telepresenceio",
-        "repo": "homebrew-telepresence",
-        "rev": "d45be22b8fb8264ba1d6a3b1cc8b868f652f712b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "telepresenceio",
-        "repo": "homebrew-telepresence",
-        "type": "github"
-      }
-    },
     "nix-config-private": {
       "inputs": {
         "home-manager": [
@@ -537,7 +521,6 @@
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
         "homebrew-schpet-tap": "homebrew-schpet-tap",
-        "homebrew-telepresence": "homebrew-telepresence",
         "nix-config-private": "nix-config-private",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
