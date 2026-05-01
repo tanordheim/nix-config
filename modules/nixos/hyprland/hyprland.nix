@@ -70,6 +70,7 @@
               mouse_move_enables_dpms = true;
               key_press_enables_dpms = true;
               middle_click_paste = false;
+              vrr = 2;
             };
 
             bind = [
@@ -143,8 +144,8 @@
               "CTRL SHIFT ALT, F, togglefloating"
               "CTRL SHIFT ALT, T, togglesplit"
 
-              "ALT, S,        exec, ${pkgs.hyprshot}/bin/hyprshot -m region"
-              "CTRL SHIFT, S, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
+              "CTRL SHIFT ALT, S, exec, ${pkgs.hyprshot}/bin/hyprshot -m region"
+              "CTRL SHIFT, S,     exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
 
               ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%+"
               ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%-"
