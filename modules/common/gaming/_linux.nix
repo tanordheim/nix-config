@@ -8,7 +8,7 @@
     {
       home.packages = [
         pkgs.lutris
-        pkgs.instawow
+        pkgs.wowup-cf
       ];
     }
   ];
