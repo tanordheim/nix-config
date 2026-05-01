@@ -1,3 +1,8 @@
 {
-  homebrew.casks = [ "google-chrome" ];
+  lib,
+  isDarwin,
+  ...
+}:
+{
+  imports = [ (lib.mkPlatformImport ./. isDarwin) ];
 }

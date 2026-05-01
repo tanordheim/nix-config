@@ -23,12 +23,6 @@
     wireplumber.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    brightnessctl
-    playerctl
-    pavucontrol
-  ];
-
   home-manager.sharedModules = [
     (
       {
@@ -42,9 +36,12 @@
       in
       {
         home.packages = with pkgs; [
+          brightnessctl
           hyprland-qtutils
           hyprpolkitagent
           libnotify
+          pavucontrol
+          playerctl
           wl-clipboard
           xdg-utils
         ];
