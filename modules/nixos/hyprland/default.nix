@@ -139,8 +139,9 @@
         wayland.windowManager.hyprland = {
           enable = true;
           settings = {
-            "$mainMod" = "ALT";
-            "$altMod" = "CTRL";
+            "$mainMod" = "SUPER";
+            "$focusMod" = "ALT";
+            "$moveMod" = "CTRL ALT";
 
             env = [
               "QT_QPA_PLATFORMTHEME,qt5ct"
@@ -206,9 +207,20 @@
             };
 
             bind = [
-              "$mainMod, return, exec, ${pkgs.kitty}/bin/kitty"
+              "$mainMod, return, exec, ${pkgs.kitty}/bin/kitty --directory=$HOME"
               "$mainMod SHIFT, W, killactive"
-              "$mainMod $altMod, Q, exit"
+              "$mainMod CTRL, Q, exit"
+              "$mainMod CTRL, C, exec, hyprctl reload"
+
+              "$focusMod, h, movefocus, l"
+              "$focusMod, j, movefocus, d"
+              "$focusMod, k, movefocus, u"
+              "$focusMod, l, movefocus, r"
+
+              "$moveMod, h, movewindow, l"
+              "$moveMod, j, movewindow, d"
+              "$moveMod, k, movewindow, u"
+              "$moveMod, l, movewindow, r"
 
               "$mainMod SHIFT, 1, workspace, 1"
               "$mainMod SHIFT, 2, workspace, 2"
@@ -221,6 +233,17 @@
               "$mainMod SHIFT, 9, workspace, 9"
               "$mainMod SHIFT, 0, workspace, 10"
 
+              "$mainMod SHIFT, KP_End,      workspace, 1"
+              "$mainMod SHIFT, KP_Down,     workspace, 2"
+              "$mainMod SHIFT, KP_Next,     workspace, 3"
+              "$mainMod SHIFT, KP_Left,     workspace, 4"
+              "$mainMod SHIFT, KP_Begin,    workspace, 5"
+              "$mainMod SHIFT, KP_Right,    workspace, 6"
+              "$mainMod SHIFT, KP_Home,     workspace, 7"
+              "$mainMod SHIFT, KP_Up,       workspace, 8"
+              "$mainMod SHIFT, KP_Prior,    workspace, 9"
+              "$mainMod SHIFT, KP_Insert,   workspace, 10"
+
               "$mainMod CTRL, 1, movetoworkspace, 1"
               "$mainMod CTRL, 2, movetoworkspace, 2"
               "$mainMod CTRL, 3, movetoworkspace, 3"
@@ -232,18 +255,35 @@
               "$mainMod CTRL, 9, movetoworkspace, 9"
               "$mainMod CTRL, 0, movetoworkspace, 10"
 
-              "$mainMod, left, movefocus, l"
-              "$mainMod, up, movefocus, u"
-              "$mainMod, down, movefocus, d"
-              "$mainMod, right, movefocus, r"
+              "$mainMod CTRL, KP_End,    movetoworkspace, 1"
+              "$mainMod CTRL, KP_Down,   movetoworkspace, 2"
+              "$mainMod CTRL, KP_Next,   movetoworkspace, 3"
+              "$mainMod CTRL, KP_Left,   movetoworkspace, 4"
+              "$mainMod CTRL, KP_Begin,  movetoworkspace, 5"
+              "$mainMod CTRL, KP_Right,  movetoworkspace, 6"
+              "$mainMod CTRL, KP_Home,   movetoworkspace, 7"
+              "$mainMod CTRL, KP_Up,     movetoworkspace, 8"
+              "$mainMod CTRL, KP_Prior,  movetoworkspace, 9"
+              "$mainMod CTRL, KP_Insert, movetoworkspace, 10"
 
-              "SUPER, S, exec, ${pkgs.hyprshot}/bin/hyprshot -m region"
-              "SUPER SHIFT, S, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
+              "$mainMod, page_down, workspace, e-1"
+              "$mainMod, page_up,   workspace, e+1"
+              "$mainMod, home,      workspace, previous"
+
+              "$mainMod SHIFT, S, togglespecialworkspace, magic"
+              "$mainMod CTRL,  S, movetoworkspace, special:magic"
+
+              "CTRL SHIFT ALT, F, togglefloating"
+              "CTRL SHIFT ALT, T, togglesplit"
+
+              "SUPER, print, exec, ${pkgs.hyprshot}/bin/hyprshot -m region"
+              "SUPER SHIFT, print, exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
 
               ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%+"
               ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%-"
+              ", XF86AudioMute,        exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
-              "$mainMod $altMod, L, exec, hyprlock"
+              "$mainMod CTRL, L, exec, hyprlock"
             ];
 
             bindm = [

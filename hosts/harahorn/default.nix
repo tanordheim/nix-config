@@ -7,9 +7,13 @@
 
     ../../modules/nixos/hyprland
 
+    ../../modules/common/claude
+    ../../modules/common/gcp
     ../../modules/common/kitty
     ../../modules/common/neovim
     ../../modules/common/nix-dev
+
+    ../../modules/common/private
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -33,6 +37,8 @@
   system.stateVersion = "26.05";
   networking.hostName = "harahorn";
   networking.networkmanager.enable = true;
+
+  console.keyMap = "no-latin1";
 
   hardware.cpu.amd.updateMicrocode = true;
   hardware.graphics = {
