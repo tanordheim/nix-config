@@ -158,7 +158,7 @@
               };
 
               tray = {
-                icon-size = 18;
+                icon-size = 16;
                 spacing = 10;
               };
 
