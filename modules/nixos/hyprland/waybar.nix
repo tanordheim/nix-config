@@ -30,6 +30,7 @@
           pause = fa "F04C";
           stop = fa "F04D";
           spotify = fa "F1BC";
+          bell = fa "F0F3";
         };
 
         icon = g: g;
@@ -88,6 +89,7 @@
                 "group/left-workspaces"
                 "mpris"
                 "group/left-status"
+                "group/left-voxtype"
               ];
               modules-center = [ "group/center-window" ];
               modules-right = [
@@ -104,6 +106,10 @@
               "group/left-status" = {
                 orientation = "horizontal";
                 modules = [ "idle_inhibitor" "tray" ];
+              };
+              "group/left-voxtype" = {
+                orientation = "horizontal";
+                modules = [ "custom/voxtype" ];
               };
               "group/center-window" = {
                 orientation = "horizontal";
@@ -227,17 +233,25 @@
                 on-click = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
               };
 
+              "custom/voxtype" = {
+                exec = "${pkgs.voxtype}/bin/voxtype status --follow --format json";
+                return-type = "json";
+                format = "{} {alt}";
+                tooltip = true;
+                on-click = "${pkgs.voxtype}/bin/voxtype record toggle";
+              };
+
               "custom/notification" = {
                 tooltip = false;
-                format = "{icon}";
+                format = "${glyph.bell}{icon}";
                 format-icons = {
-                  notification = "<span foreground='red'><sup></sup></span>";
+                  notification = "<span foreground='red'><sup>●</sup></span>";
                   none = "";
-                  dnd-notification = "<span foreground='red'><sup></sup></span>";
+                  dnd-notification = "<span foreground='red'><sup>●</sup></span>";
                   dnd-none = "";
-                  inhibited-notification = "<span foreground='red'><sup></sup></span>";
+                  inhibited-notification = "<span foreground='red'><sup>●</sup></span>";
                   inhibited-none = "";
-                  dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+                  dnd-inhibited-notification = "<span foreground='red'><sup>●</sup></span>";
                   dnd-inhibited-none = "";
                 };
                 return-type = "json";
@@ -286,6 +300,7 @@
 
             #left-workspaces,
             #left-status,
+            #left-voxtype,
             #center-window,
             #right-system,
             #right-conn,
@@ -327,7 +342,8 @@
             #idle_inhibitor,
             #tray,
             #clock,
-            #custom-notification {
+            #custom-notification,
+            #custom-voxtype {
               padding: 0 6px;
               color: ${c.base05};
             }
