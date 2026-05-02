@@ -201,7 +201,7 @@
               "10, monitor:DP-1, layoutopt:orientation:top"
             ];
 
-            windowrulev2 = [
+            windowrule = [
               "workspace 6 silent, class:^(Slack)$"
               "workspace 6 silent, class:^(org.telegram.desktop)$"
             ];
