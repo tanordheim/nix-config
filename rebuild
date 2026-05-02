@@ -30,7 +30,7 @@ rebuild() {
     current=$(sudo darwin-rebuild --list-generations | grep current)
     ;;
   Linux)
-    sudo nixos-rebuild switch --impure --flake .
+    sudo nixos-rebuild switch --flake .
     current=$(nixos-rebuild list-generations | grep True)
     ;;
   *)

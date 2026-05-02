@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }:
@@ -9,10 +8,7 @@ let
 in
 {
   users.users.trond = {
-    name = "trond";
-    description = "Trond Nordheim";
     home = "/home/trond";
-    shell = pkgs.zsh;
     isNormalUser = true;
     extraGroups = [ "wheel" "input" ] ++ ifTheyExist [ "docker" ];
     openssh.authorizedKeys.keys = [

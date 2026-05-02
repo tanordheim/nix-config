@@ -1,33 +1,6 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
-  environment.systemPackages =
-    (with pkgs; [
-      coreutils
-      curl
-      diffutils
-      file
-      findutils
-      gawk
-      gnugrep
-      gnused
-      gnutar
-      gzip
-      jq
-      killall
-      lsof
-      tree
-      unzip
-      zip
-    ])
-    ++ [ pkgs.kitty.terminfo ];
-
-  programs.zsh.enable = true;
-
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
-  };
+  environment.systemPackages = [ pkgs.kitty.terminfo ];
 
   services.openssh = {
     enable = true;
