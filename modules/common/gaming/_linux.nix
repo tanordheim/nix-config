@@ -25,6 +25,7 @@
             );
         })
         pkgs.wowup-cf
+        pkgs.tsm-app
       ];
     }
   ];

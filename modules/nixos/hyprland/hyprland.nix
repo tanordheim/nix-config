@@ -202,8 +202,8 @@
             ];
 
             windowrule = [
-              "workspace 6 silent, class:^(Slack)$"
-              "workspace 6 silent, class:^(org.telegram.desktop)$"
+              "workspace 6 silent, match:class ^(Slack)$"
+              "workspace 6 silent, match:class ^(org\\.telegram\\.desktop)$"
             ];
           };
         };

@@ -43,6 +43,12 @@
       flake = false;
     };
 
+    # TSM Desktop App linux port
+    tsm-app-linux-src = {
+      url = "github:exceptionptr/tsm-app-linux/master";
+      flake = false;
+    };
+
     # Stylix system wide color scheming/styling
     stylix.url = "github:danth/stylix";
 

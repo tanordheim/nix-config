@@ -519,7 +519,8 @@
         "sops-nix": "sops-nix",
         "stylix": "stylix",
         "tiny-cmdline-nvim": "tiny-cmdline-nvim",
-        "tiny-code-action-nvim": "tiny-code-action-nvim"
+        "tiny-code-action-nvim": "tiny-code-action-nvim",
+        "tsm-app-linux-src": "tsm-app-linux-src"
       }
     },
     "sops-nix": {
@@ -696,6 +697,23 @@
       "original": {
         "owner": "rachartier",
         "repo": "tiny-code-action.nvim",
+        "type": "github"
+      }
+    },
+    "tsm-app-linux-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777147815,
+        "narHash": "sha256-ygbFr5eUn04skSOJ6Socy9odPtc7YvtbU7J2eTEgU6A=",
+        "owner": "exceptionptr",
+        "repo": "tsm-app-linux",
+        "rev": "11caf98228f2f9d21bd2613d6060307334c95fa0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "exceptionptr",
+        "ref": "master",
+        "repo": "tsm-app-linux",
         "type": "github"
       }
     }
