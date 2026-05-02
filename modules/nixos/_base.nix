@@ -32,4 +32,6 @@
     };
     optimise.automatic = true;
   };
+
+  boot.kernel.sysctl."kernel.sysrq" = 1;
 }
