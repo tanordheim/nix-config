@@ -57,6 +57,8 @@ in
     wireplumber.enable = true;
   };
 
+  services.gnome.gnome-keyring.enable = true;
+
   home-manager.sharedModules = [
     (
       { pkgs, ... }:
