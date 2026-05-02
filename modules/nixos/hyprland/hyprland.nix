@@ -79,7 +79,7 @@
               "$mainMod, return, exec, ${pkgs.kitty}/bin/kitty --directory=$HOME"
               "$mainMod, space, exec, ${pkgs.hyprlauncher}/bin/hyprlauncher"
               "$mainMod SHIFT, W, killactive"
-              "$mainMod CTRL, Q, exit"
+              "$mainMod CTRL SUPER, BackSpace, exit"
               "$mainMod CTRL, C, exec, hyprctl reload"
 
               "$focusMod, h, movefocus, l"
