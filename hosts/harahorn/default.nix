@@ -60,15 +60,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  console.earlySetup = true;
   boot.kernelParams = [
     "zswap.enabled=1"
     "zswap.compressor=zstd"
     "zswap.zpool=z3fold"
     "zswap.max_pool_percent=20"
-    "video=DP-2:3440x1440@60"
-    "video=DP-1:d"
   ];
 
   swapDevices = [
