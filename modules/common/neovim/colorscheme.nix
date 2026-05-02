@@ -16,6 +16,7 @@
                 rev = "65cb8ea00157a2808de594def4c70071255132cd";
                 hash = "sha256-BlKW8BN4VBi4CQpwOjEjisFfuLbHBGRfA1Ll4De6IPM=";
               };
+              nvimRequireCheck = [ "base46" ];
             })
           ];
           extraConfigLua = ''
