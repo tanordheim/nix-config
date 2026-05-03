@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = [ pkgs.kitty.terminfo ];
+  environment.systemPackages = with pkgs; [
+    kitty.terminfo
+    usbutils
+  ];
 
   services.openssh = {
     enable = true;
