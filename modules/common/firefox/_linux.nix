@@ -15,7 +15,7 @@
               };
               userChrome = ''
                 :root {
-                  --tab-min-height: 24px !important;
+                  --tab-min-height: 30px !important;
                 }
                 #navigator-toolbox,
                 #navigator-toolbox menupopup,
