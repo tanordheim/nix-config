@@ -63,7 +63,10 @@
 
             master.new_status = "slave";
 
-            render.direct_scanout = 0;
+            render = {
+              direct_scanout = 0;
+              cm_enabled = false;
+            };
 
             misc = {
               force_default_wallpaper = 0;
