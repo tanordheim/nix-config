@@ -33,8 +33,8 @@
         name = "Noto Color Emoji";
       };
       sizes = {
-        applications = 11;
-        popups = 11;
+        applications = 13;
+        popups = 13;
       };
     };
 
