@@ -13,26 +13,6 @@
               settings = {
                 "middlemouse.paste" = false;
               };
-              userChrome = ''
-                :root {
-                  --tab-min-height: 30px !important;
-                }
-                .tabbrowser-tab .tab-label,
-                .tabbrowser-tab .tab-icon-stack,
-                #nav-bar,
-                #urlbar,
-                #PersonalToolbar,
-                menupopup,
-                menuitem,
-                menu {
-                  font-size: 11px !important;
-                }
-              '';
-              userContent = ''
-                @-moz-document url-prefix("about:") {
-                  :root { font-size: 13px !important; }
-                }
-              '';
             };
           };
           policies = {
@@ -44,6 +24,11 @@
               "privacy.globalprivacycontrol.enabled" = {
                 Value = true;
                 Status = "locked";
+              };
+              "layout.css.devPixelsPerPx" = {
+                Value = "0.9";
+                Status = "locked";
+                Type = "string";
               };
             };
           };
