@@ -17,11 +17,20 @@
                 :root {
                   --tab-min-height: 30px !important;
                 }
-                #navigator-toolbox,
-                #navigator-toolbox menupopup,
-                #tabbrowser-tabs,
-                #PersonalToolbar {
+                .tabbrowser-tab .tab-label,
+                .tabbrowser-tab .tab-icon-stack,
+                #nav-bar,
+                #urlbar,
+                #PersonalToolbar,
+                menupopup,
+                menuitem,
+                menu {
                   font-size: 11px !important;
+                }
+              '';
+              userContent = ''
+                @-moz-document url-prefix("about:") {
+                  :root { font-size: 13px !important; }
                 }
               '';
             };
