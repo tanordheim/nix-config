@@ -204,6 +204,7 @@
               "workspace 7 silent, match:class ^(signal)$"
               "workspace 7 silent, match:class ^(electron)$, match:title ^(WhatsApp Electron .*)$"
               "workspace 8 silent, match:class ^(electron)$, match:title ^(.*Microsoft Teams)$"
+              "workspace 9 silent, match:class ^(spotify)$"
               "workspace 8 silent, match:class ^(discord)$"
               "workspace special:magic silent, match:title ^(TradeSkillMaster Application.*)$"
               "workspace special:hidden silent, match:class ^(explorer\\.exe)$, match:title ^$"
