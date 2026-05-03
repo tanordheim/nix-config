@@ -12,6 +12,7 @@
               name = "default";
               settings = {
                 "middlemouse.paste" = false;
+                "zoom.defaultPercent" = 110;
               };
             };
           };
