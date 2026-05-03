@@ -32,10 +32,6 @@
             DownloadDirectory = "${config.home.homeDirectory}/downloads";
             UseSystemPrintDialog = true;
             Preferences = {
-              "browser.uidensity" = {
-                Value = 1;
-                Status = "locked";
-              };
               "privacy.globalprivacycontrol.enabled" = {
                 Value = true;
                 Status = "locked";
