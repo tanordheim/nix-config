@@ -12,6 +12,7 @@
               name = "default";
               settings = {
                 "browser.download.dir" = "${config.home.homeDirectory}/downloads";
+                "browser.uidensity" = 1;
                 "middlemouse.paste" = false;
                 "print.prefer_system_dialog" = true;
                 "privacy.donottrackheader.enabled" = true;
