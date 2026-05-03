@@ -1,29 +1,4 @@
 { pkgs, ... }:
-let
-  hyprlandSession = pkgs.writeShellScript "hyprland-session" ''
-    export PATH="${pkgs.coreutils}/bin:${pkgs.findutils}/bin:${pkgs.hyprland}/bin:$PATH"
-
-    LOG_DIR="$HOME/.local/state/hyprland/sessions"
-    SESSION_LOG="$LOG_DIR/$(date +%Y%m%d-%H%M%S).log"
-    mkdir -p "$LOG_DIR"
-
-    ls -1t "$LOG_DIR"/*.log 2>/dev/null | tail -n +11 | xargs -r rm -f
-
-    WRAPPER_PID=$$
-
-    (
-      for _ in $(seq 1 30); do
-        rt=$(ls "$XDG_RUNTIME_DIR"/hypr/*/hyprland.log 2>/dev/null | head -1)
-        if [ -n "$rt" ]; then
-          exec tail --pid="$WRAPPER_PID" -F -n +1 "$rt" >> "$SESSION_LOG" 2>/dev/null
-        fi
-        sleep 1
-      done
-    ) &
-
-    exec start-hyprland "$@" >> "$SESSION_LOG" 2>&1
-  '';
-in
 {
   imports = [
     ./hyprland.nix
@@ -35,12 +10,13 @@ in
   ];
 
   programs.hyprland.enable = true;
+  programs.hyprland.withUWSM = true;
   programs.dconf.enable = true;
 
   services.greetd = {
     enable = true;
     settings.default_session = {
-      command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd ${hyprlandSession}";
+      command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd '${pkgs.uwsm}/bin/uwsm start -- hyprland-uwsm.desktop'";
       user = "greeter";
     };
   };
