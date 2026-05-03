@@ -11,17 +11,36 @@
               id = 0;
               name = "default";
               settings = {
-                "browser.download.dir" = "${config.home.homeDirectory}/downloads";
-                "browser.uidensity" = 1;
                 "middlemouse.paste" = false;
-                "print.prefer_system_dialog" = true;
-                "privacy.donottrackheader.enabled" = true;
               };
+              userChrome = ''
+                :root {
+                  --tab-min-height: 24px !important;
+                }
+                #navigator-toolbox,
+                #navigator-toolbox menupopup,
+                #tabbrowser-tabs,
+                #PersonalToolbar {
+                  font-size: 11px !important;
+                }
+              '';
             };
           };
           policies = {
             DisableTelemetry = true;
             PasswordManagerEnabled = false;
+            DownloadDirectory = "${config.home.homeDirectory}/downloads";
+            UseSystemPrintDialog = true;
+            Preferences = {
+              "browser.uidensity" = {
+                Value = 1;
+                Status = "locked";
+              };
+              "privacy.globalprivacycontrol.enabled" = {
+                Value = true;
+                Status = "locked";
+              };
+            };
           };
         };
         xdg.mimeApps.defaultApplications = {
