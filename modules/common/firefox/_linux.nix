@@ -12,7 +12,6 @@
               name = "default";
               settings = {
                 "middlemouse.paste" = false;
-                "zoom.defaultPercent" = 110;
               };
             };
           };
@@ -25,11 +24,6 @@
               "privacy.globalprivacycontrol.enabled" = {
                 Value = true;
                 Status = "locked";
-              };
-              "layout.css.devPixelsPerPx" = {
-                Value = "0.9";
-                Status = "locked";
-                Type = "string";
               };
             };
           };
