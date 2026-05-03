@@ -21,8 +21,8 @@
         name = "DejaVu Serif";
       };
       sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
+        package = pkgs.adwaita-fonts;
+        name = "Adwaita Sans";
       };
       monospace = {
         package = pkgs.aporetic-bin;
