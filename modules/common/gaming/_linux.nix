@@ -36,6 +36,9 @@
         pkgs.wowup-cf
         pkgs.tsm-app
       ];
+
+      xdg.configFile."autostart/tsm-app.desktop".source =
+        "${pkgs.tsm-app}/share/applications/tsm-app.desktop";
     }
   ];
 }
