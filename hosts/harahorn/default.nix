@@ -21,6 +21,7 @@
     ../../modules/common/gdrive
     ../../modules/common/jetbrains
     ../../modules/common/kitty
+    ../../modules/common/linear
     ../../modules/common/neovim
     ../../modules/common/obsidian
     ../../modules/common/pocketcasts
