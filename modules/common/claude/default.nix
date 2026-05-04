@@ -62,14 +62,17 @@
         mkInstanceAwareClaudeWrapper =
           instances:
           let
-            matchBlock = lib.concatMapStrings (instance: ''
-              root=$(echo ${lib.escapeShellArg instance.rootDir} | sed 's|^~|'"$HOME"'|')
+            mkRootCheck = name: rootDir: ''
+              root=$(echo ${lib.escapeShellArg rootDir} | sed 's|^~|'"$HOME"'|')
               len=''${#root}
               if ([[ "$cwd" == "$root" ]] || [[ "$cwd" == "$root/"* ]]) && [ "$len" -gt "$best_len" ]; then
-                best_match=${lib.escapeShellArg instance.name}
+                best_match=${lib.escapeShellArg name}
                 best_len=$len
               fi
-            '') instances;
+            '';
+            matchBlock = lib.concatMapStrings (
+              instance: lib.concatMapStrings (mkRootCheck instance.name) instance.rootDirs
+            ) instances;
           in
           pkgs.writeShellScriptBin "claude" ''
             cwd="$PWD"
@@ -93,7 +96,7 @@
           type = lib.types.listOf (
             lib.types.submodule {
               options.name = lib.mkOption { type = lib.types.str; };
-              options.rootDir = lib.mkOption { type = lib.types.str; };
+              options.rootDirs = lib.mkOption { type = lib.types.listOf lib.types.str; };
             }
           );
           default = [ ];
