@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
 
     ../../modules/nixos/hyprland
+    ../../modules/nixos/printing
     ../../modules/nixos/voxtype
 
     ../../modules/common/_1password
