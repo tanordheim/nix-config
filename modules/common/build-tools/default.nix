@@ -13,6 +13,7 @@
           gnumake
           gnupatch
           grpcurl
+          just
           sops
           unixtools.watch
         ];
