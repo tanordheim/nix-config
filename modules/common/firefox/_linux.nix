@@ -9,7 +9,7 @@
           policies = {
             DisableTelemetry = true;
             PasswordManagerEnabled = false;
-            DownloadDirectory = "${config.home.homeDirectory}/downloads";
+            DownloadDirectory = "${config.home.homeDirectory}/Downloads";
             UseSystemPrintDialog = true;
             Preferences = {
               "privacy.globalprivacycontrol.enabled" = {
