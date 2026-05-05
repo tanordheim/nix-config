@@ -1,7 +1,20 @@
 keys:
+  - &trond-harahorn age14054yfmx5rwmr9w62wqpd4xx9ghvqwfkyqgh2vka3utwkhmmfvwshd9erk
+  - &harahorn age17rzw4wcvlmckpw7uex3m4dd2ma7kq89wf9yj4rnscc8z0hzc3a9s5l8u2e
   - &hsrv age1pw39f9ld4eu6c5js7w42tjy8p3244xkepgjgevufclznpng0j57se7c5j4
 creation_rules:
   - path_regex: secrets/hsrv\.yaml$
     key_groups:
       - age:
+          - *trond-harahorn
           - *hsrv
+  - path_regex: secrets/harahorn\.yaml$
+    key_groups:
+      - age:
+          - *trond-harahorn
+          - *harahorn
+  - path_regex: secrets/common\.yaml$
+    key_groups:
+      - age:
+          - *trond-harahorn
+          - *harahorn
