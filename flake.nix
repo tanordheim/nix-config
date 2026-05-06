@@ -49,6 +49,12 @@
       flake = false;
     };
 
+    # SideFX Labs toolset for Houdini
+    sidefx-labs = {
+      url = "github:sideeffects/SideFXLabs/21.0.707";
+      flake = false;
+    };
+
     # Stylix system wide color scheming/styling
     stylix.url = "github:danth/stylix";
 
