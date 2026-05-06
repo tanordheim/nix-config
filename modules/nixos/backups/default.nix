@@ -110,7 +110,16 @@ let
 
       snapshots=$(restic snapshots --host "$host" --json)
       total=$(echo "$snapshots" | jq 'length')
-      recent=$(echo "$snapshots" | jq --argjson t "$seven_days_ago" '[.[] | select((.time | fromdateiso8601) >= $t)] | length')
+
+      recent=0
+      while IFS= read -r ts; do
+        [ -z "$ts" ] && continue
+        s=$(date -d "$ts" +%s 2>/dev/null || echo 0)
+        if [ "$s" -ge "$seven_days_ago" ]; then
+          recent=$((recent + 1))
+        fi
+      done < <(echo "$snapshots" | jq -r '.[].time')
+
       latest=$(echo "$snapshots" | jq -r 'if length > 0 then .[-1].time else "none" end')
 
       stats=$(restic stats --mode raw-data --json)
@@ -191,6 +200,7 @@ in
 
     systemd.services.restic-heartbeat = lib.mkIf cfg.heartbeat.enable {
       description = "Restic backup heartbeat to Telegram";
+      environment.HOME = "/root";
       serviceConfig = {
         Type = "oneshot";
         ExecStart = "${heartbeatScript}/bin/restic-heartbeat";
