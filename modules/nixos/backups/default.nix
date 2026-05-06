@@ -7,8 +7,29 @@
 let
   cfg = config.backups;
 
-  notifyScript = pkgs.writeShellApplication {
-    name = "telegram-notify";
+  desktopNotifyScript = pkgs.writeShellApplication {
+    name = "desktop-notify";
+    runtimeInputs = [
+      pkgs.libnotify
+      pkgs.coreutils
+      pkgs.sudo
+    ];
+    text = ''
+      set -eu
+      urgency="$1"
+      summary="$2"
+      body="$3"
+      user="trond"
+      uid=$(id -u "$user" 2>/dev/null || true)
+      [ -n "$uid" ] && [ -S "/run/user/$uid/bus" ] || exit 0
+      sudo -u "$user" \
+        DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
+        notify-send -u "$urgency" "$summary" "$body" || true
+    '';
+  };
+
+  telegramSendScript = pkgs.writeShellApplication {
+    name = "telegram-send";
     runtimeInputs = [
       pkgs.curl
       pkgs.coreutils
@@ -25,12 +46,33 @@ let
     '';
   };
 
-  notifyOnFailureScript = pkgs.writeShellApplication {
-    name = "telegram-notify-on-failure";
+  backupNotifyStartedScript = pkgs.writeShellApplication {
+    name = "backup-notify-started";
+    runtimeInputs = [ desktopNotifyScript ];
+    text = ''
+      set -eu
+      unit="$1"
+      desktop-notify normal "🟡 Backup starting" "$unit"
+    '';
+  };
+
+  backupNotifyCompletedScript = pkgs.writeShellApplication {
+    name = "backup-notify-completed";
+    runtimeInputs = [ desktopNotifyScript ];
+    text = ''
+      set -eu
+      unit="$1"
+      desktop-notify normal "✅ Backup complete" "$unit"
+    '';
+  };
+
+  backupNotifyFailedScript = pkgs.writeShellApplication {
+    name = "backup-notify-failed";
     runtimeInputs = [
       pkgs.coreutils
       pkgs.systemd
-      notifyScript
+      desktopNotifyScript
+      telegramSendScript
     ];
     text = ''
       set -euo pipefail
@@ -42,7 +84,8 @@ let
 \`\`\`
 ''${tail}
 \`\`\`"
-      telegram-notify "$msg"
+      telegram-send "$msg" || true
+      desktop-notify critical "❌ Backup failed" "$unit"
     '';
   };
 
@@ -53,7 +96,7 @@ let
       pkgs.jq
       pkgs.coreutils
       pkgs.gawk
-      notifyScript
+      telegramSendScript
     ];
     text = ''
       set -euo pipefail
@@ -80,7 +123,7 @@ total snapshots: ''${total}
 latest: ''${latest}
 repo size: ''${size_gb} GB"
 
-      telegram-notify "$msg"
+      telegram-send "$msg"
     '';
   };
 in
@@ -122,11 +165,27 @@ in
   };
 
   config = {
-    systemd.services."telegram-notify@" = {
-      description = "Send Telegram failure notification for %i";
+    systemd.services."backup-notify-started@" = {
+      description = "Backup notification: %i started";
       serviceConfig = {
         Type = "oneshot";
-        ExecStart = "${notifyOnFailureScript}/bin/telegram-notify-on-failure %i";
+        ExecStart = "${backupNotifyStartedScript}/bin/backup-notify-started %i";
+      };
+    };
+
+    systemd.services."backup-notify-completed@" = {
+      description = "Backup notification: %i completed";
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${backupNotifyCompletedScript}/bin/backup-notify-completed %i";
+      };
+    };
+
+    systemd.services."backup-notify-failed@" = {
+      description = "Backup notification: %i failed";
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${backupNotifyFailedScript}/bin/backup-notify-failed %i";
       };
     };
 
@@ -136,7 +195,7 @@ in
         Type = "oneshot";
         ExecStart = "${heartbeatScript}/bin/restic-heartbeat";
       };
-      unitConfig.OnFailure = [ "telegram-notify@%n.service" ];
+      unitConfig.OnFailure = [ "backup-notify-failed@%n.service" ];
     };
 
     systemd.timers.restic-heartbeat = lib.mkIf cfg.heartbeat.enable {

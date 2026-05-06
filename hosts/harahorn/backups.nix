@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   imports = [ ../../modules/nixos/backups ];
 
@@ -42,9 +42,15 @@
     ];
   };
 
-  systemd.services.restic-backups-harahorn.unitConfig = {
-    OnFailure = [ "telegram-notify@%n.service" ];
-    RequiresMountsFor = [ "/mnt/nas/backups" ];
+  systemd.services.restic-backups-harahorn = {
+    serviceConfig.ExecStartPre = [
+      "+${pkgs.systemd}/bin/systemctl --no-block start backup-notify-started@%n.service"
+    ];
+    unitConfig = {
+      OnSuccess = [ "backup-notify-completed@%n.service" ];
+      OnFailure = [ "backup-notify-failed@%n.service" ];
+      RequiresMountsFor = [ "/mnt/nas/backups" ];
+    };
   };
 
   systemd.services.restic-heartbeat.unitConfig.RequiresMountsFor = [ "/mnt/nas/backups" ];
