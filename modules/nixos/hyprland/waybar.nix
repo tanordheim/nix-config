@@ -235,7 +235,7 @@
                 format-wifi = "${icon glyph.wifi} ↓ {bandwidthDownBytes} ↑ {bandwidthUpBytes}";
                 format-ethernet = "${icon glyph.ethernet} ↓ {bandwidthDownBytes} ↑ {bandwidthUpBytes}";
                 format-disconnected = "${icon glyph.wifiOff} —";
-                tooltip = false;
+                tooltip-format = "{ifname} ({ipaddr})\n↓ {bandwidthDownBytes}/s  ↑ {bandwidthUpBytes}/s\ntotal ↓ {bandwidthDownBytes} ↑ {bandwidthUpBytes}";
               };
 
               "custom/voxtype" = {
