@@ -1,7 +1,9 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    bc
     kitty.terminfo
+    openssl
     usbutils
   ];
 
