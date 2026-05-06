@@ -55,7 +55,14 @@
           "${prefix}/keybindings.json".text = keybindings;
         };
 
-        mkInstanceFiles = instance: mkClaudeFiles ".claude-${instance.name}";
+        mkInstanceFiles =
+          instance:
+          mkClaudeFiles ".claude-${instance.name}"
+          // lib.optionalAttrs (instance.mcpServers != { }) {
+            ".claude-${instance.name}/mcp.json".text = builtins.toJSON {
+              mcpServers = instance.mcpServers;
+            };
+          };
 
         unwrappedClaude = pkgs.bleeding.claude-code;
 
@@ -79,16 +86,25 @@
             best_match=""
             best_len=0
             ${matchBlock}
+            mcp_args=()
             if [ -n "$best_match" ]; then
               export CLAUDE_CONFIG_DIR="$HOME/.claude-$best_match"
+              if [ -f "$CLAUDE_CONFIG_DIR/mcp.json" ]; then
+                mcp_args=(--mcp-config "$CLAUDE_CONFIG_DIR/mcp.json")
+              fi
             fi
-            exec ${unwrappedClaude}/bin/claude "$@"
+            exec ${unwrappedClaude}/bin/claude ''${mcp_args[@]+"''${mcp_args[@]}"} "$@"
           '';
 
         mkInstancePackage =
           instance:
+          let
+            mcpArgs = lib.optionalString (
+              instance.mcpServers != { }
+            ) ''--mcp-config "$HOME/.claude-${instance.name}/mcp.json" '';
+          in
           pkgs.writeShellScriptBin "claude-${instance.name}" ''
-            exec env CLAUDE_CONFIG_DIR="$HOME/.claude-${instance.name}" ${unwrappedClaude}/bin/claude "$@"
+            exec env CLAUDE_CONFIG_DIR="$HOME/.claude-${instance.name}" ${unwrappedClaude}/bin/claude ${mcpArgs}"$@"
           '';
       in
       {
@@ -97,6 +113,10 @@
             lib.types.submodule {
               options.name = lib.mkOption { type = lib.types.str; };
               options.rootDirs = lib.mkOption { type = lib.types.listOf lib.types.str; };
+              options.mcpServers = lib.mkOption {
+                type = lib.types.attrsOf lib.types.attrs;
+                default = { };
+              };
             }
           );
           default = [ ];

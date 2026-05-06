@@ -22,7 +22,6 @@
     jq
     killall
     lsof
-    sysstat
     tree
     unzip
     zip

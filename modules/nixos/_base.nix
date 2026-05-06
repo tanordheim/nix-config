@@ -33,6 +33,8 @@
     optimise.automatic = true;
   };
 
+  environment.systemPackages = [ pkgs.sysstat ];
+
   boot.kernel.sysctl."kernel.sysrq" = 1;
 
   programs.nix-ld = {
