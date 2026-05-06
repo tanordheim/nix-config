@@ -70,6 +70,19 @@
     ];
   };
 
+  fileSystems."/mnt/nas/media" = {
+    device = "192.168.69.11:/media";
+    fsType = "nfs";
+    options = [
+      "nfsvers=4"
+      "hard"
+      "noauto"
+      "x-systemd.automount"
+      "x-systemd.mount-timeout=90"
+      "noatime"
+    ];
+  };
+
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
