@@ -174,6 +174,8 @@ in
   };
 
   config = {
+    environment.systemPackages = [ pkgs.restic ];
+
     systemd.services."backup-notify-started@" = {
       description = "Backup notification: %i started";
       serviceConfig = {
