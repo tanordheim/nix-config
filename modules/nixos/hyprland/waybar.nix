@@ -121,6 +121,7 @@
                   "temperature#gpu"
                   "temperature#nvme"
                   "temperature#dimm"
+                  "network#rate"
                 ];
               };
               "group/right-conn" = {
@@ -227,6 +228,14 @@
                 format-disconnected = "${icon glyph.wifiOff} disconnected";
                 tooltip-format = "{ifname}: {ipaddr}";
                 on-click = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
+              };
+
+              "network#rate" = {
+                interval = 2;
+                format-wifi = "${icon glyph.wifi} ↓ {bandwidthDownBytes} ↑ {bandwidthUpBytes}";
+                format-ethernet = "${icon glyph.ethernet} ↓ {bandwidthDownBytes} ↑ {bandwidthUpBytes}";
+                format-disconnected = "${icon glyph.wifiOff} —";
+                tooltip = false;
               };
 
               "custom/voxtype" = {
