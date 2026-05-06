@@ -27,6 +27,7 @@
     ../../modules/common/linear
     ../../modules/common/neovim
     ../../modules/common/obsidian
+    ../../modules/common/plex-client
     ../../modules/common/pocketcasts
     ../../modules/common/qmk
     ../../modules/common/signal
