@@ -1,0 +1,38 @@
+games
+Downloads
+.cache
+.npm
+.nuget
+.dotnet
+.local/share/Steam
+.local/share/lutris
+.local/share/umu
+.local/share/go
+**/Cache
+**/Cache_Data
+**/Code Cache
+**/GPUCache
+**/Service Worker/CacheStorage
+**/CachedData
+**/CachedExtensionVSIXs
+.mozilla/firefox/*/cache2
+.mozilla/firefox/*/storage/default/*/cache
+**/node_modules
+**/target
+**/.direnv
+**/.venv
+**/__pycache__
+**/.next
+**/.nuxt
+**/build
+**/dist
+**/.gradle
+.cargo/registry
+.cargo/git
+.rustup
+!games/battlenet/World of Warcraft*/WTF
+!games/battlenet/World of Warcraft*/WTF/**
+!games/battlenet/World of Warcraft*/Interface
+!games/battlenet/World of Warcraft*/Interface/**
+!games/battlenet/World of Warcraft*/Fonts
+!games/battlenet/World of Warcraft*/Fonts/**

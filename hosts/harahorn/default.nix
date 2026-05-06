@@ -4,6 +4,8 @@
     ../../modules/nixos/_base.nix
 
     ./hardware-configuration.nix
+    ./sops.nix
+    ./backups.nix
 
     ../../modules/nixos/houdini
     ../../modules/nixos/hyprland

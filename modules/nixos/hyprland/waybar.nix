@@ -193,7 +193,7 @@
                 tooltip = false;
               };
               "temperature#nvme" = {
-                hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:02.2/0000:0c:00.0/nvme/nvme0/hwmon";
+                hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:02.2/0000:0c:00.0/nvme/nvme0";
                 input-filename = "temp1_input";
                 critical-threshold = 70;
                 format = "${icon glyph.nvme} {temperatureC}°";
