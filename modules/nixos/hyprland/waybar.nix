@@ -114,6 +114,7 @@
               "group/right-system" = {
                 orientation = "horizontal";
                 modules = [
+                  "network#rate"
                   "cpu"
                   "memory"
                   "disk"
@@ -121,7 +122,6 @@
                   "temperature#gpu"
                   "temperature#nvme"
                   "temperature#dimm"
-                  "network#rate"
                 ];
               };
               "group/right-conn" = {
