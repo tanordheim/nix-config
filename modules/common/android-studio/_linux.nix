@@ -3,7 +3,11 @@ let
   androidSdk =
     (pkgs.androidenv.composeAndroidPackages {
       numLatestPlatformVersions = 3;
-      buildToolsVersions = [ "latest" ];
+      buildToolsVersions = [
+        "35.0.0"
+        "36.0.0"
+        "37.0.0"
+      ];
       includeEmulator = false;
       includeNDK = false;
       includeSources = false;
