@@ -5,7 +5,7 @@
   };
 
   homebrew = {
-    casks = [ "linear-linear" ];
+    casks = [ "linear" ];
     brews = [ "schpet/tap/linear" ];
   };
 }
