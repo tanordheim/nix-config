@@ -41,6 +41,10 @@
           ## Plans
 
           - At the end of each plan, give me a list of unresolved questions to answer, if any. Make the questions extremely concise. Sacrifice grammar for the sake of concision.
+
+          ## Questions
+
+          - When asked to ask me questions, ask one at a time. Do not move on until aligned on the current one.
         '';
 
         keybindings = builtins.toJSON {
