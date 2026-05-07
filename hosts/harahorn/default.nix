@@ -84,6 +84,7 @@
   system.stateVersion = "26.05";
   networking.hostName = "harahorn";
   networking.networkmanager.enable = true;
+  networking.networkmanager.unmanaged = [ "wlp8s0" ];
 
   console.keyMap = "no-latin1";
 
