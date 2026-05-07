@@ -1,5 +1,9 @@
 {
-  homebrew.brews = [ "xcode-kotlin" ];
+  homebrew.brews = [
+    "xcode-kotlin"
+    "swiftformat"
+    "swiftlint"
+  ];
 
   home-manager.sharedModules = [
     {
