@@ -36,6 +36,7 @@
             nodejs
             pnpm
             yarn
+            bun
           ];
           home.file.".npmrc".source = buildNpmConfig cfg.npmRegistries;
         };
