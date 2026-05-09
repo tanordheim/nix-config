@@ -36,6 +36,7 @@
     ../../modules/common/syncthing
     ../../modules/common/teams
     ../../modules/common/telegram
+    ../../modules/common/tmux
     ../../modules/common/vscode
     ../../modules/common/whatsapp
 

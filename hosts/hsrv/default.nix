@@ -6,9 +6,11 @@
     ./sops.nix
     ./arr-download-clients.nix
     ./backups.nix
+    ./tmux-session-attach.nix
 
     ../../modules/common/neovim
     ../../modules/common/nix-dev
+    ../../modules/common/tmux
 
     ../../modules/nixos/atuin-server
     ../../modules/nixos/aurral

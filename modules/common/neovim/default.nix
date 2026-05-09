@@ -20,6 +20,7 @@
     ./plugins/nvim-treesitter.nix
     ./plugins/render-markdown.nix
     ./plugins/sidekick.nix
+    ./plugins/smart-splits.nix
     ./plugins/snacks.nix
     ./plugins/statusline.nix
     ./plugins/tiny-cmdline.nix

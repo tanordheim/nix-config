@@ -31,6 +31,7 @@
     ../../modules/common/syncthing
     ../../modules/common/teams
     ../../modules/common/telegram
+    ../../modules/common/tmux
     ../../modules/common/whatsapp
     ../../modules/darwin/wispr-flow
     ../../modules/common/xcode
