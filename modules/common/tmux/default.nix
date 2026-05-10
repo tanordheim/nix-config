@@ -6,7 +6,10 @@
         c = config.lib.stylix.colors.withHashtag;
       in
       {
-        home.packages = [ pkgs.sesh ];
+        home.packages = [
+          pkgs.sesh
+          pkgs.fzf
+        ];
 
         programs.tmux = {
           enable = true;

@@ -53,11 +53,28 @@
           "bindings" = [ ];
         };
 
-        mkClaudeFiles = prefix: {
-          "${prefix}/skills".source = skillsDir;
-          "${prefix}/CLAUDE.md".text = claudeMd;
-          "${prefix}/keybindings.json".text = keybindings;
-        };
+        skillNames = lib.attrNames (
+          lib.filterAttrs (_: type: type == "directory") (builtins.readDir skillsDir)
+        );
+
+        mkSkillFiles =
+          prefix:
+          lib.listToAttrs (
+            map (name: {
+              name = "${prefix}/skills/${name}";
+              value = {
+                source = skillsDir + "/${name}";
+              };
+            }) skillNames
+          );
+
+        mkClaudeFiles =
+          prefix:
+          mkSkillFiles prefix
+          // {
+            "${prefix}/CLAUDE.md".text = claudeMd;
+            "${prefix}/keybindings.json".text = keybindings;
+          };
 
         mkInstanceFiles =
           instance:
