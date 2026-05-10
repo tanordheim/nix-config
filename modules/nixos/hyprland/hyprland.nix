@@ -79,7 +79,7 @@
             };
 
             bind = [
-              "$mainMod, return, exec, ${pkgs.kitty}/bin/kitty --directory=$HOME"
+              "$mainMod, return, exec, ${pkgs.ghostty}/bin/ghostty --working-directory=$HOME"
               "$mainMod, space, exec, ${pkgs.hyprlauncher}/bin/hyprlauncher"
               "$mainMod SHIFT, W, killactive"
               "$mainMod CTRL SUPER, BackSpace, exit"

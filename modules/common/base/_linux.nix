@@ -2,6 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     bc
+    ghostty.terminfo
     kitty.terminfo
     openssl
     usbutils

@@ -5,8 +5,8 @@
       let
         configFormat = pkgs.formats.toml { };
         whisperModel = pkgs.fetchurl {
-          url = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.en.bin";
-          hash = "sha256-xhONbVjsyDIgl+D5h8MvG+i7ChhTKj+I9zTRu/nEHl0=";
+          url = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v3-turbo.bin";
+          hash = "sha256-H8cPd0046xaZk6w5Huo1fvR8iHV+9y7llDh5t+jivGk=";
         };
       in
       {
@@ -26,6 +26,11 @@
             device = "default";
             sample_rate = 16000;
             max_duration_secs = 60;
+            feedback = {
+              enabled = true;
+              theme = "subtle";
+              volume = 0.7;
+            };
           };
 
           whisper = {
@@ -36,9 +41,11 @@
           output = {
             mode = "type";
             fallback_to_clipboard = true;
+            append_text = " ";
             notification = {
-              on_recording_start = true;
-              on_transcription = true;
+              on_recording_start = false;
+              on_recording_stop = false;
+              on_transcription = false;
             };
           };
 
