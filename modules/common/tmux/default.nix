@@ -32,6 +32,9 @@
             bind v split-window -h -c "#{pane_current_path}"
             bind c new-window -c "#{pane_current_path}"
 
+            bind J command-prompt -p "join pane from window:" "join-pane -h -s ':%%'"
+            bind K command-prompt -p "join pane from window:" "join-pane -v -s ':%%'"
+
             bind -T copy-mode-vi v send -X begin-selection
             bind -T copy-mode-vi V send -X select-line
             bind -T copy-mode-vi C-v send -X rectangle-toggle
@@ -46,6 +49,11 @@
 
             set -as terminal-features ",*:RGB"
             set -as terminal-features ",*:usstyle"
+
+            # claude code: shift+enter / extended keys passthrough
+            set -g allow-passthrough on
+            set -s extended-keys on
+            set -as terminal-features "xterm*:extkeys"
 
             is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?|fzf)(diff)?$'"
 
