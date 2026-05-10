@@ -5,6 +5,7 @@
         enable = true;
 
         settings = {
+          alpha-blending = "native";
           cursor-style = "underline";
           gtk-tabs-location = "hidden";
           confirm-close-surface = false;
