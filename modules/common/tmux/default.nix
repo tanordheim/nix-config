@@ -28,8 +28,8 @@
 
             unbind '"'
             unbind %
-            bind | split-window -h -c "#{pane_current_path}"
-            bind - split-window -v -c "#{pane_current_path}"
+            bind s split-window -v -c "#{pane_current_path}"
+            bind v split-window -h -c "#{pane_current_path}"
             bind c new-window -c "#{pane_current_path}"
 
             bind -T copy-mode-vi v send -X begin-selection
@@ -64,7 +64,7 @@
             bind-key -T copy-mode-vi C-k select-pane -U
             bind-key -T copy-mode-vi C-l select-pane -R
 
-            bind s display-popup -E -w 60% -h 60% \
+            bind o display-popup -E -w 60% -h 60% \
               "sesh connect \"$(sesh list -i | fzf-tmux -p 55%,55% --no-sort --ansi --border-label ' sesh ' --prompt '⚡  ')\""
 
             set -g status on
