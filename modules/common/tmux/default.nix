@@ -52,7 +52,8 @@
 
             # claude code: shift+enter / extended keys passthrough
             set -g allow-passthrough on
-            set -s extended-keys on
+            set -s extended-keys always
+            set -s extended-keys-format csi-u
             set -as terminal-features "xterm*:extkeys"
 
             is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?|fzf)(diff)?$'"
