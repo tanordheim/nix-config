@@ -76,7 +76,7 @@
             bind-key -T copy-mode-vi C-l select-pane -R
 
             bind o display-popup -E -w 60% -h 60% \
-              "sesh connect \"$(sesh list -i | fzf --no-sort --ansi --border --border-label ' sesh ' --prompt '⚡  ')\""
+              "sesh connect \"$(sesh list -it | fzf --no-sort --ansi --border --border-label ' sesh ' --prompt '⚡  ')\""
 
             set -g status on
             set -g status-position bottom
