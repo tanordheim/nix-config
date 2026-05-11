@@ -16,6 +16,7 @@
     ./plugins/gitsigns.nix
     ./plugins/lint.nix
     ./plugins/lsp.nix
+    ./plugins/markdown-preview.nix
     ./plugins/neotest.nix
     ./plugins/nvim-treesitter.nix
     ./plugins/render-markdown.nix
