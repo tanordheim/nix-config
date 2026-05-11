@@ -11,7 +11,7 @@
           confirm-close-surface = false;
           mouse-hide-while-typing = true;
           shell-integration-features = "ssh-terminfo";
-          app-notifications = "no-clipboard-copy,no-config-reload,no-prefix-key";
+          app-notifications = false;
 
           keybind = [
             "ctrl+shift+k=increase_font_size:1"
