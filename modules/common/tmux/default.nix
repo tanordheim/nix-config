@@ -23,8 +23,8 @@
 
           extraConfig = ''
             unbind C-b
-            set -g prefix C-a
-            bind a send-prefix
+            set -g prefix C-Space
+            bind C-Space send-prefix
 
             bind R source-file ~/.config/tmux/tmux.conf \; display "tmux config reloaded"
             bind Tab last-window

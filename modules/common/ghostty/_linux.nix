@@ -17,7 +17,7 @@
             "ctrl+shift+k=increase_font_size:1"
             "ctrl+shift+j=decrease_font_size:1"
             "ctrl+shift+n=reset_font_size"
-            "ctrl+space>q=reload_config"
+            "ctrl+comma>q=reload_config"
           ];
         };
       };
