@@ -88,17 +88,17 @@
     "brew-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1778146321,
-        "narHash": "sha256-HeBwuJmuBioZHyZqDOcf7W/xsMFupSD583v6I5Cl7a8=",
+        "lastModified": 1778632416,
+        "narHash": "sha256-r4MrdcnFqOQjFcL+Is1lbZXiKFPMq1oY0FsWl75272A=",
         "owner": "Homebrew",
         "repo": "brew",
-        "rev": "af835384ac574f76025adb38b292b04cecee1f1f",
+        "rev": "e7b7e19556cc6714cc2feb472c21fde63d8e2a16",
         "type": "github"
       },
       "original": {
         "owner": "Homebrew",
-        "ref": "5.1.10",
         "repo": "brew",
+        "rev": "e7b7e19556cc6714cc2feb472c21fde63d8e2a16",
         "type": "github"
       }
     },
@@ -339,7 +339,9 @@
     },
     "nix-homebrew": {
       "inputs": {
-        "brew-src": "brew-src"
+        "brew-src": [
+          "brew-src"
+        ]
       },
       "locked": {
         "lastModified": 1778332591,
@@ -501,6 +503,7 @@
     "root": {
       "inputs": {
         "aurral-src": "aurral-src",
+        "brew-src": "brew-src",
         "home-manager": "home-manager",
         "homebrew-aerospace": "homebrew-aerospace",
         "homebrew-bundle": "homebrew-bundle",

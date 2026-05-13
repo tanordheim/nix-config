@@ -16,7 +16,7 @@
     ../../modules/common/firefox
     ../../modules/common/gaming
     ../../modules/common/gdrive
-    ../../modules/common/kitty
+    ../../modules/common/ghostty
     ../../modules/common/linear
     ../../modules/common/logitech
     ../../modules/common/obsidian

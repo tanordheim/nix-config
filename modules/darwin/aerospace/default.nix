@@ -166,8 +166,8 @@
                   "GoLand")
                     icon_result=":goland:"
                     ;;
-                  "kitty")
-                    icon_result=":kitty:"
+                  "ghostty" | "Ghostty")
+                    icon_result=":ghostty:"
                     ;;
                   "Linear")
                     icon_result=":linear:"
@@ -412,7 +412,7 @@
               cmd-alt-h = [ ];
               cmd-m = [ ];
 
-              cmd-enter = "exec-and-forget ${pkgs.kitty}/bin/kitty --directory=$HOME";
+              cmd-enter = "exec-and-forget open -na Ghostty --args --working-directory=$HOME";
 
               ctrl-shift-alt-t = "layout tiles horizontal vertical";
               ctrl-shift-alt-a = "layout accordion horizontal vertical";

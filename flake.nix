@@ -81,6 +81,11 @@
     };
     nix-homebrew = {
       url = "github:zhaofengli/nix-homebrew";
+      inputs.brew-src.follows = "brew-src";
+    };
+    brew-src = {
+      url = "github:Homebrew/brew/e7b7e19556cc6714cc2feb472c21fde63d8e2a16";
+      flake = false;
     };
 
     # Secrets management
