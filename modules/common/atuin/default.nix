@@ -11,6 +11,7 @@
         daemon.enable = true;
         flags = [
           "--disable-up-arrow"
+          "--disable-ctrl-r"
         ];
         settings = {
           sync_address = "https://atuin.home.nordheim.io";
@@ -20,8 +21,8 @@
             "^op (run|read)"
           ];
           style = "compact";
-          inline_height = 1;
-          show_preview = false;
+          inline_height = 25;
+          show_preview = true;
           show_help = false;
           enter_accept = false;
           filter_mode = "global";

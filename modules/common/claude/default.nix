@@ -33,6 +33,7 @@
           ## GitHub
 
           - Your primary method for interacting with GitHub should be the `gh` CLI.
+          - When opening a Pull Request, or editing an existing one, don't wrap the text you are writing (like you would in the commit message itself); The GitHub PR page renderer will reflow this.
 
           ## Git
 
