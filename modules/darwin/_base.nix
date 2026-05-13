@@ -126,6 +126,12 @@
           "33" = {
             enabled = false;
           };
+          "60" = {
+            enabled = false;
+          };
+          "61" = {
+            enabled = false;
+          };
           "64" = {
             enabled = false;
           };
