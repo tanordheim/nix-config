@@ -5,7 +5,9 @@
     {
       programs.ghostty.package = null;
       programs.ghostty.settings = {
+        font-size = 15;
         macos-option-as-alt = true;
+        macos-titlebar-style = "hidden";
 
         keybind = [
           "cmd+shift+k=increase_font_size:1"
