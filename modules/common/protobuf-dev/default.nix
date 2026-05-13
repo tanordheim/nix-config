@@ -1,3 +1,6 @@
 {
-  imports = [ ./neovim.nix ];
+  imports = [
+    ./toolchain.nix
+    ./neovim.nix
+  ];
 }
