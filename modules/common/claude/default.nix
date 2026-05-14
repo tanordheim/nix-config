@@ -1,8 +1,46 @@
-{ lib, isDarwin, ... }:
+{
+  lib,
+  isDarwin,
+  pkgs,
+  ...
+}:
+let
+  statuslineScript = pkgs.writeShellScript "claude-statusline" ''
+    input=$(cat)
+
+    MODEL=$(echo "$input" | ${pkgs.jq}/bin/jq -r '.model.display_name')
+    PCT=$(echo "$input" | ${pkgs.jq}/bin/jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
+    DIR=$(echo "$input" | ${pkgs.jq}/bin/jq -r '.workspace.current_dir')
+    BASEDIR=$(basename "$DIR")
+
+    BAR_WIDTH=10
+    FILLED=$((PCT * BAR_WIDTH / 100))
+    EMPTY=$((BAR_WIDTH - FILLED))
+    BAR=""
+    [ "$FILLED" -gt 0 ] && printf -v FILL "%''${FILLED}s" && BAR="''${FILL// /▓}"
+    [ "$EMPTY" -gt 0 ] && printf -v PAD "%''${EMPTY}s" && BAR="''${BAR}''${PAD// /░}"
+
+    CONTEXT="[$BAR] ''${PCT}%"
+
+    if [ -n "$DIR" ] && ${pkgs.git}/bin/git -C "$DIR" rev-parse --git-dir > /dev/null 2>&1; then
+        BRANCH=$(${pkgs.git}/bin/git -C "$DIR" branch --show-current 2>/dev/null)
+        printf "[%s] |  %s |  %s | 󱙺 %s" "$MODEL" "$BASEDIR" "$BRANCH" "$CONTEXT"
+    else
+        printf "[%s] |  %s | 󱙺 %s" "$MODEL" "$BASEDIR" "$CONTEXT"
+    fi
+  '';
+in
 {
   imports = [
     (lib.mkPlatformImport ./. isDarwin)
   ];
+
+  _module.args.claudeManagedSettings = {
+    statusLine = {
+      type = "command";
+      command = "${statuslineScript}";
+    };
+  };
 
   home-manager.sharedModules = [
     (
