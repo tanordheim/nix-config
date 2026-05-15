@@ -1,9 +1,25 @@
 {
   home-manager.sharedModules = [
     (
-      { config, pkgs, ... }:
+      { config, lib, pkgs, ... }:
       let
         c = config.lib.stylix.colors.withHashtag;
+        palette = [
+          c.base08
+          c.base09
+          c.base0A
+          c.base0B
+          c.base0C
+          c.base0D
+          c.base0E
+          c.base0F
+        ];
+        sessionColor = pkgs.writeShellScript "tmux-session-color" ''
+          name="''${1:-}"
+          idx=$(( $(printf '%s' "$name" | cksum | awk '{print $1}') % 8 ))
+          colors=(${lib.concatMapStringsSep " " (x: ''"${x}"'') palette})
+          printf '%s' "''${colors[$idx]}"
+        '';
       in
       {
         home.packages = [
@@ -83,15 +99,18 @@
             set -g status-interval 5
             set -g status-justify centre
 
-            set -g status-left-length 40
+            set -g status-left-length 60
             set -g status-right-length 40
 
-            set -g status-left "#[fg=${c.base00},bg=${c.base0D},bold] #S #[fg=${c.base0D},bg=${c.base00}] "
-            set -g status-right "#[fg=${c.base04}]%H:%M  #[fg=${c.base0D},bold]#H "
+            set -g status-left "#[fg=${c.base00},bg=#(${sessionColor} '#S'),bold]  #S  #[fg=#(${sessionColor} '#S'),bg=${c.base00}] "
+            set -g status-right "#[fg=${c.base04}]%H:%M  #[fg=#(${sessionColor} '#S'),bold]#H "
 
             set -g window-status-format " #I:#W "
             set -g window-status-current-format "#[fg=${c.base00},bg=${c.base0E},bold] #I:#W "
             set -g window-status-separator ""
+
+            set -g pane-active-border-style "fg=#(${sessionColor} '#S')"
+            set -g message-style "fg=${c.base00},bg=#(${sessionColor} '#S'),bold"
           '';
         };
       }

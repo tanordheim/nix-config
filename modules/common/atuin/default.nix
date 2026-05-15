@@ -16,10 +16,6 @@
         settings = {
           sync_address = "https://atuin.home.nordheim.io";
           sync_frequency = "5m";
-          history_filter = [
-            "^.*(API_KEY|SECRET|TOKEN|PASSWORD)="
-            "^op (run|read)"
-          ];
           style = "compact";
           inline_height = 25;
           show_preview = true;
