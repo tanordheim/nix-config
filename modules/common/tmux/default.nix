@@ -65,7 +65,10 @@
           color="$(${sessionColor} "$name")"
           [ -n "$color" ] || exit 0
           $tmux set status-style "fg=${c.base00},bg=$color"
-          $tmux set window-status-style "fg=${c.base00},bg=$color"
+          $tmux set -g window-status-style "fg=${c.base00},bg=$color"
+          $tmux list-windows -F '#{window_id}' 2>/dev/null | while read -r win; do
+            $tmux setw -t "$win" -u window-status-style 2>/dev/null || true
+          done
           $tmux set -g pane-active-border-style "fg=$color"
           $tmux set message-style "fg=${c.base00},bg=$color,bold"
         '';
