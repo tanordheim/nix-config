@@ -168,15 +168,18 @@
               cpu = {
                 format = "${icon glyph.cpu} {usage}%";
                 interval = 5;
+                tooltip-format = "CPU: {usage}%";
               };
               memory = {
                 format = "${icon glyph.memory} {percentage}%";
                 interval = 5;
+                tooltip-format = "Memory: {used:0.1f}G / {total:0.1f}G ({percentage}%)";
               };
               disk = {
                 format = "${icon glyph.disk} {percentage_used}%";
                 path = "/";
                 interval = 30;
+                tooltip-format = "Disk (/): {used} / {total} ({percentage_used}%)";
               };
 
               "temperature#cpu" = {
@@ -184,33 +187,34 @@
                 input-filename = "temp1_input";
                 critical-threshold = 85;
                 format = "${icon glyph.temp} {temperatureC}°";
-                tooltip = false;
+                tooltip-format = "CPU: {temperatureC}°C";
               };
               "temperature#gpu" = {
                 hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon";
                 input-filename = "temp2_input";
                 critical-threshold = 95;
                 format = "${icon glyph.gpu} {temperatureC}°";
-                tooltip = false;
+                tooltip-format = "GPU: {temperatureC}°C";
               };
               "temperature#nvme" = {
                 hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:02.2/0000:0c:00.0/nvme/nvme0";
                 input-filename = "temp1_input";
                 critical-threshold = 70;
                 format = "${icon glyph.nvme} {temperatureC}°";
-                tooltip = false;
+                tooltip-format = "NVMe: {temperatureC}°C";
               };
               "temperature#dimm" = {
                 hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:14.0/i2c-0/0-0053/hwmon";
                 input-filename = "temp1_input";
                 critical-threshold = 75;
                 format = "${icon glyph.dimm} {temperatureC}°";
-                tooltip = false;
+                tooltip-format = "DIMM: {temperatureC}°C";
               };
 
               wireplumber = {
                 format = "${icon glyph.volume} {volume}%";
                 format-muted = "${icon glyph.mute} muted";
+                tooltip-format = "Volume: {volume}% ({node_name})";
                 on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
               };
 
