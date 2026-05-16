@@ -1,216 +1,233 @@
 {
   home-manager.sharedModules = [
     (
-      { pkgs, ... }:
+      { pkgs, lib, config, ... }:
+      let
+        colors = config.lib.stylix.colors;
+        inline = lib.generators.mkLuaInline;
+        bind = keys: dispatcher: { _args = [ keys (inline dispatcher) ]; };
+        bindMouse = keys: dispatcher: { _args = [ keys (inline dispatcher) { mouse = true; } ]; };
+      in
       {
+        stylix.targets.hyprland.enable = false;
+
         wayland.windowManager.hyprland = {
           enable = true;
           package = pkgs.bleeding.hyprland;
           portalPackage = pkgs.bleeding.xdg-desktop-portal-hyprland;
           settings = {
-            "$mainMod" = "ALT";
-            "$focusMod" = "SUPER";
-            "$moveMod" = "CTRL SUPER";
+            config = {
+              general = {
+                gaps_in = 10;
+                gaps_out = 15;
+                border_size = 2;
+                layout = "master";
+                allow_tearing = false;
+                "col.active_border" = "rgb(${colors.base0D})";
+                "col.inactive_border" = "rgb(${colors.base03})";
+              };
+
+              decoration = {
+                active_opacity = 1;
+                fullscreen_opacity = 1;
+                inactive_opacity = 1;
+                dim_inactive = false;
+                dim_strength = 0.2;
+                rounding = 5;
+                blur = {
+                  enabled = true;
+                  size = 2;
+                  passes = 2;
+                  vibrancy = 0.1000;
+                  ignore_opacity = true;
+                  new_optimizations = true;
+                };
+                shadow = {
+                  enabled = true;
+                  range = 4;
+                  render_power = 3;
+                  color = "rgba(${colors.base00}99)";
+                };
+              };
+
+              animations.enabled = true;
+
+              dwindle = {
+                preserve_split = true;
+              };
+
+              master.new_status = "slave";
+
+              render = {
+                direct_scanout = 0;
+                cm_enabled = false;
+              };
+
+              misc = {
+                force_default_wallpaper = 0;
+                disable_hyprland_logo = true;
+                animate_manual_resizes = true;
+                mouse_move_enables_dpms = true;
+                key_press_enables_dpms = true;
+                middle_click_paste = false;
+                vrr = 0;
+                background_color = "rgb(${colors.base00})";
+              };
+
+              group = {
+                "col.border_active" = "rgb(${colors.base0D})";
+                "col.border_inactive" = "rgb(${colors.base03})";
+                "col.border_locked_active" = "rgb(${colors.base0C})";
+                groupbar = {
+                  "col.active" = "rgb(${colors.base0D})";
+                  "col.inactive" = "rgb(${colors.base03})";
+                  "text_color" = "rgb(${colors.base05})";
+                };
+              };
+
+              input = {
+                kb_layout = "no";
+                kb_variant = "nodeadkeys";
+                float_switch_override_focus = false;
+                numlock_by_default = true;
+                repeat_rate = 50;
+                repeat_delay = 250;
+                follow_mouse = false;
+                sensitivity = 0;
+              };
+            };
+
+            animation = [
+              { _args = [ { leaf = "windows";    enabled = true; speed = 2;  bezier = "default"; style = "popin"; } ]; }
+              { _args = [ { leaf = "windowsOut"; enabled = true; speed = 2;  bezier = "default"; style = "popin"; } ]; }
+              { _args = [ { leaf = "border";     enabled = true; speed = 10; bezier = "default"; } ]; }
+              { _args = [ { leaf = "fade";       enabled = true; speed = 5;  bezier = "default"; } ]; }
+              { _args = [ { leaf = "workspaces"; enabled = true; speed = 2;  bezier = "default"; } ]; }
+            ];
 
             env = [
-              "QT_QPA_PLATFORMTHEME,qt5ct"
-              "GSK_RENDERER,gl"
+              { _args = [ "QT_QPA_PLATFORMTHEME" "qt5ct" ]; }
+              { _args = [ "GSK_RENDERER" "gl" ]; }
             ];
-
-            general = {
-              gaps_in = 10;
-              gaps_out = 15;
-              border_size = 2;
-              layout = "master";
-              allow_tearing = false;
-            };
-
-            decoration = {
-              active_opacity = 1;
-              fullscreen_opacity = 1;
-              inactive_opacity = 1;
-              dim_inactive = false;
-              dim_strength = 0.2;
-              rounding = 5;
-              blur = {
-                enabled = true;
-                size = 2;
-                passes = 2;
-                vibrancy = 0.1000;
-                ignore_opacity = true;
-                new_optimizations = true;
-              };
-              shadow = {
-                enabled = true;
-                range = 4;
-                render_power = 3;
-              };
-            };
-
-            animations = {
-              enabled = true;
-              animation = [
-                "windows, 1, 2, default, popin"
-                "windowsOut, 1, 2, default, popin"
-                "border, 1, 10, default"
-                "fade, 1, 5, default"
-                "workspaces, 1, 2, default"
-              ];
-            };
-
-            dwindle = {
-              pseudotile = true;
-              preserve_split = true;
-            };
-
-            master.new_status = "slave";
-
-            render = {
-              direct_scanout = 0;
-              cm_enabled = false;
-            };
-
-            misc = {
-              force_default_wallpaper = 0;
-              disable_hyprland_logo = true;
-              animate_manual_resizes = true;
-              mouse_move_enables_dpms = true;
-              key_press_enables_dpms = true;
-              middle_click_paste = false;
-              vrr = 0;
-            };
-
-            bind = [
-              "$mainMod, return, exec, ${pkgs.ghostty}/bin/ghostty --working-directory=$HOME"
-              "$mainMod, space, exec, ${pkgs.bleeding.hyprlauncher}/bin/hyprlauncher"
-              "$mainMod SHIFT, W, killactive"
-              "$mainMod CTRL SUPER, BackSpace, exit"
-              "$mainMod CTRL, C, exec, hyprctl reload"
-
-              "$focusMod, h, movefocus, l"
-              "$focusMod, j, movefocus, d"
-              "$focusMod, k, movefocus, u"
-              "$focusMod, l, movefocus, r"
-
-              "$moveMod, h, movewindow, l"
-              "$moveMod, j, movewindow, d"
-              "$moveMod, k, movewindow, u"
-              "$moveMod, l, movewindow, r"
-
-              "$mainMod SHIFT, 1, workspace, 1"
-              "$mainMod SHIFT, 2, workspace, 2"
-              "$mainMod SHIFT, 3, workspace, 3"
-              "$mainMod SHIFT, 4, workspace, 4"
-              "$mainMod SHIFT, 5, workspace, 5"
-              "$mainMod SHIFT, 6, workspace, 6"
-              "$mainMod SHIFT, 7, workspace, 7"
-              "$mainMod SHIFT, 8, workspace, 8"
-              "$mainMod SHIFT, 9, workspace, 9"
-              "$mainMod SHIFT, 0, workspace, 10"
-
-              "$mainMod SHIFT, KP_End,      workspace, 1"
-              "$mainMod SHIFT, KP_Down,     workspace, 2"
-              "$mainMod SHIFT, KP_Next,     workspace, 3"
-              "$mainMod SHIFT, KP_Left,     workspace, 4"
-              "$mainMod SHIFT, KP_Begin,    workspace, 5"
-              "$mainMod SHIFT, KP_Right,    workspace, 6"
-              "$mainMod SHIFT, KP_Home,     workspace, 7"
-              "$mainMod SHIFT, KP_Up,       workspace, 8"
-              "$mainMod SHIFT, KP_Prior,    workspace, 9"
-              "$mainMod SHIFT, KP_Insert,   workspace, 10"
-
-              "$mainMod CTRL, 1, movetoworkspace, 1"
-              "$mainMod CTRL, 2, movetoworkspace, 2"
-              "$mainMod CTRL, 3, movetoworkspace, 3"
-              "$mainMod CTRL, 4, movetoworkspace, 4"
-              "$mainMod CTRL, 5, movetoworkspace, 5"
-              "$mainMod CTRL, 6, movetoworkspace, 6"
-              "$mainMod CTRL, 7, movetoworkspace, 7"
-              "$mainMod CTRL, 8, movetoworkspace, 8"
-              "$mainMod CTRL, 9, movetoworkspace, 9"
-              "$mainMod CTRL, 0, movetoworkspace, 10"
-
-              "$mainMod CTRL, KP_End,    movetoworkspace, 1"
-              "$mainMod CTRL, KP_Down,   movetoworkspace, 2"
-              "$mainMod CTRL, KP_Next,   movetoworkspace, 3"
-              "$mainMod CTRL, KP_Left,   movetoworkspace, 4"
-              "$mainMod CTRL, KP_Begin,  movetoworkspace, 5"
-              "$mainMod CTRL, KP_Right,  movetoworkspace, 6"
-              "$mainMod CTRL, KP_Home,   movetoworkspace, 7"
-              "$mainMod CTRL, KP_Up,     movetoworkspace, 8"
-              "$mainMod CTRL, KP_Prior,  movetoworkspace, 9"
-              "$mainMod CTRL, KP_Insert, movetoworkspace, 10"
-
-              "$mainMod, page_down, workspace, e-1"
-              "$mainMod, page_up,   workspace, e+1"
-              "$mainMod, home,      workspace, previous"
-
-              "$mainMod SHIFT, S, togglespecialworkspace, magic"
-              "$mainMod CTRL,  S, movetoworkspace, special:magic"
-
-              "CTRL SHIFT ALT, F, togglefloating"
-              "CTRL SHIFT ALT, T, togglesplit"
-
-              "CTRL SHIFT ALT, S, exec, ${pkgs.hyprshot}/bin/hyprshot -m region"
-              "CTRL SHIFT, S,     exec, ${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only"
-
-              ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%+"
-              ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%-"
-              ", XF86AudioMute,        exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-
-              ", XF86AudioPlay,  exec, ${pkgs.playerctl}/bin/playerctl play-pause"
-              ", XF86AudioPause, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
-              ", XF86AudioNext,  exec, ${pkgs.playerctl}/bin/playerctl next"
-              ", XF86AudioPrev,  exec, ${pkgs.playerctl}/bin/playerctl previous"
-
-              "$mainMod CTRL, L, exec, hyprlock"
-            ];
-
-            bindm = [
-              "$mainMod, mouse:272, movewindow"
-              "$mainMod, mouse:273, resizewindow"
-            ];
-
-            input = {
-              kb_layout = "no";
-              kb_variant = "nodeadkeys";
-              float_switch_override_focus = false;
-              numlock_by_default = true;
-              repeat_rate = 50;
-              repeat_delay = 250;
-              follow_mouse = false;
-              sensitivity = 0;
-            };
 
             monitor = [
-              "DP-1, 2560x1440@155, 0x0, 1, transform, 1"
-              "DP-2, 3440x1440@180, 1440x320, 1"
+              { _args = [ { output = "DP-1"; mode = "2560x1440@155"; position = "0x0";      scale = 1; transform = 1; } ]; }
+              { _args = [ { output = "DP-2"; mode = "3440x1440@180"; position = "1440x320"; scale = 1; } ]; }
             ];
 
-            workspace = [
-              "1, monitor:DP-2, default:true"
-              "2, monitor:DP-2"
-              "3, monitor:DP-2"
-              "4, monitor:DP-2"
-              "5, monitor:DP-2"
-              "6, monitor:DP-1, default:true, layoutopt:orientation:top"
-              "7, monitor:DP-1, layoutopt:orientation:top"
-              "8, monitor:DP-1, layoutopt:orientation:top"
-              "9, monitor:DP-1, layoutopt:orientation:top"
-              "10, monitor:DP-1, layoutopt:orientation:top"
+            workspace_rule = [
+              { _args = [ { workspace = "1";  monitor = "DP-2"; default = true; } ]; }
+              { _args = [ { workspace = "2";  monitor = "DP-2"; } ]; }
+              { _args = [ { workspace = "3";  monitor = "DP-2"; } ]; }
+              { _args = [ { workspace = "4";  monitor = "DP-2"; } ]; }
+              { _args = [ { workspace = "5";  monitor = "DP-2"; } ]; }
+              { _args = [ { workspace = "6";  monitor = "DP-1"; default = true; layout_opts = { orientation = "top"; }; } ]; }
+              { _args = [ { workspace = "7";  monitor = "DP-1"; layout_opts = { orientation = "top"; }; } ]; }
+              { _args = [ { workspace = "8";  monitor = "DP-1"; layout_opts = { orientation = "top"; }; } ]; }
+              { _args = [ { workspace = "9";  monitor = "DP-1"; layout_opts = { orientation = "top"; }; } ]; }
+              { _args = [ { workspace = "10"; monitor = "DP-1"; layout_opts = { orientation = "top"; }; } ]; }
             ];
 
-            windowrule = [
-              "workspace 6 silent, match:class ^(Slack)$"
-              "workspace 6 silent, match:class ^(org\\.telegram\\.desktop)$"
-              "workspace 7 silent, match:class ^(signal)$"
-              "workspace 7 silent, match:class ^(electron)$, match:title ^(WhatsApp Electron .*)$"
-              "workspace 8 silent, match:class ^(electron)$, match:title ^(.*Microsoft Teams)$"
-              "workspace 9 silent, match:class ^(spotify)$"
-              "workspace 9 silent, match:class ^(Electron)$, match:title ^(.*Pocket Casts)$"
-              "workspace 8 silent, match:class ^(discord)$"
-              "workspace special:magic silent, match:title ^(TradeSkillMaster Application.*)$"
-              "workspace special:hidden silent, match:class ^(explorer\\.exe)$, match:title ^$"
+            window_rule = [
+              { _args = [ { name = "slack-ws6";       match = { class = "^(Slack)$"; };                                                       workspace = "6 silent"; } ]; }
+              { _args = [ { name = "telegram-ws6";    match = { class = "^(org\\.telegram\\.desktop)$"; };                                    workspace = "6 silent"; } ]; }
+              { _args = [ { name = "signal-ws7";      match = { class = "^(signal)$"; };                                                      workspace = "7 silent"; } ]; }
+              { _args = [ { name = "whatsapp-ws7";    match = { class = "^(electron)$"; title = "^(WhatsApp Electron .*)$"; };                workspace = "7 silent"; } ]; }
+              { _args = [ { name = "teams-ws8";       match = { class = "^(electron)$"; title = "^(.*Microsoft Teams)$"; };                   workspace = "8 silent"; } ]; }
+              { _args = [ { name = "spotify-ws9";     match = { class = "^(spotify)$"; };                                                     workspace = "9 silent"; } ]; }
+              { _args = [ { name = "pocketcasts-ws9"; match = { class = "^(Electron)$"; title = "^(.*Pocket Casts)$"; };                      workspace = "9 silent"; } ]; }
+              { _args = [ { name = "discord-ws8";     match = { class = "^(discord)$"; };                                                     workspace = "8 silent"; } ]; }
+              { _args = [ { name = "tsm-magic";       match = { title = "^(TradeSkillMaster Application.*)$"; };                              workspace = "special:magic silent"; } ]; }
+              { _args = [ { name = "explorer-hidden"; match = { class = "^(explorer\\.exe)$"; title = "^$"; };                                workspace = "special:hidden silent"; } ]; }
+            ];
+
+            bind = [
+              (bind "ALT + return"            ''hl.dsp.exec_cmd("${pkgs.ghostty}/bin/ghostty --working-directory=$HOME")'')
+              (bind "ALT + space"             ''hl.dsp.exec_cmd("${pkgs.bleeding.hyprlauncher}/bin/hyprlauncher")'')
+              (bind "ALT + SHIFT + W"          "hl.dsp.window.close()")
+              (bind "ALT + CTRL + SUPER + BackSpace" "hl.dsp.exit()")
+              (bind "ALT + CTRL + C"          ''hl.dsp.exec_cmd("hyprctl reload")'')
+
+              (bind "SUPER + h" ''hl.dsp.focus({ direction = "left" })'')
+              (bind "SUPER + j" ''hl.dsp.focus({ direction = "down" })'')
+              (bind "SUPER + k" ''hl.dsp.focus({ direction = "up" })'')
+              (bind "SUPER + l" ''hl.dsp.focus({ direction = "right" })'')
+
+              (bind "CTRL + SUPER + h" ''hl.dsp.window.move({ direction = "left" })'')
+              (bind "CTRL + SUPER + j" ''hl.dsp.window.move({ direction = "down" })'')
+              (bind "CTRL + SUPER + k" ''hl.dsp.window.move({ direction = "up" })'')
+              (bind "CTRL + SUPER + l" ''hl.dsp.window.move({ direction = "right" })'')
+
+              (bind "ALT + SHIFT + 1" "hl.dsp.focus({ workspace = 1 })")
+              (bind "ALT + SHIFT + 2" "hl.dsp.focus({ workspace = 2 })")
+              (bind "ALT + SHIFT + 3" "hl.dsp.focus({ workspace = 3 })")
+              (bind "ALT + SHIFT + 4" "hl.dsp.focus({ workspace = 4 })")
+              (bind "ALT + SHIFT + 5" "hl.dsp.focus({ workspace = 5 })")
+              (bind "ALT + SHIFT + 6" "hl.dsp.focus({ workspace = 6 })")
+              (bind "ALT + SHIFT + 7" "hl.dsp.focus({ workspace = 7 })")
+              (bind "ALT + SHIFT + 8" "hl.dsp.focus({ workspace = 8 })")
+              (bind "ALT + SHIFT + 9" "hl.dsp.focus({ workspace = 9 })")
+              (bind "ALT + SHIFT + 0" "hl.dsp.focus({ workspace = 10 })")
+
+              (bind "ALT + SHIFT + KP_End"    "hl.dsp.focus({ workspace = 1 })")
+              (bind "ALT + SHIFT + KP_Down"   "hl.dsp.focus({ workspace = 2 })")
+              (bind "ALT + SHIFT + KP_Next"   "hl.dsp.focus({ workspace = 3 })")
+              (bind "ALT + SHIFT + KP_Left"   "hl.dsp.focus({ workspace = 4 })")
+              (bind "ALT + SHIFT + KP_Begin"  "hl.dsp.focus({ workspace = 5 })")
+              (bind "ALT + SHIFT + KP_Right"  "hl.dsp.focus({ workspace = 6 })")
+              (bind "ALT + SHIFT + KP_Home"   "hl.dsp.focus({ workspace = 7 })")
+              (bind "ALT + SHIFT + KP_Up"     "hl.dsp.focus({ workspace = 8 })")
+              (bind "ALT + SHIFT + KP_Prior"  "hl.dsp.focus({ workspace = 9 })")
+              (bind "ALT + SHIFT + KP_Insert" "hl.dsp.focus({ workspace = 10 })")
+
+              (bind "ALT + CTRL + 1" "hl.dsp.window.move({ workspace = 1 })")
+              (bind "ALT + CTRL + 2" "hl.dsp.window.move({ workspace = 2 })")
+              (bind "ALT + CTRL + 3" "hl.dsp.window.move({ workspace = 3 })")
+              (bind "ALT + CTRL + 4" "hl.dsp.window.move({ workspace = 4 })")
+              (bind "ALT + CTRL + 5" "hl.dsp.window.move({ workspace = 5 })")
+              (bind "ALT + CTRL + 6" "hl.dsp.window.move({ workspace = 6 })")
+              (bind "ALT + CTRL + 7" "hl.dsp.window.move({ workspace = 7 })")
+              (bind "ALT + CTRL + 8" "hl.dsp.window.move({ workspace = 8 })")
+              (bind "ALT + CTRL + 9" "hl.dsp.window.move({ workspace = 9 })")
+              (bind "ALT + CTRL + 0" "hl.dsp.window.move({ workspace = 10 })")
+
+              (bind "ALT + CTRL + KP_End"    "hl.dsp.window.move({ workspace = 1 })")
+              (bind "ALT + CTRL + KP_Down"   "hl.dsp.window.move({ workspace = 2 })")
+              (bind "ALT + CTRL + KP_Next"   "hl.dsp.window.move({ workspace = 3 })")
+              (bind "ALT + CTRL + KP_Left"   "hl.dsp.window.move({ workspace = 4 })")
+              (bind "ALT + CTRL + KP_Begin"  "hl.dsp.window.move({ workspace = 5 })")
+              (bind "ALT + CTRL + KP_Right"  "hl.dsp.window.move({ workspace = 6 })")
+              (bind "ALT + CTRL + KP_Home"   "hl.dsp.window.move({ workspace = 7 })")
+              (bind "ALT + CTRL + KP_Up"     "hl.dsp.window.move({ workspace = 8 })")
+              (bind "ALT + CTRL + KP_Prior"  "hl.dsp.window.move({ workspace = 9 })")
+              (bind "ALT + CTRL + KP_Insert" "hl.dsp.window.move({ workspace = 10 })")
+
+              (bind "ALT + Page_Down" ''hl.dsp.focus({ workspace = "e-1" })'')
+              (bind "ALT + Page_Up"   ''hl.dsp.focus({ workspace = "e+1" })'')
+              (bind "ALT + Home"      ''hl.dsp.focus({ workspace = "previous" })'')
+
+              (bind "ALT + SHIFT + S" ''hl.dsp.workspace.toggle_special("magic")'')
+              (bind "ALT + CTRL + S"  ''hl.dsp.window.move({ workspace = "special:magic" })'')
+
+              (bind "CTRL + SHIFT + ALT + F" "hl.dsp.window.float()")
+              (bind "CTRL + SHIFT + ALT + T" ''hl.dsp.layout("togglesplit")'')
+
+              (bind "CTRL + SHIFT + ALT + S" ''hl.dsp.exec_cmd("${pkgs.hyprshot}/bin/hyprshot -m region")'')
+              (bind "CTRL + SHIFT + S"       ''hl.dsp.exec_cmd("${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only")'')
+
+              (bind "XF86AudioRaiseVolume" ''hl.dsp.exec_cmd("wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%+")'')
+              (bind "XF86AudioLowerVolume" ''hl.dsp.exec_cmd("wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%-")'')
+              (bind "XF86AudioMute"        ''hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")'')
+
+              (bind "XF86AudioPlay"  ''hl.dsp.exec_cmd("${pkgs.playerctl}/bin/playerctl play-pause")'')
+              (bind "XF86AudioPause" ''hl.dsp.exec_cmd("${pkgs.playerctl}/bin/playerctl play-pause")'')
+              (bind "XF86AudioNext"  ''hl.dsp.exec_cmd("${pkgs.playerctl}/bin/playerctl next")'')
+              (bind "XF86AudioPrev"  ''hl.dsp.exec_cmd("${pkgs.playerctl}/bin/playerctl previous")'')
+
+              (bind "ALT + CTRL + L" ''hl.dsp.exec_cmd("hyprlock")'')
+
+              (bindMouse "ALT + mouse:272" "hl.dsp.window.drag()")
+              (bindMouse "ALT + mouse:273" "hl.dsp.window.resize()")
             ];
           };
         };

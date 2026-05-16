@@ -33,7 +33,7 @@
                 end
 
                 if client and client:supports_method('textDocument/documentColor') and vim.lsp.document_color then
-                  vim.lsp.document_color.enable(true, bufnr, { style = 'virtual' })
+                  vim.lsp.document_color.enable(true, { bufnr = bufnr, style = 'virtual' })
                 end
 
                 if client and client:supports_method('textDocument/codeLens') then

@@ -49,6 +49,19 @@ Use `./rebuild` (platform-detecting wrapper). Requires sudo; do not run inside C
 - `nix store diff-closures <before> <after>` — compare closures; empty output = pure refactor.
 - `nix flake check --no-build` — eval-only sanity check.
 
+## Verifying Hyprland config
+
+Hyprland 0.55+ uses lua config. After changing anything under `modules/nixos/hyprland/hyprland.nix` (or anything else that feeds `wayland.windowManager.hyprland.settings`), validate the generated lua before asking the user to rebuild — eval-time success only proves nix is happy, not that Hyprland will accept the lua.
+
+```bash
+HYPR=$(nix eval --raw .#nixosConfigurations.harahorn.config.programs.hyprland.package)
+TOP=$(nix build --no-link --print-out-paths .#nixosConfigurations.harahorn.config.system.build.toplevel)
+LUA=$(nix-store -qR "$TOP" | grep hyprhyprland.lua)
+"$HYPR/bin/Hyprland" --verify-config --config "$LUA"
+```
+
+Prints `config ok` on success, otherwise `<file>:<line>: <error>`. Fix and re-run until clean.
+
 ## Build Failures
 
 When debugging nix build errors, check upstream issue trackers before attempting local diagnosis:
