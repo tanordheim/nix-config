@@ -4,6 +4,11 @@
       { pkgs, lib, config, ... }:
       let
         colors = config.lib.stylix.colors;
+        accent = "rgb(${colors.base0D})";
+        muted  = "rgb(${colors.base03})";
+        locked = "rgb(${colors.base0C})";
+        fg     = "rgb(${colors.base05})";
+        bg     = "rgb(${colors.base00})";
         inline = lib.generators.mkLuaInline;
         bind = keys: dispatcher: { _args = [ keys (inline dispatcher) ]; };
         bindMouse = keys: dispatcher: { _args = [ keys (inline dispatcher) { mouse = true; } ]; };
@@ -23,8 +28,8 @@
                 border_size = 2;
                 layout = "master";
                 allow_tearing = false;
-                "col.active_border" = "rgb(${colors.base0D})";
-                "col.inactive_border" = "rgb(${colors.base03})";
+                "col.active_border" = accent;
+                "col.inactive_border" = muted;
               };
 
               decoration = {
@@ -71,17 +76,17 @@
                 key_press_enables_dpms = true;
                 middle_click_paste = false;
                 vrr = 0;
-                background_color = "rgb(${colors.base00})";
+                background_color = bg;
               };
 
               group = {
-                "col.border_active" = "rgb(${colors.base0D})";
-                "col.border_inactive" = "rgb(${colors.base03})";
-                "col.border_locked_active" = "rgb(${colors.base0C})";
+                "col.border_active" = accent;
+                "col.border_inactive" = muted;
+                "col.border_locked_active" = locked;
                 groupbar = {
-                  "col.active" = "rgb(${colors.base0D})";
-                  "col.inactive" = "rgb(${colors.base03})";
-                  "text_color" = "rgb(${colors.base05})";
+                  "col.active" = accent;
+                  "col.inactive" = muted;
+                  "text_color" = fg;
                 };
               };
 
@@ -98,11 +103,11 @@
             };
 
             animation = [
-              { _args = [ { leaf = "windows";    enabled = true; speed = 2;  bezier = "default"; style = "popin"; } ]; }
-              { _args = [ { leaf = "windowsOut"; enabled = true; speed = 2;  bezier = "default"; style = "popin"; } ]; }
-              { _args = [ { leaf = "border";     enabled = true; speed = 10; bezier = "default"; } ]; }
-              { _args = [ { leaf = "fade";       enabled = true; speed = 5;  bezier = "default"; } ]; }
-              { _args = [ { leaf = "workspaces"; enabled = true; speed = 2;  bezier = "default"; } ]; }
+              { leaf = "windows";    enabled = true; speed = 2;  bezier = "default"; style = "popin"; }
+              { leaf = "windowsOut"; enabled = true; speed = 2;  bezier = "default"; style = "popin"; }
+              { leaf = "border";     enabled = true; speed = 10; bezier = "default"; }
+              { leaf = "fade";       enabled = true; speed = 5;  bezier = "default"; }
+              { leaf = "workspaces"; enabled = true; speed = 2;  bezier = "default"; }
             ];
 
             env = [
@@ -111,34 +116,34 @@
             ];
 
             monitor = [
-              { _args = [ { output = "DP-1"; mode = "2560x1440@155"; position = "0x0";      scale = 1; transform = 1; } ]; }
-              { _args = [ { output = "DP-2"; mode = "3440x1440@180"; position = "1440x320"; scale = 1; } ]; }
+              { output = "DP-1"; mode = "2560x1440@155"; position = "0x0";      scale = 1; transform = 1; }
+              { output = "DP-2"; mode = "3440x1440@180"; position = "1440x320"; scale = 1; }
             ];
 
             workspace_rule = [
-              { _args = [ { workspace = "1";  monitor = "DP-2"; default = true; } ]; }
-              { _args = [ { workspace = "2";  monitor = "DP-2"; } ]; }
-              { _args = [ { workspace = "3";  monitor = "DP-2"; } ]; }
-              { _args = [ { workspace = "4";  monitor = "DP-2"; } ]; }
-              { _args = [ { workspace = "5";  monitor = "DP-2"; } ]; }
-              { _args = [ { workspace = "6";  monitor = "DP-1"; default = true; layout_opts = { orientation = "top"; }; } ]; }
-              { _args = [ { workspace = "7";  monitor = "DP-1"; layout_opts = { orientation = "top"; }; } ]; }
-              { _args = [ { workspace = "8";  monitor = "DP-1"; layout_opts = { orientation = "top"; }; } ]; }
-              { _args = [ { workspace = "9";  monitor = "DP-1"; layout_opts = { orientation = "top"; }; } ]; }
-              { _args = [ { workspace = "10"; monitor = "DP-1"; layout_opts = { orientation = "top"; }; } ]; }
+              { workspace = "1";  monitor = "DP-2"; default = true; }
+              { workspace = "2";  monitor = "DP-2"; }
+              { workspace = "3";  monitor = "DP-2"; }
+              { workspace = "4";  monitor = "DP-2"; }
+              { workspace = "5";  monitor = "DP-2"; }
+              { workspace = "6";  monitor = "DP-1"; default = true; layout_opts = { orientation = "top"; }; }
+              { workspace = "7";  monitor = "DP-1"; layout_opts = { orientation = "top"; }; }
+              { workspace = "8";  monitor = "DP-1"; layout_opts = { orientation = "top"; }; }
+              { workspace = "9";  monitor = "DP-1"; layout_opts = { orientation = "top"; }; }
+              { workspace = "10"; monitor = "DP-1"; layout_opts = { orientation = "top"; }; }
             ];
 
             window_rule = [
-              { _args = [ { name = "slack-ws6";       match = { class = "^(Slack)$"; };                                                       workspace = "6 silent"; } ]; }
-              { _args = [ { name = "telegram-ws6";    match = { class = "^(org\\.telegram\\.desktop)$"; };                                    workspace = "6 silent"; } ]; }
-              { _args = [ { name = "signal-ws7";      match = { class = "^(signal)$"; };                                                      workspace = "7 silent"; } ]; }
-              { _args = [ { name = "whatsapp-ws7";    match = { class = "^(electron)$"; title = "^(WhatsApp Electron .*)$"; };                workspace = "7 silent"; } ]; }
-              { _args = [ { name = "teams-ws8";       match = { class = "^(electron)$"; title = "^(.*Microsoft Teams)$"; };                   workspace = "8 silent"; } ]; }
-              { _args = [ { name = "spotify-ws9";     match = { class = "^(spotify)$"; };                                                     workspace = "9 silent"; } ]; }
-              { _args = [ { name = "pocketcasts-ws9"; match = { class = "^(Electron)$"; title = "^(.*Pocket Casts)$"; };                      workspace = "9 silent"; } ]; }
-              { _args = [ { name = "discord-ws8";     match = { class = "^(discord)$"; };                                                     workspace = "8 silent"; } ]; }
-              { _args = [ { name = "tsm-magic";       match = { title = "^(TradeSkillMaster Application.*)$"; };                              workspace = "special:magic silent"; } ]; }
-              { _args = [ { name = "explorer-hidden"; match = { class = "^(explorer\\.exe)$"; title = "^$"; };                                workspace = "special:hidden silent"; } ]; }
+              { name = "slack-ws6";       match = { class = "^(Slack)$"; };                                            workspace = "6 silent"; }
+              { name = "telegram-ws6";    match = { class = "^(org\\.telegram\\.desktop)$"; };                         workspace = "6 silent"; }
+              { name = "signal-ws7";      match = { class = "^(signal)$"; };                                           workspace = "7 silent"; }
+              { name = "whatsapp-ws7";    match = { class = "^(electron)$"; title = "^(WhatsApp Electron .*)$"; };     workspace = "7 silent"; }
+              { name = "teams-ws8";       match = { class = "^(electron)$"; title = "^(.*Microsoft Teams)$"; };        workspace = "8 silent"; }
+              { name = "spotify-ws9";     match = { class = "^(spotify)$"; };                                          workspace = "9 silent"; }
+              { name = "pocketcasts-ws9"; match = { class = "^(Electron)$"; title = "^(.*Pocket Casts)$"; };           workspace = "9 silent"; }
+              { name = "discord-ws8";     match = { class = "^(discord)$"; };                                          workspace = "8 silent"; }
+              { name = "tsm-magic";       match = { title = "^(TradeSkillMaster Application.*)$"; };                   workspace = "special:magic silent"; }
+              { name = "explorer-hidden"; match = { class = "^(explorer\\.exe)$"; title = "^$"; };                     workspace = "special:hidden silent"; }
             ];
 
             bind = [

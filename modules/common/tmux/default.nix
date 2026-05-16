@@ -40,6 +40,17 @@
             printf '%s' "''${colors[$idx]}"
           ) 9>"$state.lock"
         '';
+        applyStyle = pkgs.writeShellScript "tmux-apply-session-style" ''
+          set -u
+          tmux=${pkgs.tmux}/bin/tmux
+          name="$($tmux display -p '#S' 2>/dev/null)" || exit 0
+          [ -n "$name" ] || exit 0
+          color="$(${sessionColor} "$name")"
+          [ -n "$color" ] || exit 0
+          $tmux set status-style "fg=${c.base00},bg=$color"
+          $tmux set -g pane-active-border-style "fg=$color"
+          $tmux set message-style "fg=${c.base00},bg=$color,bold"
+        '';
       in
       {
         home.packages = [
@@ -122,7 +133,6 @@
             set -g status-left-length 60
             set -g status-right-length 40
 
-            set -g status-style "fg=${c.base00},bg=#(${sessionColor} '#S')"
             set -g status-left "#[fg=${c.base00},bg=#(${sessionColor} '#S'),bold]  #S  "
             set -g status-right "#[fg=${c.base00},bold]%H:%M    #H  "
 
@@ -130,8 +140,10 @@
             set -g window-status-current-format "#[fg=#(${sessionColor} '#S'),bg=${c.base00},bold] #I:#W "
             set -g window-status-separator ""
 
-            set -g pane-active-border-style "fg=#(${sessionColor} '#S')"
-            set -g message-style "fg=${c.base00},bg=#(${sessionColor} '#S'),bold"
+            set-hook -g client-session-changed 'run-shell -b "${applyStyle}"'
+            set-hook -g session-created       'run-shell -b "${applyStyle}"'
+            set-hook -g after-new-session     'run-shell -b "${applyStyle}"'
+            run-shell -b "${applyStyle}"
           '';
         };
       }
