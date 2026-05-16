@@ -148,7 +148,7 @@
 
             bind = [
               (bind "ALT + return"            ''hl.dsp.exec_cmd("${pkgs.ghostty}/bin/ghostty --working-directory=$HOME")'')
-              (bind "ALT + space"             ''hl.dsp.exec_cmd("${pkgs.bleeding.hyprlauncher}/bin/hyprlauncher")'')
+              (bind "ALT + space"             ''hl.dsp.exec_cmd("hyprlauncher")'')
               (bind "ALT + SHIFT + W"          "hl.dsp.window.close()")
               (bind "ALT + CTRL + SUPER + BackSpace" "hl.dsp.exit()")
               (bind "ALT + CTRL + C"          ''hl.dsp.exec_cmd("hyprctl reload")'')

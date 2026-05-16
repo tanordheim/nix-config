@@ -40,6 +40,21 @@
             printf '%s' "''${colors[$idx]}"
           ) 9>"$state.lock"
         '';
+        prune = pkgs.writeShellScript "tmux-session-color-prune" ''
+          set -u
+          tmux=${pkgs.tmux}/bin/tmux
+          state="''${XDG_RUNTIME_DIR:-/tmp}/tmux-session-color.map"
+          [ -f "$state" ] || exit 0
+          alive="$($tmux list-sessions -F '#{session_name}' 2>/dev/null)" || exit 0
+          (
+            ${pkgs.util-linux}/bin/flock 9
+            tmp="$(mktemp "''${state}.XXXXXX")"
+            ${pkgs.gawk}/bin/awk -F'\t' -v alive="$alive" '
+              BEGIN { n = split(alive, a, "\n"); for (i = 1; i <= n; i++) live[a[i]] = 1 }
+              live[$1]
+            ' "$state" > "$tmp" && mv "$tmp" "$state"
+          ) 9>"$state.lock"
+        '';
         applyStyle = pkgs.writeShellScript "tmux-apply-session-style" ''
           set -u
           tmux=${pkgs.tmux}/bin/tmux
@@ -142,7 +157,10 @@
 
             set-hook -g client-session-changed 'run-shell -b "${applyStyle}"'
             set-hook -g session-created       'run-shell -b "${applyStyle}"'
+            set-hook -g session-renamed       'run-shell -b "${applyStyle}"'
             set-hook -g after-new-session     'run-shell -b "${applyStyle}"'
+            set-hook -g session-closed        'run-shell -b "${prune}"'
+            set-hook -ag session-renamed      'run-shell -b "${prune}"'
             run-shell -b "${applyStyle}"
           '';
         };

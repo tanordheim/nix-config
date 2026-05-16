@@ -3,6 +3,7 @@
   imports = [
     ./hyprland.nix
     ./hypridle.nix
+    ./hyprlauncher.nix
     ./hyprlock.nix
     ./hyprpaper.nix
     ./swaync.nix
@@ -44,7 +45,6 @@
         home.packages = with pkgs; [
           brightnessctl
           bleeding.hyprland-qtutils
-          bleeding.hyprlauncher
           bleeding.hyprpolkitagent
           libnotify
           networkmanagerapplet
