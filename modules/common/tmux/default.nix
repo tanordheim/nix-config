@@ -4,73 +4,31 @@
       { config, lib, pkgs, ... }:
       let
         c = config.lib.stylix.colors.withHashtag;
-        palette = [
-          c.base08
-          c.base09
-          c.base0A
-          c.base0B
-          c.base0C
-          c.base0D
-          c.base0E
-          c.base0F
-        ];
+
+        # Hash session name → 256-color cube index, biased to brighter sectors
+        # so dark text stays readable on the bar bg. Inspired by tmux-peacock.
         sessionColor = pkgs.writeShellScript "tmux-session-color" ''
           set -u
           name="''${1:-}"
-          colors=(${lib.concatMapStringsSep " " (x: ''"${x}"'') palette})
-          state="''${XDG_STATE_HOME:-$HOME/.local/state}/tmux-session-color.map"
-          mkdir -p "$(dirname "$state")"
-          : > "$state.lock" 2>/dev/null || true
-          (
-            ${pkgs.util-linux}/bin/flock 9
-            touch "$state"
-            existing=$(${pkgs.gawk}/bin/awk -v n="$name" -F'\t' '$1==n {print $2; exit}' "$state")
-            if [ -n "$existing" ]; then
-              printf '%s' "$existing"
-              exit 0
-            fi
-            used=$(${pkgs.gawk}/bin/awk -F'\t' '{print $2}' "$state")
-            for col in "''${colors[@]}"; do
-              if ! printf '%s\n' "$used" | grep -qxF "$col"; then
-                printf '%s\t%s\n' "$name" "$col" >> "$state"
-                printf '%s' "$col"
-                exit 0
-              fi
-            done
-            idx=$(( $(printf '%s' "$name" | cksum | ${pkgs.gawk}/bin/awk '{print $1}') % ''${#colors[@]} ))
-            printf '%s' "''${colors[$idx]}"
-          ) 9>"$state.lock"
+          [ -n "$name" ] || { printf 'colour241'; exit 0; }
+          h="$(printf '%s' "$name" | ${pkgs.coreutils}/bin/sha256sum | cut -c1-6)"
+          r=$(( 16#''${h:0:2} / 64 + 2 ))
+          g=$(( 16#''${h:2:2} / 64 + 2 ))
+          b=$(( 16#''${h:4:2} / 64 + 2 ))
+          printf 'colour%d' $(( 16 + r * 36 + g * 6 + b ))
         '';
-        prune = pkgs.writeShellScript "tmux-session-color-prune" ''
-          set -u
-          tmux=${pkgs.tmux}/bin/tmux
-          state="''${XDG_STATE_HOME:-$HOME/.local/state}/tmux-session-color.map"
-          mkdir -p "$(dirname "$state")"
-          [ -f "$state" ] || exit 0
-          alive="$($tmux list-sessions -F '#{session_name}' 2>/dev/null)" || exit 0
-          (
-            ${pkgs.util-linux}/bin/flock 9
-            tmp="$(mktemp "''${state}.XXXXXX")"
-            ${pkgs.gawk}/bin/awk -F'\t' -v alive="$alive" '
-              BEGIN { n = split(alive, a, "\n"); for (i = 1; i <= n; i++) live[a[i]] = 1 }
-              live[$1]
-            ' "$state" > "$tmp" && mv "$tmp" "$state"
-          ) 9>"$state.lock"
-        '';
+
         applyStyle = pkgs.writeShellScript "tmux-apply-session-style" ''
           set -u
           tmux=${pkgs.tmux}/bin/tmux
           name="$($tmux display -p '#S' 2>/dev/null)" || exit 0
           [ -n "$name" ] || exit 0
           color="$(${sessionColor} "$name")"
-          [ -n "$color" ] || exit 0
-          $tmux set status-style "fg=${c.base00},bg=$color"
-          $tmux set -g window-status-style "fg=${c.base00},bg=$color"
-          $tmux list-windows -F '#{window_id}' 2>/dev/null | while read -r win; do
-            $tmux setw -t "$win" -u window-status-style 2>/dev/null || true
-          done
-          $tmux set -g pane-active-border-style "fg=$color"
-          $tmux set message-style "fg=${c.base00},bg=$color,bold"
+          $tmux set status-style                 "fg=${c.base00},bg=$color"
+          $tmux set window-status-style          "fg=${c.base00},bg=$color"
+          $tmux set window-status-current-style  "fg=${c.base05},bg=${c.base00},bold"
+          $tmux set message-style                "fg=${c.base00},bg=$color,bold"
+          $tmux set -g pane-active-border-style  "fg=$color"
         '';
       in
       {
@@ -154,19 +112,16 @@
             set -g status-left-length 60
             set -g status-right-length 40
 
-            set -g status-left "#[fg=${c.base00},bg=#(${sessionColor} '#S'),bold]  #S  "
-            set -g status-right "#[fg=${c.base00},bold]%H:%M    #H  "
+            set -g status-left  "#[bold]  #S  "
+            set -g status-right "#[bold]%H:%M    #H  "
 
-            set -g window-status-format " #I:#W "
-            set -g window-status-current-format "#[fg=${c.base05},bg=${c.base00},bold] #I:#W "
+            set -g window-status-format         " #I:#W "
+            set -g window-status-current-format " #I:#W "
             set -g window-status-separator ""
 
-            set-hook -g client-session-changed 'run-shell -b "${applyStyle}"'
-            set-hook -g session-created       'run-shell -b "${applyStyle}"'
-            set-hook -g session-renamed       'run-shell -b "${applyStyle}"'
-            set-hook -g after-new-session     'run-shell -b "${applyStyle}"'
-            set-hook -g session-closed        'run-shell -b "${prune}"'
-            set-hook -ag session-renamed      'run-shell -b "${prune}"'
+            set-hook -g session-created  'run-shell -b "${applyStyle}"'
+            set-hook -g session-renamed  'run-shell -b "${applyStyle}"'
+            set-hook -g window-linked    'run-shell -b "${applyStyle}"'
             run-shell -b "${applyStyle}"
           '';
         };

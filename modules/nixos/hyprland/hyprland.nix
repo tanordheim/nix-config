@@ -57,7 +57,7 @@
                   enabled = true;
                   range = 10;
                   render_power = 3;
-                  color = "rgba(${colors.base0E}aa)";
+                  color = "rgba(${colors.base0E}66)";
                   color_inactive = "rgba(${colors.base0E}00)";
                 };
               };
@@ -111,12 +111,12 @@
             };
 
             curve = [
-              { _args = [ "snappy" { type = "spring"; mass = 1; stiffness = 71.2633; dampening = 15.8273644; } ]; }
+              { _args = [ "snappy" { type = "spring"; mass = 1; stiffness = 150; dampening = 22; } ]; }
             ];
 
             animation = [
-              { leaf = "windows";    enabled = true; speed = 4.79; spring = "snappy"; style = "popin"; }
-              { leaf = "windowsOut"; enabled = true; speed = 4.79; spring = "snappy"; style = "popin"; }
+              { leaf = "windows";    enabled = true; speed = 7; spring = "snappy"; style = "popin"; }
+              { leaf = "windowsOut"; enabled = true; speed = 7; spring = "snappy"; style = "popin"; }
               { leaf = "border";     enabled = true; speed = 10; bezier = "default"; }
               { leaf = "fade";       enabled = true; speed = 5;  bezier = "default"; }
               { leaf = "workspaces"; enabled = true; speed = 2;  bezier = "default"; }
