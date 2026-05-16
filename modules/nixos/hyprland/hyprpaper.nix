@@ -1,7 +1,13 @@
 {
   home-manager.sharedModules = [
-    {
-      services.hyprpaper.enable = true;
-    }
+    (
+      { pkgs, ... }:
+      {
+        services.hyprpaper = {
+          enable = true;
+          package = pkgs.bleeding.hyprpaper;
+        };
+      }
+    )
   ];
 }

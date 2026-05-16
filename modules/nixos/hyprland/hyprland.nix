@@ -5,6 +5,8 @@
       {
         wayland.windowManager.hyprland = {
           enable = true;
+          package = pkgs.bleeding.hyprland;
+          portalPackage = pkgs.bleeding.xdg-desktop-portal-hyprland;
           settings = {
             "$mainMod" = "ALT";
             "$focusMod" = "SUPER";
@@ -80,7 +82,7 @@
 
             bind = [
               "$mainMod, return, exec, ${pkgs.ghostty}/bin/ghostty --working-directory=$HOME"
-              "$mainMod, space, exec, ${pkgs.hyprlauncher}/bin/hyprlauncher"
+              "$mainMod, space, exec, ${pkgs.bleeding.hyprlauncher}/bin/hyprlauncher"
               "$mainMod SHIFT, W, killactive"
               "$mainMod CTRL SUPER, BackSpace, exit"
               "$mainMod CTRL, C, exec, hyprctl reload"
