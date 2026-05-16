@@ -15,10 +15,30 @@
           c.base0F
         ];
         sessionColor = pkgs.writeShellScript "tmux-session-color" ''
+          set -u
           name="''${1:-}"
-          idx=$(( $(printf '%s' "$name" | cksum | awk '{print $1}') % 8 ))
           colors=(${lib.concatMapStringsSep " " (x: ''"${x}"'') palette})
-          printf '%s' "''${colors[$idx]}"
+          state="''${XDG_RUNTIME_DIR:-/tmp}/tmux-session-color.map"
+          : > "$state.lock" 2>/dev/null || true
+          (
+            ${pkgs.util-linux}/bin/flock 9
+            touch "$state"
+            existing=$(${pkgs.gawk}/bin/awk -v n="$name" -F'\t' '$1==n {print $2; exit}' "$state")
+            if [ -n "$existing" ]; then
+              printf '%s' "$existing"
+              exit 0
+            fi
+            used=$(${pkgs.gawk}/bin/awk -F'\t' '{print $2}' "$state")
+            for col in "''${colors[@]}"; do
+              if ! printf '%s\n' "$used" | grep -qxF "$col"; then
+                printf '%s\t%s\n' "$name" "$col" >> "$state"
+                printf '%s' "$col"
+                exit 0
+              fi
+            done
+            idx=$(( $(printf '%s' "$name" | cksum | ${pkgs.gawk}/bin/awk '{print $1}') % ''${#colors[@]} ))
+            printf '%s' "''${colors[$idx]}"
+          ) 9>"$state.lock"
         '';
       in
       {
@@ -102,11 +122,12 @@
             set -g status-left-length 60
             set -g status-right-length 40
 
-            set -g status-left "#[fg=${c.base00},bg=#(${sessionColor} '#S'),bold]  #S  #[fg=#(${sessionColor} '#S'),bg=${c.base00}] "
-            set -g status-right "#[fg=${c.base04}]%H:%M  #[fg=#(${sessionColor} '#S'),bold]#H "
+            set -g status-style "fg=${c.base00},bg=#(${sessionColor} '#S')"
+            set -g status-left "#[fg=${c.base00},bg=#(${sessionColor} '#S'),bold]  #S  "
+            set -g status-right "#[fg=${c.base00},bold]%H:%M    #H  "
 
-            set -g window-status-format " #I:#W "
-            set -g window-status-current-format "#[fg=${c.base00},bg=${c.base0E},bold] #I:#W "
+            set -g window-status-format "#[fg=${c.base00}] #I:#W "
+            set -g window-status-current-format "#[fg=#(${sessionColor} '#S'),bg=${c.base00},bold] #I:#W "
             set -g window-status-separator ""
 
             set -g pane-active-border-style "fg=#(${sessionColor} '#S')"
