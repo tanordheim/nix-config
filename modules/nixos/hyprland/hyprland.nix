@@ -4,7 +4,7 @@
       { pkgs, lib, config, ... }:
       let
         colors = config.lib.stylix.colors;
-        accent = "rgb(${colors.base0D})";
+        accent = "rgb(${colors.base0E})";
         muted  = "rgb(${colors.base03})";
         locked = "rgb(${colors.base0C})";
         fg     = "rgb(${colors.base05})";
@@ -53,6 +53,13 @@
                   render_power = 3;
                   color = "rgba(${colors.base00}99)";
                 };
+                glow = {
+                  enabled = true;
+                  range = 10;
+                  render_power = 3;
+                  color = "rgba(${colors.base0E}aa)";
+                  color_inactive = "rgba(${colors.base0E}00)";
+                };
               };
 
               animations.enabled = true;
@@ -98,13 +105,18 @@
                 repeat_rate = 50;
                 repeat_delay = 250;
                 follow_mouse = false;
+                focus_on_close = 2;
                 sensitivity = 0;
               };
             };
 
+            curve = [
+              { _args = [ "snappy" { type = "spring"; mass = 1; stiffness = 71.2633; dampening = 15.8273644; } ]; }
+            ];
+
             animation = [
-              { leaf = "windows";    enabled = true; speed = 2;  bezier = "default"; style = "popin"; }
-              { leaf = "windowsOut"; enabled = true; speed = 2;  bezier = "default"; style = "popin"; }
+              { leaf = "windows";    enabled = true; speed = 4.79; spring = "snappy"; style = "popin"; }
+              { leaf = "windowsOut"; enabled = true; speed = 4.79; spring = "snappy"; style = "popin"; }
               { leaf = "border";     enabled = true; speed = 10; bezier = "default"; }
               { leaf = "fade";       enabled = true; speed = 5;  bezier = "default"; }
               { leaf = "workspaces"; enabled = true; speed = 2;  bezier = "default"; }
