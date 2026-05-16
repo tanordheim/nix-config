@@ -4,33 +4,7 @@
       { config, lib, pkgs, ... }:
       let
         c = config.lib.stylix.colors.withHashtag;
-
-        mixHex =
-          a: b: pct:
-          let
-            hexMap = {
-              "0" = 0; "1" = 1; "2" = 2; "3" = 3; "4" = 4; "5" = 5; "6" = 6; "7" = 7;
-              "8" = 8; "9" = 9; "a" = 10; "b" = 11; "c" = 12; "d" = 13; "e" = 14; "f" = 15;
-              "A" = 10; "B" = 11; "C" = 12; "D" = 13; "E" = 14; "F" = 15;
-            };
-            h2 = s:
-              hexMap.${builtins.substring 0 1 s} * 16
-              + hexMap.${builtins.substring 1 1 s};
-            chan = h: o: h2 (builtins.substring o 2 h);
-            hex = [ "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "a" "b" "c" "d" "e" "f" ];
-            toHex = n:
-              let hi = n / 16; in
-              (builtins.elemAt hex hi) + (builtins.elemAt hex (n - hi * 16));
-            mix = x: y: (x * (100 - pct) + y * pct) / 100;
-          in
-          "#"
-          + toHex (mix (chan a 1) (chan b 1))
-          + toHex (mix (chan a 3) (chan b 3))
-          + toHex (mix (chan a 5) (chan b 5));
-
-        softness = 50;
-        mute = col: mixHex col c.base02 softness;
-        palette = map mute [
+        palette = [
           c.base08
           c.base09
           c.base0A
@@ -44,7 +18,8 @@
           set -u
           name="''${1:-}"
           colors=(${lib.concatMapStringsSep " " (x: ''"${x}"'') palette})
-          state="''${XDG_RUNTIME_DIR:-/tmp}/tmux-session-color.map"
+          state="''${XDG_STATE_HOME:-$HOME/.local/state}/tmux-session-color.map"
+          mkdir -p "$(dirname "$state")"
           : > "$state.lock" 2>/dev/null || true
           (
             ${pkgs.util-linux}/bin/flock 9
@@ -69,7 +44,8 @@
         prune = pkgs.writeShellScript "tmux-session-color-prune" ''
           set -u
           tmux=${pkgs.tmux}/bin/tmux
-          state="''${XDG_RUNTIME_DIR:-/tmp}/tmux-session-color.map"
+          state="''${XDG_STATE_HOME:-$HOME/.local/state}/tmux-session-color.map"
+          mkdir -p "$(dirname "$state")"
           [ -f "$state" ] || exit 0
           alive="$($tmux list-sessions -F '#{session_name}' 2>/dev/null)" || exit 0
           (
@@ -88,10 +64,10 @@
           [ -n "$name" ] || exit 0
           color="$(${sessionColor} "$name")"
           [ -n "$color" ] || exit 0
-          $tmux set status-style "fg=${c.base05},bg=$color"
-          $tmux set window-status-style "fg=${c.base05},bg=$color"
+          $tmux set status-style "fg=${c.base00},bg=$color"
+          $tmux set window-status-style "fg=${c.base00},bg=$color"
           $tmux set -g pane-active-border-style "fg=$color"
-          $tmux set message-style "fg=${c.base05},bg=$color,bold"
+          $tmux set message-style "fg=${c.base00},bg=$color,bold"
         '';
       in
       {
@@ -175,8 +151,8 @@
             set -g status-left-length 60
             set -g status-right-length 40
 
-            set -g status-left "#[fg=${c.base05},bg=#(${sessionColor} '#S'),bold]  #S  "
-            set -g status-right "#[fg=${c.base05},bold]%H:%M    #H  "
+            set -g status-left "#[fg=${c.base00},bg=#(${sessionColor} '#S'),bold]  #S  "
+            set -g status-right "#[fg=${c.base00},bold]%H:%M    #H  "
 
             set -g window-status-format " #I:#W "
             set -g window-status-current-format "#[fg=${c.base05},bg=${c.base00},bold] #I:#W "
