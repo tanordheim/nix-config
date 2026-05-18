@@ -8,6 +8,7 @@
     ./backups.nix
     ./tmux-session-attach.nix
 
+    ../../modules/common/claude
     ../../modules/common/neovim
     ../../modules/common/nix-dev
     ../../modules/common/tmux
