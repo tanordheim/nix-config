@@ -11,6 +11,8 @@
           openFirewall = true;
         };
 
+        users.users.plex.extraGroups = [ "render" "video" ];
+
         systemd.services.plex.serviceConfig.Restart = lib.mkForce "always";
 
         networking.firewall.allowedUDPPorts = [
