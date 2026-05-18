@@ -40,6 +40,10 @@ in
       type = "command";
       command = "${statuslineScript}";
     };
+    sandbox = {
+      enabled = true;
+      autoAllowBashIfSandboxed = true;
+    };
   };
 
   home-manager.sharedModules = [
@@ -107,17 +111,44 @@ in
             }) skillNames
           );
 
+        baseSettings = {
+          effortLevel = "high";
+          agentPushNotifEnabled = true;
+          theme = "dark";
+          skipAutoPermissionPrompt = true;
+          permissions.defaultMode = "auto";
+        };
+
         mkClaudeFiles =
-          prefix:
+          prefix: settings:
           mkSkillFiles prefix
           // {
             "${prefix}/CLAUDE.md".text = claudeMd;
             "${prefix}/keybindings.json".text = keybindings;
+            "${prefix}/settings.json".text = builtins.toJSON settings;
+          };
+
+        mkInstanceSettings =
+          instance:
+          lib.recursiveUpdate baseSettings {
+            sandbox.filesystem = {
+              allowWrite = instance.rootDirs;
+              denyRead = [ "~" ];
+              allowRead = instance.rootDirs ++ [
+                "~/.claude-${instance.name}"
+                "~/.cache"
+                "~/.config"
+                "~/.gitconfig"
+                "~/.local"
+                "~/.ssh/config"
+                "~/.ssh/known_hosts"
+              ];
+            };
           };
 
         mkInstanceFiles =
           instance:
-          mkClaudeFiles ".claude-${instance.name}"
+          mkClaudeFiles ".claude-${instance.name}" (mkInstanceSettings instance)
           // lib.optionalAttrs (instance.mcpServers != { }) {
             ".claude-${instance.name}/mcp.json".text = builtins.toJSON {
               mcpServers = instance.mcpServers;
@@ -189,7 +220,8 @@ in
           ++ map mkInstancePackage config.claude.instances;
 
           home.file = lib.mkMerge (
-            [ (mkClaudeFiles ".claude") ] ++ map mkInstanceFiles config.claude.instances
+            [ (mkClaudeFiles ".claude" baseSettings) ]
+            ++ map mkInstanceFiles config.claude.instances
           );
         };
       }
