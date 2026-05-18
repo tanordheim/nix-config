@@ -118,6 +118,7 @@ in
           theme = "dark";
           skipAutoPermissionPrompt = true;
           permissions.defaultMode = "auto";
+          sandbox.filesystem.allowWrite = [ "~/.cache" ];
         };
 
         mkClaudeFiles =
