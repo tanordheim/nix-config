@@ -43,6 +43,7 @@ in
     sandbox = {
       enabled = true;
       autoAllowBashIfSandboxed = true;
+      excludedCommands = [ "nix" ];
     };
   };
 
@@ -128,6 +129,12 @@ in
             "${prefix}/settings.json".text = builtins.toJSON settings;
           };
 
+        onePasswordAgentSocket =
+          if isDarwin then
+            "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+          else
+            "~/.1password/agent.sock";
+
         mkInstanceSettings =
           instance:
           lib.recursiveUpdate baseSettings {
@@ -135,6 +142,7 @@ in
               allowWrite = instance.rootDirs;
               denyRead = [ "~" ];
               allowRead = instance.rootDirs ++ [
+                onePasswordAgentSocket
                 "~/.claude-${instance.name}"
                 "~/.cache"
                 "~/.config"
