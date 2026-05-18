@@ -139,7 +139,7 @@ in
           instance:
           lib.recursiveUpdate baseSettings {
             sandbox.filesystem = {
-              allowWrite = instance.rootDirs;
+              allowWrite = instance.rootDirs ++ [ "~/.cache" ];
               denyRead = [ "~" ];
               allowRead = instance.rootDirs ++ [
                 onePasswordAgentSocket
