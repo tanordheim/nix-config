@@ -112,13 +112,23 @@ in
             }) skillNames
           );
 
+        onePasswordAgentSocket =
+          if isDarwin then
+            "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+          else
+            "~/.1password/agent.sock";
+
         baseSettings = {
           effortLevel = "high";
           agentPushNotifEnabled = true;
           theme = "dark";
           skipAutoPermissionPrompt = true;
           permissions.defaultMode = "auto";
-          sandbox.filesystem.allowWrite = [ "~/.cache" ];
+          env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
+          sandbox.filesystem.allowWrite = [
+            "~/.cache"
+            onePasswordAgentSocket
+          ];
         };
 
         mkClaudeFiles =
@@ -130,17 +140,14 @@ in
             "${prefix}/settings.json".text = builtins.toJSON settings;
           };
 
-        onePasswordAgentSocket =
-          if isDarwin then
-            "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-          else
-            "~/.1password/agent.sock";
-
         mkInstanceSettings =
           instance:
           lib.recursiveUpdate baseSettings {
             sandbox.filesystem = {
-              allowWrite = instance.rootDirs ++ [ "~/.cache" ];
+              allowWrite = instance.rootDirs ++ [
+                "~/.cache"
+                onePasswordAgentSocket
+              ];
               denyRead = [ "~" ];
               allowRead = instance.rootDirs ++ [
                 onePasswordAgentSocket
@@ -229,8 +236,7 @@ in
           ++ map mkInstancePackage config.claude.instances;
 
           home.file = lib.mkMerge (
-            [ (mkClaudeFiles ".claude" baseSettings) ]
-            ++ map mkInstanceFiles config.claude.instances
+            [ (mkClaudeFiles ".claude" baseSettings) ] ++ map mkInstanceFiles config.claude.instances
           );
         };
       }

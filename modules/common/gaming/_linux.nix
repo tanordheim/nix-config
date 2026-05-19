@@ -27,7 +27,9 @@
                   envPkgs:
                   let
                     originalPkgs = args.multiPkgs envPkgs;
-                    customLdap = envPkgs.openldap.overrideAttrs (_: { doCheck = false; });
+                    customLdap = envPkgs.openldap.overrideAttrs (_: {
+                      doCheck = false;
+                    });
                   in
                   builtins.filter (p: (p.pname or "") != "openldap") originalPkgs ++ [ customLdap ];
               }

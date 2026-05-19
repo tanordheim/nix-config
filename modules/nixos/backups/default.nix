@@ -75,17 +75,17 @@ let
       telegramSendScript
     ];
     text = ''
-      set -euo pipefail
-      unit="$1"
-      host=$(uname -n)
-      tail=$(journalctl -u "$unit" -n 20 --no-pager 2>&1 || echo "(no journal output)")
-      msg="❌ *''${host}* unit failed: \`''${unit}\`
+            set -euo pipefail
+            unit="$1"
+            host=$(uname -n)
+            tail=$(journalctl -u "$unit" -n 20 --no-pager 2>&1 || echo "(no journal output)")
+            msg="❌ *''${host}* unit failed: \`''${unit}\`
 
-\`\`\`
-''${tail}
-\`\`\`"
-      telegram-send "$msg" || true
-      desktop-notify critical "❌ Backup failed" "$unit"
+      \`\`\`
+      ''${tail}
+      \`\`\`"
+            telegram-send "$msg" || true
+            desktop-notify critical "❌ Backup failed" "$unit"
     '';
   };
 
@@ -99,40 +99,40 @@ let
       telegramSendScript
     ];
     text = ''
-      set -euo pipefail
-      export RESTIC_REPOSITORY="${cfg.heartbeat.repository}"
-      export RESTIC_PASSWORD_FILE="${cfg.heartbeat.passwordFile}"
+            set -euo pipefail
+            export RESTIC_REPOSITORY="${cfg.heartbeat.repository}"
+            export RESTIC_PASSWORD_FILE="${cfg.heartbeat.passwordFile}"
 
-      host="${cfg.heartbeat.host}"
+            host="${cfg.heartbeat.host}"
 
-      now=$(date +%s)
-      seven_days_ago=$((now - 7 * 24 * 3600))
+            now=$(date +%s)
+            seven_days_ago=$((now - 7 * 24 * 3600))
 
-      snapshots=$(restic snapshots --host "$host" --json)
-      total=$(echo "$snapshots" | jq 'length')
+            snapshots=$(restic snapshots --host "$host" --json)
+            total=$(echo "$snapshots" | jq 'length')
 
-      recent=0
-      while IFS= read -r ts; do
-        [ -z "$ts" ] && continue
-        s=$(date -d "$ts" +%s 2>/dev/null || echo 0)
-        if [ "$s" -ge "$seven_days_ago" ]; then
-          recent=$((recent + 1))
-        fi
-      done < <(echo "$snapshots" | jq -r '.[].time')
+            recent=0
+            while IFS= read -r ts; do
+              [ -z "$ts" ] && continue
+              s=$(date -d "$ts" +%s 2>/dev/null || echo 0)
+              if [ "$s" -ge "$seven_days_ago" ]; then
+                recent=$((recent + 1))
+              fi
+            done < <(echo "$snapshots" | jq -r '.[].time')
 
-      latest=$(echo "$snapshots" | jq -r 'if length > 0 then .[-1].time else "none" end')
+            latest=$(echo "$snapshots" | jq -r 'if length > 0 then .[-1].time else "none" end')
 
-      stats=$(restic stats --mode raw-data --json)
-      size_bytes=$(echo "$stats" | jq '.total_size')
-      size_gb=$(awk "BEGIN { printf \"%.2f\", ''${size_bytes} / (1024 * 1024 * 1024) }")
+            stats=$(restic stats --mode raw-data --json)
+            size_bytes=$(echo "$stats" | jq '.total_size')
+            size_gb=$(awk "BEGIN { printf \"%.2f\", ''${size_bytes} / (1024 * 1024 * 1024) }")
 
-      msg="✅ *''${host}* backup heartbeat
-last 7 days: ''${recent} snapshots
-total snapshots: ''${total}
-latest: ''${latest}
-repo size: ''${size_gb} GB"
+            msg="✅ *''${host}* backup heartbeat
+      last 7 days: ''${recent} snapshots
+      total snapshots: ''${total}
+      latest: ''${latest}
+      repo size: ''${size_gb} GB"
 
-      telegram-send "$msg"
+            telegram-send "$msg"
     '';
   };
 in

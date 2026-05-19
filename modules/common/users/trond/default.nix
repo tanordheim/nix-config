@@ -1,4 +1,9 @@
-{ lib, isDarwin, pkgs, ... }:
+{
+  lib,
+  isDarwin,
+  pkgs,
+  ...
+}:
 {
   imports = [ (lib.mkPlatformImport ./. isDarwin) ];
 

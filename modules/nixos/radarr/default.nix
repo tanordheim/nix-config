@@ -1,30 +1,30 @@
 {
-      lib,
-      config,
-      pkgs,
-      ...
-    }:
-    {
-      
-        services.radarr.enable = true;
-        systemd.services.radarr.serviceConfig.Restart = lib.mkForce "always";
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
 
-        services.radarr.environmentFiles = [
-          config.sops.templates."radarr-env".path
-        ];
+  services.radarr.enable = true;
+  systemd.services.radarr.serviceConfig.Restart = lib.mkForce "always";
 
-        sops.templates."radarr-env" = {
-          restartUnits = [ "radarr.service" ];
-          content = ''
-            RADARR__AUTH__APIKEY=${config.sops.placeholder."radarr/api_key"}
-            RADARR__AUTH__METHOD=External
-            RADARR__AUTH__REQUIRED=DisabledForLocalAddresses
-            RADARR__MAIN__BACKUPFOLDER=/data/backups/hsrv/radarr
-          '';
-        };
+  services.radarr.environmentFiles = [
+    config.sops.templates."radarr-env".path
+  ];
 
-        services.caddy.virtualHosts."radarr.home.nordheim.io".extraConfig = ''
-          reverse_proxy localhost:7878
-        '';
-      
-    }
+  sops.templates."radarr-env" = {
+    restartUnits = [ "radarr.service" ];
+    content = ''
+      RADARR__AUTH__APIKEY=${config.sops.placeholder."radarr/api_key"}
+      RADARR__AUTH__METHOD=External
+      RADARR__AUTH__REQUIRED=DisabledForLocalAddresses
+      RADARR__MAIN__BACKUPFOLDER=/data/backups/hsrv/radarr
+    '';
+  };
+
+  services.caddy.virtualHosts."radarr.home.nordheim.io".extraConfig = ''
+    reverse_proxy localhost:7878
+  '';
+
+}

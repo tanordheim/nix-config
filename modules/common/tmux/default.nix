@@ -1,7 +1,12 @@
 {
   home-manager.sharedModules = [
     (
-      { config, lib, pkgs, ... }:
+      {
+        config,
+        lib,
+        pkgs,
+        ...
+      }:
       let
         c = config.lib.stylix.colors.withHashtag;
 

@@ -13,7 +13,10 @@
           exec = "houdini %F";
           icon = "${pkgs.houdini.unwrapped}/houdini_logo.png";
           terminal = false;
-          categories = [ "Graphics" "3DGraphics" ];
+          categories = [
+            "Graphics"
+            "3DGraphics"
+          ];
           mimeType = [ "application/x-houdini" ];
         };
 

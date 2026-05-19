@@ -1,10 +1,10 @@
 { lib, config, ... }:
-    {
-      
-        programs.nixvim = {
-          plugins.lint = {
-            enable = true;
-          };
-        };
-      
-    }
+{
+
+  programs.nixvim = {
+    plugins.lint = {
+      enable = true;
+    };
+  };
+
+}

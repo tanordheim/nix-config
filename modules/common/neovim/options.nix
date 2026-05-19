@@ -1,102 +1,102 @@
 { lib, config, ... }:
-    {
-      
-        programs.nixvim = {
-          extraConfigLua = # lua
-            ''
-              -- Make line numbers default
-              vim.opt.number = true
-              -- You can also add relative line numbers, to help with jumping.
-              --  Experiment for yourself to see if you like it!
-              vim.opt.relativenumber = true
+{
 
-              -- Enable mouse mode, can be useful for resizing splits for example!
-              vim.opt.mouse = 'a'
+  programs.nixvim = {
+    extraConfigLua = # lua
+      ''
+        -- Make line numbers default
+        vim.opt.number = true
+        -- You can also add relative line numbers, to help with jumping.
+        --  Experiment for yourself to see if you like it!
+        vim.opt.relativenumber = true
 
-              -- Don't show the mode, since it's already in the status line
-              vim.opt.showmode = false
+        -- Enable mouse mode, can be useful for resizing splits for example!
+        vim.opt.mouse = 'a'
 
-              -- Sync clipboard between OS and Neovim.
-              --  Schedule the setting after `UiEnter` because it can increase startup-time.
-              --  Remove this option if you want your OS clipboard to remain independent.
-              --  See `:help 'clipboard'`
-              vim.schedule(function()
-                vim.opt.clipboard = 'unnamedplus'
-              end)
+        -- Don't show the mode, since it's already in the status line
+        vim.opt.showmode = false
 
-              -- Enable break indent
-              vim.opt.breakindent = true
+        -- Sync clipboard between OS and Neovim.
+        --  Schedule the setting after `UiEnter` because it can increase startup-time.
+        --  Remove this option if you want your OS clipboard to remain independent.
+        --  See `:help 'clipboard'`
+        vim.schedule(function()
+          vim.opt.clipboard = 'unnamedplus'
+        end)
 
-              -- Save undo history
-              vim.opt.undofile = true
+        -- Enable break indent
+        vim.opt.breakindent = true
 
-              -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-              vim.opt.ignorecase = true
-              vim.opt.smartcase = true
+        -- Save undo history
+        vim.opt.undofile = true
 
-              -- Keep signcolumn on by default
-              vim.opt.signcolumn = 'yes'
+        -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+        vim.opt.ignorecase = true
+        vim.opt.smartcase = true
 
-              -- Rounded borders for floating windows and popup menu (Neovim 0.12+)
-              vim.opt.winborder = 'rounded'
-              vim.opt.pumborder = 'rounded'
-              vim.opt.pummaxwidth = 80
+        -- Keep signcolumn on by default
+        vim.opt.signcolumn = 'yes'
 
-              -- Treesitter-based folding (Neovim 0.12+)
-              vim.opt.foldmethod = 'expr'
-              vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-              vim.opt.foldlevel = 99
-              vim.opt.foldlevelstart = 99
+        -- Rounded borders for floating windows and popup menu (Neovim 0.12+)
+        vim.opt.winborder = 'rounded'
+        vim.opt.pumborder = 'rounded'
+        vim.opt.pummaxwidth = 80
 
-              -- Experimental ui2 (Neovim 0.12+): native cmdline/messages/pager
-              require('vim._core.ui2').enable()
+        -- Treesitter-based folding (Neovim 0.12+)
+        vim.opt.foldmethod = 'expr'
+        vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        vim.opt.foldlevel = 99
+        vim.opt.foldlevelstart = 99
 
-              -- Reclaim the bottom row; ui2 handles overflow via its message window
-              vim.opt.cmdheight = 0
+        -- Experimental ui2 (Neovim 0.12+): native cmdline/messages/pager
+        require('vim._core.ui2').enable()
 
-              -- Decrease update time
-              vim.opt.updatetime = 250
+        -- Reclaim the bottom row; ui2 handles overflow via its message window
+        vim.opt.cmdheight = 0
 
-              -- Decrease mapped sequence wait time
-              -- Displays which-key popup sooner
-              vim.opt.timeoutlen = 300
+        -- Decrease update time
+        vim.opt.updatetime = 250
 
-              -- Configure how new splits should be opened
-              vim.opt.splitright = true
-              vim.opt.splitbelow = true
+        -- Decrease mapped sequence wait time
+        -- Displays which-key popup sooner
+        vim.opt.timeoutlen = 300
 
-              -- Sets how neovim will display certain whitespace characters in the editor.
-              --  See `:help 'list'`
-              --  and `:help 'listchars'`
-              vim.opt.list = true
-              vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+        -- Configure how new splits should be opened
+        vim.opt.splitright = true
+        vim.opt.splitbelow = true
 
-              -- Preview substitutions live, as you type!
-              vim.opt.inccommand = 'split'
+        -- Sets how neovim will display certain whitespace characters in the editor.
+        --  See `:help 'list'`
+        --  and `:help 'listchars'`
+        vim.opt.list = true
+        vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
-              -- Show which line your cursor is on
-              vim.opt.cursorline = true
+        -- Preview substitutions live, as you type!
+        vim.opt.inccommand = 'split'
 
-              -- Minimal number of screen lines to keep above and below the cursor.
-              vim.opt.scrolloff = 10
+        -- Show which line your cursor is on
+        vim.opt.cursorline = true
 
-              -- enable undercurl
-              vim.cmd([[let &t_Cs = "\e[4:3m"]])
-              vim.cmd([[let &t_Ce = "\e[4:0m"]])
+        -- Minimal number of screen lines to keep above and below the cursor.
+        vim.opt.scrolloff = 10
 
-              -- neovide config
-              if vim.g.neovide then
-                vim.g.neovide_floating_blur_amount_x = 2.0
-                vim.g.neovide_floating_blur_amount_y = 2.0
-                vim.g.neovide_cursor_animation_length = 0.03
-                vim.g.neovide_hide_mouse_when_typing = true
-                vim.g.neovide_opacity = 0.8
-                vim.g.neovide_padding_top = 2
-                vim.g.neovide_padding_right = 2
-                vim.g.neovide_padding_bottom = 2
-                vim.g.neovide_padding_left = 2
-              end
-            '';
-        };
-      
-    }
+        -- enable undercurl
+        vim.cmd([[let &t_Cs = "\e[4:3m"]])
+        vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
+        -- neovide config
+        if vim.g.neovide then
+          vim.g.neovide_floating_blur_amount_x = 2.0
+          vim.g.neovide_floating_blur_amount_y = 2.0
+          vim.g.neovide_cursor_animation_length = 0.03
+          vim.g.neovide_hide_mouse_when_typing = true
+          vim.g.neovide_opacity = 0.8
+          vim.g.neovide_padding_top = 2
+          vim.g.neovide_padding_right = 2
+          vim.g.neovide_padding_bottom = 2
+          vim.g.neovide_padding_left = 2
+        end
+      '';
+  };
+
+}

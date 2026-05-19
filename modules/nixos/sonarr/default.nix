@@ -1,30 +1,30 @@
 {
-      lib,
-      config,
-      pkgs,
-      ...
-    }:
-    {
-      
-        services.sonarr.enable = true;
-        systemd.services.sonarr.serviceConfig.Restart = lib.mkForce "always";
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
 
-        services.sonarr.environmentFiles = [
-          config.sops.templates."sonarr-env".path
-        ];
+  services.sonarr.enable = true;
+  systemd.services.sonarr.serviceConfig.Restart = lib.mkForce "always";
 
-        sops.templates."sonarr-env" = {
-          restartUnits = [ "sonarr.service" ];
-          content = ''
-            SONARR__AUTH__APIKEY=${config.sops.placeholder."sonarr/api_key"}
-            SONARR__AUTH__METHOD=External
-            SONARR__AUTH__REQUIRED=DisabledForLocalAddresses
-            SONARR__MAIN__BACKUPFOLDER=/data/backups/hsrv/sonarr
-          '';
-        };
+  services.sonarr.environmentFiles = [
+    config.sops.templates."sonarr-env".path
+  ];
 
-        services.caddy.virtualHosts."sonarr.home.nordheim.io".extraConfig = ''
-          reverse_proxy localhost:8989
-        '';
-      
-    }
+  sops.templates."sonarr-env" = {
+    restartUnits = [ "sonarr.service" ];
+    content = ''
+      SONARR__AUTH__APIKEY=${config.sops.placeholder."sonarr/api_key"}
+      SONARR__AUTH__METHOD=External
+      SONARR__AUTH__REQUIRED=DisabledForLocalAddresses
+      SONARR__MAIN__BACKUPFOLDER=/data/backups/hsrv/sonarr
+    '';
+  };
+
+  services.caddy.virtualHosts."sonarr.home.nordheim.io".extraConfig = ''
+    reverse_proxy localhost:8989
+  '';
+
+}

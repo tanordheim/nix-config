@@ -51,8 +51,20 @@
           "hyprland/workspaces" = {
             all-outputs = false;
             persistent-workspaces = {
-              "DP-2" = [ 1 2 3 4 5 ];
-              "DP-1" = [ 6 7 8 9 10 ];
+              "DP-2" = [
+                1
+                2
+                3
+                4
+                5
+              ];
+              "DP-1" = [
+                6
+                7
+                8
+                9
+                10
+              ];
             };
           };
 
@@ -82,215 +94,228 @@
           systemd.enable = true;
 
           settings = {
-            mainBar = commonBar // sharedModules // {
-              output = [ "DP-2" ];
+            mainBar =
+              commonBar
+              // sharedModules
+              // {
+                output = [ "DP-2" ];
 
-              modules-left = [
-                "group/left-workspaces"
-                "mpris"
-                "group/left-status"
-                "custom/voxtype"
-              ];
-              modules-center = [ "group/center-window" ];
-              modules-right = [
-                "group/right-system"
-                "group/right-conn"
-                "group/right-notif"
-                "group/right-clock"
-              ];
-
-              "group/left-workspaces" = {
-                orientation = "horizontal";
-                modules = [ "hyprland/workspaces" ];
-              };
-              "group/left-status" = {
-                orientation = "horizontal";
-                modules = [ "idle_inhibitor" "tray" ];
-              };
-              "group/center-window" = {
-                orientation = "horizontal";
-                modules = [ "hyprland/window" ];
-              };
-              "group/right-system" = {
-                orientation = "horizontal";
-                modules = [
-                  "network#rate"
-                  "cpu"
-                  "memory"
-                  "disk"
-                  "temperature#cpu"
-                  "temperature#gpu"
-                  "temperature#nvme"
-                  "temperature#dimm"
+                modules-left = [
+                  "group/left-workspaces"
+                  "mpris"
+                  "group/left-status"
+                  "custom/voxtype"
                 ];
-              };
-              "group/right-conn" = {
-                orientation = "horizontal";
-                modules = [ "wireplumber" "bluetooth" "network" ];
-              };
-              "group/right-notif" = {
-                orientation = "horizontal";
-                modules = [ "custom/notification" ];
-              };
-              "group/right-clock" = {
-                orientation = "horizontal";
-                modules = [ "clock" ];
-              };
+                modules-center = [ "group/center-window" ];
+                modules-right = [
+                  "group/right-system"
+                  "group/right-conn"
+                  "group/right-notif"
+                  "group/right-clock"
+                ];
 
-              mpris = {
-                format = "{player_icon} {dynamic}";
-                format-paused = "{status_icon} <i>{dynamic}</i>";
-                player-icons = {
-                  default = icon glyph.play;
-                  spotify = icon glyph.spotify;
+                "group/left-workspaces" = {
+                  orientation = "horizontal";
+                  modules = [ "hyprland/workspaces" ];
                 };
-                status-icons = {
-                  paused = icon glyph.pause;
-                  playing = icon glyph.play;
-                  stopped = icon glyph.stop;
+                "group/left-status" = {
+                  orientation = "horizontal";
+                  modules = [
+                    "idle_inhibitor"
+                    "tray"
+                  ];
                 };
-                dynamic-len = 30;
-              };
+                "group/center-window" = {
+                  orientation = "horizontal";
+                  modules = [ "hyprland/window" ];
+                };
+                "group/right-system" = {
+                  orientation = "horizontal";
+                  modules = [
+                    "network#rate"
+                    "cpu"
+                    "memory"
+                    "disk"
+                    "temperature#cpu"
+                    "temperature#gpu"
+                    "temperature#nvme"
+                    "temperature#dimm"
+                  ];
+                };
+                "group/right-conn" = {
+                  orientation = "horizontal";
+                  modules = [
+                    "wireplumber"
+                    "bluetooth"
+                    "network"
+                  ];
+                };
+                "group/right-notif" = {
+                  orientation = "horizontal";
+                  modules = [ "custom/notification" ];
+                };
+                "group/right-clock" = {
+                  orientation = "horizontal";
+                  modules = [ "clock" ];
+                };
 
-              idle_inhibitor = {
-                format = "{icon}";
-                format-icons = {
-                  activated = icon glyph.bolt;
-                  deactivated = icon glyph.moon;
+                mpris = {
+                  format = "{player_icon} {dynamic}";
+                  format-paused = "{status_icon} <i>{dynamic}</i>";
+                  player-icons = {
+                    default = icon glyph.play;
+                    spotify = icon glyph.spotify;
+                  };
+                  status-icons = {
+                    paused = icon glyph.pause;
+                    playing = icon glyph.play;
+                    stopped = icon glyph.stop;
+                  };
+                  dynamic-len = 30;
+                };
+
+                idle_inhibitor = {
+                  format = "{icon}";
+                  format-icons = {
+                    activated = icon glyph.bolt;
+                    deactivated = icon glyph.moon;
+                  };
+                };
+
+                tray = {
+                  icon-size = 16;
+                  spacing = 10;
+                };
+
+                cpu = {
+                  format = "${icon glyph.cpu} {usage}%";
+                  interval = 5;
+                  tooltip-format = "CPU: {usage}%";
+                };
+                memory = {
+                  format = "${icon glyph.memory} {percentage}%";
+                  interval = 5;
+                  tooltip-format = "Memory: {used:0.1f}G / {total:0.1f}G ({percentage}%)";
+                };
+                disk = {
+                  format = "${icon glyph.disk} {percentage_used}%";
+                  path = "/";
+                  interval = 30;
+                  tooltip-format = "Disk (/): {used} / {total} ({percentage_used}%)";
+                };
+
+                "temperature#cpu" = {
+                  hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:18.3/hwmon";
+                  input-filename = "temp1_input";
+                  critical-threshold = 85;
+                  format = "${icon glyph.temp} {temperatureC}°";
+                  tooltip-format = "CPU: {temperatureC}°C";
+                };
+                "temperature#gpu" = {
+                  hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon";
+                  input-filename = "temp2_input";
+                  critical-threshold = 95;
+                  format = "${icon glyph.gpu} {temperatureC}°";
+                  tooltip-format = "GPU: {temperatureC}°C";
+                };
+                "temperature#nvme" = {
+                  hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:02.2/0000:0c:00.0/nvme/nvme0";
+                  input-filename = "temp1_input";
+                  critical-threshold = 70;
+                  format = "${icon glyph.nvme} {temperatureC}°";
+                  tooltip-format = "NVMe: {temperatureC}°C";
+                };
+                "temperature#dimm" = {
+                  hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:14.0/i2c-0/0-0053/hwmon";
+                  input-filename = "temp1_input";
+                  critical-threshold = 75;
+                  format = "${icon glyph.dimm} {temperatureC}°";
+                  tooltip-format = "DIMM: {temperatureC}°C";
+                };
+
+                wireplumber = {
+                  format = "${icon glyph.volume} {volume}%";
+                  format-muted = "${icon glyph.mute} muted";
+                  tooltip-format = "Volume: {volume}% ({node_name})";
+                  on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+                };
+
+                bluetooth = {
+                  format = "${icon glyph.bluetooth} {status}";
+                  format-disabled = "${icon glyph.bluetooth} off";
+                  format-connected = "${icon glyph.bluetooth} {device_alias}";
+                  tooltip-format = "{controller_alias}\n{num_connections} connected";
+                  on-click = "${pkgs.blueman}/bin/blueman-manager";
+                };
+
+                network = {
+                  format-wifi = "${icon glyph.wifi} {essid}";
+                  format-ethernet = "${icon glyph.ethernet} {ifname}";
+                  format-disconnected = "${icon glyph.wifiOff} disconnected";
+                  tooltip-format = "{ifname}: {ipaddr}";
+                  on-click = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
+                };
+
+                "network#rate" = {
+                  interval = 2;
+                  format-wifi = "${icon glyph.wifi} ↓ {bandwidthDownBytes} ↑ {bandwidthUpBytes}";
+                  format-ethernet = "${icon glyph.ethernet} ↓ {bandwidthDownBytes} ↑ {bandwidthUpBytes}";
+                  format-disconnected = "${icon glyph.wifiOff} —";
+                  tooltip-format = "{ifname} ({ipaddr})\n↓ {bandwidthDownBytes}/s  ↑ {bandwidthUpBytes}/s\ntotal ↓ {bandwidthDownBytes} ↑ {bandwidthUpBytes}";
+                };
+
+                "custom/voxtype" = {
+                  exec = "${pkgs.voxtype}/bin/voxtype status --follow --format json";
+                  return-type = "json";
+                  format = "{} {alt}";
+                  tooltip = true;
+                  on-click = "${pkgs.voxtype}/bin/voxtype record toggle";
+                };
+
+                "custom/notification" = {
+                  tooltip = false;
+                  format = "${glyph.bell}{icon}";
+                  format-icons = {
+                    notification = "<span foreground='red'><sup>●</sup></span>";
+                    none = "";
+                    dnd-notification = "<span foreground='red'><sup>●</sup></span>";
+                    dnd-none = "";
+                    inhibited-notification = "<span foreground='red'><sup>●</sup></span>";
+                    inhibited-none = "";
+                    dnd-inhibited-notification = "<span foreground='red'><sup>●</sup></span>";
+                    dnd-inhibited-none = "";
+                  };
+                  return-type = "json";
+                  exec = "${swayncClient} -swb";
+                  on-click = "${swayncClient} -t -sw";
+                  on-click-right = "${swayncClient} -d -sw";
+                  escape = true;
                 };
               };
 
-              tray = {
-                icon-size = 16;
-                spacing = 10;
-              };
+            secondaryBar =
+              commonBar
+              // sharedModules
+              // {
+                output = [ "DP-1" ];
 
-              cpu = {
-                format = "${icon glyph.cpu} {usage}%";
-                interval = 5;
-                tooltip-format = "CPU: {usage}%";
-              };
-              memory = {
-                format = "${icon glyph.memory} {percentage}%";
-                interval = 5;
-                tooltip-format = "Memory: {used:0.1f}G / {total:0.1f}G ({percentage}%)";
-              };
-              disk = {
-                format = "${icon glyph.disk} {percentage_used}%";
-                path = "/";
-                interval = 30;
-                tooltip-format = "Disk (/): {used} / {total} ({percentage_used}%)";
-              };
+                modules-left = [ "group/left-workspaces" ];
+                modules-center = [ "group/center-window" ];
+                modules-right = [ "group/right-clock" ];
 
-              "temperature#cpu" = {
-                hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:18.3/hwmon";
-                input-filename = "temp1_input";
-                critical-threshold = 85;
-                format = "${icon glyph.temp} {temperatureC}°";
-                tooltip-format = "CPU: {temperatureC}°C";
-              };
-              "temperature#gpu" = {
-                hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon";
-                input-filename = "temp2_input";
-                critical-threshold = 95;
-                format = "${icon glyph.gpu} {temperatureC}°";
-                tooltip-format = "GPU: {temperatureC}°C";
-              };
-              "temperature#nvme" = {
-                hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:02.2/0000:0c:00.0/nvme/nvme0";
-                input-filename = "temp1_input";
-                critical-threshold = 70;
-                format = "${icon glyph.nvme} {temperatureC}°";
-                tooltip-format = "NVMe: {temperatureC}°C";
-              };
-              "temperature#dimm" = {
-                hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:14.0/i2c-0/0-0053/hwmon";
-                input-filename = "temp1_input";
-                critical-threshold = 75;
-                format = "${icon glyph.dimm} {temperatureC}°";
-                tooltip-format = "DIMM: {temperatureC}°C";
-              };
-
-              wireplumber = {
-                format = "${icon glyph.volume} {volume}%";
-                format-muted = "${icon glyph.mute} muted";
-                tooltip-format = "Volume: {volume}% ({node_name})";
-                on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
-              };
-
-              bluetooth = {
-                format = "${icon glyph.bluetooth} {status}";
-                format-disabled = "${icon glyph.bluetooth} off";
-                format-connected = "${icon glyph.bluetooth} {device_alias}";
-                tooltip-format = "{controller_alias}\n{num_connections} connected";
-                on-click = "${pkgs.blueman}/bin/blueman-manager";
-              };
-
-              network = {
-                format-wifi = "${icon glyph.wifi} {essid}";
-                format-ethernet = "${icon glyph.ethernet} {ifname}";
-                format-disconnected = "${icon glyph.wifiOff} disconnected";
-                tooltip-format = "{ifname}: {ipaddr}";
-                on-click = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
-              };
-
-              "network#rate" = {
-                interval = 2;
-                format-wifi = "${icon glyph.wifi} ↓ {bandwidthDownBytes} ↑ {bandwidthUpBytes}";
-                format-ethernet = "${icon glyph.ethernet} ↓ {bandwidthDownBytes} ↑ {bandwidthUpBytes}";
-                format-disconnected = "${icon glyph.wifiOff} —";
-                tooltip-format = "{ifname} ({ipaddr})\n↓ {bandwidthDownBytes}/s  ↑ {bandwidthUpBytes}/s\ntotal ↓ {bandwidthDownBytes} ↑ {bandwidthUpBytes}";
-              };
-
-              "custom/voxtype" = {
-                exec = "${pkgs.voxtype}/bin/voxtype status --follow --format json";
-                return-type = "json";
-                format = "{} {alt}";
-                tooltip = true;
-                on-click = "${pkgs.voxtype}/bin/voxtype record toggle";
-              };
-
-              "custom/notification" = {
-                tooltip = false;
-                format = "${glyph.bell}{icon}";
-                format-icons = {
-                  notification = "<span foreground='red'><sup>●</sup></span>";
-                  none = "";
-                  dnd-notification = "<span foreground='red'><sup>●</sup></span>";
-                  dnd-none = "";
-                  inhibited-notification = "<span foreground='red'><sup>●</sup></span>";
-                  inhibited-none = "";
-                  dnd-inhibited-notification = "<span foreground='red'><sup>●</sup></span>";
-                  dnd-inhibited-none = "";
+                "group/left-workspaces" = {
+                  orientation = "horizontal";
+                  modules = [ "hyprland/workspaces" ];
                 };
-                return-type = "json";
-                exec = "${swayncClient} -swb";
-                on-click = "${swayncClient} -t -sw";
-                on-click-right = "${swayncClient} -d -sw";
-                escape = true;
+                "group/center-window" = {
+                  orientation = "horizontal";
+                  modules = [ "hyprland/window" ];
+                };
+                "group/right-clock" = {
+                  orientation = "horizontal";
+                  modules = [ "clock" ];
+                };
               };
-            };
-
-            secondaryBar = commonBar // sharedModules // {
-              output = [ "DP-1" ];
-
-              modules-left = [ "group/left-workspaces" ];
-              modules-center = [ "group/center-window" ];
-              modules-right = [ "group/right-clock" ];
-
-              "group/left-workspaces" = {
-                orientation = "horizontal";
-                modules = [ "hyprland/workspaces" ];
-              };
-              "group/center-window" = {
-                orientation = "horizontal";
-                modules = [ "hyprland/window" ];
-              };
-              "group/right-clock" = {
-                orientation = "horizontal";
-                modules = [ "clock" ];
-              };
-            };
           };
 
           style = ''

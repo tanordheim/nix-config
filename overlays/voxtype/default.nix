@@ -5,10 +5,12 @@ final: prev: {
 
     nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ prev.shaderc ];
 
-    buildInputs = (old.buildInputs or [ ]) ++ (with prev; [
-      shaderc
-      vulkan-headers
-      vulkan-loader
-    ]);
+    buildInputs =
+      (old.buildInputs or [ ])
+      ++ (with prev; [
+        shaderc
+        vulkan-headers
+        vulkan-loader
+      ]);
   });
 }

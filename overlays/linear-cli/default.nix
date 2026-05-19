@@ -1,6 +1,5 @@
 { ... }:
-final: prev:
-{
+final: prev: {
   linear-cli = prev.stdenvNoCC.mkDerivation rec {
     pname = "linear-cli";
     version = "2.0.0";

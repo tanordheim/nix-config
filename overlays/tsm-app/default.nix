@@ -45,18 +45,20 @@ in
       hatch-vcs
     ];
 
-    dependencies = (with py; [
-      pyside6
-      aiohttp
-      pydantic
-      aiosqlite
-      keyring
-      secretstorage
-      structlog
-      tomli-w
-      pyyaml
-      typing-extensions
-    ]) ++ [ apscheduler4 ];
+    dependencies =
+      (with py; [
+        pyside6
+        aiohttp
+        pydantic
+        aiosqlite
+        keyring
+        secretstorage
+        structlog
+        tomli-w
+        pyyaml
+        typing-extensions
+      ])
+      ++ [ apscheduler4 ];
 
     dontWrapQtApps = false;
 

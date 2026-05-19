@@ -1,29 +1,32 @@
 {
-      lib,
-      config,
-      pkgs,
-      ...
-    }:
-    {
-      
-        services.plex = {
-          enable = true;
-          openFirewall = true;
-        };
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
 
-        users.users.plex.extraGroups = [ "render" "video" ];
+  services.plex = {
+    enable = true;
+    openFirewall = true;
+  };
 
-        systemd.services.plex.serviceConfig.Restart = lib.mkForce "always";
+  users.users.plex.extraGroups = [
+    "render"
+    "video"
+  ];
 
-        networking.firewall.allowedUDPPorts = [
-          32410
-          32412
-          32413
-          32414
-        ];
+  systemd.services.plex.serviceConfig.Restart = lib.mkForce "always";
 
-        services.caddy.virtualHosts."plex.home.nordheim.io".extraConfig = ''
-          reverse_proxy localhost:32400
-        '';
-      
-    }
+  networking.firewall.allowedUDPPorts = [
+    32410
+    32412
+    32413
+    32414
+  ];
+
+  services.caddy.virtualHosts."plex.home.nordheim.io".extraConfig = ''
+    reverse_proxy localhost:32400
+  '';
+
+}

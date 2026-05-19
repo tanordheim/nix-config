@@ -1,13 +1,13 @@
 {
-      pkgs,
-      lib,
-      config,
-      ...
-    }:
-    {
-      
-        programs.nixvim.plugins.sleuth = {
-          enable = true;
-        };
-      
-    }
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
+
+  programs.nixvim.plugins.sleuth = {
+    enable = true;
+  };
+
+}

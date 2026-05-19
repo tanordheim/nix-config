@@ -1,34 +1,34 @@
 {
-      lib,
-      config,
-      pkgs,
-      ...
-    }:
-    {
-      
-        services.mosquitto = {
-          enable = true;
-          listeners = [
-            {
-              port = 1883;
-              users = {
-                zigbee2mqtt = {
-                  passwordFile = config.sops.secrets."mosquitto/password".path;
-                  acl = [ "readwrite #" ];
-                };
-                homeassistant = {
-                  passwordFile = config.sops.secrets."mosquitto/password".path;
-                  acl = [ "readwrite #" ];
-                };
-              };
-            }
-          ];
-        };
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
 
-        sops.secrets."mosquitto/password" = {
-          owner = "mosquitto";
+  services.mosquitto = {
+    enable = true;
+    listeners = [
+      {
+        port = 1883;
+        users = {
+          zigbee2mqtt = {
+            passwordFile = config.sops.secrets."mosquitto/password".path;
+            acl = [ "readwrite #" ];
+          };
+          homeassistant = {
+            passwordFile = config.sops.secrets."mosquitto/password".path;
+            acl = [ "readwrite #" ];
+          };
         };
+      }
+    ];
+  };
 
-        networking.firewall.allowedTCPPorts = [ 1883 ];
-      
-    }
+  sops.secrets."mosquitto/password" = {
+    owner = "mosquitto";
+  };
+
+  networking.firewall.allowedTCPPorts = [ 1883 ];
+
+}

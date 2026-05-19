@@ -1,22 +1,22 @@
 {
-      pkgs,
-      lib,
-      config,
-      ...
-    }:
-    {
-      
-        programs.nixvim = {
-          extraPlugins = with pkgs.vimPlugins; [
-            tiny-cmdline-nvim
-          ];
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
 
-          opts.cmdheight = 0;
+  programs.nixvim = {
+    extraPlugins = with pkgs.vimPlugins; [
+      tiny-cmdline-nvim
+    ];
 
-          extraConfigLua = # lua
-            ''
-              require('tiny-cmdline').setup({})
-            '';
-        };
-      
-    }
+    opts.cmdheight = 0;
+
+    extraConfigLua = # lua
+      ''
+        require('tiny-cmdline').setup({})
+      '';
+  };
+
+}
