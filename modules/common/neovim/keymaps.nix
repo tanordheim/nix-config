@@ -63,6 +63,24 @@
             vim.hl.on_yank()
           end,
         })
+
+        vim.api.nvim_create_user_command('CopyRelPath', function()
+          local file = vim.fn.expand('%:p')
+          if file == "" then
+            vim.notify('No file in current buffer', vim.log.levels.WARN)
+            return
+          end
+          local dir = vim.fn.fnamemodify(file, ':h')
+          local root = vim.fn.systemlist({ 'git', '-C', dir, 'rev-parse', '--show-toplevel' })[1]
+          local path
+          if vim.v.shell_error == 0 and root and root ~= "" then
+            path = vim.fn.fnamemodify(file, ':p'):sub(#root + 2)
+          else
+            path = vim.fn.fnamemodify(file, ':.')
+          end
+          vim.fn.setreg('+', path)
+          vim.notify('Copied: ' .. path)
+        end, { desc = 'Copy repo-relative path of current file to clipboard' })
       '';
   };
 
