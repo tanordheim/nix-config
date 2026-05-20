@@ -119,7 +119,7 @@ in
             "~/.1password/agent.sock";
 
         baseSettings = {
-          effortLevel = "high";
+          effortLevel = "xhigh";
           agentPushNotifEnabled = true;
           theme = "dark";
           skipAutoPermissionPrompt = true;
