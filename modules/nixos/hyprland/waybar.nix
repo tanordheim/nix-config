@@ -262,7 +262,7 @@
                   exec = "${fansScript}";
                   return-type = "json";
                   interval = 5;
-                  format = "${icon glyph.fan} {}";
+                  format = "${icon glyph.fan} {} rpm";
                 };
                 "temperature#nvme" = {
                   hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:02.2/0000:0c:00.0/nvme/nvme0";
