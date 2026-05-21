@@ -98,5 +98,22 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
+  environment.systemPackages = [
+    pkgs.cameractrls
+    pkgs.v4l-utils
+  ];
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="video4linux", ACTION=="add", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="085e", ENV{ID_V4L_CAPABILITIES}=="*:capture:*", TAG+="systemd", ENV{SYSTEMD_WANTS}+="brio-apply@%k.service"
+  '';
+
+  systemd.services."brio-apply@" = {
+    description = "Apply Logitech Brio settings to %i";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.cameractrls}/bin/cameractrls -d /dev/%i -c logitech_brio_fov=65,zoom_absolute=100,pan_absolute=0,tilt_absolute=0";
+    };
+  };
+
   home-manager.users.trond.home.stateVersion = "26.05";
 }
