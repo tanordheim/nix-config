@@ -31,9 +31,52 @@
           stop = fa "F04D";
           spotify = fa "F1BC";
           bell = fa "F0F3";
+          fan = fa "F863";
         };
 
         icon = g: g;
+
+        nctHwmon = "/sys/devices/platform/nct6775.*/hwmon/hwmon*";
+        cpuHwmon = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon*";
+        gpuHwmon = "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon/hwmon*";
+
+        fansScript = pkgs.writeShellScript "waybar-fans" ''
+          set -eu
+          nct=$(echo ${nctHwmon})
+          gpu=$(echo ${gpuHwmon})
+          f1=$(cat "$nct/fan1_input")
+          f2=$(cat "$nct/fan2_input")
+          f3=$(cat "$nct/fan3_input")
+          fg=$(cat "$gpu/fan1_input")
+          top=$(printf '%s\n' "$f1" "$f2" "$f3" "$fg" | sort -n | tail -1)
+          tt=$(printf 'GPU: %s rpm\nFan 1: %s rpm\nFan 2: %s rpm\nFan 3: %s rpm' "$fg" "$f1" "$f2" "$f3")
+          ${pkgs.jq}/bin/jq -nc --arg text "$top" --arg tt "$tt" '{text: $text, tooltip: $tt}'
+        '';
+
+        tempCpuScript = pkgs.writeShellScript "waybar-temp-cpu" ''
+          set -eu
+          cpu=$(echo ${cpuHwmon})
+          nct=$(echo ${nctHwmon})
+          t=$(($(cat "$cpu/temp1_input") / 1000))
+          f1=$(cat "$nct/fan1_input")
+          f2=$(cat "$nct/fan2_input")
+          f3=$(cat "$nct/fan3_input")
+          cls=""
+          [ "$t" -ge 85 ] && cls="critical"
+          tt=$(printf 'CPU: %s°C\nFan 1: %s rpm\nFan 2: %s rpm\nFan 3: %s rpm' "$t" "$f1" "$f2" "$f3")
+          ${pkgs.jq}/bin/jq -nc --arg text "$t" --arg tt "$tt" --arg cls "$cls" '{text: $text, tooltip: $tt, class: $cls}'
+        '';
+
+        tempGpuScript = pkgs.writeShellScript "waybar-temp-gpu" ''
+          set -eu
+          gpu=$(echo ${gpuHwmon})
+          t=$(($(cat "$gpu/temp2_input") / 1000))
+          fg=$(cat "$gpu/fan1_input")
+          cls=""
+          [ "$t" -ge 95 ] && cls="critical"
+          tt=$(printf 'GPU: %s°C\nFan: %s rpm' "$t" "$fg")
+          ${pkgs.jq}/bin/jq -nc --arg text "$t" --arg tt "$tt" --arg cls "$cls" '{text: $text, tooltip: $tt, class: $cls}'
+        '';
 
         commonBar = {
           layer = "top";
@@ -132,12 +175,12 @@
                 "group/right-system" = {
                   orientation = "horizontal";
                   modules = [
-                    "network#rate"
+                    "custom/fans"
                     "cpu"
                     "memory"
                     "disk"
-                    "temperature#cpu"
-                    "temperature#gpu"
+                    "custom/temp-cpu"
+                    "custom/temp-gpu"
                     "temperature#nvme"
                     "temperature#dimm"
                   ];
@@ -204,19 +247,23 @@
                   tooltip-format = "Disk (/): {used} / {total} ({percentage_used}%)";
                 };
 
-                "temperature#cpu" = {
-                  hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:18.3/hwmon";
-                  input-filename = "temp1_input";
-                  critical-threshold = 85;
-                  format = "${icon glyph.temp} {temperatureC}°";
-                  tooltip-format = "CPU: {temperatureC}°C";
+                "custom/temp-cpu" = {
+                  exec = "${tempCpuScript}";
+                  return-type = "json";
+                  interval = 5;
+                  format = "${icon glyph.temp} {}°";
                 };
-                "temperature#gpu" = {
-                  hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon";
-                  input-filename = "temp2_input";
-                  critical-threshold = 95;
-                  format = "${icon glyph.gpu} {temperatureC}°";
-                  tooltip-format = "GPU: {temperatureC}°C";
+                "custom/temp-gpu" = {
+                  exec = "${tempGpuScript}";
+                  return-type = "json";
+                  interval = 5;
+                  format = "${icon glyph.gpu} {}°";
+                };
+                "custom/fans" = {
+                  exec = "${fansScript}";
+                  return-type = "json";
+                  interval = 5;
+                  format = "${icon glyph.fan} {} rpm";
                 };
                 "temperature#nvme" = {
                   hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:02.2/0000:0c:00.0/nvme/nvme0";
@@ -249,19 +296,12 @@
                 };
 
                 network = {
+                  interval = 2;
                   format-wifi = "${icon glyph.wifi} {essid}";
                   format-ethernet = "${icon glyph.ethernet} {ifname}";
                   format-disconnected = "${icon glyph.wifiOff} disconnected";
-                  tooltip-format = "{ifname}: {ipaddr}";
+                  tooltip-format = "{ifname}: {ipaddr}\n↓ {bandwidthDownBytes}/s  ↑ {bandwidthUpBytes}/s";
                   on-click = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
-                };
-
-                "network#rate" = {
-                  interval = 2;
-                  format-wifi = "${icon glyph.wifi} ↓ {bandwidthDownBytes} ↑ {bandwidthUpBytes}";
-                  format-ethernet = "${icon glyph.ethernet} ↓ {bandwidthDownBytes} ↑ {bandwidthUpBytes}";
-                  format-disconnected = "${icon glyph.wifiOff} —";
-                  tooltip-format = "{ifname} ({ipaddr})\n↓ {bandwidthDownBytes}/s  ↑ {bandwidthUpBytes}/s\ntotal ↓ {bandwidthDownBytes} ↑ {bandwidthUpBytes}";
                 };
 
                 "custom/voxtype" = {
@@ -386,12 +426,17 @@
             #idle_inhibitor,
             #tray,
             #clock,
-            #custom-notification {
+            #custom-notification,
+            #custom-temp-cpu,
+            #custom-temp-gpu,
+            #custom-fans {
               padding: 0 6px;
               color: ${c.base05};
             }
 
             #temperature.critical,
+            #custom-temp-cpu.critical,
+            #custom-temp-gpu.critical,
             #wireplumber.muted,
             #network.disconnected {
               color: ${c.base08};

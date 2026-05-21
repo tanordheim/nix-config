@@ -74,6 +74,7 @@
     "zswap.zpool=z3fold"
     "zswap.max_pool_percent=20"
   ];
+  boot.kernelModules = [ "nct6775" ];
 
   swapDevices = [
     {
