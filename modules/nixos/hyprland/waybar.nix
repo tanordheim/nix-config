@@ -40,30 +40,15 @@
         cpuHwmon = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon*";
         gpuHwmon = "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon/hwmon*";
 
-        fansScript = pkgs.writeShellScript "waybar-fans" ''
-          set -eu
-          nct=$(echo ${nctHwmon})
-          gpu=$(echo ${gpuHwmon})
-          f1=$(cat "$nct/fan1_input")
-          f2=$(cat "$nct/fan2_input")
-          f3=$(cat "$nct/fan3_input")
-          fg=$(cat "$gpu/fan1_input")
-          top=$(printf '%s\n' "$f1" "$f2" "$f3" "$fg" | sort -n | tail -1)
-          tt=$(printf 'GPU: %s rpm\nFan 1: %s rpm\nFan 2: %s rpm\nFan 3: %s rpm' "$fg" "$f1" "$f2" "$f3")
-          ${pkgs.jq}/bin/jq -nc --arg text "$top" --arg tt "$tt" '{text: $text, tooltip: $tt}'
-        '';
-
         tempCpuScript = pkgs.writeShellScript "waybar-temp-cpu" ''
           set -eu
           cpu=$(echo ${cpuHwmon})
           nct=$(echo ${nctHwmon})
           t=$(($(cat "$cpu/temp1_input") / 1000))
-          f1=$(cat "$nct/fan1_input")
           f2=$(cat "$nct/fan2_input")
-          f3=$(cat "$nct/fan3_input")
           cls=""
           [ "$t" -ge 85 ] && cls="critical"
-          tt=$(printf 'CPU: %s°C\nFan 1: %s rpm\nFan 2: %s rpm\nFan 3: %s rpm' "$t" "$f1" "$f2" "$f3")
+          tt=$(printf 'CPU: %s°C\nFan: %s rpm' "$t" "$f2")
           ${pkgs.jq}/bin/jq -nc --arg text "$t" --arg tt "$tt" --arg cls "$cls" '{text: $text, tooltip: $tt, class: $cls}'
         '';
 
@@ -76,6 +61,30 @@
           [ "$t" -ge 95 ] && cls="critical"
           tt=$(printf 'GPU: %s°C\nFan: %s rpm' "$t" "$fg")
           ${pkgs.jq}/bin/jq -nc --arg text "$t" --arg tt "$tt" --arg cls "$cls" '{text: $text, tooltip: $tt, class: $cls}'
+        '';
+
+        fanCpuScript = pkgs.writeShellScript "waybar-fan-cpu" ''
+          set -eu
+          nct=$(echo ${nctHwmon})
+          f2=$(cat "$nct/fan2_input")
+          ${pkgs.jq}/bin/jq -nc --arg text "$f2" --arg tt "CPU fan: $f2 rpm" '{text: $text, tooltip: $tt}'
+        '';
+
+        fanGpuScript = pkgs.writeShellScript "waybar-fan-gpu" ''
+          set -eu
+          gpu=$(echo ${gpuHwmon})
+          fg=$(cat "$gpu/fan1_input")
+          ${pkgs.jq}/bin/jq -nc --arg text "$fg" --arg tt "GPU fan: $fg rpm" '{text: $text, tooltip: $tt}'
+        '';
+
+        fanChassisScript = pkgs.writeShellScript "waybar-fan-chassis" ''
+          set -eu
+          nct=$(echo ${nctHwmon})
+          f1=$(cat "$nct/fan1_input")
+          f3=$(cat "$nct/fan3_input")
+          text=$(printf '%s / %s' "$f1" "$f3")
+          tt=$(printf 'Chassis 1: %s rpm\nChassis 2: %s rpm' "$f1" "$f3")
+          ${pkgs.jq}/bin/jq -nc --arg text "$text" --arg tt "$tt" '{text: $text, tooltip: $tt}'
         '';
 
         commonBar = {
@@ -175,14 +184,16 @@
                 "group/right-system" = {
                   orientation = "horizontal";
                   modules = [
-                    "custom/fans"
                     "cpu"
                     "memory"
                     "disk"
                     "custom/temp-cpu"
+                    "custom/fan-cpu"
                     "custom/temp-gpu"
+                    "custom/fan-gpu"
                     "temperature#nvme"
                     "temperature#dimm"
+                    "custom/fan-chassis"
                   ];
                 };
                 "group/right-conn" = {
@@ -259,11 +270,23 @@
                   interval = 5;
                   format = "${icon glyph.gpu} {}°";
                 };
-                "custom/fans" = {
-                  exec = "${fansScript}";
+                "custom/fan-cpu" = {
+                  exec = "${fanCpuScript}";
                   return-type = "json";
                   interval = 5;
-                  format = "${icon glyph.fan} {} rpm";
+                  format = "${icon glyph.fan} {}";
+                };
+                "custom/fan-gpu" = {
+                  exec = "${fanGpuScript}";
+                  return-type = "json";
+                  interval = 5;
+                  format = "${icon glyph.fan} {}";
+                };
+                "custom/fan-chassis" = {
+                  exec = "${fanChassisScript}";
+                  return-type = "json";
+                  interval = 5;
+                  format = "${icon glyph.fan} {}";
                 };
                 "temperature#nvme" = {
                   hwmon-path-abs = "/sys/devices/pci0000:00/0000:00:02.2/0000:0c:00.0/nvme/nvme0";
@@ -429,7 +452,9 @@
             #custom-notification,
             #custom-temp-cpu,
             #custom-temp-gpu,
-            #custom-fans {
+            #custom-fan-cpu,
+            #custom-fan-gpu,
+            #custom-fan-chassis {
               padding: 0 6px;
               color: ${c.base05};
             }
