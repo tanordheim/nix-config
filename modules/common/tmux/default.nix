@@ -52,6 +52,23 @@
           historyLimit = 50000;
           terminal = "tmux-256color";
 
+          plugins = with pkgs.tmuxPlugins; [
+            {
+              plugin = resurrect;
+              extraConfig = ''
+                set -g @resurrect-capture-pane-contents 'on'
+                set -g @resurrect-strategy-nvim 'session'
+              '';
+            }
+            {
+              plugin = continuum;
+              extraConfig = ''
+                set -g @continuum-restore 'on'
+                set -g @continuum-save-interval '15'
+              '';
+            }
+          ];
+
           extraConfig = ''
             unbind C-b
             set -g prefix C-Space
@@ -83,6 +100,7 @@
 
             set -as terminal-features ",*:RGB"
             set -as terminal-features ",*:usstyle"
+            set -as terminal-features ",*:clipboard"
 
             # claude code: shift+enter / extended keys passthrough
             set -g allow-passthrough on
