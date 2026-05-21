@@ -67,6 +67,13 @@
                 set -g @continuum-save-interval '15'
               '';
             }
+            {
+              plugin = tmux-thumbs;
+              extraConfig = ''
+                set -g @thumbs-command 'tmux set-buffer -w -- {} && tmux display-message "Copied {}"'
+                set -g @thumbs-key F
+              '';
+            }
           ];
 
           extraConfig = ''
