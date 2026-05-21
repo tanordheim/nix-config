@@ -63,27 +63,17 @@
           ${pkgs.jq}/bin/jq -nc --arg text "$t" --arg tt "$tt" --arg cls "$cls" '{text: $text, tooltip: $tt, class: $cls}'
         '';
 
-        fanCpuScript = pkgs.writeShellScript "waybar-fan-cpu" ''
+        fansScript = pkgs.writeShellScript "waybar-fans" ''
           set -eu
           nct=$(echo ${nctHwmon})
-          f2=$(cat "$nct/fan2_input")
-          ${pkgs.jq}/bin/jq -nc --arg text "$f2" --arg tt "CPU fan: $f2 rpm" '{text: $text, tooltip: $tt}'
-        '';
-
-        fanGpuScript = pkgs.writeShellScript "waybar-fan-gpu" ''
-          set -eu
           gpu=$(echo ${gpuHwmon})
+          fc=$(cat "$nct/fan2_input")
           fg=$(cat "$gpu/fan1_input")
-          ${pkgs.jq}/bin/jq -nc --arg text "$fg" --arg tt "GPU fan: $fg rpm" '{text: $text, tooltip: $tt}'
-        '';
-
-        fanChassisScript = pkgs.writeShellScript "waybar-fan-chassis" ''
-          set -eu
-          nct=$(echo ${nctHwmon})
           f1=$(cat "$nct/fan1_input")
           f3=$(cat "$nct/fan3_input")
-          text=$(printf '%s / %s' "$f1" "$f3")
-          tt=$(printf 'Chassis 1: %s rpm\nChassis 2: %s rpm' "$f1" "$f3")
+          fch=$f1; [ "$f3" -gt "$fch" ] && fch=$f3 || true
+          text=$(printf '%s / %s / %s' "$fc" "$fg" "$fch")
+          tt=$(printf 'CPU: %s rpm\nGPU: %s rpm\nChassis 1: %s rpm\nChassis 2: %s rpm' "$fc" "$fg" "$f1" "$f3")
           ${pkgs.jq}/bin/jq -nc --arg text "$text" --arg tt "$tt" '{text: $text, tooltip: $tt}'
         '';
 
@@ -188,12 +178,10 @@
                     "memory"
                     "disk"
                     "custom/temp-cpu"
-                    "custom/fan-cpu"
                     "custom/temp-gpu"
-                    "custom/fan-gpu"
                     "temperature#nvme"
                     "temperature#dimm"
-                    "custom/fan-chassis"
+                    "custom/fans"
                   ];
                 };
                 "group/right-conn" = {
@@ -270,20 +258,8 @@
                   interval = 5;
                   format = "${icon glyph.gpu} {}°";
                 };
-                "custom/fan-cpu" = {
-                  exec = "${fanCpuScript}";
-                  return-type = "json";
-                  interval = 5;
-                  format = "${icon glyph.fan} {}";
-                };
-                "custom/fan-gpu" = {
-                  exec = "${fanGpuScript}";
-                  return-type = "json";
-                  interval = 5;
-                  format = "${icon glyph.fan} {}";
-                };
-                "custom/fan-chassis" = {
-                  exec = "${fanChassisScript}";
+                "custom/fans" = {
+                  exec = "${fansScript}";
                   return-type = "json";
                   interval = 5;
                   format = "${icon glyph.fan} {}";
@@ -452,9 +428,7 @@
             #custom-notification,
             #custom-temp-cpu,
             #custom-temp-gpu,
-            #custom-fan-cpu,
-            #custom-fan-gpu,
-            #custom-fan-chassis {
+            #custom-fans {
               padding: 0 6px;
               color: ${c.base05};
             }
