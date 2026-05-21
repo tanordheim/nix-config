@@ -84,6 +84,8 @@
             bind R source-file ~/.config/tmux/tmux.conf \; display "tmux config reloaded"
             bind Tab last-window
 
+            bind y run-shell 'tmux save-buffer - | tmux load-buffer -w -' \; display "buffer → clipboard"
+
             unbind '"'
             unbind %
             bind s split-window -v -c "#{pane_current_path}"
