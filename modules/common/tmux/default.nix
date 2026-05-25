@@ -104,6 +104,9 @@
             bind J command-prompt -p "join pane from window:" "join-pane -h -s ':%%'"
             bind K command-prompt -p "join pane from window:" "join-pane -v -s ':%%'"
 
+            bind -r "<" swap-window -d -t -1
+            bind -r ">" swap-window -d -t +1
+
             bind -T copy-mode-vi v send -X begin-selection
             bind -T copy-mode-vi V send -X select-line
             bind -T copy-mode-vi C-v send -X rectangle-toggle
