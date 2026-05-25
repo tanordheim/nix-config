@@ -155,6 +155,7 @@
 
             set -g status-left  "#[bold]  #S  "
             set -g status-right "#[bold]%H:%M    #H  "
+            set -ag status-right "#(${pkgs.tmuxPlugins.continuum}/share/tmux-plugins/continuum/scripts/continuum_save.sh)"
 
             set -g window-status-format         " #I:#W "
             set -g window-status-current-format " #I:#W "
