@@ -33,7 +33,11 @@
     optimise.automatic = true;
   };
 
-  environment.systemPackages = [ pkgs.sysstat ];
+  environment.systemPackages = [
+    pkgs.sysstat
+    pkgs.ethtool
+    pkgs.lm_sensors
+  ];
 
   boot.kernel.sysctl."kernel.sysrq" = 1;
 
