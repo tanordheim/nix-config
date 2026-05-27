@@ -73,7 +73,8 @@
     "zswap.compressor=zstd"
     "zswap.zpool=z3fold"
     "zswap.max_pool_percent=20"
-    "pcie_aspm=off"
+    "pcie_aspm.policy=performance"
+    "pcie_port_pm=off"
   ];
   boot.kernelModules = [ "nct6775" ];
 
