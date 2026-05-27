@@ -6,7 +6,6 @@
       programs.ghostty.package = null;
       programs.ghostty.settings = {
         font-size = 15;
-        macos-option-as-alt = true;
         macos-titlebar-style = "hidden";
         window-padding-x = 8;
         window-padding-y = 8;
