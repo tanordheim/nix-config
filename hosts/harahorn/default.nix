@@ -75,6 +75,7 @@
     "zswap.max_pool_percent=20"
     "pcie_aspm.policy=performance"
     "pcie_port_pm=off"
+    "pcie_ports=native"
   ];
   boot.kernelModules = [ "nct6775" ];
 
