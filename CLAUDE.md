@@ -62,6 +62,10 @@ LUA=$(nix-store -qR "$TOP" | grep hyprhyprland.lua)
 
 Prints `config ok` on success, otherwise `<file>:<line>: <error>`. Fix and re-run until clean.
 
+## Changing Claude config
+
+Whenever the user wants to change the Claude Code config, always do that via `modules/common/claude`, not by editing the Claude Code settings directly. `~/.claude/settings.json` is immutable and can only be changed via the flake.
+
 ## Build Failures
 
 When debugging nix build errors, check upstream issue trackers before attempting local diagnosis:

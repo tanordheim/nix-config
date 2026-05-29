@@ -127,6 +127,8 @@ in
           env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
           sandbox.filesystem.allowWrite = [
             "~/.cache"
+          ];
+          sandbox.network.allowUnixSockets = [
             onePasswordAgentSocket
           ];
         };
@@ -146,7 +148,6 @@ in
             sandbox.filesystem = {
               allowWrite = instance.rootDirs ++ [
                 "~/.cache"
-                onePasswordAgentSocket
               ];
               denyRead = [ "~" ];
               allowRead = instance.rootDirs ++ [
