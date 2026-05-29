@@ -130,7 +130,8 @@ in
           ];
           sandbox.network.allowUnixSockets = [
             onePasswordAgentSocket
-          ];
+          ]
+          ++ lib.optional (!isDarwin) "/var/run/docker.sock";
         };
 
         mkClaudeFiles =
