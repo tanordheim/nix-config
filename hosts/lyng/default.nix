@@ -33,6 +33,7 @@
     ../../modules/common/telegram
     ../../modules/common/tmux
     ../../modules/common/whatsapp
+    ../../modules/darwin/wireguard
     ../../modules/darwin/wispr-flow
     ../../modules/common/xcode
 
