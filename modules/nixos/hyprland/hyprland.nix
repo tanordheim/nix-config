@@ -28,6 +28,8 @@
             { mouse = true; }
           ];
         };
+        modBind = suffix: bind (inline ''mainMod .. " + ${suffix}"'');
+        modBindMouse = suffix: bindMouse (inline ''mainMod .. " + ${suffix}"'');
       in
       {
         stylix.targets.hyprland.enable = false;
@@ -37,6 +39,10 @@
           package = pkgs.bleeding.hyprland;
           portalPackage = pkgs.bleeding.xdg-desktop-portal-hyprland;
           settings = {
+            mainMod = {
+              _var = "ALT";
+            };
+
             config = {
               general = {
                 gaps_in = 5;
@@ -344,11 +350,11 @@
             ];
 
             bind = [
-              (bind "ALT + return" ''hl.dsp.exec_cmd("${pkgs.ghostty}/bin/ghostty --working-directory=$HOME")'')
-              (bind "ALT + space" ''hl.dsp.exec_cmd("hyprlauncher")'')
-              (bind "ALT + SHIFT + W" "hl.dsp.window.close()")
-              (bind "ALT + CTRL + SUPER + BackSpace" "hl.dsp.exit()")
-              (bind "ALT + CTRL + C" ''hl.dsp.exec_cmd("hyprctl reload")'')
+              (modBind "return" ''hl.dsp.exec_cmd("${pkgs.ghostty}/bin/ghostty --working-directory=$HOME")'')
+              (modBind "space" ''hl.dsp.exec_cmd("hyprlauncher")'')
+              (modBind "SHIFT + W" "hl.dsp.window.close()")
+              (modBind "CTRL + SUPER + BackSpace" "hl.dsp.exit()")
+              (modBind "CTRL + C" ''hl.dsp.exec_cmd("hyprctl reload")'')
 
               (bind "SUPER + h" ''hl.dsp.focus({ direction = "left" })'')
               (bind "SUPER + j" ''hl.dsp.focus({ direction = "down" })'')
@@ -360,61 +366,61 @@
               (bind "CTRL + SUPER + k" ''hl.dsp.window.move({ direction = "up" })'')
               (bind "CTRL + SUPER + l" ''hl.dsp.window.move({ direction = "right" })'')
 
-              (bind "ALT + SHIFT + 1" "hl.dsp.focus({ workspace = 1 })")
-              (bind "ALT + SHIFT + 2" "hl.dsp.focus({ workspace = 2 })")
-              (bind "ALT + SHIFT + 3" "hl.dsp.focus({ workspace = 3 })")
-              (bind "ALT + SHIFT + 4" "hl.dsp.focus({ workspace = 4 })")
-              (bind "ALT + SHIFT + 5" "hl.dsp.focus({ workspace = 5 })")
-              (bind "ALT + SHIFT + 6" "hl.dsp.focus({ workspace = 6 })")
-              (bind "ALT + SHIFT + 7" "hl.dsp.focus({ workspace = 7 })")
-              (bind "ALT + SHIFT + 8" "hl.dsp.focus({ workspace = 8 })")
-              (bind "ALT + SHIFT + 9" "hl.dsp.focus({ workspace = 9 })")
-              (bind "ALT + SHIFT + 0" "hl.dsp.focus({ workspace = 10 })")
+              (modBind "SHIFT + 1" "hl.dsp.focus({ workspace = 1 })")
+              (modBind "SHIFT + 2" "hl.dsp.focus({ workspace = 2 })")
+              (modBind "SHIFT + 3" "hl.dsp.focus({ workspace = 3 })")
+              (modBind "SHIFT + 4" "hl.dsp.focus({ workspace = 4 })")
+              (modBind "SHIFT + 5" "hl.dsp.focus({ workspace = 5 })")
+              (modBind "SHIFT + 6" "hl.dsp.focus({ workspace = 6 })")
+              (modBind "SHIFT + 7" "hl.dsp.focus({ workspace = 7 })")
+              (modBind "SHIFT + 8" "hl.dsp.focus({ workspace = 8 })")
+              (modBind "SHIFT + 9" "hl.dsp.focus({ workspace = 9 })")
+              (modBind "SHIFT + 0" "hl.dsp.focus({ workspace = 10 })")
 
-              (bind "ALT + SHIFT + KP_End" "hl.dsp.focus({ workspace = 1 })")
-              (bind "ALT + SHIFT + KP_Down" "hl.dsp.focus({ workspace = 2 })")
-              (bind "ALT + SHIFT + KP_Next" "hl.dsp.focus({ workspace = 3 })")
-              (bind "ALT + SHIFT + KP_Left" "hl.dsp.focus({ workspace = 4 })")
-              (bind "ALT + SHIFT + KP_Begin" "hl.dsp.focus({ workspace = 5 })")
-              (bind "ALT + SHIFT + KP_Right" "hl.dsp.focus({ workspace = 6 })")
-              (bind "ALT + SHIFT + KP_Home" "hl.dsp.focus({ workspace = 7 })")
-              (bind "ALT + SHIFT + KP_Up" "hl.dsp.focus({ workspace = 8 })")
-              (bind "ALT + SHIFT + KP_Prior" "hl.dsp.focus({ workspace = 9 })")
-              (bind "ALT + SHIFT + KP_Insert" "hl.dsp.focus({ workspace = 10 })")
+              (modBind "SHIFT + KP_End" "hl.dsp.focus({ workspace = 1 })")
+              (modBind "SHIFT + KP_Down" "hl.dsp.focus({ workspace = 2 })")
+              (modBind "SHIFT + KP_Next" "hl.dsp.focus({ workspace = 3 })")
+              (modBind "SHIFT + KP_Left" "hl.dsp.focus({ workspace = 4 })")
+              (modBind "SHIFT + KP_Begin" "hl.dsp.focus({ workspace = 5 })")
+              (modBind "SHIFT + KP_Right" "hl.dsp.focus({ workspace = 6 })")
+              (modBind "SHIFT + KP_Home" "hl.dsp.focus({ workspace = 7 })")
+              (modBind "SHIFT + KP_Up" "hl.dsp.focus({ workspace = 8 })")
+              (modBind "SHIFT + KP_Prior" "hl.dsp.focus({ workspace = 9 })")
+              (modBind "SHIFT + KP_Insert" "hl.dsp.focus({ workspace = 10 })")
 
-              (bind "ALT + CTRL + 1" "hl.dsp.window.move({ workspace = 1 })")
-              (bind "ALT + CTRL + 2" "hl.dsp.window.move({ workspace = 2 })")
-              (bind "ALT + CTRL + 3" "hl.dsp.window.move({ workspace = 3 })")
-              (bind "ALT + CTRL + 4" "hl.dsp.window.move({ workspace = 4 })")
-              (bind "ALT + CTRL + 5" "hl.dsp.window.move({ workspace = 5 })")
-              (bind "ALT + CTRL + 6" "hl.dsp.window.move({ workspace = 6 })")
-              (bind "ALT + CTRL + 7" "hl.dsp.window.move({ workspace = 7 })")
-              (bind "ALT + CTRL + 8" "hl.dsp.window.move({ workspace = 8 })")
-              (bind "ALT + CTRL + 9" "hl.dsp.window.move({ workspace = 9 })")
-              (bind "ALT + CTRL + 0" "hl.dsp.window.move({ workspace = 10 })")
+              (modBind "CTRL + 1" "hl.dsp.window.move({ workspace = 1 })")
+              (modBind "CTRL + 2" "hl.dsp.window.move({ workspace = 2 })")
+              (modBind "CTRL + 3" "hl.dsp.window.move({ workspace = 3 })")
+              (modBind "CTRL + 4" "hl.dsp.window.move({ workspace = 4 })")
+              (modBind "CTRL + 5" "hl.dsp.window.move({ workspace = 5 })")
+              (modBind "CTRL + 6" "hl.dsp.window.move({ workspace = 6 })")
+              (modBind "CTRL + 7" "hl.dsp.window.move({ workspace = 7 })")
+              (modBind "CTRL + 8" "hl.dsp.window.move({ workspace = 8 })")
+              (modBind "CTRL + 9" "hl.dsp.window.move({ workspace = 9 })")
+              (modBind "CTRL + 0" "hl.dsp.window.move({ workspace = 10 })")
 
-              (bind "ALT + CTRL + KP_End" "hl.dsp.window.move({ workspace = 1 })")
-              (bind "ALT + CTRL + KP_Down" "hl.dsp.window.move({ workspace = 2 })")
-              (bind "ALT + CTRL + KP_Next" "hl.dsp.window.move({ workspace = 3 })")
-              (bind "ALT + CTRL + KP_Left" "hl.dsp.window.move({ workspace = 4 })")
-              (bind "ALT + CTRL + KP_Begin" "hl.dsp.window.move({ workspace = 5 })")
-              (bind "ALT + CTRL + KP_Right" "hl.dsp.window.move({ workspace = 6 })")
-              (bind "ALT + CTRL + KP_Home" "hl.dsp.window.move({ workspace = 7 })")
-              (bind "ALT + CTRL + KP_Up" "hl.dsp.window.move({ workspace = 8 })")
-              (bind "ALT + CTRL + KP_Prior" "hl.dsp.window.move({ workspace = 9 })")
-              (bind "ALT + CTRL + KP_Insert" "hl.dsp.window.move({ workspace = 10 })")
+              (modBind "CTRL + KP_End" "hl.dsp.window.move({ workspace = 1 })")
+              (modBind "CTRL + KP_Down" "hl.dsp.window.move({ workspace = 2 })")
+              (modBind "CTRL + KP_Next" "hl.dsp.window.move({ workspace = 3 })")
+              (modBind "CTRL + KP_Left" "hl.dsp.window.move({ workspace = 4 })")
+              (modBind "CTRL + KP_Begin" "hl.dsp.window.move({ workspace = 5 })")
+              (modBind "CTRL + KP_Right" "hl.dsp.window.move({ workspace = 6 })")
+              (modBind "CTRL + KP_Home" "hl.dsp.window.move({ workspace = 7 })")
+              (modBind "CTRL + KP_Up" "hl.dsp.window.move({ workspace = 8 })")
+              (modBind "CTRL + KP_Prior" "hl.dsp.window.move({ workspace = 9 })")
+              (modBind "CTRL + KP_Insert" "hl.dsp.window.move({ workspace = 10 })")
 
-              (bind "ALT + Page_Down" ''hl.dsp.focus({ workspace = "e-1" })'')
-              (bind "ALT + Page_Up" ''hl.dsp.focus({ workspace = "e+1" })'')
-              (bind "ALT + Home" ''hl.dsp.focus({ workspace = "previous" })'')
+              (modBind "Page_Down" ''hl.dsp.focus({ workspace = "e-1" })'')
+              (modBind "Page_Up" ''hl.dsp.focus({ workspace = "e+1" })'')
+              (modBind "Home" ''hl.dsp.focus({ workspace = "previous" })'')
 
-              (bind "ALT + SHIFT + S" ''hl.dsp.workspace.toggle_special("magic")'')
-              (bind "ALT + CTRL + S" ''hl.dsp.window.move({ workspace = "special:magic" })'')
+              (modBind "SHIFT + S" ''hl.dsp.workspace.toggle_special("magic")'')
+              (modBind "CTRL + S" ''hl.dsp.window.move({ workspace = "special:magic" })'')
 
-              (bind "CTRL + SHIFT + ALT + F" "hl.dsp.window.float()")
-              (bind "CTRL + SHIFT + ALT + T" ''hl.dsp.layout("togglesplit")'')
+              (modBind "CTRL + SHIFT + F" "hl.dsp.window.float()")
+              (modBind "CTRL + SHIFT + T" ''hl.dsp.layout("togglesplit")'')
 
-              (bind "CTRL + SHIFT + ALT + S" ''hl.dsp.exec_cmd("${pkgs.hyprshot}/bin/hyprshot -m region")'')
+              (modBind "CTRL + SHIFT + S" ''hl.dsp.exec_cmd("${pkgs.hyprshot}/bin/hyprshot -m region")'')
               (bind "CTRL + SHIFT + S" ''hl.dsp.exec_cmd("${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only")'')
 
               (bind "XF86AudioRaiseVolume" ''hl.dsp.exec_cmd("wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%+")'')
@@ -426,10 +432,10 @@
               (bind "XF86AudioNext" ''hl.dsp.exec_cmd("${pkgs.playerctl}/bin/playerctl next")'')
               (bind "XF86AudioPrev" ''hl.dsp.exec_cmd("${pkgs.playerctl}/bin/playerctl previous")'')
 
-              (bind "ALT + CTRL + L" ''hl.dsp.exec_cmd("hyprlock")'')
+              (modBind "CTRL + L" ''hl.dsp.exec_cmd("hyprlock")'')
 
-              (bindMouse "ALT + mouse:272" "hl.dsp.window.drag()")
-              (bindMouse "ALT + mouse:273" "hl.dsp.window.resize()")
+              (modBindMouse "mouse:272" "hl.dsp.window.drag()")
+              (modBindMouse "mouse:273" "hl.dsp.window.resize()")
             ];
           };
         };
