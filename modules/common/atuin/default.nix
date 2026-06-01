@@ -21,6 +21,7 @@
           show_help = false;
           enter_accept = false;
           filter_mode = "global";
+          secrets_filter = false;
         };
       };
     }
