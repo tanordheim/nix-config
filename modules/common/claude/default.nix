@@ -119,12 +119,12 @@ in
             "${config.home.homeDirectory}/.1password/agent.sock";
 
         baseSettings = {
-          effortLevel = "xhigh";
           agentPushNotifEnabled = true;
           theme = "dark";
           skipAutoPermissionPrompt = true;
           permissions.defaultMode = "auto";
           env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
+          env.CLAUDE_CODE_EFFORT_LEVEL = "xhigh";
           sandbox.filesystem.allowWrite = [
             "~/.cache"
           ];
