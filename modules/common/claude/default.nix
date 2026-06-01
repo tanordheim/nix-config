@@ -101,20 +101,31 @@ in
           "bindings" = [ ];
         };
 
-        skillNames = lib.attrNames (
-          lib.filterAttrs (_: type: type == "directory") (builtins.readDir skillsDir)
+        skillsFromDir =
+          dir:
+          lib.mapAttrs' (name: _: lib.nameValuePair name (dir + "/${name}")) (
+            lib.filterAttrs (_: type: type == "directory") (builtins.readDir dir)
+          );
+
+        allSkills = lib.foldl' (acc: dir: acc // skillsFromDir dir) { } (
+          [ skillsDir ] ++ config.claude.extraSkillDirs
         );
 
         mkSkillFiles =
           prefix:
-          lib.listToAttrs (
-            map (name: {
-              name = "${prefix}/skills/${name}";
-              value = {
-                source = skillsDir + "/${name}";
-              };
-            }) skillNames
+          lib.mapAttrs' (name: src: lib.nameValuePair "${prefix}/skills/${name}" { source = src; }) allSkills;
+
+        agentsFromDir =
+          dir:
+          lib.mapAttrs' (name: _: lib.nameValuePair name (dir + "/${name}")) (
+            lib.filterAttrs (_: type: type == "regular") (builtins.readDir dir)
           );
+
+        allAgents = lib.foldl' (acc: dir: acc // agentsFromDir dir) { } config.claude.extraAgentDirs;
+
+        mkAgentFiles =
+          prefix:
+          lib.mapAttrs' (name: src: lib.nameValuePair "${prefix}/agents/${name}" { source = src; }) allAgents;
 
         onePasswordAgentSocket =
           if isDarwin then
@@ -145,6 +156,7 @@ in
         mkClaudeFiles =
           prefix: settings:
           mkSkillFiles prefix
+          // mkAgentFiles prefix
           // {
             "${prefix}/CLAUDE.md".text = claudeMd;
             "${prefix}/keybindings.json".text = keybindings;
@@ -236,6 +248,16 @@ in
               };
             }
           );
+          default = [ ];
+        };
+
+        options.claude.extraSkillDirs = lib.mkOption {
+          type = lib.types.listOf lib.types.path;
+          default = [ ];
+        };
+
+        options.claude.extraAgentDirs = lib.mkOption {
+          type = lib.types.listOf lib.types.path;
           default = [ ];
         };
 
