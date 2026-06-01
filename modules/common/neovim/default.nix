@@ -51,6 +51,7 @@
           enable = true;
           defaultEditor = true;
           nixpkgs.source = inputs.nixpkgs;
+          version.enableNixpkgsReleaseCheck = false;
 
           globals.mapleader = " ";
           plugins.lz-n.enable = true;
