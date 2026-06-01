@@ -128,6 +128,9 @@ in
           sandbox.filesystem.allowWrite = [
             "~/.cache"
           ];
+          sandbox.network.allowedDomains = [
+            "lfs.github.com"
+          ];
           sandbox.network.allowUnixSockets = [
             onePasswordAgentSocket
           ]
