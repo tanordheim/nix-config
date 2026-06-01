@@ -43,7 +43,10 @@ in
     sandbox = {
       enabled = true;
       autoAllowBashIfSandboxed = true;
-      excludedCommands = [ "nix" ];
+      excludedCommands = [
+        "nix"
+        "git*"
+      ];
     };
   };
 
@@ -131,6 +134,7 @@ in
           sandbox.network.allowedDomains = [
             "lfs.github.com"
           ];
+          sandbox.network.enableWeakerNetworkIsolation = isDarwin;
           sandbox.network.allowUnixSockets = [
             onePasswordAgentSocket
           ]
