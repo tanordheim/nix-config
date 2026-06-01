@@ -10,6 +10,7 @@ let
 
     MODEL=$(echo "$input" | ${pkgs.jq}/bin/jq -r '.model.display_name')
     PCT=$(echo "$input" | ${pkgs.jq}/bin/jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
+    USED=$(echo "$input" | ${pkgs.jq}/bin/jq -r '((.context_window.total_input_tokens // 0) / 10 | round) / 100 | tostring | . + "k"')
     DIR=$(echo "$input" | ${pkgs.jq}/bin/jq -r '.workspace.current_dir')
     BASEDIR=$(basename "$DIR")
 
@@ -20,7 +21,7 @@ let
     [ "$FILLED" -gt 0 ] && printf -v FILL "%''${FILLED}s" && BAR="''${FILL// /▓}"
     [ "$EMPTY" -gt 0 ] && printf -v PAD "%''${EMPTY}s" && BAR="''${BAR}''${PAD// /░}"
 
-    CONTEXT="[$BAR] ''${PCT}%"
+    CONTEXT="[$BAR] ''${USED}"
 
     if [ -n "$DIR" ] && ${pkgs.git}/bin/git -C "$DIR" rev-parse --git-dir > /dev/null 2>&1; then
         BRANCH=$(${pkgs.git}/bin/git -C "$DIR" branch --show-current 2>/dev/null)
