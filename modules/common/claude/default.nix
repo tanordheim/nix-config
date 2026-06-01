@@ -144,6 +144,7 @@ in
             "~/.cache"
           ];
           sandbox.network.allowedDomains = [
+            "api.github.com"
             "lfs.github.com"
             "proxy.golang.org"
           ];
