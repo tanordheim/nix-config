@@ -145,6 +145,7 @@ in
           ];
           sandbox.network.allowedDomains = [
             "lfs.github.com"
+            "proxy.golang.org"
           ];
           sandbox.network.enableWeakerNetworkIsolation = isDarwin;
           sandbox.network.allowUnixSockets = [
