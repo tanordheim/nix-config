@@ -139,7 +139,7 @@ in
           skipAutoPermissionPrompt = true;
           permissions.defaultMode = "auto";
           env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
-          env.CLAUDE_CODE_EFFORT_LEVEL = "xhigh";
+          env.CLAUDE_CODE_EFFORT_LEVEL = "high";
           sandbox.filesystem.allowWrite = [
             "~/.cache"
           ];
