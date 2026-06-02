@@ -147,6 +147,7 @@ in
             "api.github.com"
             "lfs.github.com"
             "proxy.golang.org"
+            "registry.terraform.io"
           ];
           sandbox.network.enableWeakerNetworkIsolation = isDarwin;
           sandbox.network.allowUnixSockets = [
