@@ -21,7 +21,7 @@ let
     [ "$FILLED" -gt 0 ] && printf -v FILL "%''${FILLED}s" && BAR="''${FILL// /▓}"
     [ "$EMPTY" -gt 0 ] && printf -v PAD "%''${EMPTY}s" && BAR="''${BAR}''${PAD// /░}"
 
-    CONTEXT="[$BAR] ''${USED}"
+    CONTEXT="[$BAR] ''${PCT}% (''${USED})"
 
     if [ -n "$DIR" ] && ${pkgs.git}/bin/git -C "$DIR" rev-parse --git-dir > /dev/null 2>&1; then
         BRANCH=$(${pkgs.git}/bin/git -C "$DIR" branch --show-current 2>/dev/null)
@@ -153,7 +153,15 @@ in
           sandbox.network.allowUnixSockets = [
             onePasswordAgentSocket
           ]
-          ++ lib.optional (!isDarwin) "/var/run/docker.sock";
+          ++ (
+            if isDarwin then
+              [
+                "${config.home.homeDirectory}/.docker/run/docker.sock"
+                "/var/run/docker.sock"
+              ]
+            else
+              [ "/var/run/docker.sock" ]
+          );
         };
 
         mkClaudeFiles =
