@@ -43,7 +43,6 @@
 
   home-manager.sharedModules = [
     {
-      gtk.gtk4.theme = null;
       stylix.enableReleaseChecks = false;
     }
   ];

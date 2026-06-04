@@ -9,6 +9,8 @@
 
   stylix.fonts.sizes.terminal = lib.mkDefault 11;
 
+  stylix.targets.kmscon.enable = false;
+
   stylix.cursor = {
     size = 24;
     package = pkgs.catppuccin-cursors.mochaDark;
