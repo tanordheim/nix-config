@@ -133,6 +133,8 @@ in
           else
             "${config.home.homeDirectory}/.1password/agent.sock";
 
+        extraCacheDirs = lib.optionals isDarwin [ "~/Library/Caches" ];
+
         baseSettings = {
           agentPushNotifEnabled = true;
           theme = "dark";
@@ -142,7 +144,8 @@ in
           env.CLAUDE_CODE_EFFORT_LEVEL = "high";
           sandbox.filesystem.allowWrite = [
             "~/.cache"
-          ];
+          ]
+          ++ extraCacheDirs;
           sandbox.network.allowedDomains = [
             "api.github.com"
             "lfs.github.com"
@@ -178,20 +181,26 @@ in
           instance:
           lib.recursiveUpdate baseSettings {
             sandbox.filesystem = {
-              allowWrite = instance.rootDirs ++ [
-                "~/.cache"
-              ];
+              allowWrite =
+                instance.rootDirs
+                ++ [
+                  "~/.cache"
+                ]
+                ++ extraCacheDirs;
               denyRead = [ "~" ];
-              allowRead = instance.rootDirs ++ [
-                onePasswordAgentSocket
-                "~/.claude-${instance.name}"
-                "~/.cache"
-                "~/.config"
-                "~/.gitconfig"
-                "~/.local"
-                "~/.ssh/config"
-                "~/.ssh/known_hosts"
-              ];
+              allowRead =
+                instance.rootDirs
+                ++ [
+                  onePasswordAgentSocket
+                  "~/.claude-${instance.name}"
+                  "~/.cache"
+                  "~/.config"
+                  "~/.gitconfig"
+                  "~/.local"
+                  "~/.ssh/config"
+                  "~/.ssh/known_hosts"
+                ]
+                ++ extraCacheDirs;
             };
           };
 
