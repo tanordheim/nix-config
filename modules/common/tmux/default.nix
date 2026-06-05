@@ -119,8 +119,6 @@
             setw -g pane-base-index 1
             setw -g aggressive-resize on
 
-            set -g window-style        "fg=${c.base04},bg=${c.base01}"
-            set -g window-active-style "fg=${c.base05},bg=${c.base00}"
             set -g pane-border-lines heavy
             set -g pane-border-style "fg=${c.base02}"
 
