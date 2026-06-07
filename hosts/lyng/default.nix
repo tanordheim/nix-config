@@ -43,6 +43,7 @@
     ../../modules/common/stern
 
     ../../modules/common/aws
+    ../../modules/common/azure
     ../../modules/common/gcp
     ../../modules/common/kubernetes
 
