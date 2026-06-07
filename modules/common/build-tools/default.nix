@@ -14,6 +14,8 @@
           gnupatch
           grpcurl
           just
+          shellcheck
+          shfmt
           sops
           unixtools.watch
         ];
