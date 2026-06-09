@@ -298,8 +298,7 @@
               {
                 name = "whatsapp-ws7";
                 match = {
-                  class = "^(electron)$";
-                  title = "^(WhatsApp Electron .*)$";
+                  class = "^(whatsapp-electron)$";
                 };
                 workspace = "7 silent";
               }
