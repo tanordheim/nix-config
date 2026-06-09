@@ -28,7 +28,7 @@
       in
       {
         home = {
-          packages = [ pkgs.bleeding.jetbrains.pycharm ];
+          packages = [ pkgs.jetbrains.pycharm ];
           file = {
             "${vmOptionsFile}".text = vmOptionsContent;
           };

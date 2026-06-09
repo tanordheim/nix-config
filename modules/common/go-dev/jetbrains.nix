@@ -28,7 +28,7 @@
       in
       {
         home = {
-          packages = [ pkgs.bleeding.jetbrains.goland ];
+          packages = [ pkgs.jetbrains.goland ];
 
           file = {
             "${vmOptionsFile}".text = vmOptionsContent;

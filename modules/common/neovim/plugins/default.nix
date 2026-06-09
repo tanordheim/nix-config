@@ -12,7 +12,7 @@
       nui.enable = true;
       blink-pairs = {
         enable = true;
-        package = pkgs.bleeding.vimPlugins.blink-pairs;
+        package = pkgs.vimPlugins.blink-pairs;
       };
     };
 

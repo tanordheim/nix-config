@@ -203,7 +203,7 @@ in
             };
           };
 
-        unwrappedClaude = pkgs.bleeding.claude-code;
+        unwrappedClaude = pkgs.claude-code;
 
         mkInstanceAwareClaudeWrapper =
           instances:

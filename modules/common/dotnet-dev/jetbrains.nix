@@ -28,7 +28,7 @@
       in
       {
         home = {
-          packages = [ pkgs.bleeding.jetbrains.rider ];
+          packages = [ pkgs.jetbrains.rider ];
           file = {
             "${vmOptionsFile}".text = vmOptionsContent;
           };
