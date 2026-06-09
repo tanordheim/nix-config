@@ -36,6 +36,7 @@
 
         wayland.windowManager.hyprland = {
           enable = true;
+          systemd.enable = false;
           package = pkgs.bleeding.hyprland;
           portalPackage = pkgs.bleeding.xdg-desktop-portal-hyprland;
           settings = {
@@ -276,7 +277,7 @@
               {
                 name = "slack-ws6";
                 match = {
-                  class = "^(Slack)$";
+                  class = "^(slack)$";
                 };
                 workspace = "6 silent";
               }

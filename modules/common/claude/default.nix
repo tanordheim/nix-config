@@ -93,6 +93,7 @@ in
           ## Questions
 
           - When asked to ask me questions, ask one at a time. Do not move on until aligned on the current one.
+          - Never use the AskUserQuestion tool when asking question, unless explicitly told to.
         '';
 
         keybindings = builtins.toJSON {
@@ -153,18 +154,7 @@ in
             "registry.terraform.io"
           ];
           sandbox.network.enableWeakerNetworkIsolation = isDarwin;
-          sandbox.network.allowUnixSockets = [
-            onePasswordAgentSocket
-          ]
-          ++ (
-            if isDarwin then
-              [
-                "${config.home.homeDirectory}/.docker/run/docker.sock"
-                "/var/run/docker.sock"
-              ]
-            else
-              [ "/var/run/docker.sock" ]
-          );
+          sandbox.network.allowAllUnixSockets = true;
         };
 
         mkClaudeFiles =
