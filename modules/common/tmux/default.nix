@@ -30,9 +30,8 @@
           [ -n "$name" ] || name="$($tmux display -p '#S' 2>/dev/null)" || exit 0
           [ -n "$name" ] || exit 0
           color="$(${sessionColor} "$name")"
+          $tmux set -t "$name" @scolor                      "$color"
           $tmux set -t "$name" status-style                 "fg=${c.base00},bg=$color"
-          $tmux set -t "$name" window-status-style          "fg=${c.base00},bg=$color"
-          $tmux set -t "$name" window-status-current-style  "fg=${c.base05},bg=${c.base00},bold"
           $tmux set -t "$name" message-style                "fg=${c.base00},bg=$color,bold"
           $tmux set -g pane-active-border-style             "fg=$color"
         '';
@@ -167,8 +166,10 @@
             set -g status-right "#[bold]%H:%M    #H  "
             set -ag status-right "#(${pkgs.tmuxPlugins.continuum}/share/tmux-plugins/continuum/scripts/continuum_save.sh)"
 
-            set -g window-status-format         " #I:#W "
-            set -g window-status-current-format " #I:#W "
+            set -g window-status-style default
+            set -g window-status-current-style default
+            set -g window-status-format         "#[fg=${c.base00},bg=#{?@scolor,#{@scolor},${c.base02}}] #I:#W "
+            set -g window-status-current-format "#[fg=${c.base05},bg=${c.base00},bold] #I:#W "
             set -g window-status-separator ""
 
             set-hook -g session-created  'run-shell -b "${applyStyle} #{hook_session_name}"'
