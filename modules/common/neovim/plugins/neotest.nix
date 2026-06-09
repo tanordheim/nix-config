@@ -14,10 +14,6 @@
           event = "DeferredUIEnter";
         };
       };
-      package = pkgs.vimPlugins.neotest.overrideAttrs {
-        # tests broken, see https://github.com/nvim-neotest/neotest/issues/530
-        doCheck = false;
-      };
     };
 
     keymaps = [
