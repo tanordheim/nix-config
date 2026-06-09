@@ -10,10 +10,6 @@
         system = prev.stdenv.hostPlatform.system;
         config.allowUnfree = true;
       };
-      custom = import inputs.nixpkgs-custom {
-        system = prev.stdenv.hostPlatform.system;
-        config.allowUnfree = true;
-      };
     })
   ]
   ++ (import ../../overlays inputs);

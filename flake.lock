@@ -373,22 +373,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-custom": {
-      "locked": {
-        "lastModified": 1751478658,
-        "narHash": "sha256-LuOkaFhSqoiW7UJyoebBavsSKIjXru88WvWv7qc/fd8=",
-        "owner": "tanordheim",
-        "repo": "nixpkgs",
-        "rev": "806c5c1adad8eb4f05bdf6a9d7125d2290b36758",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tanordheim",
-        "ref": "custom-patches",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1767313136,
@@ -401,22 +385,6 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixos-25.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-swift": {
-      "locked": {
-        "lastModified": 1769105483,
-        "narHash": "sha256-cC4W6KDq3942hk4zyoDWYOvb/9lvlsPZbrdlTj9hsxw=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "70801e06d9730c4f1704fbd3bbf5b8e11c03a2a7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "70801e06d9730c4f1704fbd3bbf5b8e11c03a2a7",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -514,9 +482,7 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-custom": "nixpkgs-custom",
         "nixpkgs-stable": "nixpkgs-stable",
-        "nixpkgs-swift": "nixpkgs-swift",
         "nixpkgs-unstable-small": "nixpkgs-unstable-small",
         "nixvim": "nixvim",
         "sidefx-labs": "sidefx-labs",
