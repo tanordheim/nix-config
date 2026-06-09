@@ -1,11 +1,7 @@
 {
   home-manager.sharedModules = [
-    (
-      { pkgs, ... }:
-      {
-        programs.awscli.enable = true;
-        home.packages = [ pkgs.ssm-session-manager-plugin ];
-      }
-    )
+    {
+      programs.awscli.enable = true;
+    }
   ];
 }
