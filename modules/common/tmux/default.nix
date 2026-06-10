@@ -80,6 +80,7 @@
               extraConfig = ''
                 set -g @thumbs-command 'tmux set-buffer -w -- {} && tmux display-message "Copied {}"'
                 set -g @thumbs-key F
+                set -g @thumbs-regexp-1 '[a-z0-9](?:[-a-z0-9]*[a-z0-9])?-[a-z0-9]{8,10}-[a-z0-9]{5}'
               '';
             }
           ];
