@@ -5,7 +5,7 @@
       {
         services.hypridle = {
           enable = true;
-          package = pkgs.bleeding.hypridle;
+          package = pkgs.hypridle;
           settings = {
             general = {
               lock_cmd = "pidof hyprlock || hyprlock";

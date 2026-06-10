@@ -37,8 +37,8 @@
         wayland.windowManager.hyprland = {
           enable = true;
           systemd.enable = false;
-          package = pkgs.bleeding.hyprland;
-          portalPackage = pkgs.bleeding.xdg-desktop-portal-hyprland;
+          package = pkgs.hyprland;
+          portalPackage = pkgs.xdg-desktop-portal-hyprland;
           settings = {
             mainMod = {
               _var = "ALT";

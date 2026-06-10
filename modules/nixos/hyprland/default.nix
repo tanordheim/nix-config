@@ -12,8 +12,8 @@
 
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
-  programs.hyprland.package = pkgs.bleeding.hyprland;
-  programs.hyprland.portalPackage = pkgs.bleeding.xdg-desktop-portal-hyprland;
+  programs.hyprland.package = pkgs.hyprland;
+  programs.hyprland.portalPackage = pkgs.xdg-desktop-portal-hyprland;
   programs.dconf.enable = true;
 
   services.greetd = {
@@ -44,9 +44,9 @@
       {
         home.packages = with pkgs; [
           brightnessctl
-          bleeding.hyprland-qtutils
-          bleeding.hyprlauncher
-          bleeding.hyprpolkitagent
+          hyprland-qtutils
+          hyprlauncher
+          hyprpolkitagent
           libnotify
           networkmanagerapplet
           pavucontrol
@@ -59,7 +59,7 @@
           enable = true;
           extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
           configPackages = with pkgs; [
-            bleeding.xdg-desktop-portal-hyprland
+            xdg-desktop-portal-hyprland
             xdg-desktop-portal-gtk
           ];
           xdgOpenUsePortal = true;
@@ -73,7 +73,7 @@
             ConditionEnvironment = "WAYLAND_DISPLAY";
           };
           Service = {
-            ExecStart = "${pkgs.bleeding.hyprpolkitagent}/libexec/hyprpolkitagent";
+            ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
             Slice = "session.slice";
             Restart = "on-failure";
           };

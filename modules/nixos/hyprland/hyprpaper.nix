@@ -5,7 +5,7 @@
       {
         services.hyprpaper = {
           enable = true;
-          package = pkgs.bleeding.hyprpaper;
+          package = pkgs.hyprpaper;
         };
       }
     )

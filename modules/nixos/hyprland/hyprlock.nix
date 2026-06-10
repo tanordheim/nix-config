@@ -5,7 +5,7 @@
       {
         programs.hyprlock = {
           enable = true;
-          package = pkgs.bleeding.hyprlock;
+          package = pkgs.hyprlock;
           settings = {
             general.hide_cursor = true;
             background = {
