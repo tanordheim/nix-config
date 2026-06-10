@@ -128,6 +128,16 @@ in
           prefix:
           lib.mapAttrs' (name: src: lib.nameValuePair "${prefix}/agents/${name}" { source = src; }) allAgents;
 
+        worktreeCreateScript = pkgs.writeShellApplication {
+          name = "claude-worktree-create";
+          runtimeInputs = [
+            pkgs.git
+            pkgs.jq
+            pkgs.gnugrep
+          ];
+          text = builtins.readFile ./worktree-create.sh;
+        };
+
         onePasswordAgentSocket =
           if isDarwin then
             "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
@@ -155,6 +165,16 @@ in
           ];
           sandbox.network.enableWeakerNetworkIsolation = isDarwin;
           sandbox.network.allowAllUnixSockets = true;
+          hooks.WorktreeCreate = [
+            {
+              hooks = [
+                {
+                  type = "command";
+                  command = "${worktreeCreateScript}/bin/claude-worktree-create";
+                }
+              ];
+            }
+          ];
         };
 
         mkClaudeFiles =
