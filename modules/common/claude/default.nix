@@ -214,12 +214,17 @@ in
             };
           };
 
+        instanceMcpServers = instance: config.claude.mcpServers // instance.mcpServers;
+
         mkInstanceFiles =
           instance:
+          let
+            mcpServers = instanceMcpServers instance;
+          in
           mkClaudeFiles ".claude-${instance.name}" (mkInstanceSettings instance)
-          // lib.optionalAttrs (instance.mcpServers != { }) {
+          // lib.optionalAttrs (mcpServers != { }) {
             ".claude-${instance.name}/mcp.json".text = builtins.toJSON {
-              mcpServers = instance.mcpServers;
+              inherit mcpServers;
             };
           };
 
@@ -248,9 +253,10 @@ in
             mcp_args=()
             if [ -n "$best_match" ]; then
               export CLAUDE_CONFIG_DIR="$HOME/.claude-$best_match"
-              if [ -f "$CLAUDE_CONFIG_DIR/mcp.json" ]; then
-                mcp_args=(--mcp-config "$CLAUDE_CONFIG_DIR/mcp.json")
-              fi
+            fi
+            config_dir="''${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
+            if [ -f "$config_dir/mcp.json" ]; then
+              mcp_args=(--mcp-config "$config_dir/mcp.json")
             fi
             exec ${unwrappedClaude}/bin/claude ''${mcp_args[@]+"''${mcp_args[@]}"} "$@"
           '';
@@ -259,7 +265,7 @@ in
           instance:
           let
             mcpArgs = lib.optionalString (
-              instance.mcpServers != { }
+              instanceMcpServers instance != { }
             ) ''--mcp-config "$HOME/.claude-${instance.name}/mcp.json" '';
           in
           pkgs.writeShellScriptBin "claude-${instance.name}" ''
@@ -291,6 +297,11 @@ in
           default = [ ];
         };
 
+        options.claude.mcpServers = lib.mkOption {
+          type = lib.types.attrsOf lib.types.attrs;
+          default = { };
+        };
+
         config = {
           home.packages = [
             (mkInstanceAwareClaudeWrapper config.claude.instances)
@@ -298,7 +309,11 @@ in
           ++ map mkInstancePackage config.claude.instances;
 
           home.file = lib.mkMerge (
-            [ (mkClaudeFiles ".claude" baseSettings) ] ++ map mkInstanceFiles config.claude.instances
+            [ (mkClaudeFiles ".claude" baseSettings) ]
+            ++ lib.optional (config.claude.mcpServers != { }) {
+              ".claude/mcp.json".text = builtins.toJSON { mcpServers = config.claude.mcpServers; };
+            }
+            ++ map mkInstanceFiles config.claude.instances
           );
         };
       }
