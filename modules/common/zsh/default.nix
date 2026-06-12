@@ -12,6 +12,8 @@
           syntaxHighlighting.enable = true;
 
           initContent = ''
+            export PATH="$PATH:$HOME/.local/bin"
+
             # Add a "c" function with an autocomplete definition to allow easily
             # changing working directory into a source code directory.
             c() { cd ${codeDirectory}/$1; }
