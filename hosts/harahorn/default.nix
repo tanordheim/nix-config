@@ -26,6 +26,7 @@
     ../../modules/common/jetbrains
     ../../modules/common/kitty
     ../../modules/common/linear
+    ../../modules/common/maestro
     ../../modules/common/neovim
     ../../modules/common/obsidian
     ../../modules/common/plex-client

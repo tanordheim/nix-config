@@ -19,6 +19,7 @@
     ../../modules/common/ghostty
     ../../modules/common/linear
     ../../modules/common/logitech
+    ../../modules/common/maestro
     ../../modules/common/obsidian
     ../../modules/common/pdfexpert
     ../../modules/common/pocketcasts
