@@ -249,6 +249,11 @@ in
 
         unwrappedClaude = pkgs.bleeding.claude-code;
 
+        pluginDirArgs = lib.concatMapStrings (dir: ''
+          d=$(echo ${lib.escapeShellArg dir} | sed 's|^~|'"$HOME"'|')
+          [ -d "$d" ] && plugin_args+=(--plugin-dir "$d")
+        '') config.claude.pluginDirs;
+
         mkInstanceAwareClaudeWrapper =
           instances:
           let
@@ -270,6 +275,8 @@ in
             best_len=0
             ${matchBlock}
             mcp_args=()
+            plugin_args=()
+            ${pluginDirArgs}
             if [ -n "$best_match" ]; then
               export CLAUDE_CONFIG_DIR="$HOME/.claude-$best_match"
             fi
@@ -277,7 +284,7 @@ in
             if [ -f "$config_dir/mcp.json" ]; then
               mcp_args=(--mcp-config "$config_dir/mcp.json")
             fi
-            exec ${unwrappedClaude}/bin/claude ''${mcp_args[@]+"''${mcp_args[@]}"} "$@"
+            exec ${unwrappedClaude}/bin/claude ''${mcp_args[@]+"''${mcp_args[@]}"} ''${plugin_args[@]+"''${plugin_args[@]}"} "$@"
           '';
 
         mkInstancePackage =
@@ -288,7 +295,9 @@ in
             ) ''--mcp-config "$HOME/.claude-${instance.name}/mcp.json" '';
           in
           pkgs.writeShellScriptBin "claude-${instance.name}" ''
-            exec env CLAUDE_CONFIG_DIR="$HOME/.claude-${instance.name}" ${unwrappedClaude}/bin/claude ${mcpArgs}"$@"
+            plugin_args=()
+            ${pluginDirArgs}
+            exec env CLAUDE_CONFIG_DIR="$HOME/.claude-${instance.name}" ${unwrappedClaude}/bin/claude ${mcpArgs}''${plugin_args[@]+"''${plugin_args[@]}"} "$@"
           '';
       in
       {
@@ -308,6 +317,11 @@ in
 
         options.claude.extraSkillDirs = lib.mkOption {
           type = lib.types.listOf lib.types.path;
+          default = [ ];
+        };
+
+        options.claude.pluginDirs = lib.mkOption {
+          type = lib.types.listOf lib.types.str;
           default = [ ];
         };
 
