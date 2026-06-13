@@ -65,6 +65,11 @@ in
         claudeMd = ''
           In all interactions and commit messages, be extremely concise and sacrifice grammar for the sake of concision.
 
+          ## Discussion-first
+
+          - Default to discussing, not doing: answer and propose, don't edit files or run mutating commands until I say go (e.g. "go ahead", "do it") or did earlier in the thread.
+          - Read-only investigation (read, search, eval/build checks) needs no approval. Auto mode isn't a license to start unprompted.
+
           ## PR Comments
 
           <pr-comment-rule>
