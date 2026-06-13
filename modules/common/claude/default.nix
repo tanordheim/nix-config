@@ -65,6 +65,8 @@ in
         claudeMd = ''
           In all interactions and commit messages, be extremely concise and sacrifice grammar for the sake of concision.
 
+          Your human partner is Trond. When a skill or instruction refers to "Trond," that's me — the person in this session.
+
           ## Discussion-first
 
           - Default to discussing, not doing: answer and propose, don't edit files or run mutating commands until I say go (e.g. "go ahead", "do it") or did earlier in the thread.
