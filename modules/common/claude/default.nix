@@ -138,6 +138,15 @@ in
           text = builtins.readFile ./worktree-create.sh;
         };
 
+        sessionEndCleanupScript = pkgs.writeShellApplication {
+          name = "claude-session-end-cleanup";
+          runtimeInputs = [
+            pkgs.jq
+            pkgs.coreutils
+          ];
+          text = builtins.readFile ./session-end-cleanup.sh;
+        };
+
         onePasswordAgentSocket =
           if isDarwin then
             "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
@@ -171,6 +180,16 @@ in
                 {
                   type = "command";
                   command = "${worktreeCreateScript}/bin/claude-worktree-create";
+                }
+              ];
+            }
+          ];
+          hooks.SessionEnd = [
+            {
+              hooks = [
+                {
+                  type = "command";
+                  command = "${sessionEndCleanupScript}/bin/claude-session-end-cleanup";
                 }
               ];
             }
