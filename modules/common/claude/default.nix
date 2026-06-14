@@ -110,7 +110,7 @@ in
 
           ## Git
 
-          - When creating branches, prefix them with `trond/` to indicate they came from me.
+          - Name branches with a conventional-commit-style prefix matching the change: `feat/`, `fix/`, `chore/`, `docs/`, `refactor/`, etc.
 
           ## Plans
 
