@@ -43,6 +43,21 @@
             [ -n "$s" ] && ${applyStyle} "$s"
           done
         '';
+
+        balanceLayout = pkgs.writeShellScript "tmux-balance-layout" ''
+          set -u
+          tmux=${pkgs.tmux}/bin/tmux
+          active="$($tmux display -p '#{pane_id}')"
+          last=""
+          while cur="$($tmux display -p '#{window_layout}')"; [ "$cur" != "$last" ]; do
+            last="$cur"
+            for p in $($tmux list-panes -F '#{pane_id}'); do
+              $tmux select-pane -t "$p"
+              $tmux select-layout -E
+            done
+          done
+          $tmux select-pane -t "$active"
+        '';
       in
       {
         home.packages = [
@@ -102,6 +117,8 @@
             bind s split-window -v -c "#{pane_current_path}"
             bind v split-window -h -c "#{pane_current_path}"
             bind c new-window -c "#{pane_current_path}"
+
+            bind + run-shell '${balanceLayout}'
 
             bind J command-prompt -p "join pane from window:" "join-pane -h -s ':%%'"
             bind K command-prompt -p "join pane from window:" "join-pane -v -s ':%%'"
