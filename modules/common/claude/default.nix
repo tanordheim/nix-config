@@ -27,9 +27,16 @@ let
 
     if [ -n "$DIR" ] && ${pkgs.git}/bin/git -C "$DIR" rev-parse --git-dir > /dev/null 2>&1; then
         BRANCH=$(${pkgs.git}/bin/git -C "$DIR" branch --show-current 2>/dev/null)
-        printf "[%s] |  %s |  %s | 󱙺 %s" "$MODEL" "$BASEDIR" "$BRANCH" "$CONTEXT"
+        GIT_DIR=$(${pkgs.git}/bin/git -C "$DIR" rev-parse --git-dir 2>/dev/null)
+        case "$GIT_DIR" in
+            */worktrees/*)
+                WT=$(basename "$GIT_DIR")
+                printf "[%s] | 󰉋 %s | 󰘬 %s (󰙅 %s) | 󱙺 %s" "$MODEL" "$BASEDIR" "$BRANCH" "$WT" "$CONTEXT" ;;
+            *)
+                printf "[%s] | 󰉋 %s | 󰘬 %s | 󱙺 %s" "$MODEL" "$BASEDIR" "$BRANCH" "$CONTEXT" ;;
+        esac
     else
-        printf "[%s] |  %s | 󱙺 %s" "$MODEL" "$BASEDIR" "$CONTEXT"
+        printf "[%s] | 󰉋 %s | 󱙺 %s" "$MODEL" "$BASEDIR" "$CONTEXT"
     fi
 
     FIVE_PCT=$(echo "$input" | ${pkgs.jq}/bin/jq -r '.rate_limits.five_hour.used_percentage // empty' | cut -d. -f1)
