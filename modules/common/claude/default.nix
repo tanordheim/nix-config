@@ -20,20 +20,23 @@ let
     MODEL=$(echo "$input" | ${pkgs.jq}/bin/jq -r '.model.display_name')
     PCT=$(echo "$input" | ${pkgs.jq}/bin/jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
     USED=$(echo "$input" | ${pkgs.jq}/bin/jq -r '((.context_window.total_input_tokens // 0) / 10 | round) / 100 | tostring | . + "k"')
-    DIR=$(echo "$input" | ${pkgs.jq}/bin/jq -r '.workspace.current_dir')
-    BASEDIR=$(basename "$DIR")
+    DIR=$(echo "$input" | ${pkgs.jq}/bin/jq -r '.workspace.current_dir // empty')
+    BASEDIR=''${DIR:+$(basename "$DIR")}
+    BASEDIR=''${BASEDIR:-?}
 
     CONTEXT="[$(mkbar "$PCT")] ''${PCT}% (''${USED})"
 
     if [ -n "$DIR" ] && ${pkgs.git}/bin/git -C "$DIR" rev-parse --git-dir > /dev/null 2>&1; then
         BRANCH=$(${pkgs.git}/bin/git -C "$DIR" branch --show-current 2>/dev/null)
         GIT_DIR=$(${pkgs.git}/bin/git -C "$DIR" rev-parse --git-dir 2>/dev/null)
+        COMMON_DIR=$(${pkgs.git}/bin/git -C "$DIR" rev-parse --path-format=absolute --git-common-dir 2>/dev/null)
+        REPO=$(basename "$(dirname "$COMMON_DIR")")
         case "$GIT_DIR" in
             */worktrees/*)
                 WT=$(basename "$GIT_DIR")
-                printf "[%s] | 󰉋 %s | 󰘬 %s (󰙅 %s) | 󱙺 %s" "$MODEL" "$BASEDIR" "$BRANCH" "$WT" "$CONTEXT" ;;
+                printf "[%s] | 󰉋 %s | 󰘬 %s (󰙅 %s) | 󱙺 %s" "$MODEL" "$REPO" "$BRANCH" "$WT" "$CONTEXT" ;;
             *)
-                printf "[%s] | 󰉋 %s | 󰘬 %s | 󱙺 %s" "$MODEL" "$BASEDIR" "$BRANCH" "$CONTEXT" ;;
+                printf "[%s] | 󰉋 %s | 󰘬 %s | 󱙺 %s" "$MODEL" "$REPO" "$BRANCH" "$CONTEXT" ;;
         esac
     else
         printf "[%s] | 󰉋 %s | 󱙺 %s" "$MODEL" "$BASEDIR" "$CONTEXT"
