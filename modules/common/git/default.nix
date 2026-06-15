@@ -5,6 +5,7 @@
       {
         home.packages = with pkgs; [
           gh
+          gh-poi
           git-filter-repo
           gnupg
           lazygit
