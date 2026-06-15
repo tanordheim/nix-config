@@ -18,6 +18,7 @@
           // lib.optionalAttrs pkgs.stdenv.isDarwin {
             window_padding_width = 8;
             hide_window_decorations = "titlebar-only";
+            text_composition_strategy = "1.0 0";
           };
 
           keybindings = {
