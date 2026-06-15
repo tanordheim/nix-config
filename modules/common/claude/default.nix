@@ -89,8 +89,6 @@ in
         ...
       }:
       let
-        skillsDir = ./skills;
-
         claudeMd = ''
           In all interactions and commit messages, be extremely concise and sacrifice grammar for the sake of concision.
 
@@ -137,20 +135,6 @@ in
           "$docs" = "https://code.claude.com/docs/en/keybindings";
           "bindings" = [ ];
         };
-
-        skillsFromDir =
-          dir:
-          lib.mapAttrs' (name: _: lib.nameValuePair name (dir + "/${name}")) (
-            lib.filterAttrs (_: type: type == "directory") (builtins.readDir dir)
-          );
-
-        allSkills = lib.foldl' (acc: dir: acc // skillsFromDir dir) { } (
-          [ skillsDir ] ++ config.claude.extraSkillDirs
-        );
-
-        mkSkillFiles =
-          prefix:
-          lib.mapAttrs' (name: src: lib.nameValuePair "${prefix}/skills/${name}" { source = src; }) allSkills;
 
         agentsFromDir =
           dir:
@@ -234,8 +218,7 @@ in
 
         mkClaudeFiles =
           prefix: settings:
-          mkSkillFiles prefix
-          // mkAgentFiles prefix
+          mkAgentFiles prefix
           // {
             "${prefix}/CLAUDE.md".text = claudeMd;
             "${prefix}/keybindings.json".text = keybindings;
@@ -349,11 +332,6 @@ in
               };
             }
           );
-          default = [ ];
-        };
-
-        options.claude.extraSkillDirs = lib.mkOption {
-          type = lib.types.listOf lib.types.path;
           default = [ ];
         };
 
