@@ -255,6 +255,7 @@ in
               denyRead = [ "~" ];
               allowRead =
                 instance.rootDirs
+                ++ config.claude.pluginDirs
                 ++ [
                   onePasswordAgentSocket
                   "~/.claude-${instance.name}"
