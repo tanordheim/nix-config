@@ -169,6 +169,9 @@
                   "ghostty" | "Ghostty")
                     icon_result=":ghostty:"
                     ;;
+                  "kitty")
+                    icon_result=":kitty:"
+                    ;;
                   "Linear")
                     icon_result=":linear:"
                     ;;
