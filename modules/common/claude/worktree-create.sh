@@ -22,4 +22,7 @@ if ! git -C "$root" worktree list --porcelain | grep -qxF "worktree $dir"; then
   fi
 fi
 
+{ [ "${HERDR_ENV:-}" = 1 ] && [ -n "${HERDR_PANE_ID:-}" ] && command -v herdr >/dev/null \
+  && herdr agent rename "$HERDR_PANE_ID" "$name"; } >/dev/null 2>&1 || true
+
 echo "$dir"

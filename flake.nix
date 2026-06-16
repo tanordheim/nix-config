@@ -56,6 +56,12 @@
     # Stylix system wide color scheming/styling
     stylix.url = "github:danth/stylix";
 
+    # Herdr — agent-aware terminal multiplexer (AGPL-3.0 / commercial dual-licensed)
+    herdr = {
+      url = "github:ogulcancelik/herdr";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Homebrew
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
