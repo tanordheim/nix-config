@@ -8,6 +8,12 @@
 
           settings = {
             update_check_interval = 0;
+            # kitty's auto-reload watcher (0.47+) follows the nix-store symlink and
+            # kqueue-watches every entry under /nix/store, leaking 100k+ FDs → "too many
+            # open files". 0.47.2's non-recursive fix is insufficient (store root has 150k+
+            # direct entries). Disable; rebuild+restart replaces the config anyway, and
+            # ctrl+a>q (load_config_file) still reloads manually.
+            auto_reload_config = "no";
             scrollback_lines = 10000;
             cursor_shape = "underline";
             clear_all_shortcuts = true;
