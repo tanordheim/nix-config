@@ -118,7 +118,7 @@ in
 
           ## Git
 
-          - Name branches with a conventional-commit-style prefix matching the change: `feat/`, `fix/`, `chore/`, `docs/`, `refactor/`, etc.
+          - Name branches with a conventional-commit-style prefix matching the change: `feat-`, `fix-`, `chore-`, `docs-`, `refactor-`, etc.
 
           ## Plans
 
