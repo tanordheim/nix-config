@@ -7,6 +7,9 @@ let
   herdrPkg = inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
   configToml = ''
+    [theme]
+    name = "catppuccin"
+
     [keys]
     prefix = "ctrl+space"
     detach = "prefix+d"
