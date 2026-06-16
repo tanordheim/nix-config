@@ -7,6 +7,7 @@
       programs.ghostty.settings = {
         font-size = 15;
         macos-titlebar-style = "hidden";
+        quit-after-last-window-closed = true;
         window-padding-x = 8;
         window-padding-y = 8;
 

@@ -415,7 +415,7 @@
               cmd-alt-h = [ ];
               cmd-m = [ ];
 
-              cmd-enter = "exec-and-forget open -na kitty --args --working-directory=$HOME";
+              cmd-enter = "exec-and-forget open -na ghostty --args --working-directory=$HOME";
 
               ctrl-shift-alt-t = "layout tiles horizontal vertical";
               ctrl-shift-alt-a = "layout accordion horizontal vertical";
