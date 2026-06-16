@@ -11,7 +11,9 @@ let
     prefix = "ctrl+space"
     detach = "prefix+d"
     split_horizontal = "prefix+s"
+    settings = "prefix+comma"
     workspace_picker = "prefix+o"
+    open_notification_target = "prefix+minus"
   '';
 in
 {
