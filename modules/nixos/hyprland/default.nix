@@ -43,7 +43,6 @@
       { pkgs, ... }:
       {
         home.packages = with pkgs; [
-          hello
           brightnessctl
           hyprland-qtutils
           hyprlauncher
