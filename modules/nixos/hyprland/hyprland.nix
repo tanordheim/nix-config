@@ -350,8 +350,8 @@
             ];
 
             bind = [
-              (modBind "return" ''hl.dsp.exec_cmd("${pkgs.ghostty}/bin/ghostty --working-directory=$HOME")'')
-              (modBind "space" ''hl.dsp.exec_cmd("hyprlauncher")'')
+              (modBind "return" ''hl.dsp.exec_cmd("${pkgs.uwsm}/bin/uwsm app -- ${pkgs.ghostty}/bin/ghostty --working-directory=$HOME")'')
+              (modBind "space" ''hl.dsp.exec_cmd("${pkgs.uwsm}/bin/uwsm app -- hyprlauncher")'')
               (modBind "SHIFT + W" "hl.dsp.window.close()")
               (modBind "CTRL + SUPER + BackSpace" "hl.dsp.exit()")
               (modBind "CTRL + C" ''hl.dsp.exec_cmd("hyprctl reload")'')
