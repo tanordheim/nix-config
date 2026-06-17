@@ -25,4 +25,8 @@ fi
 { [ "${HERDR_ENV:-}" = 1 ] && [ -n "${HERDR_PANE_ID:-}" ] && command -v herdr >/dev/null \
   && herdr agent rename "$HERDR_PANE_ID" "$name"; } >/dev/null 2>&1 || true
 
+if [ -d "$root/.codegraph" ] && [ ! -d "$dir/.codegraph" ]; then
+  codegraph init "$dir" >>"${XDG_CACHE_HOME:-$HOME/.cache}/codegraph-autoinit.log" 2>&1 &
+fi
+
 echo "$dir"

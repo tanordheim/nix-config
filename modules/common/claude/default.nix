@@ -155,8 +155,21 @@ in
             pkgs.git
             pkgs.jq
             pkgs.gnugrep
+            pkgs.codegraph
           ];
           text = builtins.readFile ./worktree-create.sh;
+        };
+
+        codeDirName = if isDarwin then "Code" else "code";
+
+        codegraphAutoinitScript = pkgs.writeShellApplication {
+          name = "codegraph-autoinit";
+          runtimeInputs = [
+            pkgs.codegraph
+            pkgs.git
+            pkgs.jq
+          ];
+          text = builtins.readFile ./codegraph-autoinit.sh;
         };
 
         sessionEndCleanupScript = pkgs.writeShellApplication {
@@ -228,6 +241,11 @@ in
                 {
                   type = "command";
                   command = "${herdrAgentStateScript}/bin/herdr-agent-state session";
+                  timeout = 10;
+                }
+                {
+                  type = "command";
+                  command = "${codegraphAutoinitScript}/bin/codegraph-autoinit \"$HOME/${codeDirName}\"";
                   timeout = 10;
                 }
               ];
@@ -370,8 +388,23 @@ in
         };
 
         config = {
+          claude.mcpServers.codegraph = {
+            type = "stdio";
+            command = "${pkgs.codegraph}/bin/codegraph";
+            args = [
+              "serve"
+              "--mcp"
+            ];
+          };
+
+          programs.git.ignores = [
+            "**/.claude/settings.local.json"
+            ".codegraph/"
+          ];
+
           home.packages = [
             (mkInstanceAwareClaudeWrapper config.claude.instances)
+            pkgs.codegraph
           ]
           ++ map mkInstancePackage config.claude.instances;
 
