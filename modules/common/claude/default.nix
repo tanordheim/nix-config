@@ -208,6 +208,7 @@ in
           agentPushNotifEnabled = true;
           theme = "dark";
           skipAutoPermissionPrompt = true;
+          enableAllProjectMcpServers = true;
           permissions.defaultMode = "auto";
           env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
           env.CLAUDE_CODE_EFFORT_LEVEL = "high";
