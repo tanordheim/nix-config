@@ -187,6 +187,15 @@ in
           text = builtins.readFile ./herdr-agent-state.sh;
         };
 
+        stopWipMarkerScript = pkgs.writeShellApplication {
+          name = "claude-stop-wip-marker";
+          runtimeInputs = [
+            pkgs.jq
+            pkgs.coreutils
+          ];
+          text = builtins.readFile ./stop-wip-marker.sh;
+        };
+
         onePasswordAgentSocket =
           if isDarwin then
             "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
@@ -247,6 +256,16 @@ in
                   type = "command";
                   command = "${codegraphAutoinitScript}/bin/codegraph-autoinit \"$HOME/${codeDirName}\"";
                   timeout = 10;
+                }
+              ];
+            }
+          ];
+          hooks.Stop = [
+            {
+              hooks = [
+                {
+                  type = "command";
+                  command = "${stopWipMarkerScript}/bin/claude-stop-wip-marker";
                 }
               ];
             }
