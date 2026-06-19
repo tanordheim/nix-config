@@ -4,6 +4,11 @@
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
 
+  fonts.packages = [
+    pkgs.corefonts
+    pkgs.vista-fonts
+  ];
+
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
       if (action.id.indexOf("com.feralinteractive.GameMode.") == 0
