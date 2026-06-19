@@ -21,6 +21,7 @@
   home-manager.sharedModules = [
     {
       home.packages = [
+        pkgs.protontricks
         pkgs.lutris
         pkgs.wowup-cf
         pkgs.tsm-app
