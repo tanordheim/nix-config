@@ -211,7 +211,8 @@ in
           sandbox.filesystem.allowWrite = [
             "~/.cache"
           ]
-          ++ extraCacheDirs;
+          ++ extraCacheDirs
+          ++ config.claude.sandbox.allowWrite;
           sandbox.network.allowedDomains = [
             "api.github.com"
             "lfs.github.com"
@@ -287,7 +288,8 @@ in
                 ++ [
                   "~/.cache"
                 ]
-                ++ extraCacheDirs;
+                ++ extraCacheDirs
+                ++ config.claude.sandbox.allowWrite;
               denyRead = [ "~" ];
               allowRead =
                 instance.rootDirs
@@ -401,6 +403,11 @@ in
         options.claude.mcpServers = lib.mkOption {
           type = lib.types.attrsOf lib.types.attrs;
           default = { };
+        };
+
+        options.claude.sandbox.allowWrite = lib.mkOption {
+          type = lib.types.listOf lib.types.str;
+          default = [ ];
         };
 
         config = {
