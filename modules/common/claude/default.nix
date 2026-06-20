@@ -74,7 +74,6 @@ in
       enabled = true;
       autoAllowBashIfSandboxed = true;
       excludedCommands = [
-        "nix"
         "git*"
         "uv run pytest*"
       ];

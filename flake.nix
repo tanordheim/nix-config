@@ -41,12 +41,6 @@
       flake = false;
     };
 
-    # TSM Desktop App linux port
-    tsm-app-linux-src = {
-      url = "github:exceptionptr/tsm-app-linux/master";
-      flake = false;
-    };
-
     # SideFX Labs toolset for Houdini
     sidefx-labs = {
       url = "github:sideeffects/SideFXLabs/21.0.707";

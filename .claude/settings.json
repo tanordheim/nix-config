@@ -1,4 +1,9 @@
 {
+  "sandbox": {
+    "excludedCommands": [
+      "nix*"
+    ]
+  },
   "hooks": {
     "PostToolUse": [
       {
