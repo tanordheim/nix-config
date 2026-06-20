@@ -18,7 +18,7 @@ if ! git -C "$root" worktree list --porcelain | grep -qxF "worktree $dir"; then
   else
     base="origin/HEAD"
     git -C "$root" rev-parse --verify -q "$base" >/dev/null 2>&1 || base="HEAD"
-    git -C "$root" worktree add -b "$name" "$dir" "$base" >&2
+    git -C "$root" worktree add -b "$name" --no-track "$dir" "$base" >&2
   fi
 fi
 
