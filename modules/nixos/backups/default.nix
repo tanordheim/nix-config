@@ -108,7 +108,7 @@ let
             now=$(date +%s)
             seven_days_ago=$((now - 7 * 24 * 3600))
 
-            snapshots=$(restic snapshots --host "$host" --json)
+            snapshots=$(restic --quiet snapshots --host "$host" --json)
             total=$(echo "$snapshots" | jq 'length')
 
             recent=0
@@ -122,7 +122,7 @@ let
 
             latest=$(echo "$snapshots" | jq -r 'if length > 0 then .[-1].time else "none" end')
 
-            stats=$(restic stats --mode raw-data --json)
+            stats=$(restic --quiet stats --mode raw-data --json)
             size_bytes=$(echo "$stats" | jq '.total_size')
             size_gb=$(awk "BEGIN { printf \"%.2f\", ''${size_bytes} / (1024 * 1024 * 1024) }")
 
