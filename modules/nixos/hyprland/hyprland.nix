@@ -275,6 +275,14 @@
 
             window_rule = [
               {
+                name = "diablo-render-unfocused";
+                match = {
+                  class = "^(diablo iv\\.exe)$";
+                };
+                render_unfocused = true;
+                idle_inhibit = "always";
+              }
+              {
                 name = "slack-ws6";
                 match = {
                   class = "^(slack)$";
