@@ -108,7 +108,7 @@ let
             now=$(date +%s)
             seven_days_ago=$((now - 7 * 24 * 3600))
 
-            snapshots=$(restic --quiet snapshots --host "$host" --json)
+            snapshots=$(restic snapshots --host "$host" --json)
             total=$(echo "$snapshots" | jq 'length')
 
             recent=0
@@ -122,7 +122,11 @@ let
 
             latest=$(echo "$snapshots" | jq -r 'if length > 0 then .[-1].time else "none" end')
 
-            stats=$(restic --quiet stats --mode raw-data --json)
+            # WORKAROUND: restic 0.19.0 prints a "[m:ss] …" progress line to stdout
+            # for `stats`, corrupting --json output. Fixed on master but unreleased.
+            # https://github.com/restic/restic/issues/21866 (PR #21871). Keep only
+            # the final line, which is the JSON object. Remove once restic > 0.19.0.
+            stats=$(restic stats --mode raw-data --json | tail -n1)
             size_bytes=$(echo "$stats" | jq '.total_size')
             size_gb=$(awk "BEGIN { printf \"%.2f\", ''${size_bytes} / (1024 * 1024 * 1024) }")
 
