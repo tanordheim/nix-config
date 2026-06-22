@@ -8,6 +8,7 @@
           pyenv
           python3
           uv
+          basedpyright
         ];
       }
     )
