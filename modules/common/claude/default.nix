@@ -90,8 +90,6 @@ in
       }:
       let
         claudeMd = ''
-          In all interactions and commit messages, be extremely concise and sacrifice grammar for the sake of concision.
-
           Your human partner is Trond. When a skill or instruction refers to "Trond," that's me — the person in this session.
 
           ## Operating mode
@@ -114,6 +112,7 @@ in
 
           - Your primary method for interacting with GitHub (issues, PRs, reviews, repos, content) should be the `gh` CLI. Its authenticated, never reach for curl or tools.
           - Conventional commits: type(scope): subject. Subject under 72 chars, imperative mood.
+          - Keep commit descriptions extremely concise.
           - Name branches with conventional-commit-style prefix: `feat-`, `fix-`, `chore-`, `docs-`, `refactor-`, etc.
           - Stage files individually. Never `git add -A`/`git add .`.
           - Confirm before destructive/irreversible ops: `push --force`, `reset --hard`, branch/file deletion, `rm -rf`, amending pushed commits, or anything visible to others.
