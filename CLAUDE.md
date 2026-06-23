@@ -49,15 +49,24 @@ Use `./rebuild` (platform-detecting wrapper). Requires sudo; do not run inside C
 - `nix store diff-closures <before> <after>` — compare closures; empty output = pure refactor.
 - `nix flake check --no-build` — eval-only sanity check.
 
+Run any `.#`-flake command (`nix eval/build/flake .#…`) **bare** — never inside `$()` or a pipe. The sandbox only exempts nix from filesystem isolation (`excludedCommands: ["nix*"]` in `.claude/settings.json`) when `nix` is the literal command; wrapped in command substitution or piped, the whole invocation runs sandboxed and dies with `error: … '.gitmodules' is locked: Permission denied` (libgit2 reading the git working tree). Read the printed path from stdout instead of capturing it. Store-only commands (`nix-store -qR … | grep`) don't touch the git tree, so piping those is fine.
+
 ## Verifying Hyprland config
 
 Hyprland 0.55+ uses lua config. After changing anything under `modules/nixos/hyprland/hyprland.nix` (or anything else that feeds `wayland.windowManager.hyprland.settings`), validate the generated lua before asking the user to rebuild — eval-time success only proves nix is happy, not that Hyprland will accept the lua.
 
+Run the two flake-fetching commands BARE (see the note under "Verifying changes without rebuilding") and take each printed path:
+
 ```bash
-HYPR=$(nix eval --raw .#nixosConfigurations.harahorn.config.programs.hyprland.package)
-TOP=$(nix build --no-link --print-out-paths .#nixosConfigurations.harahorn.config.system.build.toplevel)
-LUA=$(nix-store -qR "$TOP" | grep hyprhyprland.lua)
-"$HYPR/bin/Hyprland" --verify-config --config "$LUA"
+nix eval --raw .#nixosConfigurations.harahorn.config.programs.hyprland.package          # → HYPR
+nix build --no-link --print-out-paths .#nixosConfigurations.harahorn.config.system.build.toplevel  # → TOP
+```
+
+Then (store read + pipe are fine sandboxed):
+
+```bash
+LUA=$(nix-store -qR <TOP> | grep hyprhyprland.lua)
+<HYPR>/bin/Hyprland --verify-config --config "$LUA"
 ```
 
 Prints `config ok` on success, otherwise `<file>:<line>: <error>`. Fix and re-run until clean.

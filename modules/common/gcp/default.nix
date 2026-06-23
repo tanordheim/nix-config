@@ -93,7 +93,10 @@
         };
 
         config = {
-          home.packages = [ gcloud ];
+          home.packages = [
+            gcloud
+            pkgs.google-cloud-sql-proxy
+          ];
           xdg.configFile = loginFiles;
           home.activation.gcloudConfigurations = lib.hm.dag.entryAfter [ "writeBoundary" ] activationScript;
         };
