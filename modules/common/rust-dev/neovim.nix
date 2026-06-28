@@ -61,7 +61,6 @@
 
           extraPackages = with pkgs; [
             rust-analyzer
-            rustfmt
             vscode-extensions.vadimcn.vscode-lldb
           ];
 
