@@ -428,6 +428,8 @@
               (modBind "CTRL + SHIFT + F" "hl.dsp.window.float()")
               (modBind "CTRL + SHIFT + T" ''hl.dsp.layout("togglesplit")'')
 
+              (bind "SUPER + SHIFT + F" "hl.dsp.window.fullscreen()")
+
               (modBind "CTRL + SHIFT + S" ''hl.dsp.exec_cmd("${pkgs.hyprshot}/bin/hyprshot -m region")'')
               (bind "CTRL + SHIFT + S" ''hl.dsp.exec_cmd("${pkgs.hyprshot}/bin/hyprshot -m region --clipboard-only")'')
 
