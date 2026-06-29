@@ -202,6 +202,7 @@ in
         baseSettings = {
           agentPushNotifEnabled = true;
           theme = "dark";
+          tui = "fullscreen";
           skipAutoPermissionPrompt = true;
           enableAllProjectMcpServers = true;
           permissions.defaultMode = "auto";
