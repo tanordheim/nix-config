@@ -42,6 +42,9 @@ let
     sandbox_mode = "workspace-write"
     reasoning_effort = "high"
 
+    [agents]
+    max_threads = 10
+
     [tui]
     status_line = [
       "model-with-reasoning",
