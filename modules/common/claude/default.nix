@@ -91,6 +91,8 @@ in
         ...
       }:
       let
+        # Keep this prose in sync with `agentsMd` in modules/common/codex/default.nix
+        # (the Codex copy drops the Claude-only memories and AskUserQuestion lines).
         claudeMd = ''
           Your human partner is Trond. When a skill or instruction refers to "Trond," that's me — the person in this session.
 

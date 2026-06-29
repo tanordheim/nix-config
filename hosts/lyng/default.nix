@@ -11,6 +11,7 @@
     ../../modules/common/chrome
     ../../modules/common/claude
     ../../modules/common/claude-desktop
+    ../../modules/common/codex
     ../../modules/common/discord
     ../../modules/common/docker
     ../../modules/common/firefox

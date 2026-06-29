@@ -17,6 +17,7 @@
     ../../modules/common/atuin
     ../../modules/common/chrome
     ../../modules/common/claude
+    ../../modules/common/codex
     ../../modules/common/discord
     ../../modules/common/docker
     ../../modules/common/firefox
