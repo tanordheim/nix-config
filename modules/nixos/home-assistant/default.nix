@@ -8,6 +8,9 @@
 
   services.home-assistant = {
     enable = true;
+    customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
+      mushroom
+    ];
     extraComponents = [
       "default_config"
       "met"
