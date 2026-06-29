@@ -65,6 +65,8 @@ in
   ];
 
   _module.args.claudeManagedSettings = {
+    permissions.defaultMode = "auto";
+    tui = "fullscreen";
     statusLine = {
       type = "command";
       command = "${statuslineScript}";
@@ -202,10 +204,8 @@ in
         baseSettings = {
           agentPushNotifEnabled = true;
           theme = "dark";
-          tui = "fullscreen";
           skipAutoPermissionPrompt = true;
           enableAllProjectMcpServers = true;
-          permissions.defaultMode = "auto";
           env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
           env.CLAUDE_CODE_EFFORT_LEVEL = "high";
           sandbox.filesystem.allowWrite = [
