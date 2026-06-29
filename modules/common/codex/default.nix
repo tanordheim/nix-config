@@ -42,6 +42,16 @@ let
     sandbox_mode = "workspace-write"
     reasoning_effort = "high"
 
+    [tui]
+    status_line = [
+      "model-with-reasoning",
+      "current-dir",
+      "git-branch",
+      "context-used",
+      "five-hour-limit",
+      "weekly-limit",
+    ]
+
     [mcp_servers.codegraph]
     command = "${pkgs.codegraph}/bin/codegraph"
     args = ["serve", "--mcp"]
