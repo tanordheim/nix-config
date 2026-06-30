@@ -66,7 +66,7 @@ in
 
   _module.args.claudeManagedSettings = {
     permissions.defaultMode = "auto";
-    tui = "fullscreen";
+    tui = "default";
     statusLine = {
       type = "command";
       command = "${statuslineScript}";

@@ -43,7 +43,7 @@ let
     reasoning_effort = "high"
 
     [agents]
-    max_threads = 10
+    max_threads = 20
 
     [tui]
     status_line = [
