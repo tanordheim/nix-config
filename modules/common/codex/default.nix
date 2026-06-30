@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   # Keep the prose below in sync with `claudeMd` in modules/common/claude/default.nix.
   # This is the Codex-adapted copy (drops the Claude-only memories and AskUserQuestion lines).
@@ -37,36 +42,62 @@ let
     - When asked to ask me questions, ask one at a time. Do not move on until aligned on the current one.
   '';
 
-  configToml = ''
-    approval_policy = "on-request"
-    sandbox_mode = "workspace-write"
-    reasoning_effort = "high"
+  baseConfig = {
+    approval_policy = "on-request";
+    sandbox_mode = "workspace-write";
+    reasoning_effort = "high";
 
-    [agents]
-    max_threads = 20
+    agents.max_threads = 20;
 
-    [tui]
-    status_line = [
-      "model-with-reasoning",
-      "current-dir",
-      "git-branch",
-      "context-used",
-      "five-hour-limit",
-      "weekly-limit",
-    ]
+    tui.status_line = [
+      "model-with-reasoning"
+      "current-dir"
+      "git-branch"
+      "context-used"
+      "five-hour-limit"
+      "weekly-limit"
+    ];
+  };
 
-    [mcp_servers.codegraph]
-    command = "${pkgs.codegraph}/bin/codegraph"
-    args = ["serve", "--mcp"]
-  '';
+  # MCP servers are declared via the home-manager `codex.mcpServers` option (so the
+  # private flake's HM module can add servers, mirroring claude.mcpServers), but rendered
+  # into the read-only /etc system config layer — ~/.codex/config.toml must stay writable
+  # for codex to persist its own settings there.
+  mcpServers = lib.foldl' (acc: hm: acc // hm.codex.mcpServers) { } (
+    lib.attrValues config.home-manager.users
+  );
 in
 {
-  environment.etc."codex/config.toml".text = configToml;
+  environment.etc."codex/config.toml".source = (pkgs.formats.toml { }).generate "codex-config.toml" (
+    baseConfig // { mcp_servers = mcpServers; }
+  );
 
   home-manager.sharedModules = [
-    {
-      home.packages = [ pkgs.codex ];
-      home.file.".codex/AGENTS.md".text = agentsMd;
-    }
+    (
+      {
+        lib,
+        pkgs,
+        ...
+      }:
+      {
+        options.codex.mcpServers = lib.mkOption {
+          type = lib.types.attrsOf lib.types.attrs;
+          default = { };
+        };
+
+        config = {
+          codex.mcpServers.codegraph = {
+            command = "${pkgs.codegraph}/bin/codegraph";
+            args = [
+              "serve"
+              "--mcp"
+            ];
+          };
+
+          home.packages = [ pkgs.codex ];
+          home.file.".codex/AGENTS.md".text = agentsMd;
+        };
+      }
+    )
   ];
 }
