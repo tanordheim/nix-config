@@ -26,11 +26,17 @@
     settings = {
       trusted-users = [ "root" ];
       experimental-features = "nix-command flakes";
+      min-free = 25 * 1024 * 1024 * 1024;
+      max-free = 50 * 1024 * 1024 * 1024;
     };
     gc = {
       automatic = true;
       options = "--delete-older-than 30d";
-      interval.Day = 7;
+      interval = {
+        Weekday = 0;
+        Hour = 3;
+        Minute = 0;
+      };
     };
     optimise.automatic = true;
   };
