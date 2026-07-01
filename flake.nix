@@ -82,7 +82,7 @@
       inputs.brew-src.follows = "brew-src";
     };
     brew-src = {
-      url = "github:Homebrew/brew/2b3683acbeac84c27669195235785694b72e253e";
+      url = "github:Homebrew/brew";
       flake = false;
     };
 
