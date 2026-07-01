@@ -10,6 +10,10 @@ let
     [theme]
     name = "catppuccin"
 
+    [theme.custom]
+    accent = "#b4befe"
+    surface_dim = "#494258"
+
     [keys]
     prefix = "ctrl+space"
     detach = "prefix+d"
