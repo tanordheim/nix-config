@@ -7,7 +7,6 @@
     ../../modules/common/android-studio
     ../../modules/common/atuin
     ../../modules/common/audacity
-    ../../modules/common/camo
     ../../modules/common/chrome
     ../../modules/common/claude
     ../../modules/common/claude-desktop
@@ -22,7 +21,6 @@
     ../../modules/common/logitech
     ../../modules/common/maestro
     ../../modules/common/obsidian
-    ../../modules/common/pdfexpert
     ../../modules/common/pocketcasts
     ../../modules/common/proton
     ../../modules/common/qmk
@@ -36,7 +34,6 @@
     ../../modules/common/tmux
     ../../modules/common/whatsapp
     ../../modules/darwin/wireguard
-    ../../modules/darwin/wispr-flow
     ../../modules/common/xcode
 
     ../../modules/common/postgres
