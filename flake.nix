@@ -56,6 +56,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # herdr-fingers — extract paths/URLs/hashes from the focused pane, vimium-style picker
+    herdr-fingers = {
+      url = "github:hitaishi2222/herdr-fingers";
+      flake = false;
+    };
+
     # Homebrew
     homebrew-core = {
       url = "github:homebrew/homebrew-core";

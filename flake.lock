@@ -212,6 +212,22 @@
         "type": "github"
       }
     },
+    "herdr-fingers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1782956550,
+        "narHash": "sha256-eIYcVz0eGTFkj91S1lyzqbA6xfaGAFbT8vbA0Lz3MRM=",
+        "owner": "hitaishi2222",
+        "repo": "herdr-fingers",
+        "rev": "a3061895396c17a7b85cec918e06a1da8f052b69",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hitaishi2222",
+        "repo": "herdr-fingers",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -492,6 +508,7 @@
         "aurral-src": "aurral-src",
         "brew-src": "brew-src",
         "herdr": "herdr",
+        "herdr-fingers": "herdr-fingers",
         "home-manager": "home-manager",
         "homebrew-aerospace": "homebrew-aerospace",
         "homebrew-bundle": "homebrew-bundle",

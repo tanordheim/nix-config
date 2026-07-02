@@ -5,6 +5,14 @@
 }:
 let
   herdrPkg = inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  pythonEnv = pkgs.python3.withPackages (ps: [ ps.rich ]);
+  fingersPlugin = pkgs.runCommand "herdr-fingers" { } ''
+    cp -r ${inputs.herdr-fingers} $out
+    chmod -R u+w $out
+    substituteInPlace $out/herdr-plugin.toml \
+      --replace-fail '["/usr/bin/env", "python3", "./herdr_fingers.py"]' \
+        '["${pythonEnv}/bin/python3", "./herdr_fingers.py"]'
+  '';
 in
 {
   home-manager.sharedModules = [
@@ -63,11 +71,33 @@ in
           swap_pane_down = "ctrl+alt+j"
           swap_pane_up = "ctrl+alt+k"
           swap_pane_right = "ctrl+alt+l"
+
+          [[keys.command]]
+          key = "alt+f"
+          type = "plugin_action"
+          command = "herdr-fingers.finger"
+          description = "Fingers"
         '';
+
+        pluginsJson = builtins.toJSON [
+          {
+            plugin_id = "herdr-fingers";
+            name = "Fingers";
+            version = "0.1.0";
+            manifest_path = "${fingersPlugin}/herdr-plugin.toml";
+            plugin_root = "${fingersPlugin}";
+            enabled = true;
+            source.kind = "local";
+          }
+        ];
       in
       {
-        home.packages = [ herdrPkg ];
+        home.packages = [
+          herdrPkg
+          pkgs.wl-clipboard
+        ];
         xdg.configFile."herdr/config.toml".text = configToml;
+        xdg.configFile."herdr/plugins.json".text = pluginsJson;
       }
     )
   ];
