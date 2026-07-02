@@ -6,6 +6,9 @@
 let
   herdrPkg = inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.default;
   pythonEnv = pkgs.python3.withPackages (ps: [ ps.rich ]);
+  herdrEven = pkgs.writeShellScriptBin "herdr-even" ''
+    exec ${pkgs.python3}/bin/python3 ${./herdr-even.py} "$@"
+  '';
   fingersPlugin = pkgs.runCommand "herdr-fingers" { } ''
     cp -r ${inputs.herdr-fingers} $out
     chmod -R u+w $out
@@ -77,6 +80,12 @@ in
           type = "plugin_action"
           command = "herdr-fingers.finger"
           description = "Fingers"
+
+          [[keys.command]]
+          key = "prefix+plus"
+          type = "shell"
+          command = "${herdrEven}/bin/herdr-even --apply"
+          description = "Balance panes"
         '';
 
         pluginsJson = builtins.toJSON [
@@ -94,6 +103,7 @@ in
       {
         home.packages = [
           herdrPkg
+          herdrEven
           pkgs.wl-clipboard
         ];
         xdg.configFile."herdr/config.toml".text = configToml;
