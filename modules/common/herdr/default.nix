@@ -46,6 +46,8 @@ in
           settings = "prefix+shift+s"
           rename_tab = "prefix+comma"
           workspace_picker = "prefix+o"
+          new_workspace = "prefix+shift+w"
+          close_workspace = "prefix+shift+q"
           open_notification_target = "prefix+minus"
           focus_pane_left = "ctrl+h"
           focus_pane_down = "ctrl+j"
