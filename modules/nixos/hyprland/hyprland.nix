@@ -442,8 +442,6 @@
               (bind "XF86AudioNext" ''hl.dsp.exec_cmd("${pkgs.playerctl}/bin/playerctl next")'')
               (bind "XF86AudioPrev" ''hl.dsp.exec_cmd("${pkgs.playerctl}/bin/playerctl previous")'')
 
-              (modBind "CTRL + L" ''hl.dsp.exec_cmd("hyprlock")'')
-
               (modBindMouse "mouse:272" "hl.dsp.window.drag()")
               (modBindMouse "mouse:273" "hl.dsp.window.resize()")
             ];
