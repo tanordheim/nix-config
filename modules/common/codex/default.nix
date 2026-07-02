@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -46,6 +47,8 @@ let
     approval_policy = "on-request";
     sandbox_mode = "workspace-write";
     reasoning_effort = "high";
+
+    features.hooks = true;
 
     agents.max_threads = 20;
 
@@ -96,6 +99,21 @@ in
 
           home.packages = [ pkgs.codex ];
           home.file.".codex/AGENTS.md".text = agentsMd;
+          home.file.".codex/herdr-agent-state.sh".source =
+            "${inputs.herdr}/src/integration/assets/codex/herdr-agent-state.sh";
+          home.file.".codex/hooks.json".text = builtins.toJSON {
+            hooks.SessionStart = [
+              {
+                hooks = [
+                  {
+                    type = "command";
+                    command = ''bash "$HOME/.codex/herdr-agent-state.sh" session'';
+                    timeout = 10;
+                  }
+                ];
+              }
+            ];
+          };
         };
       }
     )

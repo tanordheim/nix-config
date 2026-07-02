@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   isDarwin,
   pkgs,
@@ -180,11 +181,7 @@ in
           text = builtins.readFile ./session-end-cleanup.sh;
         };
 
-        herdrAgentStateScript = pkgs.writeShellApplication {
-          name = "herdr-agent-state";
-          runtimeInputs = [ pkgs.python3 ];
-          text = builtins.readFile ./herdr-agent-state.sh;
-        };
+        herdrClaudeHook = "${inputs.herdr}/src/integration/assets/claude/herdr-agent-state.sh";
 
         stopWipMarkerScript = pkgs.writeShellApplication {
           name = "claude-stop-wip-marker";
@@ -249,7 +246,7 @@ in
               hooks = [
                 {
                   type = "command";
-                  command = "${herdrAgentStateScript}/bin/herdr-agent-state session";
+                  command = ''bash "''${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/herdr-agent-state.sh" session'';
                   timeout = 10;
                 }
                 {
@@ -279,6 +276,7 @@ in
             "${prefix}/CLAUDE.md".text = claudeMd;
             "${prefix}/keybindings.json".text = keybindings;
             "${prefix}/settings.json".text = builtins.toJSON settings;
+            "${prefix}/hooks/herdr-agent-state.sh".source = herdrClaudeHook;
           };
 
         mkInstanceSettings =
