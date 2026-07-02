@@ -73,7 +73,7 @@ in
           swap_pane_right = "ctrl+alt+l"
 
           [[keys.command]]
-          key = "alt+f"
+          key = "prefix+shift+f"
           type = "plugin_action"
           command = "herdr-fingers.finger"
           description = "Fingers"
