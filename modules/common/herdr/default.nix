@@ -21,6 +21,10 @@ let
     settings = "prefix+comma"
     workspace_picker = "prefix+o"
     open_notification_target = "prefix+minus"
+    focus_pane_left = ["prefix+h", "ctrl+h"]
+    focus_pane_down = ["prefix+j", "ctrl+j"]
+    focus_pane_up = ["prefix+k", "ctrl+k"]
+    focus_pane_right = ["prefix+l", "ctrl+l"]
   '';
 in
 {
