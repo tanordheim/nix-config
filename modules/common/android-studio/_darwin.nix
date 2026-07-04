@@ -1,8 +1,3 @@
 {
-  homebrew.casks = [
-    {
-      name = "android-studio";
-      greedy = true;
-    }
-  ];
+  homebrew.casks = [ "android-studio" ];
 }
