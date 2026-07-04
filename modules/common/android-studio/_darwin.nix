@@ -1,3 +1,8 @@
 {
-  homebrew.casks = [ "android-studio" ];
+  homebrew.casks = [
+    {
+      name = "android-studio";
+      greedy = true;
+    }
+  ];
 }
