@@ -104,7 +104,6 @@ in
         home.packages = [
           herdrPkg
           herdrEven
-          pkgs.wl-clipboard
         ];
         xdg.configFile."herdr/config.toml".text = configToml;
         xdg.configFile."herdr/plugins.json".text = pluginsJson;
