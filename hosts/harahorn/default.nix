@@ -24,6 +24,7 @@
     ../../modules/common/gaming
     ../../modules/common/gdrive
     ../../modules/common/ghostty
+    ../../modules/common/gimp
     ../../modules/common/herdr
     ../../modules/common/jetbrains
     ../../modules/common/kitty
