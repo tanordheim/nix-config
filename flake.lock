@@ -338,11 +338,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1783187279,
-        "narHash": "sha256-OpLSA7XFQ42Il2yxJn3mCyQLVdnEBvTi0c6HIPKGhyU=",
+        "lastModified": 1783531295,
+        "narHash": "sha256-NwPrek3N67VaoNuQFiWRv2JbuP8Zfm9KRB1doq5/fes=",
         "ref": "main",
-        "rev": "5a402598181d88c6d68f71fc83f99ddfcdf94c4b",
-        "revCount": 115,
+        "rev": "58147c5b329cd906bbed5ce735bd715e2e9aac25",
+        "revCount": 116,
         "type": "git",
         "url": "ssh://git@ssh.github.com/tanordheim/nix-config-private.git"
       },
