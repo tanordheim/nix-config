@@ -19,6 +19,7 @@
     gnused
     gnutar
     gzip
+    imagemagick
     jq
     killall
     lsof
