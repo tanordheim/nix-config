@@ -61,15 +61,18 @@
           };
         };
 
+        # MANUAL UPDATE CHECK: https://github.com/slkiser/opencode-quota/releases
+        # Registered as both a server plugin (opencode.json) and a TUI plugin (tui.json).
+        # Bump the version, rebuild, then clear the plugin cache to apply:
+        # rm -rf ~/.cache/opencode/node_modules ~/.cache/opencode/bun.lock
+        quotaPluginSpec = "@slkiser/opencode-quota@3.11.1";
+
         opencodeConfig = {
           "$schema" = "https://opencode.ai/config.json";
           model = "openai/gpt-5.6-terra";
           permission = "allow";
           autoupdate = false;
-          # MANUAL UPDATE CHECK: https://github.com/slkiser/opencode-quota/releases
-          # Bump the version, rebuild, then clear the plugin cache to apply:
-          # rm -rf ~/.cache/opencode/node_modules ~/.cache/opencode/bun.lock
-          plugin = [ "@slkiser/opencode-quota@3.11.1" ];
+          plugin = [ quotaPluginSpec ];
           agent.plan.disable = true;
           mcp = config.opencode.mcpServers // baseMcpServers;
         }
@@ -160,11 +163,14 @@
             ".config/opencode/tui.json".text = builtins.toJSON {
               "$schema" = "https://opencode.ai/tui.json";
               theme = "stylix";
+              plugin = [ quotaPluginSpec ];
             };
             ".config/opencode/themes/stylix.json".text = builtins.toJSON opencodeTheme;
             ".config/opencode/opencode-quota/quota-toast.json".text = builtins.toJSON {
-              "tuiSidebarPanel.enabled" = true;
               enableToast = false;
+              tuiSidebarPanel = {
+                enabled = true;
+              };
             };
             ".config/opencode/AGENTS.md".text = agentsMd;
             ".config/opencode/plugin/herdr-agent-state.js".source =
