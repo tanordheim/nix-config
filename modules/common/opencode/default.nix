@@ -14,7 +14,7 @@
       let
         # Keep this prose in sync with `agentsMd` in modules/common/codex/default.nix
         # and `claudeMd` in modules/common/claude/default.nix (the non-Claude copy).
-        baseAgentsMd = ''
+        agentsMd = ''
           Your human partner is Trond. When a skill or instruction refers to "Trond," that's me — the person in this session.
 
           ## Operating mode
@@ -49,8 +49,6 @@
           - When asked to ask me questions, ask one at a time. Do not move on until aligned on the current one.
         '';
 
-        unwrappedOpencode = pkgs.opencode;
-
         baseMcpServers = {
           codegraph = {
             type = "local";
@@ -63,118 +61,29 @@
           };
         };
 
-        personal = {
-          name = "personal";
-          rootDirs = [ ];
-          mcpServers = { };
-          skillDirs = [ ];
-          agentsMd = null;
-          model = null;
+        opencodeConfig = {
+          "$schema" = "https://opencode.ai/config.json";
+          model = "openai/gpt-5.6-terra";
+          permission = "allow";
+          autoupdate = false;
+          # MANUAL UPDATE CHECK: https://github.com/slkiser/opencode-quota/releases
+          # Bump the version, rebuild, then clear the plugin cache to apply:
+          # rm -rf ~/.cache/opencode/node_modules ~/.cache/opencode/bun.lock
+          plugin = [ "@slkiser/opencode-quota@3.11.1" ];
+          mcp = config.opencode.mcpServers // baseMcpServers;
+        }
+        // lib.optionalAttrs (config.opencode.providers != { }) {
+          provider = config.opencode.providers;
         };
 
-        allInstances = [ personal ] ++ config.opencode.instances;
-
-        mkInstanceConfig =
-          instance:
-          let
-            agentsMdFile = pkgs.writeText "opencode-agents-${instance.name}.md" (
-              if instance.agentsMd != null then instance.agentsMd else baseAgentsMd
-            );
-            skillPaths = config.opencode.skillDirs ++ instance.skillDirs;
-          in
-          {
-            "$schema" = "https://opencode.ai/config.json";
-            model = if instance.model != null then instance.model else "openai/gpt-5.6-terra";
-            permission = "allow";
-            autoupdate = false;
-            # MANUAL UPDATE CHECK: https://github.com/slkiser/opencode-quota/releases
-            # Bump the version, rebuild, then clear the plugin cache to apply:
-            # rm -rf ~/.cache/opencode/node_modules ~/.cache/opencode/bun.lock
-            plugin = [ "@slkiser/opencode-quota@3.11.1" ];
-            instructions = [ "${agentsMdFile}" ];
-            mcp = config.opencode.mcpServers // baseMcpServers // instance.mcpServers;
-          }
-          // lib.optionalAttrs (skillPaths != [ ]) {
-            skills.paths = skillPaths;
-          }
-          // lib.optionalAttrs (config.opencode.providers != { }) {
-            provider = config.opencode.providers;
-          };
-
-        mkInstanceFiles = instance: {
-          ".config/opencode-${instance.name}/opencode.json".text = builtins.toJSON (
-            mkInstanceConfig instance
-          );
-          ".config/opencode-${instance.name}/plugin/herdr-agent-state.js".source =
-            "${inputs.herdr}/src/integration/assets/opencode/herdr-agent-state.js";
-        };
-
-        mkInstanceBin =
-          instance:
-          pkgs.writeShellScriptBin "opencode-${instance.name}" ''
-            exec env \
-              OPENCODE_CONFIG_DIR="$HOME/.config/opencode-${instance.name}" \
-              XDG_DATA_HOME="$HOME/.local/share/opencode-${instance.name}" \
-              OPENCODE_DISABLE_CLAUDE_CODE=1 \
-              OPENCODE_DISABLE_EXTERNAL_SKILLS=1 \
-              ${unwrappedOpencode}/bin/opencode "$@"
-          '';
-
-        mkInstanceAwareOpencodeWrapper =
-          instances:
-          let
-            mkRootCheck = name: rootDir: ''
-              root=$(echo ${lib.escapeShellArg rootDir} | sed 's|^~|'"$HOME"'|')
-              len=''${#root}
-              if ([[ "$cwd" == "$root" ]] || [[ "$cwd" == "$root/"* ]]) && [ "$len" -gt "$best_len" ]; then
-                best_match=${lib.escapeShellArg name}
-                best_len=$len
-              fi
-            '';
-            matchBlock = lib.concatMapStrings (
-              instance: lib.concatMapStrings (mkRootCheck instance.name) instance.rootDirs
-            ) instances;
-          in
-          pkgs.writeShellScriptBin "opencode" ''
-            cwd="$PWD"
-            best_match="personal"
-            best_len=0
-            ${matchBlock}
-            exec env \
-              OPENCODE_CONFIG_DIR="$HOME/.config/opencode-$best_match" \
-              XDG_DATA_HOME="$HOME/.local/share/opencode-$best_match" \
-              OPENCODE_DISABLE_CLAUDE_CODE=1 \
-              OPENCODE_DISABLE_EXTERNAL_SKILLS=1 \
-              ${unwrappedOpencode}/bin/opencode "$@"
-          '';
+        opencodeWrapper = pkgs.writeShellScriptBin "opencode" ''
+          exec env \
+            OPENCODE_DISABLE_CLAUDE_CODE=1 \
+            OPENCODE_DISABLE_EXTERNAL_SKILLS=1 \
+            ${pkgs.opencode}/bin/opencode "$@"
+        '';
       in
       {
-        options.opencode.instances = lib.mkOption {
-          type = lib.types.listOf (
-            lib.types.submodule {
-              options.name = lib.mkOption { type = lib.types.str; };
-              options.rootDirs = lib.mkOption { type = lib.types.listOf lib.types.str; };
-              options.mcpServers = lib.mkOption {
-                type = lib.types.attrsOf lib.types.attrs;
-                default = { };
-              };
-              options.skillDirs = lib.mkOption {
-                type = lib.types.listOf lib.types.str;
-                default = [ ];
-              };
-              options.agentsMd = lib.mkOption {
-                type = lib.types.nullOr lib.types.str;
-                default = null;
-              };
-              options.model = lib.mkOption {
-                type = lib.types.nullOr lib.types.str;
-                default = null;
-              };
-            }
-          );
-          default = [ ];
-        };
-
         options.opencode.mcpServers = lib.mkOption {
           type = lib.types.attrsOf lib.types.attrs;
           default = { };
@@ -185,18 +94,15 @@
           default = { };
         };
 
-        options.opencode.skillDirs = lib.mkOption {
-          type = lib.types.listOf lib.types.str;
-          default = [ ];
-        };
-
         config = {
-          home.packages = [
-            (mkInstanceAwareOpencodeWrapper config.opencode.instances)
-          ]
-          ++ map mkInstanceBin allInstances;
+          home.packages = [ opencodeWrapper ];
 
-          home.file = lib.mkMerge (map mkInstanceFiles allInstances);
+          home.file = {
+            ".config/opencode/opencode.json".text = builtins.toJSON opencodeConfig;
+            ".config/opencode/AGENTS.md".text = agentsMd;
+            ".config/opencode/plugin/herdr-agent-state.js".source =
+              "${inputs.herdr}/src/integration/assets/opencode/herdr-agent-state.js";
+          };
         };
       }
     )
