@@ -70,6 +70,7 @@
           # Bump the version, rebuild, then clear the plugin cache to apply:
           # rm -rf ~/.cache/opencode/node_modules ~/.cache/opencode/bun.lock
           plugin = [ "@slkiser/opencode-quota@3.11.1" ];
+          agent.plan.disable = true;
           mcp = config.opencode.mcpServers // baseMcpServers;
         }
         // lib.optionalAttrs (config.opencode.providers != { }) {
@@ -131,10 +132,13 @@
           };
         };
 
+        opencodeConfigFile = pkgs.writeText "opencode.json" (builtins.toJSON opencodeConfig);
+
         opencodeWrapper = pkgs.writeShellScriptBin "opencode" ''
           exec env \
             OPENCODE_DISABLE_CLAUDE_CODE=1 \
             OPENCODE_DISABLE_EXTERNAL_SKILLS=1 \
+            OPENCODE_CONFIG=${opencodeConfigFile} \
             ${pkgs.opencode}/bin/opencode "$@"
         '';
       in
@@ -153,7 +157,6 @@
           home.packages = [ opencodeWrapper ];
 
           home.file = {
-            ".config/opencode/opencode.json".text = builtins.toJSON opencodeConfig;
             ".config/opencode/tui.json".text = builtins.toJSON {
               "$schema" = "https://opencode.ai/tui.json";
               theme = "stylix";
