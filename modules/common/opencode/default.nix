@@ -76,6 +76,61 @@
           provider = config.opencode.providers;
         };
 
+        c = config.lib.stylix.colors.withHashtag;
+
+        opencodeTheme = {
+          theme = {
+            primary = c.base0D;
+            secondary = c.base0E;
+            accent = c.base0C;
+            error = c.base08;
+            warning = c.base0A;
+            success = c.base0B;
+            info = c.base0D;
+            text = c.base05;
+            textMuted = c.base04;
+            background = c.base00;
+            backgroundPanel = c.base01;
+            backgroundElement = c.base02;
+            border = c.base03;
+            borderActive = c.base0D;
+            borderSubtle = c.base02;
+
+            diffAdded = c.base0B;
+            diffRemoved = c.base08;
+            diffContext = c.base04;
+            diffHunkHeader = c.base0C;
+            diffHighlightAdded = c.base0B;
+            diffHighlightRemoved = c.base08;
+            diffLineNumber = c.base03;
+
+            markdownText = c.base05;
+            markdownHeading = c.base0E;
+            markdownLink = c.base0D;
+            markdownLinkText = c.base0C;
+            markdownCode = c.base0B;
+            markdownBlockQuote = c.base0A;
+            markdownEmph = c.base0A;
+            markdownStrong = c.base09;
+            markdownHorizontalRule = c.base03;
+            markdownListItem = c.base0D;
+            markdownListEnumeration = c.base0C;
+            markdownImage = c.base0D;
+            markdownImageText = c.base0C;
+            markdownCodeBlock = c.base05;
+
+            syntaxComment = c.base03;
+            syntaxKeyword = c.base0E;
+            syntaxFunction = c.base0D;
+            syntaxVariable = c.base08;
+            syntaxString = c.base0B;
+            syntaxNumber = c.base09;
+            syntaxType = c.base0A;
+            syntaxOperator = c.base0C;
+            syntaxPunctuation = c.base05;
+          };
+        };
+
         opencodeWrapper = pkgs.writeShellScriptBin "opencode" ''
           exec env \
             OPENCODE_DISABLE_CLAUDE_CODE=1 \
@@ -99,6 +154,15 @@
 
           home.file = {
             ".config/opencode/opencode.json".text = builtins.toJSON opencodeConfig;
+            ".config/opencode/tui.json".text = builtins.toJSON {
+              "$schema" = "https://opencode.ai/tui.json";
+              theme = "stylix";
+            };
+            ".config/opencode/themes/stylix.json".text = builtins.toJSON opencodeTheme;
+            ".config/opencode/opencode-quota/quota-toast.json".text = builtins.toJSON {
+              "tuiSidebarPanel.enabled" = true;
+              enableToast = false;
+            };
             ".config/opencode/AGENTS.md".text = agentsMd;
             ".config/opencode/plugin/herdr-agent-state.js".source =
               "${inputs.herdr}/src/integration/assets/opencode/herdr-agent-state.js";
