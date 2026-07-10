@@ -87,6 +87,10 @@
             model = if instance.model != null then instance.model else "openai/gpt-5.6-terra";
             permission = "allow";
             autoupdate = false;
+            # MANUAL UPDATE CHECK: https://github.com/slkiser/opencode-quota/releases
+            # Bump the version, rebuild, then clear the plugin cache to apply:
+            # rm -rf ~/.cache/opencode/node_modules ~/.cache/opencode/bun.lock
+            plugin = [ "@slkiser/opencode-quota@3.11.1" ];
             instructions = [ "${agentsMdFile}" ];
             mcp = config.opencode.mcpServers // baseMcpServers // instance.mcpServers;
           }
