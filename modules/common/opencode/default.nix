@@ -111,7 +111,7 @@
             exec env \
               OPENCODE_CONFIG_DIR="$HOME/.config/opencode-${instance.name}" \
               XDG_DATA_HOME="$HOME/.local/share/opencode-${instance.name}" \
-              OPENCODE_DISABLE_CLAUDE_CODE_SKILLS=1 \
+              OPENCODE_DISABLE_CLAUDE_CODE=1 \
               OPENCODE_DISABLE_EXTERNAL_SKILLS=1 \
               ${unwrappedOpencode}/bin/opencode "$@"
           '';
@@ -139,7 +139,7 @@
             exec env \
               OPENCODE_CONFIG_DIR="$HOME/.config/opencode-$best_match" \
               XDG_DATA_HOME="$HOME/.local/share/opencode-$best_match" \
-              OPENCODE_DISABLE_CLAUDE_CODE_SKILLS=1 \
+              OPENCODE_DISABLE_CLAUDE_CODE=1 \
               OPENCODE_DISABLE_EXTERNAL_SKILLS=1 \
               ${unwrappedOpencode}/bin/opencode "$@"
           '';
