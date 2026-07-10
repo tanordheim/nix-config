@@ -9,6 +9,7 @@
 
     ../../modules/nixos/houdini
     ../../modules/nixos/hyprland
+    ../../modules/nixos/llama-cpp
     ../../modules/nixos/printing
     ../../modules/nixos/voxtype
 

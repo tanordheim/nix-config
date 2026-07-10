@@ -84,7 +84,7 @@
           in
           {
             "$schema" = "https://opencode.ai/config.json";
-            model = if instance.model != null then instance.model else "anthropic/claude-sonnet-4-6";
+            model = if instance.model != null then instance.model else "openai/gpt-5.6-terra";
             permission = "allow";
             autoupdate = false;
             instructions = [ "${agentsMdFile}" ];
@@ -92,6 +92,9 @@
           }
           // lib.optionalAttrs (skillPaths != [ ]) {
             skills.paths = skillPaths;
+          }
+          // lib.optionalAttrs (config.opencode.providers != { }) {
+            provider = config.opencode.providers;
           };
 
         mkInstanceFiles = instance: {
@@ -169,6 +172,11 @@
         };
 
         options.opencode.mcpServers = lib.mkOption {
+          type = lib.types.attrsOf lib.types.attrs;
+          default = { };
+        };
+
+        options.opencode.providers = lib.mkOption {
           type = lib.types.attrsOf lib.types.attrs;
           default = { };
         };
