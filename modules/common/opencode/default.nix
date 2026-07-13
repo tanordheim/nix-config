@@ -132,7 +132,7 @@
                 enabled = true;
               };
             };
-            ".config/opencode/plugin/herdr-agent-state.js".source =
+            ".config/opencode/plugins/herdr-agent-state.js".source =
               "${inputs.herdr}/src/integration/assets/opencode/herdr-agent-state.js";
           };
         };
