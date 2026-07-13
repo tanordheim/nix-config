@@ -23,6 +23,7 @@
     jq
     killall
     lsof
+    ripgrep
     tree
     unzip
     zip
