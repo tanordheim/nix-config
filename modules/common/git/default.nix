@@ -64,6 +64,7 @@
             github.user = "tanordheim";
             init.defaultBranch = "main";
             merge.tool = "vimdiff";
+            notes.rewriteRef = "refs/notes/*";
             push.default = "simple";
             rebase.autosquash = true;
             rerere = {
