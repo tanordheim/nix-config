@@ -25,7 +25,7 @@
         };
 
         # MANUAL UPDATE CHECK: https://github.com/slkiser/opencode-quota/releases
-        # Registered as both a server plugin (opencode.json) and a TUI plugin (tui.json).
+        # Registered as a server plugin (opencode.json).
         # Bump the version, rebuild, then clear the plugin cache to apply:
         # rm -rf ~/.cache/opencode/node_modules ~/.cache/opencode/bun.lock
         quotaPluginSpec = "@slkiser/opencode-quota@3.11.1";
@@ -120,11 +120,6 @@
           home.packages = [ opencodeWrapper ];
 
           home.file = {
-            ".config/opencode/tui.json".text = builtins.toJSON {
-              "$schema" = "https://opencode.ai/tui.json";
-              theme = "stylix";
-              plugin = [ quotaPluginSpec ];
-            };
             ".config/opencode/themes/stylix.json".text = builtins.toJSON opencodeTheme;
             ".config/opencode/opencode-quota/quota-toast.json".text = builtins.toJSON {
               enableToast = false;
