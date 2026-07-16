@@ -24,16 +24,9 @@
           };
         };
 
-        # MANUAL UPDATE CHECK: https://github.com/slkiser/opencode-quota/releases
-        # Registered as a server plugin (opencode.json).
-        # Bump the version, rebuild, then clear the plugin cache to apply:
-        # rm -rf ~/.cache/opencode/node_modules ~/.cache/opencode/bun.lock
-        quotaPluginSpec = "@slkiser/opencode-quota@3.11.1";
-
         opencodeConfig = {
           "$schema" = "https://opencode.ai/config.json";
           autoupdate = false;
-          plugin = [ quotaPluginSpec ];
           mcp = config.opencode.mcpServers // baseMcpServers;
         }
         // lib.optionalAttrs (config.opencode.providers != { }) {
@@ -121,12 +114,6 @@
 
           home.file = {
             ".config/opencode/themes/stylix.json".text = builtins.toJSON opencodeTheme;
-            ".config/opencode/opencode-quota/quota-toast.json".text = builtins.toJSON {
-              enableToast = false;
-              tuiSidebarPanel = {
-                enabled = true;
-              };
-            };
             ".config/opencode/plugins/herdr-agent-state.js".source =
               "${inputs.herdr}/src/integration/assets/opencode/herdr-agent-state.js";
           };
