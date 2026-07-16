@@ -13,15 +13,6 @@
       }:
       let
         baseMcpServers = {
-          codegraph = {
-            type = "local";
-            command = [
-              "${pkgs.codegraph}/bin/codegraph"
-              "serve"
-              "--mcp"
-            ];
-            enabled = true;
-          };
         };
 
         opencodeConfig = {
