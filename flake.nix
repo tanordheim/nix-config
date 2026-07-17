@@ -50,6 +50,14 @@
     # Stylix system wide color scheming/styling
     stylix.url = "github:danth/stylix";
 
+    # WORKAROUND: opencode 1.18 (openai provider fixes) not yet in nixos-unstable;
+    # merged in https://github.com/NixOS/nixpkgs/pull/542697 — drop this input and
+    # revert modules/common/opencode to pkgs.opencode once the channel catches up.
+    opencode = {
+      url = "github:anomalyco/opencode/v1.18.3";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Herdr — agent-aware terminal multiplexer (AGPL-3.0 / commercial dual-licensed)
     herdr = {
       url = "github:ogulcancelik/herdr";

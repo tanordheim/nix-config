@@ -81,12 +81,16 @@
 
         opencodeConfigFile = pkgs.writeText "opencode.json" (builtins.toJSON opencodeConfig);
 
+        # WORKAROUND: use upstream flake until nixos-unstable has opencode 1.18,
+        # https://github.com/NixOS/nixpkgs/pull/542697 — revert to pkgs.opencode.
+        opencodePackage = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
+
         opencodeWrapper = pkgs.writeShellScriptBin "opencode" ''
           exec env \
             OPENCODE_DISABLE_CLAUDE_CODE=1 \
             OPENCODE_DISABLE_EXTERNAL_SKILLS=1 \
             OPENCODE_CONFIG=${opencodeConfigFile} \
-            ${pkgs.opencode}/bin/opencode "$@"
+            ${opencodePackage}/bin/opencode "$@"
         '';
       in
       {
