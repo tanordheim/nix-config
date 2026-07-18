@@ -191,7 +191,6 @@
       _HIHideMenuBar = false;
       "com.apple.swipescrolldirection" = false;
       AppleICUForce24HourTime = true;
-      AppleInterfaceStyle = "Dark";
       AppleMeasurementUnits = "Centimeters";
       ApplePressAndHoldEnabled = false;
       AppleShowScrollBars = "Always";

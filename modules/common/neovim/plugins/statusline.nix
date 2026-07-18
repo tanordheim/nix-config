@@ -1,4 +1,7 @@
 { lib, config, ... }:
+let
+  c = config.lib.stylix.colors.withHashtag;
+in
 {
 
   programs.nixvim = {
@@ -27,11 +30,9 @@
       }
 
       local fallback = {
-        base = "#1e1e2e", mantle = "#181825", text = "#cdd6f4",
-        surface0 = "#313244", surface1 = "#45475a",
-        blue = "#89b4fa", green = "#a6e3a1", mauve = "#cba6f7",
-        peach = "#fab387", red = "#f38ba8", teal = "#94e2d5",
-        yellow = "#f9e2af",
+        base = "${c.base00}", text = "${c.base05}",
+        blue = "${c.base0D}", green = "${c.base0B}", mauve = "${c.base0E}",
+        peach = "${c.base09}", red = "${c.base08}", teal = "${c.base0C}",
       }
 
       local P = fallback
