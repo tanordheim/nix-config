@@ -202,7 +202,7 @@ in
 
         baseSettings = {
           agentPushNotifEnabled = true;
-          theme = "dark";
+          theme = "light";
           skipAutoPermissionPrompt = true;
           enableAllProjectMcpServers = true;
           env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";

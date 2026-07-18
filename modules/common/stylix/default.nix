@@ -11,9 +11,9 @@
 
   stylix = {
     enable = true;
-    image = ../../../wallpapers/themed/catppuccin/mocha/catppuccin-mocha-kurzgesagt-galaxy3.png;
-    polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    image = ../../../wallpapers/themed/nightfox/dawnfox.png;
+    polarity = "light";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-latte.yaml";
 
     fonts = {
       serif = {
