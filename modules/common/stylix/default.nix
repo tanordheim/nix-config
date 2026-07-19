@@ -11,7 +11,7 @@
 
   stylix = {
     enable = true;
-    image = ../../../wallpapers/themed/nightfox/dawnfox.png;
+    image = ../../../wallpapers/themed/catppuccin/mocha/catppuccin-mocha-saturn.png;
     polarity = "light";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-latte.yaml";
 
