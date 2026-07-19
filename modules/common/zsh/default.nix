@@ -14,13 +14,6 @@
           initContent = ''
             export PATH="$PATH:$HOME/.local/bin"
 
-            # On SSH login (not local, not already inside tmux): offer a sesh
-            # picker. Cancel or detach drops to a normal remote shell.
-            if [[ -o interactive && -z "$TMUX" && -n "$SSH_CONNECTION" ]] && command -v sesh >/dev/null; then
-              session="$(sesh list -it | fzf --no-sort --ansi --border --border-label ' sesh ' --prompt '⚡  ')"
-              [[ -n "$session" ]] && sesh connect "$session"
-            fi
-
             # Add a "c" function with an autocomplete definition to allow easily
             # changing working directory into a source code directory.
             c() { cd ${codeDirectory}/$1; }

@@ -6,7 +6,6 @@
     ./sops.nix
     ./arr-download-clients.nix
     ./backups.nix
-    ./tmux-session-attach.nix
 
     ../../modules/common/claude
     ../../modules/common/neovim
