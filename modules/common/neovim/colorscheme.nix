@@ -8,7 +8,7 @@
     colorschemes.kanagawa = {
       enable = true;
       settings = {
-        theme = "wave";
+        theme = "dragon";
         dimInactive = true;
         transparent = true;
       };
