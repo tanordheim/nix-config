@@ -25,6 +25,10 @@
                 Value = true;
                 Status = "locked";
               };
+              "browser.profiles.enabled" = {
+                Value = false;
+                Status = "locked";
+              };
             };
           };
         };
