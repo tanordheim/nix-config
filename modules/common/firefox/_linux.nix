@@ -11,6 +11,8 @@
           "x-scheme-handler/about" = "firefox.desktop";
         };
         stylix.targets.firefox.profileNames = [ "default" ];
+        stylix.targets.firefox.colorTheme.enable = true;
+        programs.firefox.profiles.default.extensions.settings."FirefoxColor@mozilla.com".force = true;
         programs.firefox = {
           enable = true;
           policies = {
