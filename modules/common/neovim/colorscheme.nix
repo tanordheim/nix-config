@@ -5,12 +5,12 @@
   stylix.targets.nixvim.enable = false;
 
   programs.nixvim = {
-    colorschemes.catppuccin = {
+    colorschemes.nightfox = {
       enable = true;
-      settings = {
-        flavour = "latte";
-        dim_inactive.enabled = true;
-        transparent_background = true;
+      flavor = "dawnfox";
+      settings.options = {
+        dim_inactive = true;
+        transparent = true;
       };
     };
   };

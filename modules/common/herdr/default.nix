@@ -26,7 +26,7 @@ in
 
         configToml = ''
           [theme.custom]
-          accent = "${c.base07}"
+          accent = "${c.base0E}"
           panel_bg = "${c.base01}"
           surface0 = "${c.base01}"
           surface1 = "${c.base02}"

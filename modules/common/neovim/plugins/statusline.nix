@@ -29,21 +29,11 @@ in
         t = "T", nt = "T",
       }
 
-      local fallback = {
+      local P = {
         base = "${c.base00}", text = "${c.base05}",
         blue = "${c.base0D}", green = "${c.base0B}", mauve = "${c.base0E}",
         peach = "${c.base09}", red = "${c.base08}", teal = "${c.base0C}",
       }
-
-      local P = fallback
-
-      local function refresh_palette()
-        local ok, cp = pcall(require, "catppuccin.palettes")
-        if ok then
-          local p = cp.get_palette()
-          if p and p.base then P = p end
-        end
-      end
 
       local function hex_rgb(hex)
         return tonumber(hex:sub(2,3),16), tonumber(hex:sub(4,5),16), tonumber(hex:sub(6,7),16)
@@ -60,9 +50,9 @@ in
 
       local function apply_mode_hl(mode)
         local color_name = mode_palette[mode] or "blue"
-        local color = P[color_name] or fallback[color_name]
-        local base = P.base or fallback.base
-        local text = P.text or fallback.text
+        local color = P[color_name]
+        local base = P.base
+        local text = P.text
         local mid = blend(color, base, 0.78)
         local light = blend(color, text, 0.55)
         local endcap = blend(color, base, 0.92)
@@ -201,7 +191,6 @@ in
       local aug = vim.api.nvim_create_augroup("MyStatusline", { clear = true })
 
       local function refresh_all()
-        refresh_palette()
         apply_mode_hl(vim.fn.mode())
       end
 

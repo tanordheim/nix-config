@@ -10,6 +10,9 @@
       home.file."Library/Developer/Xcode/UserData/FontAndColorThemes/Catppuccin Mocha.xccolortheme" = {
         source = ./themes/Catppuccin_Mocha.xccolortheme;
       };
+      home.file."Library/Developer/Xcode/UserData/FontAndColorThemes/Dawnfox.xccolortheme" = {
+        source = ./themes/Dawnfox.xccolortheme;
+      };
     }
   ];
 }

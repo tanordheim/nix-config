@@ -13,7 +13,26 @@
     enable = true;
     image = ../../../wallpapers/themed/catppuccin/mocha/catppuccin-mocha-saturn.png;
     polarity = "light";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-latte.yaml";
+    base16Scheme = {
+      scheme = "Dawnfox";
+      author = "EdenEast (https://github.com/EdenEast/nightfox.nvim)";
+      base00 = "faf4ed";
+      base01 = "ebe5df";
+      base02 = "d0d8d8";
+      base03 = "9893a5";
+      base04 = "625c87";
+      base05 = "575279";
+      base06 = "504c6b";
+      base07 = "4c4769";
+      base08 = "b4637a";
+      base09 = "d7827e";
+      base0A = "ea9d34";
+      base0B = "618774";
+      base0C = "56949f";
+      base0D = "286983";
+      base0E = "907aa9";
+      base0F = "d685af";
+    };
 
     fonts = {
       serif = {
