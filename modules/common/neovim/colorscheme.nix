@@ -5,11 +5,11 @@
   stylix.targets.nixvim.enable = false;
 
   programs.nixvim = {
-    colorschemes.nightfox = {
+    colorschemes.kanagawa = {
       enable = true;
-      flavor = "dawnfox";
-      settings.options = {
-        dim_inactive = true;
+      settings = {
+        theme = "wave";
+        dimInactive = true;
         transparent = true;
       };
     };
