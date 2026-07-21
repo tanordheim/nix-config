@@ -21,6 +21,17 @@
         --  Remove this option if you want your OS clipboard to remain independent.
         --  See `:help 'clipboard'`
         vim.schedule(function()
+          if vim.env.WAYLAND_DISPLAY == nil and vim.env.DISPLAY == nil and vim.fn.has('mac') == 0 then
+            local osc52 = require('vim.ui.clipboard.osc52')
+            local function reg_paste()
+              return { vim.fn.split(vim.fn.getreg('"'), '\n'), vim.fn.getregtype('"') }
+            end
+            vim.g.clipboard = {
+              name = 'osc52-write-only',
+              copy = { ['+'] = osc52.copy('+'), ['*'] = osc52.copy('*') },
+              paste = { ['+'] = reg_paste, ['*'] = reg_paste },
+            }
+          end
           vim.opt.clipboard = 'unnamedplus'
         end)
 
