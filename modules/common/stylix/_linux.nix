@@ -20,7 +20,7 @@
 
   stylix.cursor = {
     size = 24;
-    package = pkgs.stable.catppuccin-cursors.frappeMauve;
-    name = "catppuccin-frappe-mauve-cursors";
+    package = pkgs.everforest-cursors;
+    name = "everforest-cursors";
   };
 }

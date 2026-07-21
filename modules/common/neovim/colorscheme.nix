@@ -5,12 +5,14 @@
   stylix.targets.nixvim.enable = false;
 
   programs.nixvim = {
-    colorschemes.catppuccin = {
+    opts.background = "light";
+
+    colorschemes.everforest = {
       enable = true;
       settings = {
-        flavour = "frappe";
-        dim_inactive.enabled = true;
-        transparent_background = true;
+        background = "medium";
+        dim_inactive_windows = 1;
+        transparent_background = 1;
       };
     };
   };
