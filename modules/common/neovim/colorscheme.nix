@@ -5,12 +5,12 @@
   stylix.targets.nixvim.enable = false;
 
   programs.nixvim = {
-    colorschemes.kanagawa = {
+    colorschemes.catppuccin = {
       enable = true;
       settings = {
-        theme = "dragon";
-        dimInactive = true;
-        transparent = true;
+        flavour = "frappe";
+        dim_inactive.enabled = true;
+        transparent_background = true;
       };
     };
   };

@@ -20,7 +20,7 @@
 
   stylix.cursor = {
     size = 24;
-    package = pkgs.rose-pine-cursor;
-    name = "BreezeX-RosePine-Linux";
+    package = pkgs.stable.catppuccin-cursors.frappeMauve;
+    name = "catppuccin-frappe-mauve-cursors";
   };
 }
