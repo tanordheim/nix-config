@@ -14,7 +14,7 @@
           text = 0xFF${c.base05}
           bright_text = 0xFF${c.base07}
           link_text = 0xFF${c.base0D}
-          accent = 0xFF${c.base0E}
+          accent = 0xFF${c.base0C}
           accent_secondary = 0xFF${c.base0D}
 
           font_family = ${f.sansSerif.name}
