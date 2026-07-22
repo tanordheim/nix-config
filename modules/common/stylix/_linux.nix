@@ -20,7 +20,7 @@
 
   stylix.cursor = {
     size = 24;
-    package = pkgs.everforest-cursors;
-    name = "everforest-cursors";
+    package = pkgs.stable.catppuccin-cursors.macchiatoSky;
+    name = "catppuccin-macchiato-sky-cursors";
   };
 }

@@ -9,7 +9,8 @@
       }:
       let
         colors = config.lib.stylix.colors;
-        accent = "rgb(${colors.base0C})";
+        sky = "91d7e3";
+        accent = "rgb(${sky})";
         muted = "rgb(${colors.base03})";
         locked = "rgb(${colors.base09})";
         fg = "rgb(${colors.base05})";
@@ -80,8 +81,8 @@
                   enabled = true;
                   range = 10;
                   render_power = 3;
-                  color = "rgba(${colors.base0C}66)";
-                  color_inactive = "rgba(${colors.base0C}00)";
+                  color = "rgba(${sky}66)";
+                  color_inactive = "rgba(${sky}00)";
                 };
               };
 

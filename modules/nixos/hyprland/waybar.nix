@@ -392,7 +392,7 @@
             }
 
             #custom-voxtype.transcribing {
-              background: ${c.base0C};
+              background: #91d7e3;
               color: ${c.base00};
             }
 
@@ -405,7 +405,7 @@
             }
 
             #workspaces button.active {
-              background: ${c.base0C};
+              background: #91d7e3;
               color: ${c.base00};
             }
 
