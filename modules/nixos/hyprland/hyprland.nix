@@ -9,10 +9,9 @@
       }:
       let
         colors = config.lib.stylix.colors;
-        sky = "91d7e3";
-        accent = "rgb(${sky})";
+        accent = "rgb(${colors.base0E})";
         muted = "rgb(${colors.base03})";
-        locked = "rgb(${colors.base09})";
+        locked = "rgb(${colors.base0C})";
         fg = "rgb(${colors.base05})";
         bg = "rgb(${colors.base00})";
         inline = lib.generators.mkLuaInline;
@@ -81,8 +80,8 @@
                   enabled = true;
                   range = 10;
                   render_power = 3;
-                  color = "rgba(${sky}66)";
-                  color_inactive = "rgba(${sky}00)";
+                  color = "rgba(${colors.base0E}66)";
+                  color_inactive = "rgba(${colors.base0E}00)";
                 };
               };
 

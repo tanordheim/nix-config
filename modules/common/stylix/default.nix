@@ -13,7 +13,7 @@
     enable = true;
     image = ../../../wallpapers/themed/catppuccin/mocha/catppuccin-mocha-saturn.png;
     polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
     fonts = {
       serif = {
