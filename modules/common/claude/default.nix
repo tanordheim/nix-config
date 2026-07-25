@@ -322,7 +322,10 @@ in
             };
           };
 
-        unwrappedClaude = pkgs.bleeding.claude-code;
+        # WORKAROUND: bleeding's claude-code is too old to support opus-5; pinned to
+        # nixpkgs master for a version that does. Revert to pkgs.bleeding.claude-code
+        # once the opus-5 version bump propagates to bleeding.
+        unwrappedClaude = pkgs.master.claude-code;
 
         pluginDirArgs = lib.concatMapStrings (dir: ''
           d=$(echo ${lib.escapeShellArg dir} | sed 's|^~|'"$HOME"'|')
