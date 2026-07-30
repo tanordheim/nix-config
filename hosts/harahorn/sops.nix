@@ -15,6 +15,11 @@
       "telegram/chat_id" = {
         sopsFile = ../../secrets/common.yaml;
       };
+      "pi/exa_api_key" = {
+        sopsFile = ../../secrets/user.yaml;
+        owner = "trond";
+        mode = "0400";
+      };
     };
   };
 }

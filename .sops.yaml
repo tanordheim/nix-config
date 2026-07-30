@@ -18,3 +18,8 @@ creation_rules:
       - age:
           - *trond-harahorn
           - *harahorn
+  - path_regex: secrets/user\.yaml$
+    key_groups:
+      - age:
+          - *trond-harahorn
+          - *harahorn
