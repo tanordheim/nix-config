@@ -9,7 +9,7 @@
         programs.ghostty.settings.font-family = lib.mkForce [
           config.stylix.fonts.monospace.name
           config.stylix.fonts.emoji.name
-          "Symbols Nerd Font Mono"
+          "JetBrainsMono Nerd Font Mono"
         ];
       }
     )
