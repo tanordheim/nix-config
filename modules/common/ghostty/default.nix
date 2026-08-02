@@ -3,6 +3,16 @@
   imports = [ (lib.mkPlatformImport ./. isDarwin) ];
 
   home-manager.sharedModules = [
+    (
+      { config, ... }:
+      {
+        programs.ghostty.settings.font-family = lib.mkForce [
+          config.stylix.fonts.monospace.name
+          config.stylix.fonts.emoji.name
+          "Symbols Nerd Font Mono"
+        ];
+      }
+    )
     {
       programs.ghostty = {
         enable = true;
