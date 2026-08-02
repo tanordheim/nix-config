@@ -2,6 +2,7 @@ args: [
   (import ./audacity args)
   (import ./aurral args)
   (import ./codegraph args)
+  (import ./codicon-extras args)
   (import ./linear-cli args)
   (import ./neotest args)
   (import ./roslyn-ls args)
