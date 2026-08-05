@@ -16,7 +16,6 @@
           gwr() { git worktree remove ".worktrees/$1"; }
           gwl() { git worktree list; }
           gwp() { git worktree prune; }
-          gr() { cd "$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")"; }
         '';
 
         programs.git = {

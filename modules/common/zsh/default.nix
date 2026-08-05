@@ -52,6 +52,11 @@
 
             # emacs bindings.
             bindkey -e
+
+            for file in "$HOME"/.zsh.local/*.zsh(N); do
+              source "$file"
+            done
+            unset file
           '';
 
           history = {
