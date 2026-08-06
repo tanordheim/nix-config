@@ -10,11 +10,14 @@ in
   home-manager.sharedModules = [
     (
       { pkgs, ... }:
+      let
+        piPkgs = inputs.pi-nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+      in
       {
         home.packages = [
           (pkgs.symlinkJoin {
             name = "pi-coding-agent-wrapped";
-            paths = [ pkgs.pi-coding-agent ];
+            paths = [ piPkgs.pi-coding-agent ];
             nativeBuildInputs = [ pkgs.makeWrapper ];
             postBuild = ''
               wrapProgram $out/bin/pi \

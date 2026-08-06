@@ -8,6 +8,9 @@
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
 
+    # WORKAROUND: pi 0.84.0 is pending https://github.com/NixOS/nixpkgs/pull/549943
+    pi-nixpkgs.url = "github:NixOS/nixpkgs?ref=pull/549943/head";
+
     # Nix-darwin (for macOS machines)
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
