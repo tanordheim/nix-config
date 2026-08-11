@@ -71,6 +71,8 @@
     ../../modules/common/rust-dev
     ../../modules/common/terraform-dev
 
+    ../../modules/common/sherpa-onnx
+
     ../../modules/common/private
   ];
 
