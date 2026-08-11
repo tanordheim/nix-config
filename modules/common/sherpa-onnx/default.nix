@@ -4,10 +4,10 @@
       { pkgs, ... }:
       let
         modelArchive = pkgs.fetchurl {
-          url = "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/kokoro-multi-lang-v1_1.tar.bz2";
-          hash = "sha256-o/THPQQ4YOP9LlsG82eV64HeD8jo3m33AyRe3d2H260=";
+          url = "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/kokoro-multi-lang-v1_0.tar.bz2";
+          hash = "sha256-wTPSY1PXdtpzCHDax9oH2/yaXjvIDMXo6Dq26CO+cEY=";
         };
-        model = pkgs.runCommand "kokoro-multi-lang-v1_1" { nativeBuildInputs = [ pkgs.bzip2 ]; } ''
+        model = pkgs.runCommand "kokoro-multi-lang-v1_0" { nativeBuildInputs = [ pkgs.bzip2 ]; } ''
           mkdir "$out"
           tar --extract --bzip2 --file ${modelArchive} --strip-components=1 --directory "$out"
         '';
@@ -27,7 +27,7 @@
           kokoroTts
         ];
 
-        xdg.dataFile."sherpa-onnx/models/kokoro-multi-lang-v1_1".source = model;
+        xdg.dataFile."sherpa-onnx/models/kokoro-multi-lang-v1_0".source = model;
       }
     )
   ];
