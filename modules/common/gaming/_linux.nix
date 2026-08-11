@@ -4,6 +4,8 @@
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
 
+  networking.firewall.allowedUDPPorts = [ 7551 ];
+
   fonts.packages = [
     pkgs.corefonts
     pkgs.vista-fonts
@@ -21,6 +23,7 @@
   home-manager.sharedModules = [
     {
       home.packages = [
+        pkgs.mcpelauncher-ui-qt
         pkgs.protontricks
         pkgs.lutris
       ];
