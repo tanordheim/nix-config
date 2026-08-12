@@ -102,6 +102,12 @@
   networking.hostName = "harahorn";
   networking.networkmanager.enable = true;
   networking.networkmanager.unmanaged = [ "wlp8s0" ];
+  networking.firewall.extraCommands = ''
+    iptables -I nixos-fw 1 -s 192.168.69.31 -j nixos-fw-accept
+  '';
+  networking.firewall.extraStopCommands = ''
+    iptables -D nixos-fw -s 192.168.69.31 -j nixos-fw-accept 2>/dev/null || true
+  '';
 
   console.keyMap = "no-latin1";
 
