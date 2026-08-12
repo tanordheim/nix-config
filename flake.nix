@@ -63,8 +63,9 @@
     };
 
     # Herdr — agent-aware terminal multiplexer (AGPL-3.0 / commercial dual-licensed)
+    # WORKAROUND: post-0.8.0 builds turn AltGr/Level-3 characters into base keys in Kitty-aware panes.
     herdr = {
-      url = "github:ogulcancelik/herdr";
+      url = "github:ogulcancelik/herdr/9a4ce5e13c1d4622ca63c2947d0eaa018ec35715";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
