@@ -3,6 +3,7 @@ args: [
   (import ./aurral args)
   (import ./codegraph args)
   (import ./codicon-extras args)
+  (import ./gh-stack args)
   (import ./linear-cli args)
   (import ./neotest args)
   (import ./roslyn-ls args)
