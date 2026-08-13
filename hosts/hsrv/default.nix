@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./sops.nix
     ./arr-download-clients.nix
+    ./arr-language-normalizer.nix
     ./backups.nix
 
     ../../modules/common/claude
