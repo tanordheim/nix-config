@@ -25,7 +25,7 @@ Row {
     }
 
     StatusText {
-        text: idleInhibitor.enabled ? "" : ""
+        text: idleInhibitor.enabled ? "󱐋" : "󰖔"
         color: idleInhibitor.enabled ? Theme.accent : Theme.text
 
         IdleInhibitor {
@@ -50,10 +50,10 @@ Row {
 
         text: {
             if (!volumeItem.available)
-                return " --";
+                return "󰕾 --";
             if (volumeItem.audio.muted)
-                return " muted";
-            return " " + Math.round(volumeItem.audio.volume * 100) + "%";
+                return "󰖁 muted";
+            return "󰕾 " + Math.round(volumeItem.audio.volume * 100) + "%";
         }
         color: volumeItem.available && volumeItem.audio.muted ? Theme.critical : Theme.text
 
@@ -89,10 +89,10 @@ Row {
 
         text: {
             if (bluetoothItem.adapter === null || !bluetoothItem.adapter.enabled)
-                return " off";
+                return "󰂯 off";
             if (bluetoothItem.connectedDevices.length > 0)
-                return " " + bluetoothItem.connectedDevices[0].name;
-            return " on";
+                return "󰂯 " + bluetoothItem.connectedDevices[0].name;
+            return "󰂯 on";
         }
 
         Instantiator {
@@ -132,7 +132,7 @@ Row {
 
     StatusText {
         visible: SystemTray.items.values.length > 0
-        text: ""
+        text: "󰇙"
         color: Theme.mutedText
     }
 
@@ -145,7 +145,7 @@ Row {
         StatusText {
             id: bellGlyph
 
-            text: Services.Notifications.dnd ? "" : ""
+            text: Services.Notifications.dnd ? "󰂛" : "󰂚"
             color: Services.Notifications.failed ? Theme.mutedText : Theme.text
         }
 

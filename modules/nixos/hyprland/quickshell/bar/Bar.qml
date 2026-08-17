@@ -24,6 +24,15 @@ PanelWindow {
         right: true
     }
 
+    component Separator: Rectangle {
+        visible: root.primary
+        implicitWidth: 1
+        implicitHeight: Theme.fontSize
+        color: Theme.separator
+
+        anchors.verticalCenter: parent.verticalCenter
+    }
+
     Row {
         id: leftRow
 
@@ -74,12 +83,16 @@ PanelWindow {
             anchors.verticalCenter: parent.verticalCenter
         }
 
+        Separator {}
+
         StatusArea {
             visible: root.primary
             window: root
 
             anchors.verticalCenter: parent.verticalCenter
         }
+
+        Separator {}
 
         Clock {
             anchors.verticalCenter: parent.verticalCenter
