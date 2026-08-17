@@ -43,6 +43,7 @@
 
               readonly property string fontFamily: "${f.monospace.name}"
               readonly property int fontSize: 13
+              readonly property int iconSize: 16
 
               readonly property int spacingSmall: 4
               readonly property int spacingNormal: 8
@@ -66,11 +67,41 @@
           cp ${themeQml} $out/theme/Theme.qml
         '';
 
+        configQml = pkgs.writeText "Config.qml" ''
+          pragma Singleton
+
+          import Quickshell
+
+          Singleton {
+              readonly property string primaryMonitor: "DP-2"
+              readonly property string shell: "${pkgs.runtimeShell}"
+
+              readonly property list<string> voxtypeStatus: ["${pkgs.voxtype}/bin/voxtype", "status", "--follow", "--format", "json"]
+              readonly property list<string> voxtypeToggle: ["${pkgs.voxtype}/bin/voxtype", "record", "toggle"]
+              readonly property list<string> swayncStream: ["${pkgs.swaynotificationcenter}/bin/swaync-client", "-swb"]
+              readonly property list<string> swayncToggleCenter: ["${pkgs.swaynotificationcenter}/bin/swaync-client", "-t", "-sw"]
+              readonly property list<string> swayncToggleDnd: ["${pkgs.swaynotificationcenter}/bin/swaync-client", "-d", "-sw"]
+              readonly property list<string> audioSettings: ["${pkgs.pavucontrol}/bin/pavucontrol"]
+              readonly property list<string> bluetoothSettings: ["${pkgs.blueman}/bin/blueman-manager"]
+              readonly property list<string> networkSettings: ["${pkgs.networkmanagerapplet}/bin/nm-connection-editor"]
+
+              readonly property string gpuBusyPath: "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/gpu_busy_percent"
+              readonly property string cpuTempGlob: "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon*/temp1_input"
+              readonly property string gpuTempGlob: "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon/hwmon*/temp2_input"
+          }
+        '';
+
+        configDir = pkgs.runCommand "quickshell-config-constants" { } ''
+          mkdir -p $out/config
+          cp ${configQml} $out/config/Config.qml
+        '';
+
         shellConfig = pkgs.symlinkJoin {
           name = "quickshell-nix-config";
           paths = [
             ./quickshell
             themeDir
+            configDir
           ];
         };
       in

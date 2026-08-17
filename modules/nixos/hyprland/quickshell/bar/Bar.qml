@@ -1,6 +1,8 @@
 import QtQuick
 import Quickshell
 import Quickshell.Hyprland
+import qs.config
+import qs.services as Services
 import qs.theme
 
 PanelWindow {
@@ -9,7 +11,8 @@ PanelWindow {
     required property var modelData
 
     readonly property HyprlandMonitor monitor: Hyprland.monitorFor(root.modelData)
-    readonly property real sideWidth: Math.max(workspaces.width, clock.width)
+    readonly property bool primary: root.monitor !== null && root.monitor.name === Config.primaryMonitor
+    readonly property real sideWidth: Math.max(leftRow.width, rightRow.width)
 
     screen: root.modelData
     color: Theme.background
@@ -21,14 +24,32 @@ PanelWindow {
         right: true
     }
 
-    Workspaces {
-        id: workspaces
+    Row {
+        id: leftRow
 
-        monitor: root.monitor
+        height: parent.height
+        spacing: Theme.spacingLarge
 
         anchors.left: parent.left
         anchors.leftMargin: Theme.spacingLarge
-        anchors.verticalCenter: parent.verticalCenter
+
+        Workspaces {
+            monitor: root.monitor
+
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        VoiceType {
+            visible: root.primary
+
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        MediaIndicator {
+            visible: root.primary && Services.Media.active !== null
+
+            anchors.verticalCenter: parent.verticalCenter
+        }
     }
 
     WindowTitle {
@@ -38,11 +59,30 @@ PanelWindow {
         anchors.centerIn: parent
     }
 
-    Clock {
-        id: clock
+    Row {
+        id: rightRow
+
+        height: parent.height
+        spacing: Theme.spacingLarge
 
         anchors.right: parent.right
         anchors.rightMargin: Theme.spacingLarge
-        anchors.verticalCenter: parent.verticalCenter
+
+        TelemetryIndicator {
+            visible: root.primary
+
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        StatusArea {
+            visible: root.primary
+            window: root
+
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        Clock {
+            anchors.verticalCenter: parent.verticalCenter
+        }
     }
 }
