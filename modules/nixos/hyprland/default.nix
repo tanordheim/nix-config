@@ -6,6 +6,7 @@
     ./hyprlock.nix
     ./hyprpaper.nix
     ./hyprtoolkit.nix
+    ./quickshell.nix
     ./swaync.nix
     ./waybar.nix
   ];
