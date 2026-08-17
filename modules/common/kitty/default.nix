@@ -25,7 +25,7 @@ in
             tab_bar_style = "hidden";
             mouse_hide_wait = 3.0;
           }
-          // lib.optionalAttrs pkgs.stdenv.isDarwin {
+          // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
             window_padding_width = 8;
             hide_window_decorations = "titlebar-only";
             text_composition_strategy = "1.0 0";
@@ -42,7 +42,7 @@ in
             "ctrl+shift+n" = "change_font_size all 0";
             "ctrl+a>q" = "load_config_file";
           }
-          // lib.optionalAttrs pkgs.stdenv.isDarwin {
+          // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
             "cmd+c" = "copy_and_clear_or_interrupt";
             "cmd+v" = "paste_from_clipboard";
             "cmd+q" = "quit";
@@ -50,7 +50,7 @@ in
             "cmd+shift+j" = "change_font_size all -1";
             "cmd+shift+n" = "change_font_size all 0";
           }
-          // lib.optionalAttrs pkgs.stdenv.isLinux {
+          // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
             "ctrl+c" = "copy_and_clear_or_interrupt";
             "ctrl+shift+v" = "paste_from_clipboard";
           };

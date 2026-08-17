@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
     # Nix-darwin (for macOS machines)
@@ -37,12 +38,6 @@
     # Aurral — music discovery/request manager for Lidarr
     aurral-src = {
       url = "github:lklynet/aurral/v1.50.1";
-      flake = false;
-    };
-
-    # SideFX Labs toolset for Houdini
-    sidefx-labs = {
-      url = "github:sideeffects/SideFXLabs/21.0.707";
       flake = false;
     };
 

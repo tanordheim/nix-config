@@ -10,7 +10,7 @@
           "...." = "cd ../../../";
           "....." = "cd ../../../../";
         }
-        // lib.optionalAttrs pkgs.stdenv.isLinux {
+        // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
           clip = "wl-copy";
           open = "xdg-open";
         };

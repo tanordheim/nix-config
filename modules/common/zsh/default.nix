@@ -3,7 +3,7 @@
     (
       { pkgs, config, ... }:
       let
-        codeDirectory = if pkgs.stdenv.isDarwin then "~/Code" else "~/code";
+        codeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "~/Code" else "~/code";
       in
       {
         programs.zsh = {

@@ -8,13 +8,13 @@
         versionMajorMinor = lib.versions.majorMinor pkgs.jetbrains.rider.version;
 
         vmOptionsFile =
-          if pkgs.stdenv.isDarwin then
+          if pkgs.stdenv.hostPlatform.isDarwin then
             "Library/Application Support/JetBrains/Rider${versionMajorMinor}/rider.vmoptions"
           else
             ".config/JetBrains/Rider${versionMajorMinor}/rider64.vmoptions";
 
         vmOptionsContent =
-          if pkgs.stdenv.isDarwin then
+          if pkgs.stdenv.hostPlatform.isDarwin then
             ''
               -Xms1g
               -Xmx2g

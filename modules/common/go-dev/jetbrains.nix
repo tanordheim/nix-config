@@ -8,13 +8,13 @@
         versionMajorMinor = lib.versions.majorMinor pkgs.jetbrains.datagrip.version;
 
         vmOptionsFile =
-          if pkgs.stdenv.isDarwin then
+          if pkgs.stdenv.hostPlatform.isDarwin then
             "Library/Application Support/JetBrains/GoLand${versionMajorMinor}/goland.vmoptions"
           else
             ".config/JetBrains/GoLand${versionMajorMinor}/goland64.vmoptions";
 
         vmOptionsContent =
-          if pkgs.stdenv.isDarwin then
+          if pkgs.stdenv.hostPlatform.isDarwin then
             ''
               -Xms1g
               -Xmx2g

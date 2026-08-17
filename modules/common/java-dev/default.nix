@@ -7,7 +7,7 @@
           enable = true;
         };
 
-        launchd.agents.setenv-java-home = lib.mkIf pkgs.stdenv.isDarwin {
+        launchd.agents.setenv-java-home = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
           enable = true;
           config = {
             Label = "org.nix.setenv-java-home";

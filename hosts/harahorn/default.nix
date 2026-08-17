@@ -7,7 +7,6 @@
     ./sops.nix
     ./backups.nix
 
-    ../../modules/nixos/houdini
     ../../modules/nixos/hyprland
     ../../modules/nixos/printing
     ../../modules/nixos/thunar

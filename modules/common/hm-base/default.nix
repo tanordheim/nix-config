@@ -5,7 +5,7 @@
       {
         programs.home-manager.enable = true;
         home.enableNixpkgsReleaseCheck = false;
-        services.ssh-agent.enable = lib.mkIf pkgs.stdenv.isLinux true;
+        services.ssh-agent.enable = lib.mkIf pkgs.stdenv.hostPlatform.isLinux true;
       }
     )
   ];

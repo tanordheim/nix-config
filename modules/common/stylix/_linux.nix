@@ -13,7 +13,8 @@
 
   stylix.cursor = {
     size = 24;
-    package = pkgs.catppuccin-cursors.mochaMauve;
+    # WORKAROUND: unstable catppuccin-cursors pulls uncached Inkscape into the build closure.
+    package = pkgs.stable.catppuccin-cursors.mochaMauve;
     name = "catppuccin-mocha-mauve-cursors";
   };
 }

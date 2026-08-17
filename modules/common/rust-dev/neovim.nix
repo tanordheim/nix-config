@@ -44,7 +44,7 @@
                   require("rustaceanvim.config").get_codelldb_adapter(
                     "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb",
                     "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/lldb/lib/liblldb${
-                      if pkgs.stdenv.isDarwin then ".dylib" else ".so"
+                      if pkgs.stdenv.hostPlatform.isDarwin then ".dylib" else ".so"
                     }"
                   )
                 '';
