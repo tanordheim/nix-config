@@ -4,12 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
-
-    # WORKAROUND: pi 0.84.0 is pending https://github.com/NixOS/nixpkgs/pull/549943
-    pi-nixpkgs.url = "github:NixOS/nixpkgs?ref=pull/549943/head";
 
     # Nix-darwin (for macOS machines)
     nix-darwin = {
@@ -53,14 +48,6 @@
 
     # Stylix system wide color scheming/styling
     stylix.url = "github:danth/stylix";
-
-    # WORKAROUND: opencode 1.18 (openai provider fixes) not yet in nixos-unstable;
-    # merged in https://github.com/NixOS/nixpkgs/pull/542697 — drop this input and
-    # revert modules/common/opencode to pkgs.opencode once the channel catches up.
-    opencode = {
-      url = "github:anomalyco/opencode/v1.18.3";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # Herdr — agent-aware terminal multiplexer (AGPL-3.0 / commercial dual-licensed)
     # WORKAROUND: post-0.8.0 builds turn AltGr/Level-3 characters into base keys in Kitty-aware panes.

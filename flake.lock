@@ -412,38 +412,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-master": {
-      "locked": {
-        "lastModified": 1786457642,
-        "narHash": "sha256-TYrgsJo66y+03re2/6grp0ua7t9UwK0GgrZa1E7OfdA=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "36d3421adce532c77a764b92674642dff93a4e01",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-stable": {
-      "locked": {
-        "lastModified": 1767313136,
-        "narHash": "sha256-16KkgfdYqjaeRGBaYsNrhPRRENs0qzkQVUooNHtoy2w=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "ac62194c3917d5f474c1a844b6fd6da2db95077d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-25.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-unstable-small": {
       "locked": {
         "lastModified": 1786400526,
@@ -523,43 +491,6 @@
         "type": "github"
       }
     },
-    "opencode": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1784216058,
-        "narHash": "sha256-Wdkzms59oHw3M/Em2RH7BPhZME8AtLmtNFSnsUxO1V4=",
-        "owner": "anomalyco",
-        "repo": "opencode",
-        "rev": "127bdb30784d508cc556c71a0f32b508a3061517",
-        "type": "github"
-      },
-      "original": {
-        "owner": "anomalyco",
-        "ref": "v1.18.3",
-        "repo": "opencode",
-        "type": "github"
-      }
-    },
-    "pi-nixpkgs": {
-      "locked": {
-        "lastModified": 1786038051,
-        "narHash": "sha256-7EZkNG5xqfSwRgnzY/ToaRPpaoeKdXIbF02btyYA01M=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "2baf04ea3d0bd0fc8c1fda35f7df2f96e55a8c4f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "pull/549943/head",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "aurral-src": "aurral-src",
@@ -576,12 +507,8 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-master": "nixpkgs-master",
-        "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unstable-small": "nixpkgs-unstable-small",
         "nixvim": "nixvim",
-        "opencode": "opencode",
-        "pi-nixpkgs": "pi-nixpkgs",
         "sidefx-labs": "sidefx-labs",
         "sops-nix": "sops-nix",
         "stylix": "stylix",

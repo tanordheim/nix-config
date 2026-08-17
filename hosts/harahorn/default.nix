@@ -33,7 +33,6 @@
     ../../modules/common/maestro
     ../../modules/common/neovim
     ../../modules/common/obsidian
-    ../../modules/common/opencode
     ../../modules/common/pi
     ../../modules/common/plex-client
     ../../modules/common/pix

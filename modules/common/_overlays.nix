@@ -3,14 +3,7 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     (prev: final: {
-      stable = import inputs.nixpkgs-stable {
-        system = prev.stdenv.hostPlatform.system;
-      };
       bleeding = import inputs.nixpkgs-unstable-small {
-        system = prev.stdenv.hostPlatform.system;
-        config.allowUnfree = true;
-      };
-      master = import inputs.nixpkgs-master {
         system = prev.stdenv.hostPlatform.system;
         config.allowUnfree = true;
       };

@@ -122,11 +122,7 @@ let
 
             latest=$(echo "$snapshots" | jq -r 'if length > 0 then .[-1].time else "none" end')
 
-            # WORKAROUND: restic 0.19.0 prints a "[m:ss] …" progress line to stdout
-            # for `stats`, corrupting --json output. Fixed on master but unreleased.
-            # https://github.com/restic/restic/issues/21866 (PR #21871). Keep only
-            # the final line, which is the JSON object. Remove once restic > 0.19.0.
-            stats=$(restic stats --mode raw-data --json | tail -n1)
+            stats=$(restic stats --mode raw-data --json)
             size_bytes=$(echo "$stats" | jq '.total_size')
             size_gb=$(awk "BEGIN { printf \"%.2f\", ''${size_bytes} / (1024 * 1024 * 1024) }")
 

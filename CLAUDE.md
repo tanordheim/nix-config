@@ -13,7 +13,7 @@ Plain flake with explicit imports. No flake-parts, no auto-discovery, no feature
   - `darwin/` — darwin-only (`_base.nix`).
   - `nixos/` — nixos-only services (media, automation, web, atuin-server) and `_base.nix`.
 - `modules/<scope>/_base.nix` — platform baseline: HM integration module, `nix.settings`/`gc`, `imports` of all unconditional `common/` modules + platform-specific bits (homebrew + macOS defaults + touch-id sudo on darwin; nothing extra on nixos beyond what `common/` provides).
-- `modules/common/_overlays.nix` — `nixpkgs.overlays` (`stable`/`bleeding` via inputs + `(import ../../overlays inputs)`). Imported by both `_base.nix` files.
+- `modules/common/_overlays.nix` — `nixpkgs.overlays` (`bleeding` via `nixpkgs-unstable-small` + `(import ../../overlays inputs)`). Imported by both `_base.nix` files.
 - `modules/common/users/trond/` — user account. `default.nix` dispatches via `mkPlatformImport`. `_darwin.nix` sets `users.users.trond` + `system.primaryUser`. `_linux.nix` sets `users.users.trond` + polkit/sudo. Both push `home.homeDirectory` (and on linux `xdg`) via `home-manager.sharedModules`. This is the only place "trond" is hardcoded outside host files.
 - `modules/common/stylix/` — universal stylix config, imported from `_base.nix`. `default.nix` sets cross-platform stylix fonts/theme/HM `gtk.gtk4.theme` override; `_darwin.nix` and `_linux.nix` import the platform stylix module and set platform-specific bits.
 - `modules/common/{zsh,git,ssh,starship,eza,zoxide,direnv,shell-aliases,build-tools,fonts,sudo,timezone,hm-base,base}/` — unconditional baseline. Imported from `_base.nix`. HM-targeted ones push via `home-manager.sharedModules`; system-targeted ones (`fonts`, `sudo`, `timezone`, `base`) configure system options directly.

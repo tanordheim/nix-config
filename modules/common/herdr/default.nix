@@ -114,11 +114,6 @@ in
         ];
         xdg.configFile."herdr/config.toml".text = configToml;
         xdg.configFile."herdr/plugins.json".text = pluginsJson;
-        xdg.configFile."herdr/plugins/config/hotchpotch.herdr-tiny-fingers/config.toml".text = ''
-          [[patterns]]
-          name = "kubernetes-pod"
-          regex = '[a-z0-9](?:[-a-z0-9]*[a-z0-9])?-[a-z0-9]{8,10}-[a-z0-9]{5}'
-        '';
       }
     )
   ];

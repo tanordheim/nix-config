@@ -10,7 +10,6 @@
           config.stylix.fonts.monospace.name
           config.stylix.fonts.emoji.name
           "JetBrainsMono Nerd Font Mono"
-          "Codicon Extras Mono"
         ];
       }
     )

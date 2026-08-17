@@ -1,6 +1,5 @@
 let
-  nerdRanges = "U+E000-U+E00A,U+E0C0-U+E0C8,U+E0CA,U+E0CC-U+E0D7,U+E200-U+E2A9,U+E300-U+E3E3,U+E5FA-U+E6B7,U+E700-U+E8EF,U+EA60-U+EC1E,U+ED00-U+EDFF,U+EE0C-U+EF00,U+EF03-U+EF05,U+EF13-U+EFCE,U+F000-U+F381,U+F400-U+F533,U+F0001-U+F1AF0";
-  codiconExtrasRange = "U+EC81-U+EC82";
+  nerdRanges = "U+E000-U+E00A,U+E0C0-U+E0C8,U+E0CA,U+E0CC-U+E0D7,U+E200-U+E2A9,U+E300-U+E3E3,U+E5FA-U+E6B7,U+E700-U+E8EF,U+EA60-U+EC84,U+ED00-U+EDFF,U+EE0C-U+EF00,U+EF03-U+EF05,U+EF13-U+EFCE,U+F000-U+F381,U+F400-U+F533,U+F0001-U+F1AF0";
 in
 {
   home-manager.sharedModules = [
@@ -34,8 +33,7 @@ in
 
           extraConfig = ''
             symbol_map ${nerdRanges} JetBrainsMono Nerd Font Mono
-            symbol_map ${codiconExtrasRange} Codicon Extras Mono
-            narrow_symbols ${nerdRanges},${codiconExtrasRange} 1
+            narrow_symbols ${nerdRanges} 1
           '';
 
           keybindings = {
