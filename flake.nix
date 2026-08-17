@@ -34,6 +34,10 @@
       url = "github:rachartier/tiny-code-action.nvim";
       flake = false;
     };
+    herdr-nvim-nav = {
+      url = "github:aimdevlee/herdr-nvim-nav/v1.0.0";
+      flake = false;
+    };
 
     # Aurral — music discovery/request manager for Lidarr
     aurral-src = {

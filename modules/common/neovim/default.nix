@@ -14,6 +14,7 @@
     ./plugins/conform.nix
     ./plugins/dap.nix
     ./plugins/gitsigns.nix
+    ./plugins/herdr-nvim-nav.nix
     ./plugins/lint.nix
     ./plugins/lsp.nix
     ./plugins/markdown-preview.nix
@@ -21,7 +22,6 @@
     ./plugins/nvim-treesitter.nix
     ./plugins/render-markdown.nix
     ./plugins/sidekick.nix
-    ./plugins/smart-splits.nix
     ./plugins/snacks.nix
     ./plugins/statusline.nix
     ./plugins/tiny-cmdline.nix

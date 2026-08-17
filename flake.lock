@@ -216,6 +216,23 @@
         "type": "github"
       }
     },
+    "herdr-nvim-nav": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785679872,
+        "narHash": "sha256-2Sa10OaDgoy/Mw3lglrnmJn4RLUJv0dfU0MhXxXdnJI=",
+        "owner": "aimdevlee",
+        "repo": "herdr-nvim-nav",
+        "rev": "ec047fd6d8d0269d54a34e9405af28d8aad4c8f0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aimdevlee",
+        "ref": "v1.0.0",
+        "repo": "herdr-nvim-nav",
+        "type": "github"
+      }
+    },
     "herdr-tiny-fingers": {
       "flake": false,
       "locked": {
@@ -512,6 +529,7 @@
         "aurral-src": "aurral-src",
         "brew-src": "brew-src",
         "herdr": "herdr",
+        "herdr-nvim-nav": "herdr-nvim-nav",
         "herdr-tiny-fingers": "herdr-tiny-fingers",
         "home-manager": "home-manager",
         "homebrew-aerospace": "homebrew-aerospace",
