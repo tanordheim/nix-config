@@ -5,16 +5,21 @@
 }:
 let
   herdrPkg = inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.default;
-  pythonEnv = pkgs.python3.withPackages (ps: [ ps.rich ]);
   herdrEven = pkgs.writeShellScriptBin "herdr-even" ''
     exec ${pkgs.python3}/bin/python3 ${./herdr-even.py} "$@"
   '';
-  fingersPlugin = pkgs.runCommand "herdr-fingers" { } ''
-    cp -r ${inputs.herdr-fingers} $out
+  fingersBin = pkgs.rustPlatform.buildRustPackage {
+    pname = "herdr-tiny-fingers";
+    version = "0.1.0";
+    src = inputs.herdr-tiny-fingers;
+    cargoLock.lockFile = "${inputs.herdr-tiny-fingers}/Cargo.lock";
+  };
+  fingersPlugin = pkgs.runCommand "herdr-tiny-fingers" { } ''
+    cp -r ${inputs.herdr-tiny-fingers} $out
     chmod -R u+w $out
     substituteInPlace $out/herdr-plugin.toml \
-      --replace-fail '["/usr/bin/env", "python3", "./herdr_fingers.py"]' \
-        '["${pythonEnv}/bin/python3", "./herdr_fingers.py"]'
+      --replace-fail '["./target/release/herdr-tiny-fingers"]' \
+        '["${fingersBin}/bin/herdr-tiny-fingers"]'
   '';
 in
 {
@@ -80,7 +85,7 @@ in
           [[keys.command]]
           key = "prefix+shift+f"
           type = "plugin_action"
-          command = "herdr-fingers.finger"
+          command = "hotchpotch.herdr-tiny-fingers.open"
           description = "Fingers"
 
           [[keys.command]]
@@ -92,8 +97,8 @@ in
 
         pluginsJson = builtins.toJSON [
           {
-            plugin_id = "herdr-fingers";
-            name = "Fingers";
+            plugin_id = "hotchpotch.herdr-tiny-fingers";
+            name = "herdr-tiny-fingers";
             version = "0.1.0";
             manifest_path = "${fingersPlugin}/herdr-plugin.toml";
             plugin_root = "${fingersPlugin}";
@@ -109,6 +114,11 @@ in
         ];
         xdg.configFile."herdr/config.toml".text = configToml;
         xdg.configFile."herdr/plugins.json".text = pluginsJson;
+        xdg.configFile."herdr/plugins/config/hotchpotch.herdr-tiny-fingers/config.toml".text = ''
+          [[patterns]]
+          name = "kubernetes-pod"
+          regex = '[a-z0-9](?:[-a-z0-9]*[a-z0-9])?-[a-z0-9]{8,10}-[a-z0-9]{5}'
+        '';
       }
     )
   ];

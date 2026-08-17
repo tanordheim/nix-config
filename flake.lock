@@ -216,19 +216,19 @@
         "type": "github"
       }
     },
-    "herdr-fingers": {
+    "herdr-tiny-fingers": {
       "flake": false,
       "locked": {
-        "lastModified": 1784190918,
-        "narHash": "sha256-RbuSw01xCMO9qxOdo6n2uZhYdtOZDqHF4cg5QD3TniU=",
-        "owner": "hitaishi2222",
-        "repo": "herdr-fingers",
-        "rev": "b66ab308059926fcf9108015603c1b99d5330b67",
+        "lastModified": 1785837811,
+        "narHash": "sha256-x4ooEu31OdxY6xRQd1k1CxCQ121m2B20d1ms9lRBNg4=",
+        "owner": "hotchpotch",
+        "repo": "herdr-tiny-fingers",
+        "rev": "2270f872d22297806a92f72ddb76b10f5983fce0",
         "type": "github"
       },
       "original": {
-        "owner": "hitaishi2222",
-        "repo": "herdr-fingers",
+        "owner": "hotchpotch",
+        "repo": "herdr-tiny-fingers",
         "type": "github"
       }
     },
@@ -565,7 +565,7 @@
         "aurral-src": "aurral-src",
         "brew-src": "brew-src",
         "herdr": "herdr",
-        "herdr-fingers": "herdr-fingers",
+        "herdr-tiny-fingers": "herdr-tiny-fingers",
         "home-manager": "home-manager",
         "homebrew-aerospace": "homebrew-aerospace",
         "homebrew-bundle": "homebrew-bundle",

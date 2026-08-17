@@ -69,9 +69,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # herdr-fingers — extract paths/URLs/hashes from the focused pane, vimium-style picker
-    herdr-fingers = {
-      url = "github:hitaishi2222/herdr-fingers";
+    # herdr-tiny-fingers — tmux-fingers-style inline copy hints
+    herdr-tiny-fingers = {
+      url = "github:hotchpotch/herdr-tiny-fingers";
       flake = false;
     };
 
