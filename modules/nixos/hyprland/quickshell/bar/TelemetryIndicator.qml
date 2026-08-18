@@ -7,7 +7,7 @@ Row {
 
     spacing: Theme.spacingNormal
 
-    component Stat: Rectangle {
+    component Stat: Item {
         id: stat
 
         required property string label
@@ -17,22 +17,30 @@ Row {
 
         readonly property bool showTemp: stat.level !== "normal"
 
-        radius: Theme.radius
-        color: {
-            if (stat.level === "critical")
-                return Theme.critical;
-            if (stat.level === "warning")
-                return Theme.warning;
-            return "transparent";
-        }
         implicitWidth: content.implicitWidth + 2 * Theme.spacingSmall
         implicitHeight: Theme.barHeight - 2 * Theme.spacingSmall
 
         anchors.verticalCenter: parent.verticalCenter
 
-        Behavior on color {
-            ColorAnimation {
-                duration: Theme.animationFast
+        Rectangle {
+            width: parent.width
+            height: parent.height
+            radius: Theme.radius
+            color: {
+                if (stat.level === "critical")
+                    return Theme.critical;
+                if (stat.level === "warning")
+                    return Theme.warning;
+                return "transparent";
+            }
+
+            anchors.centerIn: parent
+            anchors.verticalCenterOffset: -1
+
+            Behavior on color {
+                ColorAnimation {
+                    duration: Theme.animationFast
+                }
             }
         }
 
