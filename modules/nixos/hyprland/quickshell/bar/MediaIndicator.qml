@@ -29,6 +29,7 @@ Item {
             implicitSize: Theme.iconSize
 
             anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenterOffset: -1
         }
 
         Text {
