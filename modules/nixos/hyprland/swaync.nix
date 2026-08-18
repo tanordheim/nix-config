@@ -4,6 +4,7 @@
       { config, ... }:
       let
         c = config.lib.stylix.colors.withHashtag;
+        r = config.lib.stylix.colors;
         f = config.stylix.fonts;
       in
       {
@@ -13,6 +14,23 @@
           enable = true;
 
           style = ''
+            :root {
+              --cc-bg: ${c.base00};
+              --noti-border-color: ${c.base02};
+              --noti-bg: ${r."base01-rgb-r"}, ${r."base01-rgb-g"}, ${r."base01-rgb-b"};
+              --noti-bg-alpha: 1;
+              --noti-bg-darker: ${c.base01};
+              --noti-bg-hover: ${c.base02};
+              --noti-bg-focus: transparent;
+              --noti-close-bg: transparent;
+              --noti-close-bg-hover: ${c.base02};
+              --text-color: ${c.base05};
+              --text-color-disabled: ${c.base04};
+              --bg-selected: ${c.base0E};
+              --notification-shadow: none;
+              --border: 1px solid ${c.base02};
+            }
+
             * {
               font-family: "${f.sansSerif.name}";
               font-size: ${toString f.sizes.applications}pt;
