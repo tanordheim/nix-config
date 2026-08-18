@@ -7,7 +7,7 @@ Row {
 
     spacing: Theme.spacingNormal
 
-    component Stat: Row {
+    component Stat: Rectangle {
         id: stat
 
         required property string label
@@ -17,36 +17,54 @@ Row {
 
         readonly property bool showTemp: stat.level !== "normal"
 
-        spacing: Theme.spacingSmall
+        radius: Theme.radius
+        color: {
+            if (stat.level === "critical")
+                return Theme.critical;
+            if (stat.level === "warning")
+                return Theme.warning;
+            return "transparent";
+        }
+        implicitWidth: content.implicitWidth + 2 * Theme.spacingSmall
+        implicitHeight: Theme.barHeight - 2 * Theme.spacingSmall
 
-        Text {
-            text: stat.label
-            color: Theme.mutedText
-            font.family: Theme.fontFamily
-            font.pixelSize: Theme.fontSize
-            textFormat: Text.PlainText
+        anchors.verticalCenter: parent.verticalCenter
+
+        Behavior on color {
+            ColorAnimation {
+                duration: Theme.animationFast
+            }
         }
 
-        Text {
-            text: {
-                if (stat.showTemp)
-                    return Math.round(stat.temp) + "°";
-                if (stat.percent < 0)
-                    return "--";
-                return stat.percent + "%";
+        Row {
+            id: content
+
+            anchors.centerIn: parent
+            spacing: Theme.spacingSmall
+
+            Text {
+                text: stat.label
+                color: stat.showTemp ? Theme.background : Theme.mutedText
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontSize
+                textFormat: Text.PlainText
             }
-            color: {
-                if (stat.level === "critical")
-                    return Theme.critical;
-                if (stat.level === "warning")
-                    return Theme.warning;
-                return Theme.text;
+
+            Text {
+                text: {
+                    if (stat.showTemp)
+                        return Math.round(stat.temp) + "°";
+                    if (stat.percent < 0)
+                        return "--";
+                    return stat.percent + "%";
+                }
+                color: stat.showTemp ? Theme.background : Theme.text
+                width: metrics.width
+                horizontalAlignment: Text.AlignRight
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontSize
+                textFormat: Text.PlainText
             }
-            width: metrics.width
-            horizontalAlignment: Text.AlignRight
-            font.family: Theme.fontFamily
-            font.pixelSize: Theme.fontSize
-            textFormat: Text.PlainText
         }
     }
 
