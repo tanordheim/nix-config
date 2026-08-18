@@ -71,10 +71,20 @@
               readonly property int textColumnWidth: 220
               readonly property int calendarCell: 30
 
+              readonly property int histogramWidth: 180
+              readonly property int histogramHeight: 22
+              readonly property int histogramGap: 1
+              readonly property int labelColumnWidth: 64
+              readonly property int valueColumnWidth: 44
+              readonly property int tempColumnWidth: 56
+              readonly property int detailColumnWidth: 110
+
               readonly property real dimOpacity: 0.4
 
               readonly property int animationFast: 120
               readonly property int animationSlow: 600
+              readonly property int hoverDelay: 400
+              readonly property int hoverGrace: 250
           }
         '';
 
@@ -100,10 +110,21 @@
               readonly property list<string> audioSettings: ["${pkgs.pavucontrol}/bin/pavucontrol"]
               readonly property list<string> bluetoothSettings: ["${pkgs.blueman}/bin/blueman-manager"]
               readonly property list<string> networkSettings: ["${pkgs.networkmanagerapplet}/bin/nm-connection-editor"]
+              readonly property list<string> diskUsage: ["${pkgs.coreutils}/bin/df", "-B1", "--output=used,size", "/"]
+              readonly property list<string> topProcessesByCpu: ["${pkgs.runtimeShell}", "-c", "${pkgs.procps}/bin/ps -eo pcpu,pmem,comm --no-headers --sort=-pcpu | ${pkgs.coreutils}/bin/head -n 5"]
+              readonly property list<string> topProcessesByMemory: ["${pkgs.runtimeShell}", "-c", "${pkgs.procps}/bin/ps -eo pcpu,pmem,comm --no-headers --sort=-pmem | ${pkgs.coreutils}/bin/head -n 5"]
+              readonly property string ipBinary: "${pkgs.iproute2}/bin/ip"
 
               readonly property string gpuBusyPath: "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/gpu_busy_percent"
-              readonly property string cpuTempGlob: "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon*/temp1_input"
-              readonly property string gpuTempGlob: "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon/hwmon*/temp2_input"
+              readonly property string cpuHwmonGlob: "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon*"
+              readonly property string gpuHwmonGlob: "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon/hwmon*"
+              readonly property string nctHwmonGlob: "/sys/devices/platform/nct6775.*/hwmon/hwmon*"
+              readonly property string nvmeHwmonGlob: "/sys/devices/pci0000:00/0000:00:02.2/0000:0c:00.0/nvme/nvme0/hwmon*"
+              readonly property string dimmHwmonGlob: "/sys/devices/pci0000:00/0000:00:14.0/i2c-0/0-0053/hwmon/hwmon*"
+
+              readonly property string networkStatistics: "/sys/class/net"
+              readonly property string routeTable: "/proc/net/route"
+              readonly property string resolvConf: "/etc/resolv.conf"
           }
         '';
 

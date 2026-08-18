@@ -59,6 +59,7 @@ PanelWindow {
         anchors.leftMargin: Theme.spacingLarge
 
         Workspaces {
+            bar: root
             monitor: root.monitor
 
             anchors.verticalCenter: parent.verticalCenter
@@ -107,6 +108,7 @@ PanelWindow {
         anchors.rightMargin: Theme.spacingLarge
 
         TelemetryIndicator {
+            bar: root
             visible: root.primary
 
             anchors.verticalCenter: parent.verticalCenter

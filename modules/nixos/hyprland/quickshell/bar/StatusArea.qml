@@ -1,10 +1,7 @@
 import QtQml.Models
 import QtQuick
-import Quickshell
 import Quickshell.Bluetooth
-import Quickshell.Networking
 import Quickshell.Wayland
-import qs.config
 import qs.popouts
 import qs.services as Services
 import qs.theme
@@ -15,6 +12,17 @@ Row {
     required property var bar
 
     spacing: Theme.spacingLarge
+
+    function openConnectivity(source: Item, tab: string): void {
+        const reopening = root.bar.popout === "connectivity" && connectivity.tab === tab;
+        connectivity.source = source;
+        connectivity.tab = tab;
+
+        if (reopening)
+            root.bar.closePopout();
+        else
+            root.bar.popout = "connectivity";
+    }
 
     component StatusText: Text {
         font.family: Theme.fontFamily
@@ -79,6 +87,13 @@ Row {
         }
     }
 
+    ConnectivityPopout {
+        id: connectivity
+
+        bar: root.bar
+        source: networkItem
+    }
+
     StatusText {
         id: bluetoothItem
 
@@ -110,23 +125,30 @@ Row {
         MouseArea {
             anchors.fill: parent
 
-            onClicked: Quickshell.execDetached(Config.bluetoothSettings)
+            onClicked: root.openConnectivity(bluetoothItem, "bluetooth")
         }
     }
 
     StatusText {
         id: networkItem
 
-        readonly property var wired: Networking.devices.values.find(device => device.type === DeviceType.Wired) ?? null
-        readonly property bool connected: networkItem.wired !== null && networkItem.wired.connected
-
-        text: networkItem.connected ? "󰈀 " + networkItem.wired.name : "󰖪 disconnected"
-        color: networkItem.connected ? Theme.text : Theme.critical
+        text: {
+            if (Services.Connectivity.connected)
+                return "󰈀 " + Services.Connectivity.interfaceName;
+            if (Services.Connectivity.hasLink)
+                return "󰈀 no address";
+            return "󰖪 disconnected";
+        }
+        color: {
+            if (Services.Connectivity.connected)
+                return Theme.text;
+            return Services.Connectivity.hasLink ? Theme.warning : Theme.critical;
+        }
 
         MouseArea {
             anchors.fill: parent
 
-            onClicked: Quickshell.execDetached(Config.networkSettings)
+            onClicked: root.openConnectivity(networkItem, "network")
         }
     }
 

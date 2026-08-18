@@ -43,16 +43,12 @@ PopupWindow {
         onCleared: root.bar.closePopout()
     }
 
-    Rectangle {
+    PopoutSurface {
         id: surface
 
         anchors.fill: parent
         implicitWidth: Math.max(Theme.popoutMinWidth, layout.implicitWidth + 2 * Theme.popoutPadding)
         implicitHeight: layout.implicitHeight + 2 * Theme.popoutPadding
-        color: Theme.surface
-        radius: Theme.popoutRadius
-        border.width: 1
-        border.color: Theme.separator
         opacity: root.visible ? 1 : 0
         focus: true
 
