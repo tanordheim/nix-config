@@ -3,17 +3,16 @@ import QtQuick
 import Quickshell
 import Quickshell.Bluetooth
 import Quickshell.Networking
-import Quickshell.Services.Pipewire
-import Quickshell.Services.SystemTray
 import Quickshell.Wayland
 import qs.config
+import qs.popouts
 import qs.services as Services
 import qs.theme
 
 Row {
     id: root
 
-    required property var window
+    required property var bar
 
     spacing: Theme.spacingLarge
 
@@ -31,7 +30,7 @@ Row {
         IdleInhibitor {
             id: idleInhibitor
 
-            window: root.window
+            window: root.bar
         }
 
         MouseArea {
@@ -41,41 +40,42 @@ Row {
         }
     }
 
-    StatusText {
+    Item {
         id: volumeItem
 
-        readonly property PwNode sink: Pipewire.defaultAudioSink
-        readonly property var audio: volumeItem.sink !== null ? volumeItem.sink.audio : null
-        readonly property bool available: volumeItem.audio !== null && volumeItem.sink.ready
+        implicitWidth: volumeLabel.implicitWidth
+        implicitHeight: volumeLabel.implicitHeight
 
-        text: {
-            if (!volumeItem.available)
-                return "󰕾 --";
-            if (volumeItem.audio.muted)
-                return "󰖁 muted";
-            return "󰕾 " + Math.round(volumeItem.audio.volume * 100) + "%";
-        }
-        color: volumeItem.available && volumeItem.audio.muted ? Theme.critical : Theme.text
+        StatusText {
+            id: volumeLabel
 
-        PwObjectTracker {
-            objects: volumeItem.sink !== null ? [volumeItem.sink] : []
+            anchors.fill: parent
+            text: {
+                if (!Services.Audio.sinkAvailable)
+                    return "󰕾 --";
+                if (Services.Audio.sinkMuted)
+                    return "󰖁 muted";
+                return "󰕾 " + Services.Audio.sinkPercent + "%";
+            }
+            color: Services.Audio.sinkMuted ? Theme.critical : Theme.text
         }
 
         MouseArea {
             anchors.fill: parent
 
-            onClicked: Quickshell.execDetached(Config.audioSettings)
+            onClicked: root.bar.togglePopout("audio")
 
             onWheel: wheel => {
-                if (!volumeItem.available)
-                    return;
                 const delta = wheel.angleDelta.y !== 0 ? wheel.angleDelta.y : wheel.pixelDelta.y;
-                if (delta === 0)
-                    return;
-                const step = delta > 0 ? 0.05 : -0.05;
-                volumeItem.audio.volume = Math.max(0, Math.min(1, volumeItem.audio.volume + step));
+                if (delta !== 0)
+                    Services.Audio.adjustSink(delta > 0 ? 0.05 : -0.05);
                 wheel.accepted = true;
             }
+        }
+
+        AudioPopout {
+            bar: root.bar
+            source: volumeItem
         }
     }
 
@@ -130,10 +130,8 @@ Row {
         }
     }
 
-    StatusText {
-        visible: SystemTray.items.values.length > 0
-        text: "󰇙"
-        color: Theme.mutedText
+    TrayIndicator {
+        bar: root.bar
     }
 
     Item {
@@ -151,14 +149,25 @@ Row {
 
         Rectangle {
             visible: Services.Notifications.hasNotifications
-            width: 6
-            height: 6
-            radius: 3
+            implicitWidth: Math.max(Theme.badgeSize, countLabel.implicitWidth + Theme.spacingSmall)
+            implicitHeight: Theme.badgeSize
+            radius: height / 2
             color: Theme.critical
             anchors.top: bellGlyph.top
             anchors.right: bellGlyph.right
-            anchors.topMargin: -1
-            anchors.rightMargin: -3
+            anchors.topMargin: -Theme.spacingSmall
+            anchors.rightMargin: -Theme.spacingSmall
+
+            Text {
+                id: countLabel
+
+                anchors.centerIn: parent
+                text: Services.Notifications.count
+                color: Theme.background
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.fontSizeBadge
+                textFormat: Text.PlainText
+            }
         }
 
         MouseArea {

@@ -43,7 +43,10 @@
 
               readonly property string fontFamily: "${f.monospace.name}"
               readonly property int fontSize: 13
+              readonly property int fontSizeSmall: 11
+              readonly property int fontSizeBadge: 9
               readonly property int iconSize: 16
+              readonly property int iconSizeLarge: 24
 
               readonly property int spacingSmall: 4
               readonly property int spacingNormal: 8
@@ -54,6 +57,19 @@
               readonly property int bulletActiveSize: 12
               readonly property int bulletSlot: 18
               readonly property int radius: 8
+              readonly property int badgeSize: 14
+              readonly property int dotSize: 6
+
+              readonly property int popoutGap: 4
+              readonly property int popoutPadding: 12
+              readonly property int popoutRadius: 12
+              readonly property int popoutMinWidth: 240
+              readonly property int rowHeight: 26
+              readonly property int sliderWidth: 160
+              readonly property int sliderHeight: 6
+              readonly property int artworkSize: 64
+              readonly property int textColumnWidth: 220
+              readonly property int calendarCell: 30
 
               readonly property real dimOpacity: 0.4
 

@@ -10,6 +10,8 @@ PanelWindow {
 
     required property var modelData
 
+    property string popout: ""
+
     readonly property HyprlandMonitor monitor: Hyprland.monitorFor(root.modelData)
     readonly property bool primary: root.monitor !== null && root.monitor.name === Config.primaryMonitor
     readonly property real sideWidth: Math.max(leftRow.width, rightRow.width)
@@ -22,6 +24,21 @@ PanelWindow {
         top: true
         left: true
         right: true
+    }
+
+    function togglePopout(name: string): void {
+        root.popout = root.popout === name ? "" : name;
+    }
+
+    function closePopout(): void {
+        root.popout = "";
+    }
+
+    Item {
+        anchors.fill: parent
+        focus: true
+
+        Keys.onEscapePressed: root.closePopout()
     }
 
     component Separator: Rectangle {
@@ -66,6 +83,7 @@ PanelWindow {
         MediaIndicator {
             id: mediaIndicator
 
+            bar: root
             visible: root.primary && Services.Media.active !== null
 
             anchors.verticalCenter: parent.verticalCenter
@@ -100,7 +118,7 @@ PanelWindow {
 
         StatusArea {
             visible: root.primary
-            window: root
+            bar: root
 
             anchors.verticalCenter: parent.verticalCenter
         }
@@ -110,6 +128,8 @@ PanelWindow {
         }
 
         Clock {
+            bar: root
+
             anchors.verticalCenter: parent.verticalCenter
         }
     }

@@ -1,10 +1,13 @@
 import QtQuick
 import Quickshell.Widgets
+import qs.popouts
 import qs.services as Services
 import qs.theme
 
 Item {
     id: root
+
+    required property var bar
 
     implicitWidth: row.implicitWidth
     implicitHeight: row.implicitHeight
@@ -57,11 +60,21 @@ Item {
 
     MouseArea {
         anchors.fill: parent
-        acceptedButtons: Qt.MiddleButton
+        acceptedButtons: Qt.LeftButton | Qt.MiddleButton
 
-        onClicked: {
+        onClicked: mouse => {
+            if (mouse.button === Qt.LeftButton) {
+                root.bar.togglePopout("media");
+                return;
+            }
+
             if (Services.Media.active !== null && Services.Media.active.canTogglePlaying)
                 Services.Media.active.togglePlaying();
         }
+    }
+
+    MediaPopout {
+        bar: root.bar
+        source: root
     }
 }
