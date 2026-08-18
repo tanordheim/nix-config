@@ -9,15 +9,24 @@ Singleton {
     id: root
 
     property MprisPlayer active: null
+    property real position: 0
 
     readonly property string icon: {
+        DesktopEntries.applications.values;
+
         if (root.active === null)
             return "";
 
         const entry = root.active.desktopEntry !== "" ? DesktopEntries.heuristicLookup(root.active.desktopEntry) : null;
-        const name = entry !== null && entry.icon !== "" ? entry.icon : "audio-x-generic";
-        return Quickshell.iconPath(name, "audio-x-generic");
+        if (entry === null || entry.icon === "")
+            return "";
+        return Quickshell.iconPath(entry.icon, true);
     }
+
+    readonly property real length: root.active !== null && root.active.lengthSupported ? root.active.length : -1
+    readonly property bool timeAvailable: root.active !== null && root.active.positionSupported && root.length > 0
+
+    onActiveChanged: root.position = root.active !== null ? root.active.position : 0
 
     function reselect(): void {
         const players = Mpris.players.values.filter(player => player.identity !== "playerctld");
@@ -59,5 +68,14 @@ Singleton {
                 root.reselect();
             }
         }
+    }
+
+    Timer {
+        interval: 1000
+        running: root.active !== null
+        repeat: true
+        triggeredOnStart: true
+
+        onTriggered: root.position = root.active !== null ? root.active.position : 0
     }
 }

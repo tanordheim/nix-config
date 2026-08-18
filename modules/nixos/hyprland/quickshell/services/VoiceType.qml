@@ -9,7 +9,6 @@ Singleton {
     id: root
 
     property string status: "idle"
-    property string text: ""
     property bool failed: false
 
     function toggle(): void {
@@ -35,7 +34,6 @@ Singleton {
 
                 const parsed = JSON.parse(line);
                 root.status = parsed.class ?? "idle";
-                root.text = ((parsed.text ?? "") + " " + (parsed.alt ?? "")).trim();
                 root.failed = false;
             }
         }

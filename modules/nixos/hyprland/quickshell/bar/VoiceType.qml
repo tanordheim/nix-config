@@ -30,7 +30,13 @@ Rectangle {
         id: label
 
         anchors.centerIn: parent
-        text: Services.VoiceType.failed ? "voxtype unavailable" : Services.VoiceType.text
+        text: {
+            if (Services.VoiceType.failed)
+                return "󰍬 unavailable";
+            if (Services.VoiceType.status === "idle")
+                return "󰍬";
+            return "󰍬 " + Services.VoiceType.status;
+        }
         color: {
             if (root.highlighted)
                 return Theme.background;

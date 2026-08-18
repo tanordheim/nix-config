@@ -25,7 +25,6 @@ PanelWindow {
     }
 
     component Separator: Rectangle {
-        visible: root.primary
         implicitWidth: 1
         implicitHeight: Theme.fontSize
         color: Theme.separator
@@ -48,13 +47,25 @@ PanelWindow {
             anchors.verticalCenter: parent.verticalCenter
         }
 
+        Separator {
+            visible: voiceType.visible
+        }
+
         VoiceType {
+            id: voiceType
+
             visible: root.primary
 
             anchors.verticalCenter: parent.verticalCenter
         }
 
+        Separator {
+            visible: mediaIndicator.visible
+        }
+
         MediaIndicator {
+            id: mediaIndicator
+
             visible: root.primary && Services.Media.active !== null
 
             anchors.verticalCenter: parent.verticalCenter
@@ -83,7 +94,9 @@ PanelWindow {
             anchors.verticalCenter: parent.verticalCenter
         }
 
-        Separator {}
+        Separator {
+            visible: root.primary
+        }
 
         StatusArea {
             visible: root.primary
@@ -92,7 +105,9 @@ PanelWindow {
             anchors.verticalCenter: parent.verticalCenter
         }
 
-        Separator {}
+        Separator {
+            visible: root.primary
+        }
 
         Clock {
             anchors.verticalCenter: parent.verticalCenter
