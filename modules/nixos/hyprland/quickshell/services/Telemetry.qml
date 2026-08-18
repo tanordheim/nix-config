@@ -44,13 +44,8 @@ Singleton {
     readonly property int dimmTempWarning: 65
     readonly property int dimmTempCritical: 75
 
-    readonly property string testCpuTemp: Quickshell.env("QS_TEST_CPU_TEMP") ?? ""
-    readonly property string testGpuTemp: Quickshell.env("QS_TEST_GPU_TEMP") ?? ""
-    readonly property real effectiveCpuTemp: root.testCpuTemp !== "" ? Number(root.testCpuTemp) : root.cpuTemp
-    readonly property real effectiveGpuTemp: root.testGpuTemp !== "" ? Number(root.testGpuTemp) : root.gpuTemp
-
-    readonly property string cpuLevel: root.level(root.effectiveCpuTemp, root.cpuTempWarning, root.cpuTempCritical)
-    readonly property string gpuLevel: root.level(root.effectiveGpuTemp, root.gpuTempWarning, root.gpuTempCritical)
+    readonly property string cpuLevel: root.level(root.cpuTemp, root.cpuTempWarning, root.cpuTempCritical)
+    readonly property string gpuLevel: root.level(root.gpuTemp, root.gpuTempWarning, root.gpuTempCritical)
     readonly property string nvmeLevel: root.level(root.nvmeTemp, root.nvmeTempWarning, root.nvmeTempCritical)
     readonly property string dimmLevel: root.level(root.dimmTemp, root.dimmTempWarning, root.dimmTempCritical)
 

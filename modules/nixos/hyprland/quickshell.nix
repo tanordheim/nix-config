@@ -149,7 +149,20 @@
           package = pkgs.quickshell;
           configs.nix-config = shellConfig;
           activeConfig = "nix-config";
-          systemd.enable = false;
+          systemd.enable = true;
+        };
+
+        systemd.user.services.quickshell = {
+          Unit = {
+            PartOf = [ "graphical-session.target" ];
+            ConditionEnvironment = "WAYLAND_DISPLAY";
+            StartLimitIntervalSec = 60;
+            StartLimitBurst = 5;
+          };
+          Service = {
+            Slice = "session.slice";
+            RestartSec = 2;
+          };
         };
       }
     )

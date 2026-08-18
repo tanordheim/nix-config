@@ -187,7 +187,7 @@ Popout {
         label: "CPU"
         percent: Services.Telemetry.cpuPercent
         history: Services.Telemetry.cpuHistory
-        tempDetail: root.tempLabel(Services.Telemetry.effectiveCpuTemp)
+        tempDetail: root.tempLabel(Services.Telemetry.cpuTemp)
         tempLevel: Services.Telemetry.cpuLevel
         detail: root.fanLabel(Services.Telemetry.cpuFan)
         width: root.contentWidth
@@ -198,7 +198,7 @@ Popout {
         label: "GPU"
         percent: Services.Telemetry.gpuPercent
         history: Services.Telemetry.gpuHistory
-        tempDetail: root.tempLabel(Services.Telemetry.effectiveGpuTemp)
+        tempDetail: root.tempLabel(Services.Telemetry.gpuTemp)
         tempLevel: Services.Telemetry.gpuLevel
         detail: root.fanLabel(Services.Telemetry.gpuFan)
         width: root.contentWidth

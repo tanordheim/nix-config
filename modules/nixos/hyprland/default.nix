@@ -8,7 +8,6 @@
     ./hyprtoolkit.nix
     ./quickshell.nix
     ./swaync.nix
-    ./waybar.nix
   ];
 
   programs.hyprland.enable = true;

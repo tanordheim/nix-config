@@ -110,7 +110,7 @@ Row {
         key: "cpu"
         label: "CPU"
         percent: Services.Telemetry.cpuPercent
-        temp: Services.Telemetry.effectiveCpuTemp
+        temp: Services.Telemetry.cpuTemp
         level: Services.Telemetry.cpuLevel
     }
 
@@ -118,7 +118,7 @@ Row {
         key: "gpu"
         label: "GPU"
         percent: Services.Telemetry.gpuPercent
-        temp: Services.Telemetry.effectiveGpuTemp
+        temp: Services.Telemetry.gpuTemp
         level: Services.Telemetry.gpuLevel
     }
 
