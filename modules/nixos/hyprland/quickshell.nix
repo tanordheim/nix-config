@@ -63,7 +63,8 @@
               readonly property int popoutGap: 4
               readonly property int popoutPadding: 12
               readonly property int popoutRadius: 12
-              readonly property int popoutMinWidth: 240
+              readonly property int popoutWidth: 300
+              readonly property int popoutWidthWide: 480
               readonly property int rowHeight: 26
               readonly property int sliderWidth: 160
               readonly property int sliderHeight: 6

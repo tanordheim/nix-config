@@ -10,7 +10,7 @@ PopupWindow {
     required property Item source
     required property string name
 
-    property alias contentWidth: layout.width
+    property real contentWidth: Theme.popoutWidth
 
     default property alias content: layout.data
 
@@ -47,7 +47,7 @@ PopupWindow {
         id: surface
 
         anchors.fill: parent
-        implicitWidth: Math.max(Theme.popoutMinWidth, layout.implicitWidth + 2 * Theme.popoutPadding)
+        implicitWidth: root.contentWidth + 2 * Theme.popoutPadding
         implicitHeight: layout.implicitHeight + 2 * Theme.popoutPadding
         opacity: root.visible ? 1 : 0
         focus: true

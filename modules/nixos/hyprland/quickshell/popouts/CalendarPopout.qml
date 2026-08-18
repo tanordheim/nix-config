@@ -14,6 +14,7 @@ Popout {
     readonly property var days: root.buildDays(root.shown, root.todayKey)
 
     name: "calendar"
+    contentWidth: 7 * Theme.calendarCell
 
     function buildDays(month: date, todayKey: string): var {
         const leading = (month.getDay() + 6) % 7;

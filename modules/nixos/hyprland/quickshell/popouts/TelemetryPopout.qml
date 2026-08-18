@@ -10,6 +10,11 @@ Popout {
     property bool flashing: false
 
     name: "telemetry"
+    contentWidth: Theme.popoutWidthWide
+
+    function percentLabel(value: real): string {
+        return (value >= 10 ? value.toFixed(0) : value.toFixed(1)) + "%";
+    }
 
     function flash(): void {
         root.flashing = true;
@@ -109,6 +114,7 @@ Popout {
             Histogram {
                 values: card.history
                 slots: Services.Telemetry.historyLength
+                width: cardRow.width - Theme.labelColumnWidth - Theme.valueColumnWidth - Theme.tempColumnWidth - Theme.detailColumnWidth - 4 * Theme.spacingNormal
 
                 anchors.verticalCenter: parent.verticalCenter
             }
@@ -262,6 +268,7 @@ Popout {
 
             IconButton {
                 text: "CPU"
+                selected: Services.Telemetry.sortByCpu
                 foreground: Services.Telemetry.sortByCpu ? Theme.accent : Theme.mutedText
 
                 onClicked: Services.Telemetry.sortByCpu = true
@@ -269,6 +276,7 @@ Popout {
 
             IconButton {
                 text: "RAM"
+                selected: !Services.Telemetry.sortByCpu
                 foreground: Services.Telemetry.sortByCpu ? Theme.mutedText : Theme.accent
 
                 onClicked: Services.Telemetry.sortByCpu = false
@@ -309,12 +317,12 @@ Popout {
                 anchors.verticalCenter: parent.verticalCenter
 
                 ValueText {
-                    text: process.modelData.cpu.toFixed(0) + "%"
+                    text: root.percentLabel(process.modelData.cpu)
                     width: Theme.valueColumnWidth
                 }
 
                 ValueText {
-                    text: process.modelData.mem.toFixed(0) + "%"
+                    text: root.percentLabel(process.modelData.mem)
                     width: Theme.valueColumnWidth
                 }
             }

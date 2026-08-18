@@ -13,6 +13,7 @@ PopupWindow {
     property Item source: null
     property HyprlandWorkspace workspace: null
 
+    readonly property real contentWidth: Theme.popoutWidth
     readonly property var windows: root.workspace !== null ? root.workspace.toplevels.values : []
     readonly property bool pointerInside: pointer.hovered
 
@@ -58,7 +59,7 @@ PopupWindow {
         id: surface
 
         anchors.fill: parent
-        implicitWidth: Math.max(Theme.popoutMinWidth, layout.implicitWidth + 2 * Theme.popoutPadding)
+        implicitWidth: root.contentWidth + 2 * Theme.popoutPadding
         implicitHeight: layout.implicitHeight + 2 * Theme.popoutPadding
         opacity: root.visible ? 1 : 0
 
@@ -90,7 +91,7 @@ PopupWindow {
 
                     readonly property string iconSource: root.iconFor(entry.modelData)
 
-                    width: layout.width
+                    width: root.contentWidth
 
                     onClicked: {
                         Hyprland.dispatch("hl.dsp.focus({ window = \"address:" + entry.modelData.address + "\" })");

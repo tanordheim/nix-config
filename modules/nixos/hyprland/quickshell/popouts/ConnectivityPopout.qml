@@ -19,6 +19,7 @@ Popout {
     readonly property var pairedDevices: (root.revision, Bluetooth.devices.values.filter(device => device.paired && !device.connected))
 
     name: "connectivity"
+    contentWidth: Theme.popoutWidthWide
 
     function linkState(): string {
         if (Services.Connectivity.connected)
@@ -167,7 +168,7 @@ Popout {
 
             text: infoRow.value
             color: pointer.containsMouse ? Theme.accent : infoRow.valueColor
-            width: Math.min(implicitWidth, Theme.textColumnWidth)
+            width: Math.min(implicitWidth, infoRow.width - Theme.labelColumnWidth - 3 * Theme.spacingNormal)
             horizontalAlignment: Text.AlignRight
             elide: Text.ElideRight
             font.family: Theme.fontFamily

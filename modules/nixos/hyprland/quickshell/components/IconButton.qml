@@ -6,6 +6,7 @@ Rectangle {
 
     property alias text: label.text
     property bool interactive: true
+    property bool selected: false
     property color foreground: Theme.text
 
     signal clicked
@@ -13,7 +14,7 @@ Rectangle {
     implicitWidth: Math.max(Theme.rowHeight, label.implicitWidth + 2 * Theme.spacingNormal)
     implicitHeight: Theme.rowHeight
     radius: Theme.radius
-    color: pointer.containsMouse && root.interactive ? Theme.hoverSurface : "transparent"
+    color: root.selected || (pointer.containsMouse && root.interactive) ? Theme.hoverSurface : "transparent"
 
     Behavior on color {
         ColorAnimation {
