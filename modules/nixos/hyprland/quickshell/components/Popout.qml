@@ -37,7 +37,7 @@ PopupWindow {
     }
 
     HyprlandFocusGrab {
-        active: root.visible
+        active: root.backingWindowVisible
         windows: [root, root.bar]
 
         onCleared: root.bar.closePopout()
