@@ -65,7 +65,17 @@
             github.user = "tanordheim";
             init.defaultBranch = "main";
             merge.tool = "vimdiff";
-            notes.rewriteRef = "refs/notes/*";
+            notes = {
+              rewriteRef = [
+                "refs/notes/*"
+                "refs/notes/gilfoyle/*"
+              ];
+              rewriteMode = "cat_sort_uniq";
+            };
+            "notes \"rewrite\"" = {
+              rebase = true;
+              amend = true;
+            };
             push.default = "simple";
             rebase.autosquash = true;
             rerere = {
