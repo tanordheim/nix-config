@@ -28,9 +28,7 @@
         home.sessionVariables = {
           SSH_AUTH_SOCK = ssh.agent;
         };
-        programs.ssh.extraConfig = ''
-          IdentityAgent "${ssh.agent}"
-        '';
+        programs.ssh.settings."*".IdentityAgent = ssh.agent;
         programs.git.settings = {
           ssh.program = ssh.sign;
         };

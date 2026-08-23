@@ -20,6 +20,11 @@
           gwp() { git worktree prune; }
         '';
 
+        programs.ssh.settings."github.com" = {
+          HostName = "ssh.github.com";
+          Port = 443;
+        };
+
         programs.git = {
           enable = true;
           lfs.enable = true;
