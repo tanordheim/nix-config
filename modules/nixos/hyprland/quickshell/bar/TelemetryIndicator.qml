@@ -22,6 +22,18 @@ Row {
             root.bar.popout = "telemetry";
     }
 
+    function levelRank(level: string): int {
+        if (level === "critical")
+            return 2;
+        if (level === "warning")
+            return 1;
+        return 0;
+    }
+
+    function moreSevere(first: string, second: string): string {
+        return root.levelRank(first) >= root.levelRank(second) ? first : second;
+    }
+
     component Stat: Item {
         id: stat
 
@@ -29,9 +41,12 @@ Row {
         required property string label
         required property int percent
         property real temp: -1
-        property string level: "normal"
+        property string tempLevel: "normal"
+        property string utilizationLevel: "normal"
 
-        readonly property bool showTemp: stat.level !== "normal"
+        readonly property string level: root.moreSevere(stat.tempLevel, stat.utilizationLevel)
+        readonly property bool emphasized: stat.level !== "normal"
+        readonly property bool showTemp: stat.tempLevel !== "normal" && root.levelRank(stat.tempLevel) >= root.levelRank(stat.utilizationLevel)
 
         implicitWidth: content.implicitWidth + 2 * Theme.spacingSmall
         implicitHeight: Theme.barHeight - 2 * Theme.spacingSmall
@@ -68,7 +83,7 @@ Row {
 
             Text {
                 text: stat.label
-                color: stat.showTemp ? Theme.background : Theme.mutedText
+                color: stat.emphasized ? Theme.background : Theme.mutedText
                 font.family: Theme.fontFamily
                 font.pixelSize: Theme.fontSize
                 textFormat: Text.PlainText
@@ -82,7 +97,7 @@ Row {
                         return "--";
                     return stat.percent + "%";
                 }
-                color: stat.showTemp ? Theme.background : Theme.text
+                color: stat.emphasized ? Theme.background : Theme.text
                 width: metrics.width
                 horizontalAlignment: Text.AlignRight
                 font.family: Theme.fontFamily
@@ -111,7 +126,8 @@ Row {
         label: "CPU"
         percent: Services.Telemetry.cpuPercent
         temp: Services.Telemetry.cpuTemp
-        level: Services.Telemetry.cpuLevel
+        tempLevel: Services.Telemetry.cpuLevel
+        utilizationLevel: Services.Telemetry.cpuUtilizationLevel
     }
 
     Stat {
@@ -119,13 +135,15 @@ Row {
         label: "GPU"
         percent: Services.Telemetry.gpuPercent
         temp: Services.Telemetry.gpuTemp
-        level: Services.Telemetry.gpuLevel
+        tempLevel: Services.Telemetry.gpuLevel
+        utilizationLevel: Services.Telemetry.gpuUtilizationLevel
     }
 
     Stat {
         key: "memory"
         label: "RAM"
         percent: Services.Telemetry.memPercent
+        utilizationLevel: Services.Telemetry.memUtilizationLevel
     }
 
     TelemetryPopout {

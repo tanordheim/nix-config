@@ -39,6 +39,12 @@ Singleton {
     readonly property int cpuTempCritical: 85
     readonly property int gpuTempWarning: 85
     readonly property int gpuTempCritical: 95
+    readonly property int cpuUtilizationWarning: 80
+    readonly property int cpuUtilizationCritical: 95
+    readonly property int gpuUtilizationWarning: 80
+    readonly property int gpuUtilizationCritical: 95
+    readonly property int memUtilizationWarning: 80
+    readonly property int memUtilizationCritical: 90
     readonly property int nvmeTempWarning: 60
     readonly property int nvmeTempCritical: 70
     readonly property int dimmTempWarning: 65
@@ -46,6 +52,9 @@ Singleton {
 
     readonly property string cpuLevel: root.level(root.cpuTemp, root.cpuTempWarning, root.cpuTempCritical)
     readonly property string gpuLevel: root.level(root.gpuTemp, root.gpuTempWarning, root.gpuTempCritical)
+    readonly property string cpuUtilizationLevel: root.level(root.cpuPercent, root.cpuUtilizationWarning, root.cpuUtilizationCritical)
+    readonly property string gpuUtilizationLevel: root.level(root.gpuPercent, root.gpuUtilizationWarning, root.gpuUtilizationCritical)
+    readonly property string memUtilizationLevel: root.level(root.memPercent, root.memUtilizationWarning, root.memUtilizationCritical)
     readonly property string nvmeLevel: root.level(root.nvmeTemp, root.nvmeTempWarning, root.nvmeTempCritical)
     readonly property string dimmLevel: root.level(root.dimmTemp, root.dimmTempWarning, root.dimmTempCritical)
 
@@ -62,12 +71,12 @@ Singleton {
     property bool readFailed: false
     property bool sensorVanished: false
 
-    function level(temp: real, warning: int, critical: int): string {
-        if (temp < 0)
+    function level(value: real, warning: int, critical: int): string {
+        if (value < 0)
             return "normal";
-        if (temp >= critical)
+        if (value >= critical)
             return "critical";
-        if (temp >= warning)
+        if (value >= warning)
             return "warning";
         return "normal";
     }
