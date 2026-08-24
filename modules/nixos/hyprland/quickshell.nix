@@ -158,6 +158,7 @@
             ConditionEnvironment = "WAYLAND_DISPLAY";
             StartLimitIntervalSec = 60;
             StartLimitBurst = 5;
+            X-Restart-Triggers = [ "${shellConfig}" ];
           };
           Service = {
             Slice = "session.slice";
