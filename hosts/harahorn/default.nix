@@ -114,7 +114,11 @@
     enable = true;
     enable32Bit = true;
   };
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    # WORKAROUND: BlueZ 5.87 breaks A2DP transport acquisition, https://github.com/bluez/bluez/issues/2321
+    package = pkgs.stable.bluez;
+  };
   services.blueman.enable = true;
 
   environment.systemPackages = [
