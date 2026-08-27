@@ -52,6 +52,7 @@
     ../../modules/common/vscode
 
     ../../modules/common/rust-dev
+    ../../modules/common/swift
 
     ../../modules/common/dotnet-dev
     ../../modules/common/go-dev

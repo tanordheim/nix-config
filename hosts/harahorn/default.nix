@@ -67,6 +67,7 @@
     ../../modules/common/protobuf-dev
     ../../modules/common/python-dev
     ../../modules/common/rust-dev
+    ../../modules/common/swift
     ../../modules/common/terraform-dev
 
     ../../modules/common/sherpa-onnx
