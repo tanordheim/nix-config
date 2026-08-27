@@ -5,6 +5,7 @@
       {
         home.packages = with pkgs; [
           age
+          checkmake
           cloc
           cmake
           dos2unix
