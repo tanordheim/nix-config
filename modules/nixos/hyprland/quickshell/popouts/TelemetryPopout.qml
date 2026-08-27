@@ -37,6 +37,20 @@ Popout {
         return Theme.text;
     }
 
+    function coreColor(value: real): color {
+        if (value < 0)
+            return Theme.separator;
+        if (value >= Services.Telemetry.cpuUtilizationCritical)
+            return Theme.critical;
+        if (value >= Services.Telemetry.cpuUtilizationWarning)
+            return Theme.warning;
+        return Theme.accent;
+    }
+
+    function coreLevel(value: real): string {
+        return Services.Telemetry.level(value, Services.Telemetry.cpuUtilizationWarning, Services.Telemetry.cpuUtilizationCritical);
+    }
+
     onVisibleChanged: {
         if (root.visible)
             root.flash();
@@ -132,6 +146,160 @@ Popout {
         }
     }
 
+    component CoreStrip: Item {
+        id: strip
+
+        required property string label
+        property bool interactive: false
+        property int hoveredCore: -1
+
+        readonly property var cores: Services.Telemetry.corePercents
+
+        implicitHeight: Theme.histogramHeight + Theme.spacingSmall
+
+        function coreValue(index: int): real {
+            return strip.cores[index] ?? -1;
+        }
+
+        LabelText {
+            text: strip.label
+
+            anchors.left: parent.left
+            anchors.leftMargin: Theme.spacingNormal
+        }
+
+        Item {
+            id: barArea
+
+            height: Theme.histogramHeight
+
+            readonly property real slotWidth: strip.cores.length > 0 ? barArea.width / strip.cores.length : barArea.width
+
+            anchors.left: parent.left
+            anchors.leftMargin: Theme.labelColumnWidth + 2 * Theme.spacingNormal
+            anchors.right: parent.right
+            anchors.rightMargin: strip.interactive ? Theme.detailColumnWidth + 2 * Theme.spacingNormal : Theme.spacingNormal
+            anchors.verticalCenter: parent.verticalCenter
+
+            Row {
+                anchors.fill: parent
+                spacing: Theme.histogramGap
+
+                Repeater {
+                    model: strip.cores.length
+
+                    delegate: Item {
+                        id: coreColumn
+
+                        required property int index
+
+                        readonly property real value: strip.coreValue(coreColumn.index)
+
+                        width: (barArea.width - (strip.cores.length - 1) * Theme.histogramGap) / strip.cores.length
+                        height: barArea.height
+
+                        Rectangle {
+                            anchors.bottom: parent.bottom
+                            width: parent.width
+                            height: coreColumn.value < 0 ? 1 : Math.max(1, parent.height * coreColumn.value / 100)
+                            radius: width / 2
+                            color: root.coreColor(coreColumn.value)
+                            opacity: coreColumn.value < 0 ? Theme.dimOpacity : 1
+                        }
+                    }
+                }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                enabled: strip.interactive
+                hoverEnabled: strip.interactive
+
+                onPositionChanged: mouse => strip.hoveredCore = strip.cores.length === 0 ? -1 : Math.min(strip.cores.length - 1, Math.max(0, Math.floor(mouse.x / barArea.slotWidth)))
+                onExited: strip.hoveredCore = -1
+            }
+        }
+
+        ValueText {
+            visible: strip.interactive
+            text: strip.hoveredCore < 0 ? "" : strip.hoveredCore + ": " + (strip.coreValue(strip.hoveredCore) < 0 ? "--" : strip.coreValue(strip.hoveredCore) + "%")
+            width: Theme.detailColumnWidth
+
+            anchors.right: parent.right
+            anchors.rightMargin: Theme.spacingNormal
+        }
+    }
+
+    component CoreGrid: Item {
+        id: grid
+
+        required property string label
+
+        readonly property var cores: Services.Telemetry.corePercents
+        readonly property int gridColumns: 8
+
+        implicitHeight: Math.max(Theme.rowHeight, cells.implicitHeight + Theme.spacingSmall)
+
+        LabelText {
+            text: grid.label
+
+            anchors.left: parent.left
+            anchors.leftMargin: Theme.spacingNormal
+        }
+
+        Grid {
+            id: cells
+
+            columns: grid.gridColumns
+
+            anchors.left: parent.left
+            anchors.leftMargin: Theme.labelColumnWidth + 2 * Theme.spacingNormal
+            anchors.right: parent.right
+            anchors.rightMargin: Theme.spacingNormal
+            anchors.verticalCenter: parent.verticalCenter
+
+            Repeater {
+                model: grid.cores.length
+
+                delegate: Item {
+                    id: cell
+
+                    required property int index
+
+                    readonly property real value: grid.cores[cell.index] ?? -1
+
+                    width: cells.width / grid.gridColumns
+                    height: cellValue.implicitHeight + Theme.spacingSmall
+
+                    Text {
+                        text: cell.index
+                        color: Theme.mutedText
+                        font.family: Theme.fontFamily
+                        font.pixelSize: Theme.fontSizeSmall
+                        textFormat: Text.PlainText
+
+                        anchors.left: parent.left
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    Text {
+                        id: cellValue
+
+                        text: cell.value < 0 ? "--" : cell.value + "%"
+                        color: root.levelColor(root.coreLevel(cell.value))
+                        font.family: Theme.fontFamily
+                        font.pixelSize: Theme.fontSizeSmall
+                        textFormat: Text.PlainText
+
+                        anchors.right: parent.right
+                        anchors.rightMargin: Theme.spacingNormal
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                }
+            }
+        }
+    }
+
     component DetailRow: Item {
         id: detailRow
 
@@ -190,6 +358,22 @@ Popout {
         tempDetail: root.tempLabel(Services.Telemetry.cpuTemp)
         tempLevel: Services.Telemetry.cpuLevel
         detail: root.fanLabel(Services.Telemetry.cpuFan)
+        width: root.contentWidth
+    }
+
+    CoreStrip {
+        label: "Cores A"
+        width: root.contentWidth
+    }
+
+    CoreGrid {
+        label: "Cores B"
+        width: root.contentWidth
+    }
+
+    CoreStrip {
+        label: "Cores C"
+        interactive: true
         width: root.contentWidth
     }
 

@@ -18,6 +18,8 @@ Singleton {
     property real diskUsedBytes: -1
     property real diskTotalBytes: -1
 
+    property var corePercents: []
+
     property var cpuHistory: []
     property var gpuHistory: []
     property var memHistory: []
@@ -68,6 +70,8 @@ Singleton {
 
     property double prevCpuIdle: 0
     property double prevCpuTotal: -1
+    property var prevCoreIdle: []
+    property var prevCoreTotal: []
     property bool readFailed: false
     property bool sensorVanished: false
 
@@ -88,21 +92,53 @@ Singleton {
     }
 
     function sampleCpu(text: string): void {
-        const parts = text.split("\n")[0].trim().split(/\s+/).slice(1).map(Number);
+        const lines = text.split("\n");
+        const parts = lines[0].trim().split(/\s+/).slice(1).map(Number);
         if (parts.length < 5 || parts.some(isNaN)) {
             root.cpuPercent = -1;
             root.prevCpuTotal = -1;
-            return;
+        } else {
+            const idle = parts[3] + parts[4];
+            const total = parts.reduce((a, b) => a + b, 0);
+            if (root.prevCpuTotal >= 0 && total > root.prevCpuTotal) {
+                const deltaTotal = total - root.prevCpuTotal;
+                root.cpuPercent = Math.round(100 * (deltaTotal - (idle - root.prevCpuIdle)) / deltaTotal);
+            }
+            root.prevCpuIdle = idle;
+            root.prevCpuTotal = total;
         }
 
-        const idle = parts[3] + parts[4];
-        const total = parts.reduce((a, b) => a + b, 0);
-        if (root.prevCpuTotal >= 0 && total > root.prevCpuTotal) {
-            const deltaTotal = total - root.prevCpuTotal;
-            root.cpuPercent = Math.round(100 * (deltaTotal - (idle - root.prevCpuIdle)) / deltaTotal);
-        }
-        root.prevCpuIdle = idle;
-        root.prevCpuTotal = total;
+        root.sampleCores(lines);
+    }
+
+    function sampleCores(lines: var): void {
+        const percents = [];
+        const idles = [];
+        const totals = [];
+
+        lines.forEach(line => {
+            const match = line.match(/^cpu(\d+)\s/);
+            if (match === null)
+                return;
+
+            const index = Number(match[1]);
+            const parts = line.trim().split(/\s+/).slice(1).map(Number);
+            if (parts.length < 5 || parts.some(isNaN))
+                return;
+
+            const idle = parts[3] + parts[4];
+            const total = parts.reduce((a, b) => a + b, 0);
+            idles[index] = idle;
+            totals[index] = total;
+
+            const prevTotal = root.prevCoreTotal[index];
+            const prevIdle = root.prevCoreIdle[index];
+            percents[index] = prevTotal !== undefined && total > prevTotal ? Math.round(100 * ((total - prevTotal) - (idle - prevIdle)) / (total - prevTotal)) : -1;
+        });
+
+        root.prevCoreIdle = idles;
+        root.prevCoreTotal = totals;
+        root.corePercents = percents;
     }
 
     function memField(text: string, name: string): real {
@@ -360,6 +396,9 @@ Singleton {
             if (stat === null) {
                 root.cpuPercent = -1;
                 root.prevCpuTotal = -1;
+                root.corePercents = [];
+                root.prevCoreIdle = [];
+                root.prevCoreTotal = [];
             } else {
                 root.sampleCpu(stat);
             }
