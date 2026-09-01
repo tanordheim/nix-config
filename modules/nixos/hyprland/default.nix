@@ -51,6 +51,7 @@
           networkmanagerapplet
           pavucontrol
           playerctl
+          slurp
           wl-clipboard
           xdg-utils
         ];
