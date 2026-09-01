@@ -12,6 +12,7 @@
           nix-direnv.enable = true;
           config.whitelist.prefix = [
             "${config.home.homeDirectory}/${if isDarwin then "Code" else "code"}/"
+            "${config.home.homeDirectory}/.local/state/gilfoyle/repos"
           ];
         };
       }
