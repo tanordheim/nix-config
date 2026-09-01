@@ -1,5 +1,6 @@
 args: [
   (import ./aurral args)
+  (import ./claude-code args)
   (import ./codegraph args)
   (import ./linear-cli args)
   (import ./roslyn-ls args)

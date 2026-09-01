@@ -429,6 +429,23 @@
         "type": "github"
       }
     },
+    "nixpkgs-claude-code-pr": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788291848,
+        "narHash": "sha256-p8n0AWO/rV8fSoNIZjfppLuqwD17y8WN0bA3tE2GjJ8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b4a4376b2b00964d911cbc16245fb893ed6da26a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "pull/558900/head",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1787414105,
@@ -541,6 +558,7 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-claude-code-pr": "nixpkgs-claude-code-pr",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unstable-small": "nixpkgs-unstable-small",
         "nixvim": "nixvim",
