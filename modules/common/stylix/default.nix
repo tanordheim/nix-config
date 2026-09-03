@@ -25,8 +25,8 @@
         name = "Adwaita Sans";
       };
       monospace = {
-        package = pkgs.aporetic-bin;
-        name = "Aporetic Sans Mono";
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font Mono";
       };
       emoji = {
         package = pkgs.noto-fonts-color-emoji;
