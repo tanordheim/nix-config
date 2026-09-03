@@ -6,11 +6,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    # WORKAROUND: claude-code 2.1.257 (Fable 5.1) not yet in nixpkgs, https://github.com/NixOS/nixpkgs/pull/558900
-    nixpkgs-claude-code-pr = {
-      url = "github:NixOS/nixpkgs?ref=pull/558900/head";
-      flake = false;
-    };
 
     # Nix-darwin (for macOS machines)
     nix-darwin = {
