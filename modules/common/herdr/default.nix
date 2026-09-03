@@ -57,6 +57,13 @@ in
           sidebar_min_width = 22
           sidebar_max_width = 44
 
+          [ui.sidebar.agents]
+          row_gap = 1
+          rows = [
+            ["state_icon", "workspace", "tab"],
+            [{ token = "state_text", dim = false }, { token = "agent", dim = false }],
+          ]
+
           [experimental]
           pane_history = true
 
