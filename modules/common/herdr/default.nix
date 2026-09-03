@@ -52,6 +52,7 @@ in
 
           [ui]
           prompt_new_tab_name = false
+          agent_panel_sort = "priority"
           sidebar_width = 40
           sidebar_min_width = 22
           sidebar_max_width = 44
