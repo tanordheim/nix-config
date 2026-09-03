@@ -50,21 +50,6 @@ in
         configToml = ''
           [theme.custom]
           accent = "${c.base0E}"
-          panel_bg = "${c.base01}"
-          surface0 = "${c.base01}"
-          surface1 = "${c.base02}"
-          surface_dim = "${c.base02}"
-          overlay0 = "${c.base03}"
-          overlay1 = "${c.base04}"
-          subtext0 = "${c.base04}"
-          text = "${c.base05}"
-          red = "${c.base08}"
-          peach = "${c.base09}"
-          yellow = "${c.base0A}"
-          green = "${c.base0B}"
-          teal = "${c.base0C}"
-          blue = "${c.base0D}"
-          mauve = "${c.base0E}"
 
           [ui]
           prompt_new_tab_name = false
