@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
@@ -100,7 +99,7 @@ in
           home.packages = [ pkgs.codex ];
           home.file.".codex/AGENTS.md".text = agentsMd;
           home.file.".codex/herdr-agent-state.sh".source =
-            "${inputs.herdr}/src/integration/assets/codex/herdr-agent-state.sh";
+            "${pkgs.herdr.src}/src/integration/assets/codex/herdr-agent-state.sh";
           home.file.".codex/hooks.json".text = builtins.toJSON {
             hooks.SessionStart = [
               {

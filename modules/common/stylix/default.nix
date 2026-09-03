@@ -37,8 +37,6 @@
         popups = 11;
       };
     };
-
-    opacity.terminal = 0.95;
   };
 
   home-manager.sharedModules = [

@@ -4,7 +4,6 @@
   ...
 }:
 let
-  herdrPkg = inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.default;
   herdrEven = pkgs.writeShellScriptBin "herdr-even" ''
     exec ${pkgs.python3}/bin/python3 ${./herdr-even.py} "$@"
   '';
@@ -152,7 +151,7 @@ in
       in
       {
         home.packages = [
-          herdrPkg
+          pkgs.herdr
           herdrEven
         ];
         xdg.configFile."herdr/config.toml".text = configToml;

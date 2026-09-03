@@ -1,8 +1,4 @@
-{
-  inputs,
-  config,
-  ...
-}:
+{ config, ... }:
 let
   exaApiKeyFile = config.sops.secrets."pi/exa_api_key".path;
 in
@@ -24,7 +20,7 @@ in
         ];
 
         home.file.".pi/agent/extensions/herdr-agent-state.ts".source =
-          "${inputs.herdr}/src/integration/assets/pi/herdr-agent-state.ts";
+          "${pkgs.herdr.src}/src/integration/assets/pi/herdr-agent-state.ts";
       }
     )
   ];

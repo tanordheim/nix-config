@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   isDarwin,
   pkgs,
@@ -181,7 +180,7 @@ in
           text = builtins.readFile ./session-end-cleanup.sh;
         };
 
-        herdrClaudeHook = "${inputs.herdr}/src/integration/assets/claude/herdr-agent-state.sh";
+        herdrClaudeHook = "${pkgs.herdr.src}/src/integration/assets/claude/herdr-agent-state.sh";
 
         stopWipMarkerScript = pkgs.writeShellApplication {
           name = "claude-stop-wip-marker";

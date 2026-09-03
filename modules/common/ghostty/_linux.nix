@@ -2,7 +2,7 @@
   home-manager.sharedModules = [
     {
       programs.ghostty.settings = {
-        alpha-blending = "native";
+        alpha-blending = "linear";
         gtk-tabs-location = "hidden";
       };
     }
