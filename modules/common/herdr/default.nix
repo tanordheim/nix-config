@@ -49,6 +49,8 @@ in
         configToml = ''
           [theme.custom]
           accent = "${c.base0E}"
+          active_row_bg = "${c.base02}"
+          selection_bg = "${c.base03}"
 
           [ui]
           prompt_new_tab_name = false
