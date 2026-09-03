@@ -18,7 +18,6 @@
         enable = true;
 
         settings = {
-          background = "11111b";
           cursor-style = "underline";
           confirm-close-surface = false;
           mouse-hide-while-typing = true;

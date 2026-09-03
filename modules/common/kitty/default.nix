@@ -31,10 +31,9 @@ in
             text_composition_strategy = "1.0 0";
           };
 
-          extraConfig = lib.mkAfter ''
+          extraConfig = ''
             symbol_map ${nerdRanges} JetBrainsMono Nerd Font Mono
             narrow_symbols ${nerdRanges} 1
-            background #11111b
           '';
 
           keybindings = {
