@@ -16,14 +16,6 @@
   programs.hyprland.portalPackage = pkgs.xdg-desktop-portal-hyprland;
   programs.dconf.enable = true;
 
-  services.greetd = {
-    enable = true;
-    settings.default_session = {
-      command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd '${pkgs.uwsm}/bin/uwsm start -- hyprland-uwsm.desktop'";
-      user = "greeter";
-    };
-  };
-
   security.polkit.enable = true;
   security.rtkit.enable = true;
 

@@ -9,6 +9,7 @@
 
     ../../modules/nixos/hyprland
     ../../modules/nixos/printing
+    ../../modules/nixos/sddm
     ../../modules/nixos/thunar
     ../../modules/nixos/voxtype
 
