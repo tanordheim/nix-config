@@ -134,5 +134,13 @@ PanelWindow {
 
             anchors.verticalCenter: parent.verticalCenter
         }
+
+        Separator {}
+
+        SessionControl {
+            bar: root
+
+            anchors.verticalCenter: parent.verticalCenter
+        }
     }
 }

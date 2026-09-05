@@ -111,6 +111,8 @@
               readonly property list<string> audioSettings: ["${pkgs.pavucontrol}/bin/pavucontrol"]
               readonly property list<string> bluetoothSettings: ["${pkgs.blueman}/bin/blueman-manager"]
               readonly property list<string> networkSettings: ["${pkgs.networkmanagerapplet}/bin/nm-connection-editor"]
+              readonly property list<string> logoutSession: ["${pkgs.uwsm}/bin/uwsm", "stop"]
+              readonly property list<string> rebootSystem: ["${pkgs.systemd}/bin/systemctl", "reboot"]
               readonly property list<string> diskUsage: ["${pkgs.coreutils}/bin/df", "-B1", "--output=used,size", "/"]
               readonly property list<string> topProcessesByCpu: ["${pkgs.runtimeShell}", "-c", "${pkgs.procps}/bin/ps -eo pcpu,pmem,comm --no-headers --sort=-pcpu | ${pkgs.coreutils}/bin/head -n 5"]
               readonly property list<string> topProcessesByMemory: ["${pkgs.runtimeShell}", "-c", "${pkgs.procps}/bin/ps -eo pcpu,pmem,comm --no-headers --sort=-pmem | ${pkgs.coreutils}/bin/head -n 5"]
