@@ -7,6 +7,7 @@ let
     fontSize = toString config.stylix.fonts.sizes.applications;
     background = config.stylix.image;
   };
+  stylixCursor = config.stylix.cursor;
 in
 {
   services.displayManager = {
@@ -19,8 +20,21 @@ in
       };
       theme = "catppuccin-mocha-mauve";
       extraPackages = [ sddmTheme ];
+      settings.Theme = {
+        CursorTheme = stylixCursor.name;
+        CursorSize = stylixCursor.size;
+      };
     };
   };
 
-  environment.systemPackages = [ sddmTheme ];
+  environment.systemPackages = [
+    sddmTheme
+    stylixCursor.package
+  ];
+
+  systemd.services.display-manager.environment = {
+    XCURSOR_PATH = "${stylixCursor.package}/share/icons";
+    XCURSOR_SIZE = toString stylixCursor.size;
+    XCURSOR_THEME = stylixCursor.name;
+  };
 }
