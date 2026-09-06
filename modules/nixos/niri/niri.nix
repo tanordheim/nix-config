@@ -66,6 +66,12 @@
 
             _children = [
               {
+                window-rule = {
+                  match._props.app-id = "^firefox$";
+                  open-maximized-to-edges = false;
+                };
+              }
+              {
                 output = {
                   _args = [ "DP-1" ];
                   off = { };
@@ -138,6 +144,7 @@
               "Mod+R".switch-preset-column-width = { };
               "Mod+Shift+R".switch-preset-column-width-back = { };
               "Mod+F".maximize-column = { };
+              "Mod+M".maximize-window-to-edges = { };
               "Mod+Shift+F".fullscreen-window = { };
               "Mod+V".toggle-window-floating = { };
               "Mod+Shift+V".switch-focus-between-floating-and-tiling = { };
