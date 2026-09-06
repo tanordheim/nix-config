@@ -3,12 +3,14 @@
     (
       { config, pkgs, ... }:
       {
-        programs.quickshell.configs.hyprland = import ../quickshell/config.nix {
+        programs.quickshell.configs.niri = import ../quickshell/config.nix {
           inherit config pkgs;
           desktop = ./quickshell;
           logoutSession = [
-            "${pkgs.uwsm}/bin/uwsm"
-            "stop"
+            "${pkgs.niri}/bin/niri"
+            "msg"
+            "action"
+            "quit"
           ];
         };
       }

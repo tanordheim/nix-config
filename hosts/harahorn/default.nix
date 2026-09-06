@@ -8,6 +8,7 @@
     ./backups.nix
 
     ../../modules/nixos/hyprland
+    ../../modules/nixos/niri
     ../../modules/nixos/printing
     ../../modules/nixos/sddm
     ../../modules/nixos/thunar

@@ -6,6 +6,7 @@
         services.hypridle = {
           enable = true;
           package = pkgs.hypridle;
+          systemdTarget = "wayland-session@hyprland.desktop.target";
           settings = {
             general = {
               lock_cmd = "pidof hyprlock || hyprlock";

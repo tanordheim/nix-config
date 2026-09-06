@@ -1,6 +1,5 @@
 import QtQuick
 import Quickshell
-import Quickshell.Hyprland
 import qs.config
 import qs.services as Services
 import qs.theme
@@ -11,9 +10,10 @@ PanelWindow {
     required property var modelData
 
     property string popout: ""
+    property Component workspaceContent: null
+    property Component titleContent: null
 
-    readonly property HyprlandMonitor monitor: Hyprland.monitorFor(root.modelData)
-    readonly property bool primary: root.monitor !== null && root.monitor.name === Config.primaryMonitor
+    readonly property bool primary: root.modelData.name === Config.primaryMonitor
     readonly property real sideWidth: Math.max(leftRow.width, rightRow.width)
 
     screen: root.modelData
@@ -58,15 +58,14 @@ PanelWindow {
         anchors.left: parent.left
         anchors.leftMargin: Theme.spacingLarge
 
-        Workspaces {
-            bar: root
-            monitor: root.monitor
+        Loader {
+            sourceComponent: root.workspaceContent
 
             anchors.verticalCenter: parent.verticalCenter
         }
 
         Separator {
-            visible: voiceType.visible
+            visible: root.workspaceContent !== null && voiceType.visible
         }
 
         VoiceType {
@@ -91,9 +90,8 @@ PanelWindow {
         }
     }
 
-    WindowTitle {
-        monitor: root.monitor
-        maxWidth: Math.max(0, root.width - 2 * (root.sideWidth + 2 * Theme.spacingLarge))
+    Loader {
+        sourceComponent: root.titleContent
 
         anchors.centerIn: parent
     }

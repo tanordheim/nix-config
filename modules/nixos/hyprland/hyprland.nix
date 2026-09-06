@@ -38,7 +38,7 @@
           enable = true;
           systemd.enable = false;
           package = pkgs.hyprland;
-          portalPackage = pkgs.xdg-desktop-portal-hyprland;
+          portalPackage = null;
           settings = {
             mainMod = {
               _var = "ALT";

@@ -1,6 +1,5 @@
 import QtQuick
 import Quickshell.Hyprland
-import qs.popouts
 import qs.theme
 
 Item {

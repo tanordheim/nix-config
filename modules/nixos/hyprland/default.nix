@@ -1,77 +1,29 @@
 { pkgs, ... }:
 {
   imports = [
+    ../wayland
+    ../quickshell
     ./hyprland.nix
     ./hypridle.nix
     ./hyprlock.nix
     ./hyprpaper.nix
     ./hyprtoolkit.nix
     ./quickshell.nix
-    ./swaync.nix
   ];
 
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
   programs.hyprland.package = pkgs.hyprland;
   programs.hyprland.portalPackage = pkgs.xdg-desktop-portal-hyprland;
-  programs.dconf.enable = true;
-
-  security.polkit.enable = true;
-  security.rtkit.enable = true;
-
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-    wireplumber.enable = true;
-  };
-
-  services.gnome.gnome-keyring.enable = true;
 
   home-manager.sharedModules = [
     (
       { pkgs, ... }:
       {
-        home.packages = with pkgs; [
-          brightnessctl
-          hyprland-qtutils
-          hyprlauncher
-          hyprpolkitagent
-          libnotify
-          networkmanagerapplet
-          pavucontrol
-          playerctl
-          slurp
-          wl-clipboard
-          xdg-utils
+        home.packages = [
+          pkgs.hyprland-qtutils
+          pkgs.hyprlauncher
         ];
-
-        xdg.portal = {
-          enable = true;
-          extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-          configPackages = with pkgs; [
-            xdg-desktop-portal-hyprland
-            xdg-desktop-portal-gtk
-          ];
-          xdgOpenUsePortal = true;
-        };
-
-        systemd.user.services.hyprpolkitagent = {
-          Unit = {
-            Description = "Hyprland Polkit Authentication Agent";
-            PartOf = [ "graphical-session.target" ];
-            After = [ "graphical-session.target" ];
-            ConditionEnvironment = "WAYLAND_DISPLAY";
-          };
-          Service = {
-            ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
-            Slice = "session.slice";
-            Restart = "on-failure";
-          };
-          Install.WantedBy = [ "graphical-session.target" ];
-        };
       }
     )
   ];

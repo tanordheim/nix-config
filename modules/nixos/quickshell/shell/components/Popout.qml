@@ -1,6 +1,6 @@
 import QtQuick
 import Quickshell
-import Quickshell.Hyprland
+import qs.desktop
 import qs.theme
 
 PopupWindow {
@@ -36,11 +36,10 @@ PopupWindow {
             root.bar.closePopout();
     }
 
-    HyprlandFocusGrab {
-        active: root.backingWindowVisible
-        windows: [root, root.bar]
+    onClosed: root.bar.closePopout()
 
-        onCleared: root.bar.closePopout()
+    PopupFocus {
+        popup: root
     }
 
     PopoutSurface {
