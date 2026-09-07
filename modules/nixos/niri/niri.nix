@@ -40,6 +40,7 @@
             layout = {
               gaps = 10;
               center-focused-column = "never";
+              always-center-single-column = { };
               default-column-width.proportion = 0.5;
               preset-column-widths._children = [
                 { proportion = 0.25; }
