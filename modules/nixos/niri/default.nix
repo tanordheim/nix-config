@@ -2,6 +2,8 @@
   imports = [
     ../wayland
     ../quickshell
+    ../hyprlock
+    ./idle.nix
     ./niri.nix
     ./quickshell.nix
   ];

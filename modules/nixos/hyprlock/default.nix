@@ -1,4 +1,6 @@
 {
+  security.pam.services.hyprlock = { };
+
   home-manager.sharedModules = [
     (
       { pkgs, ... }:

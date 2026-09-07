@@ -5,7 +5,7 @@
     ../quickshell
     ./hyprland.nix
     ./hypridle.nix
-    ./hyprlock.nix
+    ../hyprlock
     ./hyprpaper.nix
     ./hyprtoolkit.nix
     ./quickshell.nix
