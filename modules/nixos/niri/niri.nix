@@ -42,6 +42,7 @@
               center-focused-column = "never";
               default-column-width.proportion = 0.5;
               preset-column-widths._children = [
+                { proportion = 0.25; }
                 { proportion = 0.33333; }
                 { proportion = 0.5; }
                 { proportion = 1.0; }
