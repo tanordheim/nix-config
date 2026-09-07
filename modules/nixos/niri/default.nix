@@ -4,6 +4,7 @@
     ../quickshell
     ../hyprlock
     ./idle.nix
+    ./layout-presets.nix
     ./niri.nix
     ./quickshell.nix
     ./wallpaper.nix
