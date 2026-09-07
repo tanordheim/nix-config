@@ -124,7 +124,7 @@
               }
               {
                 window-rule = {
-                  geometry-corner-radius = 10;
+                  geometry-corner-radius = 5;
                   clip-to-geometry = true;
                   background-effect = {
                     blur = true;
