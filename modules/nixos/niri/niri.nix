@@ -164,6 +164,7 @@
               "Mod+R".switch-preset-column-width = { };
               "Mod+Shift+R".switch-preset-column-width-back = { };
               "Mod+F".maximize-column = { };
+              "Mod+Ctrl+F".expand-column-to-available-width = { };
               "Mod+M".maximize-window-to-edges = { };
               "Mod+Shift+F".fullscreen-window = { };
               "Mod+V".toggle-window-floating = { };
