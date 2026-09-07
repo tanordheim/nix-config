@@ -1,7 +1,12 @@
 {
   home-manager.sharedModules = [
     (
-      { config, pkgs, ... }:
+      {
+        config,
+        lib,
+        pkgs,
+        ...
+      }:
       let
         colors = config.lib.stylix.colors.withHashtag;
       in
@@ -61,10 +66,25 @@
               };
             };
 
+            workspace._args = [ "comms" ];
+
             prefer-no-csd = { };
             screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
 
             _children = [
+              {
+                window-rule = {
+                  _children = map (appId: { match._props.app-id = "^${lib.escapeRegex appId}$"; }) [
+                    "slack"
+                    "discord"
+                    "teams-for-linux"
+                    "signal"
+                    "org.telegram.desktop"
+                    "com.github.dagmoller.whatsapp-electron"
+                  ];
+                  open-on-workspace = "comms";
+                };
+              }
               {
                 window-rule = {
                   match._props.app-id = "^firefox$";
