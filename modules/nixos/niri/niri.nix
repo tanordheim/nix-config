@@ -168,6 +168,7 @@
               "Mod+Shift+F".fullscreen-window = { };
               "Mod+V".toggle-window-floating = { };
               "Mod+Shift+V".switch-focus-between-floating-and-tiling = { };
+              "Mod+W".toggle-column-tabbed-display = { };
               "Mod+O" = {
                 _props.repeat = false;
                 toggle-overview = { };
