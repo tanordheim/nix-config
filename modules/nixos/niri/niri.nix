@@ -162,6 +162,7 @@
               "Mod+Ctrl+I".move-column-to-workspace-up = { };
               "Mod+Ctrl+U".move-column-to-workspace-down = { };
               "Mod+Tab".focus-workspace-previous = { };
+              "Mod+C".focus-workspace = "comms";
               "Mod+R".switch-preset-column-width = { };
               "Mod+Shift+R".switch-preset-column-width-back = { };
               "Mod+F".maximize-column = { };
