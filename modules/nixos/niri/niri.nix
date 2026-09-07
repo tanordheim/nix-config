@@ -38,7 +38,7 @@
             };
 
             layout = {
-              gaps = 10;
+              gaps = 12;
               center-focused-column = "never";
               always-center-single-column = { };
               default-column-width.proportion = 0.5;
@@ -52,19 +52,35 @@
               border = {
                 on = { };
                 width = 2;
-                active-color = colors.base0E;
+                active-gradient._props = {
+                  from = colors.base0E;
+                  to = colors.base0D;
+                  angle = 45;
+                };
                 inactive-color = colors.base03;
                 urgent-color = colors.base08;
               };
               shadow = {
                 on = { };
-                softness = 4;
+                softness = 18;
                 spread = 0;
                 offset._props = {
                   x = 0;
-                  y = 0;
+                  y = 4;
                 };
-                color = "${colors.base00}99";
+                color = "${colors.base00}4d";
+              };
+              tab-indicator = {
+                position = "top";
+                place-within-column = { };
+                width = 8;
+                gap = 6;
+                length._props.total-proportion = 1.0;
+                gaps-between-tabs = 6;
+                corner-radius = 4;
+                active-color = colors.base0E;
+                inactive-color = colors.base04;
+                urgent-color = colors.base08;
               };
             };
 
@@ -112,7 +128,7 @@
               }
               {
                 window-rule = {
-                  geometry-corner-radius = 5;
+                  geometry-corner-radius = 10;
                   clip-to-geometry = true;
                   background-effect = {
                     blur = true;
