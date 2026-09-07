@@ -52,11 +52,7 @@
               border = {
                 on = { };
                 width = 2;
-                active-gradient._props = {
-                  from = colors.base0E;
-                  to = colors.base0D;
-                  angle = 45;
-                };
+                active-color = colors.base0E;
                 inactive-color = colors.base03;
                 urgent-color = colors.base08;
               };
