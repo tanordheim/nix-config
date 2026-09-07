@@ -6,6 +6,7 @@
     ./idle.nix
     ./niri.nix
     ./quickshell.nix
+    ./wallpaper.nix
   ];
 
   programs.niri = {
