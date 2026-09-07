@@ -145,13 +145,6 @@
                   "--working-directory=${config.home.homeDirectory}"
                 ];
               };
-              "Mod+D" = {
-                _props = {
-                  repeat = false;
-                  hotkey-overlay-title = "Open Fuzzel";
-                };
-                spawn = [ "${pkgs.fuzzel}/bin/fuzzel" ];
-              };
               "Mod+E" = {
                 _props = {
                   repeat = false;

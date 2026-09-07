@@ -7,6 +7,7 @@
     ./layout-presets.nix
     ./niri.nix
     ./quickshell.nix
+    ./vicinae.nix
     ./wallpaper.nix
   ];
 
@@ -15,9 +16,4 @@
     useNautilus = false;
   };
 
-  home-manager.sharedModules = [
-    {
-      programs.fuzzel.enable = true;
-    }
-  ];
 }
