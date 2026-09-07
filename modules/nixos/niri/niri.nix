@@ -58,13 +58,13 @@
               };
               shadow = {
                 on = { };
-                softness = 18;
+                softness = 4;
                 spread = 0;
                 offset._props = {
                   x = 0;
-                  y = 4;
+                  y = 0;
                 };
-                color = "${colors.base00}4d";
+                color = "${colors.base00}99";
               };
               tab-indicator = {
                 position = "top";

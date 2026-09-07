@@ -12,6 +12,7 @@
     ../../modules/nixos/printing
     ../../modules/nixos/sddm
     ../../modules/nixos/thunar
+    ../../modules/nixos/udiskie
     ../../modules/nixos/voxtype
 
     ../../modules/common/_1password
