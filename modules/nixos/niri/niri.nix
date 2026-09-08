@@ -94,6 +94,8 @@
 
             workspace._args = [ "comms" ];
 
+            gestures.hot-corners.off = { };
+
             prefer-no-csd = { };
             screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
 
