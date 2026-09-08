@@ -2,7 +2,7 @@
 {
   home-manager.sharedModules = [
     {
-      home.packages = [ pkgs.android-studio ];
+      home.packages = [ pkgs.androidStudioPackages.beta ];
     }
   ];
 }
