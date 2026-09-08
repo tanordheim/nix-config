@@ -25,7 +25,10 @@
   nix = {
     settings = {
       trusted-users = [ "root" ];
-      experimental-features = "nix-command flakes";
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       min-free = 25 * 1024 * 1024 * 1024;
       max-free = 50 * 1024 * 1024 * 1024;
     };
