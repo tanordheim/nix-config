@@ -9,6 +9,18 @@
       }:
       let
         colors = config.lib.stylix.colors.withHashtag;
+        screenshotRegion = pkgs.writeShellApplication {
+          name = "niri-screenshot-region";
+          runtimeInputs = [
+            pkgs.slurp
+            pkgs.grim
+            pkgs.wl-clipboard
+          ];
+          text = ''
+            geometry=$(slurp)
+            grim -g "$geometry" - | wl-copy --type image/png
+          '';
+        };
       in
       {
         wayland.windowManager.niri = {
@@ -182,7 +194,13 @@
                 _props.repeat = false;
                 toggle-overview = { };
               };
-              "Mod+Shift+S".screenshot = { };
+              "Mod+Shift+S" = {
+                _props = {
+                  repeat = false;
+                  hotkey-overlay-title = "Copy screen region";
+                };
+                spawn = [ (lib.getExe screenshotRegion) ];
+              };
               "Mod+F1".show-hotkey-overlay = { };
               "Mod+Shift+E".quit = { };
 
