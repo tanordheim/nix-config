@@ -10,6 +10,7 @@
       "cloudflare/api_token" = { };
       "mosquitto/user" = { };
       "mosquitto/password" = { };
+      "npps4/secret_key" = { };
       "sonarr/api_key" = { };
       "radarr/api_key" = { };
       "lidarr/api_key" = { };

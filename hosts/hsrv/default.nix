@@ -20,6 +20,7 @@
     ../../modules/nixos/home-assistant
     ../../modules/nixos/lidarr
     ../../modules/nixos/mosquitto
+    ../../modules/nixos/npps4
     ../../modules/nixos/plex
     ../../modules/nixos/prowlarr
     ../../modules/nixos/qbittorrent
@@ -43,6 +44,9 @@
       prefixLength = 24;
     }
   ];
+  networking.firewall.extraCommands = ''
+    iptables -w -A nixos-fw -i eno1 -s 192.168.69.0/24 -p tcp --dport 51376 -j nixos-fw-accept
+  '';
   networking.defaultGateway = "192.168.69.1";
   networking.nameservers = [
     "1.1.1.1"
