@@ -179,8 +179,10 @@
               "Mod+Shift+L".consume-or-expel-window-right = { };
               "Mod+I".focus-workspace-up = { };
               "Mod+U".focus-workspace-down = { };
-              "Mod+Ctrl+I".move-column-to-workspace-up = { };
-              "Mod+Ctrl+U".move-column-to-workspace-down = { };
+              "Mod+Shift+I".move-column-to-workspace-up = { };
+              "Mod+Shift+U".move-column-to-workspace-down = { };
+              "Mod+Ctrl+I".move-workspace-up = { };
+              "Mod+Ctrl+U".move-workspace-down = { };
               "Mod+Tab".focus-workspace-previous = { };
               "Mod+C".focus-workspace = "comms";
               "Mod+R".switch-preset-column-width = { };
