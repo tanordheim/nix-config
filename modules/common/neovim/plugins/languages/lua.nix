@@ -25,9 +25,12 @@
         };
       };
 
-      extraPackages = with pkgs; [
-        lua-language-server
-        stylua
+      plugins.lint.lintersByFt.lua = [ "luacheck" ];
+
+      extraPackages = [
+        pkgs.lua-language-server
+        pkgs.lua51Packages.luacheck
+        pkgs.stylua
       ];
     };
 

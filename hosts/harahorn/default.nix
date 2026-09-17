@@ -65,6 +65,7 @@
     ../../modules/common/html-dev
     ../../modules/common/java-dev
     ../../modules/common/kotlin-dev
+    ../../modules/common/lua-dev
     ../../modules/common/nix-dev
     ../../modules/common/node-dev
     ../../modules/common/protobuf-dev
