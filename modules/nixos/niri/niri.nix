@@ -9,6 +9,9 @@
       }:
       let
         colors = config.lib.stylix.colors.withHashtag;
+        workspaceBinds = lib.listToAttrs (
+          map (n: lib.nameValuePair "Mod+${toString n}" { focus-workspace = n; }) (lib.range 1 9)
+        );
         screenshotRegion = pkgs.writeShellApplication {
           name = "niri-screenshot-region";
           runtimeInputs = [
@@ -148,7 +151,7 @@
               }
             ];
 
-            binds = {
+            binds = workspaceBinds // {
               "Mod+T" = {
                 _props = {
                   repeat = false;
