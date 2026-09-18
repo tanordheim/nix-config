@@ -54,14 +54,12 @@
 
             layout = {
               gaps = 12;
-              center-focused-column = "never";
-              always-center-single-column = { };
-              default-column-width.proportion = 0.5;
+              center-focused-column = "always";
+              default-column-width.proportion = 0.33333;
               preset-column-widths._children = [
-                { proportion = 0.25; }
                 { proportion = 0.33333; }
                 { proportion = 0.5; }
-                { proportion = 1.0; }
+                { proportion = 0.66667; }
               ];
               focus-ring.off = { };
               border = {
@@ -132,7 +130,7 @@
                 output = {
                   _args = [ "Dell Inc. DELL U5226KW 4CVCKJ4" ];
                   mode = "6144x2560@119.996";
-                  scale = 1.25;
+                  scale = 1.5;
                   position._props = {
                     x = 0;
                     y = 0;
