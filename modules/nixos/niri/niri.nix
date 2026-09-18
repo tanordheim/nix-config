@@ -131,7 +131,7 @@
               {
                 output = {
                   _args = [ "DP-2" ];
-                  mode = "3440x1440@180";
+                  mode = "6144x2560@119.996";
                   scale = 1;
                   position._props = {
                     x = 0;
