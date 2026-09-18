@@ -130,9 +130,9 @@
               }
               {
                 output = {
-                  _args = [ "DP-2" ];
+                  _args = [ "Dell Inc. DELL U5226KW 4CVCKJ4" ];
                   mode = "6144x2560@119.996";
-                  scale = 1;
+                  scale = 1.25;
                   position._props = {
                     x = 0;
                     y = 0;
