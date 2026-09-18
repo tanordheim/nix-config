@@ -5,7 +5,7 @@
       let
         modelArchive = pkgs.fetchurl {
           url = "https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/kokoro-multi-lang-v1_0.tar.bz2";
-          hash = "sha256-wTPSY1PXdtpzCHDax9oH2/yaXjvIDMXo6Dq26CO+cEY=";
+          hash = "sha256-xffi0srwgrwdIPtwM0ph2Z0gtIRQCq0y58+EwSjqMpg=";
         };
         model = pkgs.runCommand "kokoro-multi-lang-v1_0" { nativeBuildInputs = [ pkgs.bzip2 ]; } ''
           mkdir "$out"
