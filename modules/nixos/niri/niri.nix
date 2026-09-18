@@ -130,7 +130,7 @@
                 output = {
                   _args = [ "Dell Inc. DELL U5226KW 4CVCKJ4" ];
                   mode = "6144x2560@119.996";
-                  scale = 1.5;
+                  scale = 1.333333;
                   position._props = {
                     x = 0;
                     y = 0;
