@@ -54,6 +54,7 @@
 
             layout = {
               gaps = 12;
+              background-color = "transparent";
               center-focused-column = "always";
               default-column-width.proportion = 0.33333;
               preset-column-widths._children = [
@@ -121,10 +122,19 @@
               {
                 workspace = {
                   _args = [ "gaming" ];
-                  layout.struts = {
-                    top = 119;
-                    bottom = 120;
+                  layout = {
+                    background-color = "#000000";
+                    struts = {
+                      top = 119;
+                      bottom = 120;
+                    };
                   };
+                };
+              }
+              {
+                layer-rule = {
+                  match._props.namespace = "^wallpaper$";
+                  place-within-backdrop = true;
                 };
               }
               { workspace._args = [ "main" ]; }
