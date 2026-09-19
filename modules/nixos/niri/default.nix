@@ -4,7 +4,7 @@
     ../quickshell
     ../hyprlock
     ./idle.nix
-    ./layout-presets.nix
+    ./fill-neighbors.nix
     ./niri.nix
     ./quickshell.nix
     ./vicinae.nix

@@ -231,7 +231,6 @@
               "Mod+F".maximize-column = { };
               "Mod+Ctrl+F".expand-column-to-available-width = { };
               "Mod+M".maximize-window-to-edges = { };
-              "Mod+Shift+F".fullscreen-window = { };
               "Mod+V".toggle-window-floating = { };
               "Mod+Shift+V".switch-focus-between-floating-and-tiling = { };
               "Mod+W".toggle-column-tabbed-display = { };

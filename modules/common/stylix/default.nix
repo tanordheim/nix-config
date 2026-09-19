@@ -41,7 +41,10 @@
 
   home-manager.sharedModules = [
     {
-      stylix.enableReleaseChecks = false;
+      stylix = {
+        enableReleaseChecks = false;
+        targets.rofi.enable = false;
+      };
     }
   ];
 }
