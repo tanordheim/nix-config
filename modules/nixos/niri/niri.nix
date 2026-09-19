@@ -118,23 +118,24 @@
                   open-maximized-to-edges = false;
                 };
               }
-              { workspace._args = [ "comms" ]; }
               {
                 workspace = {
-                  _args = [ "wow" ];
+                  _args = [ "gaming" ];
                   layout.struts = {
                     top = 119;
                     bottom = 120;
                   };
                 };
               }
+              { workspace._args = [ "main" ]; }
+              { workspace._args = [ "comms" ]; }
               {
                 window-rule = {
                   match._props = {
                     app-id = "^steam_app_default$";
                     title = "^World of Warcraft$";
                   };
-                  open-on-workspace = "wow";
+                  open-on-workspace = "gaming";
                   open-fullscreen = false;
                   default-column-width.fixed = 2880;
                   min-width = 2880;
@@ -206,7 +207,6 @@
               "Mod+Ctrl+I".move-workspace-up = { };
               "Mod+Ctrl+U".move-workspace-down = { };
               "Mod+Tab".focus-workspace-previous = { };
-              "Mod+C".focus-workspace = "comms";
               "Mod+R".switch-preset-column-width = { };
               "Mod+Shift+R".switch-preset-column-width-back = { };
               "Mod+F".maximize-column = { };
