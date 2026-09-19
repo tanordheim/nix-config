@@ -141,11 +141,19 @@
               { workspace._args = [ "comms" ]; }
               {
                 window-rule = {
+                  _children = map (appId: { match._props.app-id = appId; }) [
+                    "^steam$"
+                    "^steam_app_"
+                  ];
+                  open-on-workspace = "gaming";
+                };
+              }
+              {
+                window-rule = {
                   match._props = {
                     app-id = "^steam_app_default$";
                     title = "^World of Warcraft$";
                   };
-                  open-on-workspace = "gaming";
                   open-fullscreen = false;
                   default-column-width.fixed = 2880;
                   min-width = 2880;
