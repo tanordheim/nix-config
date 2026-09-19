@@ -12,6 +12,7 @@ PanelWindow {
     property string popout: ""
     property Component workspaceContent: null
     property Component titleContent: null
+    property Component indicatorContent: null
 
     readonly property bool primary: root.modelData.name === Config.primaryMonitor
     readonly property real sideWidth: Math.max(leftRow.width, rightRow.width)
@@ -85,6 +86,19 @@ PanelWindow {
 
             bar: root
             visible: root.primary && Services.Media.active !== null
+
+            anchors.verticalCenter: parent.verticalCenter
+        }
+
+        Separator {
+            visible: indicator.visible
+        }
+
+        Loader {
+            id: indicator
+
+            sourceComponent: root.indicatorContent
+            visible: indicator.item !== null && indicator.item.visible
 
             anchors.verticalCenter: parent.verticalCenter
         }
