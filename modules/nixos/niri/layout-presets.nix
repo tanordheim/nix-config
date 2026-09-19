@@ -37,7 +37,7 @@
             {
               "1" = "Arrange columns 50/50";
               "2" = "Arrange columns 67/33";
-              "3" = "Arrange columns 25/50/25";
+              "3" = "Arrange columns 30/40/30";
             };
       }
     )

@@ -56,9 +56,10 @@
               gaps = 12;
               background-color = "transparent";
               center-focused-column = "always";
-              default-column-width.proportion = 0.33333;
+              default-column-width.proportion = 0.4;
               preset-column-widths._children = [
                 { proportion = 0.33333; }
+                { proportion = 0.4; }
                 { proportion = 0.5; }
                 { proportion = 0.66667; }
               ];

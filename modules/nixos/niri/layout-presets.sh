@@ -9,7 +9,7 @@ trap 'fail "Niri could not apply the layout preset."' ERR
 case "${1-}" in
   1) offsets='[0,1]'; widths='[50,50]' ;;
   2) offsets='[0,1]'; widths='[66.666667,33.333333]' ;;
-  3) offsets='[-1,0,1]'; widths='[25,50,25]' ;;
+  3) offsets='[-1,0,1]'; widths='[30,40,30]' ;;
   *) fail 'Choose layout preset 1, 2, or 3.' ;;
 esac
 
