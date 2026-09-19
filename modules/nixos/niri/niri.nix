@@ -93,8 +93,6 @@
               };
             };
 
-            workspace._args = [ "comms" ];
-
             gestures.hot-corners.off = { };
 
             prefer-no-csd = { };
@@ -118,6 +116,29 @@
                 window-rule = {
                   match._props.app-id = "^firefox$";
                   open-maximized-to-edges = false;
+                };
+              }
+              { workspace._args = [ "comms" ]; }
+              {
+                workspace = {
+                  _args = [ "wow" ];
+                  layout.struts = {
+                    top = 119;
+                    bottom = 120;
+                  };
+                };
+              }
+              {
+                window-rule = {
+                  match._props = {
+                    app-id = "^steam_app_default$";
+                    title = "^World of Warcraft$";
+                  };
+                  open-on-workspace = "wow";
+                  open-fullscreen = false;
+                  default-column-width.fixed = 2880;
+                  min-width = 2880;
+                  max-width = 2880;
                 };
               }
               {
