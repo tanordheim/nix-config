@@ -172,6 +172,7 @@
                   _args = [ "Dell Inc. DELL U5226KW 4CVCKJ4" ];
                   mode = "6144x2560@119.996";
                   scale = 1.333333;
+                  variable-refresh-rate = { };
                   position._props = {
                     x = 0;
                     y = 0;

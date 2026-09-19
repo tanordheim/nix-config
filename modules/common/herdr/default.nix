@@ -47,6 +47,8 @@ in
         c = config.lib.stylix.colors.withHashtag;
 
         configToml = ''
+          onboarding = false
+
           [theme.custom]
           accent = "${c.base0E}"
           active_row_bg = "${c.base02}"
