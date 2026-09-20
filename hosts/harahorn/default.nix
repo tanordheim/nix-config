@@ -134,8 +134,6 @@
 
   services.udev.extraRules = ''
     SUBSYSTEM=="video4linux", ACTION=="add", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="085e", ENV{ID_V4L_CAPABILITIES}=="*:capture:*", TAG+="systemd", ENV{SYSTEMD_WANTS}+="brio-apply@%k.service"
-    # WORKAROUND: the Dell U5226KW main hub (USB7206, firmware 6.25) never trains the SuperSpeed link to its quick-access tray hub on port 3, and the kernel warm-resets that port every 4 s ("Cannot enable. Maybe the USB cable is bad?"). Disable the SuperSpeed side; the USB 2.0 side still serves the tray. Remove after a monitor firmware update fixes the link.
-    ACTION=="bind", SUBSYSTEM=="usb", DRIVER=="hub", ATTRS{idVendor}=="0424", ATTRS{idProduct}=="7206", ATTRS{bcdDevice}=="0625", RUN+="${pkgs.bash}/bin/sh -c 'for p in /sys$devpath/*-port3; do echo 1 > $$p/disable; done'"
   '';
 
   systemd.services."brio-apply@" = {
