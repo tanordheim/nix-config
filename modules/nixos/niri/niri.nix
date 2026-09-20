@@ -55,13 +55,14 @@
             layout = {
               gaps = 12;
               background-color = "transparent";
-              center-focused-column = "always";
-              default-column-width.proportion = 0.4;
+              center-focused-column = "never";
+              always-center-single-column = { };
+              default-column-width.proportion = 0.25;
               preset-column-widths._children = [
-                { proportion = 0.33333; }
+                { proportion = 0.15; }
+                { proportion = 0.25; }
+                { proportion = 0.3; }
                 { proportion = 0.4; }
-                { proportion = 0.5; }
-                { proportion = 0.66667; }
               ];
               focus-ring.off = { };
               border = {
@@ -210,6 +211,8 @@
                 spawn = [ "${pkgs.thunar}/bin/thunar" ];
               };
               "Mod+Q".close-window = { };
+              "Mod+C".center-column = { };
+              "Mod+Shift+C".center-visible-columns = { };
               "Mod+H".focus-column-left = { };
               "Mod+L".focus-column-right = { };
               "Mod+K".focus-window-up = { };
