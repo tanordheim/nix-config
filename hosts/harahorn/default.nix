@@ -140,7 +140,7 @@
     description = "Apply Logitech Brio settings to %i";
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.cameractrls}/bin/cameractrls -d /dev/%i -c logitech_brio_fov=65,zoom_absolute=100,pan_absolute=0,tilt_absolute=0";
+      ExecStart = "${pkgs.cameractrls}/bin/cameractrls -d /dev/%i -c logitech_brio_fov=90,zoom_absolute=138,pan_absolute=-21600,tilt_absolute=-3600";
     };
   };
 
