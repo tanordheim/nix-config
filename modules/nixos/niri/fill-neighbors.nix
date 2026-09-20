@@ -15,7 +15,7 @@
             pkgs.libnotify
           ];
           text = ''
-            exec ${lib.getExe pkgs.python3} ${./fill-neighbors.py} "$@"
+            exec ${lib.getExe pkgs.python3} ${./.}/fill-neighbors.py "$@"
           '';
         };
       in

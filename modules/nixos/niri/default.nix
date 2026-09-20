@@ -5,6 +5,7 @@
     ../hyprlock
     ./idle.nix
     ./fill-neighbors.nix
+    ./reset-widths.nix
     ./niri.nix
     ./quickshell.nix
     ./vicinae.nix
