@@ -59,10 +59,10 @@
               always-center-single-column = { };
               default-column-width.proportion = 0.25;
               preset-column-widths._children = [
-                { proportion = 0.15; }
                 { proportion = 0.25; }
                 { proportion = 0.3; }
                 { proportion = 0.4; }
+                { proportion = 0.5; }
               ];
               focus-ring.off = { };
               border = {
