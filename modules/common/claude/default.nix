@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   isDarwin,
   pkgs,
@@ -321,7 +322,9 @@ in
             };
           };
 
-        unwrappedClaude = pkgs.bleeding.claude-code;
+        unwrappedClaude =
+          pkgs.bleeding.callPackage "${inputs.nixpkgs-claude-code}/pkgs/by-name/cl/claude-code/package.nix"
+            { };
 
         pluginDirArgs = lib.concatMapStrings (dir: ''
           d=$(echo ${lib.escapeShellArg dir} | sed 's|^~|'"$HOME"'|')

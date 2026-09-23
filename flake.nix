@@ -6,6 +6,11 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    # WORKAROUND: Opus 5.5 support until unstable-small includes https://github.com/NixOS/nixpkgs/pull/565929
+    nixpkgs-claude-code = {
+      url = "github:NixOS/nixpkgs/13da634cb61b95a1877ef0abf66d7358b4a8d25c";
+      flake = false;
+    };
 
     # Nix-darwin (for macOS machines)
     nix-darwin = {
