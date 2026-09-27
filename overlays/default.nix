@@ -1,6 +1,7 @@
 args: [
   (import ./aurral args)
   (import ./codegraph args)
+  (import ./jetbrains-pycharm args)
   (import ./linear-cli args)
   (import ./roslyn-ls args)
   (import ./tiny-cmdline args)
